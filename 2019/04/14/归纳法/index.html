@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/avatar.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="学习,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="自然数上的一般归纳原理假设$P$是自然数上的一个性质，则如果  $P(0)$成立 — base case 对所有的自然数$k$，$P(k)$蕴涵$P(k+1)$ — induction step  则$P(n)$对所有自然数$n$成立 \ \ \ \ \ \ \ \ \ \ [P(k)]\\ \frac{P(0)\ P(k+1)}{P(n)}$[P(k)]$为归纳假设，$k$不能出现在$P(k +">
+<meta name="keywords" content="学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="归纳法">
+<meta property="og:url" content="http://alazypig.github.io/2019/04/14/归纳法/index.html">
+<meta property="og:site_name" content="Borderlands">
+<meta property="og:description" content="自然数上的一般归纳原理假设$P$是自然数上的一个性质，则如果  $P(0)$成立 — base case 对所有的自然数$k$，$P(k)$蕴涵$P(k+1)$ — induction step  则$P(n)$对所有自然数$n$成立 \ \ \ \ \ \ \ \ \ \ [P(k)]\\ \frac{P(0)\ P(k+1)}{P(n)}$[P(k)]$为归纳假设，$k$不能出现在$P(k +">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-01-01T18:10:26.361Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="归纳法">
+<meta name="twitter:description" content="自然数上的一般归纳原理假设$P$是自然数上的一个性质，则如果  $P(0)$成立 — base case 对所有的自然数$k$，$P(k)$蕴涵$P(k+1)$ — induction step  则$P(n)$对所有自然数$n$成立 \ \ \ \ \ \ \ \ \ \ [P(k)]\\ \frac{P(0)\ P(k+1)}{P(n)}$[P(k)]$为归纳假设，$k$不能出现在$P(k +">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":18,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://alazypig.github.io/2019/04/14/归纳法/">
+
+
+
+
+
+  <title>归纳法 | Borderlands</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Borderlands</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/04/14/归纳法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Borderlands">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">归纳法</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-14T19:45:57+08:00">
+                2019-04-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="自然数上的一般归纳原理"><a href="#自然数上的一般归纳原理" class="headerlink" title="自然数上的一般归纳原理"></a>自然数上的一般归纳原理</h3><p>假设$P$是自然数上的一个性质，则如果</p>
+<ol>
+<li>$P(0)$成立 — base case</li>
+<li>对所有的自然数$k$，$P(k)$蕴涵$P(k+1)$ — induction step</li>
+</ol>
+<p>则$P(n)$对所有自然数$n$成立</p>
+<script type="math/tex; mode=display">\ \ \ \ \ \ \ \ \ \ [P(k)]\\
+\frac{P(0)\ P(k+1)}{P(n)}</script><p>$[P(k)]$为归纳假设，$k$不能出现在$P(k + 1)$的任何假设中</p>
+<p><strong>定理：每个自然是要么是偶数，要么是奇数。</strong><br>用归纳法来证明：</p>
+<ol>
+<li>0是偶数 -&gt; 0是偶数或奇数</li>
+<li>假设k是偶数或奇数，证明k + 1是奇数或偶数：<ol>
+<li>k是偶数，则k + 1是奇数</li>
+<li>k是奇数，则k + 1是偶数</li>
+</ol>
+</li>
+<li>得证</li>
+</ol>
+<a id="more"></a>
+<h3 id="自然数上的完全归纳原理"><a href="#自然数上的完全归纳原理" class="headerlink" title="自然数上的完全归纳原理"></a>自然数上的完全归纳原理</h3><p>假设$P$是自然数上的一个性质，则：<br>如果对每个自然数$k$，假定$P(i)$对所有自然数$i(i &lt; k)$成立，则可以证明$P(k)$成立</p>
+<script type="math/tex; mode=display">[\forall i < k.P(i)]\\
+\frac{P(k)}{P(n)}</script><p>$k$不能出现在其他前提条件的其他假设中</p>
+<p><strong>定理：所有$n \geq 2$的自然数都可以写成素数的乘积$n = p_1…p_k$</strong><br>对$n$进行完全归纳：</p>
+<ol>
+<li>$n$是素数，那么$n = n$</li>
+<li>$n$不是素数，则$\exists\  n \% m = 0(1 &lt; m &lt; n)$所以$n = m * \frac{n}{m}$，<br>对$m$和$\frac{n}{m}$再次归纳，得$m = p_1…p_k$且$\frac{n}{m} = q_1…q_k$<br>得<script type="math/tex; mode=display">n = m * \frac{n}{m} = p_1...p_kq_1...q_k</script></li>
+<li>得证</li>
+</ol>
+<h3 id="字典序归纳原理"><a href="#字典序归纳原理" class="headerlink" title="字典序归纳原理"></a>字典序归纳原理</h3><p>假设$P$是自然数序对上的一个性质，则：<br>如果对每个自然数序对$(m, n)$，假定$P(m’, n’)$对所有的$(m’, n’) &lt; (m, n)$成立，则可以证明$P(m, n)$成立</p>
+<h3 id="结构归纳法"><a href="#结构归纳法" class="headerlink" title="结构归纳法"></a>结构归纳法</h3><h4 id="形式1"><a href="#形式1" class="headerlink" title="形式1"></a>形式1</h4><p>假设$P$是某个文法产生的任一表达式$e$上的一个性质，则：</p>
+<ul>
+<li>对每个原子表达式$e$，证明$P(e)$为真</li>
+<li>对直接子表达式为$e_1,…,e_k$的任何复合表达式$e$，证明如果$P(e_i)(i = 1, …, k)$都为真，则$P(e)$也为真</li>
+</ul>
+<h4 id="形式2"><a href="#形式2" class="headerlink" title="形式2"></a>形式2</h4><p>假设$P$是某个文法产生的任一表达式$e$上的一个性质，则：</p>
+<ul>
+<li>对每个原子表达式$e$，证明$P(e)$为真</li>
+<li>对任何表达式$e$的任何子表达式$e’$，证明如果$P(e’)$都为真，则$P(e)$也为真</li>
+</ul>
+<h3 id="表的结构归纳法"><a href="#表的结构归纳法" class="headerlink" title="表的结构归纳法"></a>表的结构归纳法</h3><p>假设P是元素类型为$\tau$的表(list)上的一个性质，则：</p>
+<ul>
+<li>$P([])$, []表示空表</li>
+<li>对类型为$\tau$的所有元素$y$以及类型为$\tau$ list的表$ys$都有$P(ys)$蕴涵$P(y::ys)$，则$P(xs)$对所有类型为$\tau$ list的表$xs$成立<script type="math/tex; mode=display">\ \ \ \ \ \ \ \ \ \ [P(ys)]\\
+\frac{P([])\ P(y::ys)}{P(xs)}</script>$y$和$ys$不能出现在$P(y::ys)$的其他假设中</li>
+</ul>
+<p><strong>定理：所有的表都不等于自己的表尾</strong><br>对$xs$结构归纳：</p>
+<ul>
+<li>$\forall x.[x] \neq []$，两个表是相等的当且仅当它们具有相同的长度且对应的元素也相等</li>
+<li>假定$\forall x.x::ys \neq ys$成立，并对于任意的$y$和$ys$证明$\forall x.x::(y::ys) \neq y::ys$，所以只要证明两边表尾不相等：即证明$y::ys \neq ys$<br><strong>不适用于无穷表，$[n, n, …]$等于它自己的表尾</strong></li>
+</ul>
+<p>定理：对于所有的表xs和ys，有$len(xs@ys) = len\ xs + len\ ys$（@连接运算）<br>对xs结构归纳：</p>
+<ul>
+<li>$len([]@ys) = len[] + len\ ys$成立</li>
+<li>假定$len(xs\ @\ ys) = len\ xs + len\ ys$成立，那么我们可以证明对于所有的$x$和$xs$，有$len((x::xs)\ @\ ys) = len(x::xs) + len\ ys$也成立<script type="math/tex; mode=display">len((x::xs)@ys) = len(x::(xs@ys))\\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = 1 + len(xs@ys)\\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = 1 + (len\ xs + len\ ys)\\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = (1 + len\ xs) + len\ ys\\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  = len(x::xs) + len\ ys</script></li>
+</ul>
+<h3 id="树的结构归纳法"><a href="#树的结构归纳法" class="headerlink" title="树的结构归纳法"></a>树的结构归纳法</h3><p>假设P是类型$\tau$ tree的树的一个性质，则：</p>
+<ul>
+<li>$P(empty)$</li>
+<li>对于所有类型为$\tau$的元素$x$以及类型为$\tau$ tree的树$t_1$和$t_2$都有，$P(t_1)$和$P(t_2)$蕴涵$P(node(x, t_1, t_2))$<script type="math/tex; mode=display">\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [P(t_1), P(t_2)]\\
+\frac{P(empty)\ P(node(x, t_1, t_2))}{P(t)}</script>$x$、$t_1$和$t_2$不能出现在$P(node(x, t_1, t_2))$的其他假设中</li>
+</ul>
+<h3 id="证明上的归纳"><a href="#证明上的归纳" class="headerlink" title="证明上的归纳"></a>证明上的归纳</h3><p>假设一个公式可以证明的，那么：<br>推理规则：若一组公式可证，则另一个公式也证$\frac{A_1…A_n}{B}$，如果$A_1,…,A_n$（前提）都可证，那么B（结论）也可证</p>
+<ul>
+<li>相等性的自反公理： $e = e$</li>
+<li>相等性的传递规则：$\frac{e_1 = e_2\ e_2 = e_3}{e_1 = e_3}$</li>
+</ul>
+<p>所以一个证明可以定义为一个公式序列，该序列中的每个公式都是公理或是由先前的公式通过一条推理规则得到的结论。可以有两个方法来归纳：</p>
+<ul>
+<li>对公式序列的长度进行自然数归纳法</li>
+<li>把证明看成树，所用的公理看叶节点，推理规则看成内部节点，由对$A_1, …, A_n$的证明来构造对$B$的证明</li>
+</ul>
+<p>在某个证明系统中，证明对每个证明$\alpha$，$P(\alpha)$为真：</p>
+<ul>
+<li>对该系统中的每个公理，证明$P$成立</li>
+<li>假定对$\alpha_1,…,\alpha_k$，$P$都成立，证明$P(\alpha)$也成立，则$\alpha$是$\alpha_1,…,\alpha_k$延伸出的一个证明</li>
+</ul>
+<p>证明系统的可靠性：在公式的某种特定解释下，每个可证的公式都为真。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/学习/" rel="tag"># 学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/14/等式公理/" rel="next" title="等式公理">
+                <i class="fa fa-chevron-left"></i> 等式公理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/15/随便聊聊/" rel="prev" title="随便聊聊">
+                随便聊聊 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">137</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/alazypig_" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://developer.mozilla.org/" title="MDN Web Docs" target="_blank">MDN Web Docs</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.codewars.com/" title="CodeWars" target="_blank">CodeWars</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://qmdx00.cn/" title="Skyscraper" target="_blank">Skyscraper</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hiheero.github.io/" title="Heero!" target="_blank">Heero!</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#自然数上的一般归纳原理"><span class="nav-number">1.</span> <span class="nav-text">自然数上的一般归纳原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自然数上的完全归纳原理"><span class="nav-number">2.</span> <span class="nav-text">自然数上的完全归纳原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字典序归纳原理"><span class="nav-number">3.</span> <span class="nav-text">字典序归纳原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构归纳法"><span class="nav-number">4.</span> <span class="nav-text">结构归纳法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#形式1"><span class="nav-number">4.1.</span> <span class="nav-text">形式1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#形式2"><span class="nav-number">4.2.</span> <span class="nav-text">形式2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表的结构归纳法"><span class="nav-number">5.</span> <span class="nav-text">表的结构归纳法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树的结构归纳法"><span class="nav-number">6.</span> <span class="nav-text">树的结构归纳法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#证明上的归纳"><span class="nav-number">7.</span> <span class="nav-text">证明上的归纳</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

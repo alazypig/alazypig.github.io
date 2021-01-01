@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/avatar.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="整理,学习,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="属性名表达式JavaScript定义属性有两种方法：12obj.foo = true;obj[&apos;a&apos; + &apos;bc&apos;] = 123; ES6允许字面量定义对象时使用第二种方法：12345678let propKey = &apos;foo&apos;;let obj = &amp;#123;    [propKey] : true,    [&apos;a&apos; + &apos;bc&apos;] : 123,    [&apos;he&apos; + &apos;llo&apos;]() &amp;#12">
+<meta name="keywords" content="整理,学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对象的扩展">
+<meta property="og:url" content="http://alazypig.github.io/2018/08/13/对象的扩展/index.html">
+<meta property="og:site_name" content="Borderlands">
+<meta property="og:description" content="属性名表达式JavaScript定义属性有两种方法：12obj.foo = true;obj[&apos;a&apos; + &apos;bc&apos;] = 123; ES6允许字面量定义对象时使用第二种方法：12345678let propKey = &apos;foo&apos;;let obj = &amp;#123;    [propKey] : true,    [&apos;a&apos; + &apos;bc&apos;] : 123,    [&apos;he&apos; + &apos;llo&apos;]() &amp;#12">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-01-01T18:10:26.361Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="对象的扩展">
+<meta name="twitter:description" content="属性名表达式JavaScript定义属性有两种方法：12obj.foo = true;obj[&apos;a&apos; + &apos;bc&apos;] = 123; ES6允许字面量定义对象时使用第二种方法：12345678let propKey = &apos;foo&apos;;let obj = &amp;#123;    [propKey] : true,    [&apos;a&apos; + &apos;bc&apos;] : 123,    [&apos;he&apos; + &apos;llo&apos;]() &amp;#12">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":18,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://alazypig.github.io/2018/08/13/对象的扩展/">
+
+
+
+
+
+  <title>对象的扩展 | Borderlands</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Borderlands</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2018/08/13/对象的扩展/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Borderlands">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">对象的扩展</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-13T20:35:12+08:00">
+                2018-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ECMAScript/" itemprop="url" rel="index">
+                    <span itemprop="name">ECMAScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="属性名表达式"><a href="#属性名表达式" class="headerlink" title="属性名表达式"></a>属性名表达式</h3><p>JavaScript定义属性有两种方法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj.foo = <span class="literal">true</span>;</span><br><span class="line">obj[<span class="string">'a'</span> + <span class="string">'bc'</span>] = <span class="number">123</span>;</span><br></pre></td></tr></table></figure></p>
+<p>ES6允许字面量定义对象时使用第二种方法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> propKey = <span class="string">'foo'</span>;</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    [propKey] : <span class="literal">true</span>,</span><br><span class="line">    [<span class="string">'a'</span> + <span class="string">'bc'</span>] : <span class="number">123</span>,</span><br><span class="line">    [<span class="string">'he'</span> + <span class="string">'llo'</span>]() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'hi'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h3 id="方法的name属性"><a href="#方法的name属性" class="headerlink" title="方法的name属性"></a>方法的name属性</h3><p>方法的name属性也返回函数名。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">    sayName() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'hello'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">person.sayName.name;    <span class="comment">//'sayName'</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>如果对象的方法使用了getter和setter，则name的属性不是在该方法上面，而是在该方法属性的描述对象的get和set属性上面，返回值是方法名前面加上get和set</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    <span class="keyword">get</span> foo() &#123;&#125;,</span><br><span class="line">    <span class="keyword">set</span> foo(x) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// obj.foo.name;   //TypeError: Cannot read property 'name' of undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> descriptor = <span class="built_in">Object</span>.getOwnPropertyDescriptor(obj, <span class="string">'foo'</span>);</span><br><span class="line">descriptor.get.name;    <span class="comment">//'get foo'</span></span><br><span class="line">descriptor.set.name;    <span class="comment">//'set foo'</span></span><br></pre></td></tr></table></figure></p>
+<p>如果对象的方法是一个Symbol值，那么name属性返回的是这个Symbol值的描述。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> key1 = <span class="built_in">Symbol</span>(<span class="string">'description'</span>);</span><br><span class="line"><span class="keyword">const</span> key2 = <span class="built_in">Symbol</span>();</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    [key1]() &#123;&#125;,</span><br><span class="line">    [key2]() &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line">obj[key1].name; <span class="comment">//'[description]'</span></span><br><span class="line">obj[key2].name; <span class="comment">//''</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Object-is"><a href="#Object-is" class="headerlink" title="Object.is()"></a>Object.is()</h3><p>ES5比较两个值是否相等，只有两个相等运算符：==和===，他们都有个缺点，前者会自动转换数据类型，后者NaN不等于自身，以及+0等于-0。<br>ES6提出了<em>Same-value-equality</em>算法来解决这个问题，Object.is()就是部署这个算法的新方法。<br>不同之处只有两个：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+<span class="number">0</span> === <span class="number">-0</span>;              <span class="comment">//true</span></span><br><span class="line"><span class="literal">NaN</span> === <span class="literal">NaN</span>;            <span class="comment">//false</span></span><br><span class="line"><span class="built_in">Object</span>.is(+<span class="number">0</span>, <span class="number">-0</span>);      <span class="comment">//false</span></span><br><span class="line"><span class="built_in">Object</span>.is(<span class="literal">NaN</span>, <span class="literal">NaN</span>);    <span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
+<p>ES5可以用代码部署：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.defineProperty(<span class="built_in">Object</span>, <span class="string">'is'</span> &#123;</span><br><span class="line">    value : <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (x === y) &#123;</span><br><span class="line">            <span class="comment">//针对+0不等于-0的情况</span></span><br><span class="line">            <span class="keyword">return</span> x !== <span class="number">0</span> || <span class="number">1</span> / x === <span class="number">1</span> / y;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//针对NaN</span></span><br><span class="line">        <span class="keyword">return</span> x !== x &amp;&amp; y !== y;</span><br><span class="line">    &#125;,</span><br><span class="line">    configurable : <span class="literal">true</span>,</span><br><span class="line">    enumerable : <span class="literal">false</span>,</span><br><span class="line">    writable : <span class="literal">true</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="Object-assign"><a href="#Object-assign" class="headerlink" title="Object.assign()"></a>Object.assign()</h3><p>Object.assign方法用于将源对象的所有 <strong>可枚举</strong> 属性复制到目标对象。第一个参数是目标对象，后面的参数都是源对象<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> target = &#123; <span class="attr">a</span> : <span class="number">1</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> source1 = &#123; <span class="attr">b</span> : <span class="number">2</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> source2 = &#123; <span class="attr">c</span> : <span class="number">3</span> &#125;;</span><br><span class="line"><span class="built_in">Object</span>.assign(target, source1, source2);</span><br><span class="line">target; <span class="comment">//&#123; a : 1, b : 2, c : 3 &#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>如果只有一个参数，Object.assign()会直接返回该参数。<br>如果参数不是对象，会先转成对象，然后返回，由于undefined和null无法转变，所以如果将他们作为参数，就会报错。但是，如果undefined和null不在首参数，那就不会报错。<br>其他类型的值（数值、字符串和布尔值）不在首参数也不会报错，但是，除了字符串会以数组形式复制到目标对象，其他值都不会产生效果。<br><strong>Object.assign()方法实行的赋值是浅复制，如果源对象的某个属性的值是对象，那么目标对象得到的是这个对象的引用</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = &#123; <span class="attr">a</span> : &#123; <span class="attr">b</span> : <span class="number">1</span> &#125; &#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.assign(obj2, obj1);</span><br><span class="line">obj1.a.b = <span class="number">2</span>;</span><br><span class="line">obj2.a.b;   <span class="comment">//2</span></span><br></pre></td></tr></table></figure></p>
+<p>对于这种嵌套对象，一旦遇到同名属性，处理的方法是替换而不是添加。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> target = &#123; <span class="attr">a</span> : &#123; <span class="attr">b</span> : <span class="string">'c'</span>, <span class="attr">d</span> : <span class="string">'e'</span> &#125; &#125;;</span><br><span class="line"><span class="keyword">var</span> source = &#123; <span class="attr">a</span> : &#123; <span class="attr">b</span> : <span class="string">'hello'</span> &#125; &#125;;</span><br><span class="line"><span class="built_in">Object</span>.assign(target.source);</span><br><span class="line"><span class="comment">//target对象的a属性被source对象的a属性整个替换掉了</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Object.assign()可以用来处理数组，但是会把数组当成对象来处理。</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.assign([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>]);   <span class="comment">//[4, 5, 3]</span></span><br></pre></td></tr></table></figure></p>
+<p>常见用途：</p>
+<ul>
+<li><p>为对象添加属性：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(x, y) &#123;</span><br><span class="line">        <span class="built_in">Object</span>.apply(<span class="keyword">this</span>, &#123; x, y &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为对象添加方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.assign(SomeClass.prototype, &#123;</span><br><span class="line">    someMethod(arg1, arg2) &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;,</span><br><span class="line">    anotherMethod() &#123;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//等同于</span></span><br><span class="line">SomeClass.prototype.someMethod = <span class="function"><span class="keyword">function</span> (<span class="params">arg1, arg2</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;;</span><br><span class="line">SomeClass.prototype.anotherMethod = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>克隆对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//只克隆对象自身值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clone</span>(<span class="params">origin</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">Object</span>.assign(&#123;&#125;, origin);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//保持继承链的方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clone</span>(<span class="params">origin</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> originProto = <span class="built_in">Object</span>.getPrototypeOf(origin);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.assign(<span class="built_in">Object</span>.create(originProto), origin);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>合并多个对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> merge = <span class="function">(<span class="params">target, ...sources</span>) =&gt;</span> <span class="built_in">Object</span>.assign(target, ...sources);</span><br><span class="line"></span><br><span class="line"><span class="comment">//合并到一个对象</span></span><br><span class="line"><span class="keyword">const</span> merge = <span class="function">(<span class="params">...source</span>) =&gt;</span> <span class="built_in">Object</span>.assign(&#123;&#125;, ...source);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为属性指定默认值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> DEFAULTS = &#123;</span><br><span class="line">    logLevel : <span class="number">0</span>,</span><br><span class="line">    outputFormat : <span class="string">'html'</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">processContent</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">    options = <span class="built_in">Object</span>.assign(&#123;&#125;, DEFAULTS, options);</span><br><span class="line">    <span class="built_in">console</span>.log(options);</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="属性的可枚举性"><a href="#属性的可枚举性" class="headerlink" title="属性的可枚举性"></a>属性的可枚举性</h3><p>对象的每一个属性都有一描述对象，用于控制该属性的行为，Object.getOwnPropertyDescriptor方法可以获取该属性的描述对象。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">foo</span> : <span class="number">123</span> &#125;;</span><br><span class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(obj, <span class="string">'foo'</span>);</span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//     value : 123,</span></span><br><span class="line"><span class="comment">//     writable : true,</span></span><br><span class="line"><span class="comment">//     enumerable : true,</span></span><br><span class="line"><span class="comment">//     configurable : false</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>enumerable属性成为可枚举性，如果该属性为false，就表示某些操作会忽略当前属性。<br>ES5有三个操作会忽略enumerable为false的属性：</p>
+<ul>
+<li>for…in循环：只遍历对象自身和继承的可枚举属性。</li>
+<li>Object.keys()： 返回对象自身的所有可枚举属性的键名。</li>
+<li>JSON.stringify()：只串行化对象自身的可枚举属性。</li>
+</ul>
+<p><strong>ES6规定，所有Class的原型的方法都是不可枚举的</strong></p>
+<h3 id="属性的遍历"><a href="#属性的遍历" class="headerlink" title="属性的遍历"></a>属性的遍历</h3><p>ES6共有五种方法遍历对象的属性：</p>
+<ul>
+<li>for…in循环：遍历对象自身和继承的可枚举属性（不含Symbol属性）。</li>
+<li>Object.keys()：返回一个数组，包括对象自身的（不含继承的）所有可枚举属性（不含Symbol属性）。</li>
+<li>Object.getOwnPropertyNames(obj)：返回一个数组，包含对象自身的所有属性（不含Symbol属性，但是包括不可枚举属性）。</li>
+<li>Object.getOwnPropertySymbols(obj)： 返回一个数组，包含对象自身的所有Symbol属性。</li>
+<li>Reflect.ownKeys(obj)：返回一个数组，包含对象自身的所有属性，不管属性名是Symbol还是字符串，也不管是否可枚举。<br>以上方法遍历对象属性时都遵守同样的属性遍历次序规则：</li>
+<li>首先遍历所有属性名为数值的属性，按照数字排序。</li>
+<li>其次遍历所有属性名为字符串的属性，按照生成时间排序。</li>
+<li>最后遍历所有属性名为Symbol值的属性，按照生成时间排序。</li>
+</ul>
+<h3 id="proto属性"><a href="#proto属性" class="headerlink" title="proto属性"></a><strong>proto</strong>属性</h3><p><strong>proto</strong>属性用来读取或设置当前对象的prototype对象。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES6写法</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    method : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line">obj.__proto__ = someOtherObj;</span><br><span class="line"></span><br><span class="line"><span class="comment">//ES5写法</span></span><br><span class="line"><span class="keyword">var</span> obj = <span class="built_in">Object</span>.create(someOtherObj);</span><br><span class="line">obj.method = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>在实现上，<strong>proto</strong>调用的是Object.prototype.<strong>proto</strong>，实现如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.defineProperty(<span class="built_in">Object</span>.prototype, <span class="string">'__proto__'</span>, &#123;</span><br><span class="line">    <span class="keyword">get</span>() &#123;</span><br><span class="line">        <span class="keyword">let</span> _thisObj = <span class="built_in">Object</span>(<span class="keyword">this</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Object</span>.getPrototypeOf(_thisObj);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">set</span>(proto) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> === <span class="literal">undefined</span> || <span class="keyword">this</span> === <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!isObject(<span class="keyword">this</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!isObject(proto)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">let</span> status = <span class="built_in">Reflect</span>.setPrototypeOf(<span class="keyword">this</span>, proto);</span><br><span class="line">        <span class="keyword">if</span> (!status) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isObject</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>(value) === value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果一个对象本身部署了<strong>proto</strong>属性，则该属性的值就是对象的原型。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.getPrototypeOf(&#123; <span class="attr">__proto__</span> : <span class="literal">null</span> &#125;);    <span class="comment">//null</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Object-setPrototypeOf"><a href="#Object-setPrototypeOf" class="headerlink" title="Object.setPrototypeOf()"></a>Object.setPrototypeOf()</h3><p>Object.setPrototypeOf()用于设置一个对象的prototype对象，返回参数本身。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> proto = &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">x</span> : <span class="number">10</span> &#125;;</span><br><span class="line"><span class="built_in">Object</span>.setPrototypeOf(obj, proto);</span><br><span class="line">proto.y = <span class="number">20</span>;</span><br><span class="line">proto.z = <span class="number">30</span>;</span><br><span class="line"><span class="comment">//obj对象可以读取proto对象的属性</span></span><br><span class="line">obj.y;  <span class="comment">//20</span></span><br><span class="line">obj.z;  <span class="comment">//30</span></span><br></pre></td></tr></table></figure></p>
+<p>如果第一个参数不是对象，就会自动转为对象，但是由于返回的还是第一个参数，所以这个操作不会有任何的结果。<br><strong>如果第一个参数是undefined或null，则会报错</strong></p>
+<h3 id="Object-setPrototypeOf-1"><a href="#Object-setPrototypeOf-1" class="headerlink" title="Object.setPrototypeOf()"></a>Object.setPrototypeOf()</h3><p>Object.setPrototypeOf()用于读取一个对象的prototype对象。<br>如果第一个参数不是对象，则会自动转为对象。<br><strong>如果第一个参数是undefined或null，则会报错</strong></p>
+<h3 id="Object-keys-、Object-values-、Object-entries"><a href="#Object-keys-、Object-values-、Object-entries" class="headerlink" title="Object.keys()、Object.values()、Object.entries()"></a>Object.keys()、Object.values()、Object.entries()</h3><p>Object.keys()返回一个数组，成员是参数对象自身的（不含继承）所有可遍历属性的键名。<br>Object.values()返回一个数组，成员是参数对象自身的（不含继承）所有可遍历属性的键值。<br>Object.entries()返回一个数组，成员是参数对象自身的（不含继承）所有可遍历属性的键值对数组。<br>实现Object.entries()：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Generator函数版本</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">entries</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> <span class="built_in">Object</span>.keys(obj)) &#123;</span><br><span class="line">        <span class="keyword">yield</span> [key, obj[key]];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//非Generator函数版本</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">entries</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> arr = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> <span class="built_in">Object</span>.keys(obj)) &#123;</span><br><span class="line">        arr.push([key, obj[key]]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="对象的扩展运算符"><a href="#对象的扩展运算符" class="headerlink" title="对象的扩展运算符"></a>对象的扩展运算符</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123;x, y, ...z&#125; = &#123;<span class="attr">x</span> : <span class="number">1</span>, <span class="attr">y</span> : <span class="number">2</span>, <span class="attr">a</span> : <span class="number">3</span>, <span class="attr">b</span> : <span class="number">4</span>&#125;;</span><br><span class="line">x;  <span class="comment">//1</span></span><br><span class="line">y;  <span class="comment">//2</span></span><br><span class="line">z;  <span class="comment">//&#123; a : 3, b : 4 &#125;</span></span><br></pre></td></tr></table></figure>
+<p>扩展运算符可以用于合并两个对象<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ab = &#123; ...a, ...b &#125;;</span><br><span class="line"><span class="comment">//等同于</span></span><br><span class="line"><span class="keyword">let</span> ab = <span class="built_in">Object</span>.assign(&#123;&#125;, a, b);</span><br></pre></td></tr></table></figure></p>
+<h3 id="Object-getOwnPropertyDescriptors"><a href="#Object-getOwnPropertyDescriptors" class="headerlink" title="Object.getOwnPropertyDescriptors()"></a>Object.getOwnPropertyDescriptors()</h3><p>ES5的Object.getOwnPropertyDescriptor()方法用来返回某个对象属性的descriptor。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">p</span> : <span class="string">'a'</span> &#125;;</span><br><span class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(obj, <span class="string">'p'</span>);</span><br><span class="line"><span class="comment">// Object &#123;</span></span><br><span class="line"><span class="comment">//     value : 'a',</span></span><br><span class="line"><span class="comment">//     writable : true,</span></span><br><span class="line"><span class="comment">//     enumerable: true,</span></span><br><span class="line"><span class="comment">//     configurable: true</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>ES2017引入了Object.getOwnPropertyDescriptors()方法，返回指定对象所有自身属性（非继承）的descriptor。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    foo : <span class="number">123</span>,</span><br><span class="line">    <span class="keyword">get</span> bar() &#123; <span class="keyword">return</span> <span class="keyword">this</span>.foo; &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptors(obj);</span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//     foo: &#123;</span></span><br><span class="line"><span class="comment">//         value : 123,</span></span><br><span class="line"><span class="comment">//         writable: true,</span></span><br><span class="line"><span class="comment">//         enumerable: true,</span></span><br><span class="line"><span class="comment">//         configurable: true</span></span><br><span class="line"><span class="comment">//     &#125;,</span></span><br><span class="line"><span class="comment">//     bar: &#123;</span></span><br><span class="line"><span class="comment">//         get: [Function bar],</span></span><br><span class="line"><span class="comment">//         set: undefined,</span></span><br><span class="line"><span class="comment">//         enumerable: true,</span></span><br><span class="line"><span class="comment">//         configurable: true</span></span><br><span class="line"><span class="comment">//     &#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="使用Object-prototype-toString-进行类型判断"><a href="#使用Object-prototype-toString-进行类型判断" class="headerlink" title="使用Object.prototype.toString()进行类型判断"></a>使用Object.prototype.toString()进行类型判断</h3><p><code>Object.prototype</code>能够更好的识别出类型，<code>typeof</code>只能识别出基础类型。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> date) <span class="comment">// object</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(date)) <span class="comment">// [object Date]</span></span><br></pre></td></tr></table></figure></p>
+<p>可以识别的类型有：</p>
+<ul>
+<li>123: [object Number]</li>
+<li>‘1234’: [object String]</li>
+<li>true: [object Boolean]</li>
+<li>undefined: [object Undefined]</li>
+<li>null: [object null]</li>
+<li>{foo: ‘bar’}: [object Object]</li>
+<li>[1, 2, 3]: [object Array]</li>
+<li>new Date(): [object Date]</li>
+<li>new Error(): [object Error]</li>
+<li>/a+/g: [object RegExp]</li>
+<li>function a() {}: [object Function]</li>
+<li>Math: [object Math]</li>
+<li>JSON: [object JSON]</li>
+<li>arguments: [object arguments]</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/整理/" rel="tag"># 整理</a>
+          
+            <a href="/tags/学习/" rel="tag"># 学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/13/数组的扩展/" rel="next" title="数组的扩展">
+                <i class="fa fa-chevron-left"></i> 数组的扩展
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/14/HTML5新标签-一/" rel="prev" title="HTML5新标签(一)">
+                HTML5新标签(一) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">137</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/alazypig_" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://developer.mozilla.org/" title="MDN Web Docs" target="_blank">MDN Web Docs</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.codewars.com/" title="CodeWars" target="_blank">CodeWars</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://qmdx00.cn/" title="Skyscraper" target="_blank">Skyscraper</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hiheero.github.io/" title="Heero!" target="_blank">Heero!</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性名表达式"><span class="nav-number">1.</span> <span class="nav-text">属性名表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法的name属性"><span class="nav-number">2.</span> <span class="nav-text">方法的name属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-is"><span class="nav-number">3.</span> <span class="nav-text">Object.is()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-assign"><span class="nav-number">4.</span> <span class="nav-text">Object.assign()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性的可枚举性"><span class="nav-number">5.</span> <span class="nav-text">属性的可枚举性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性的遍历"><span class="nav-number">6.</span> <span class="nav-text">属性的遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#proto属性"><span class="nav-number">7.</span> <span class="nav-text">proto属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-setPrototypeOf"><span class="nav-number">8.</span> <span class="nav-text">Object.setPrototypeOf()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-setPrototypeOf-1"><span class="nav-number">9.</span> <span class="nav-text">Object.setPrototypeOf()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-keys-、Object-values-、Object-entries"><span class="nav-number">10.</span> <span class="nav-text">Object.keys()、Object.values()、Object.entries()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的扩展运算符"><span class="nav-number">11.</span> <span class="nav-text">对象的扩展运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-getOwnPropertyDescriptors"><span class="nav-number">12.</span> <span class="nav-text">Object.getOwnPropertyDescriptors()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Object-prototype-toString-进行类型判断"><span class="nav-number">13.</span> <span class="nav-text">使用Object.prototype.toString()进行类型判断</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
