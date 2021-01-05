@@ -295,6 +295,246 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/05/14/6-006-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Borderlands">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/14/6-006-1/" itemprop="url">6.006 - 1</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-14T21:14:16+08:00">
+                2019-05-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="find-the-peak"><a href="#find-the-peak" class="headerlink" title="find the peak."></a>find the peak.</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Find the peek 1D</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Array&lt;number&gt;&#125;</span> </span>arr arr</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> </span>i the index to start</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> </span>j the index to end</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns <span class="type">&#123;number&#125;</span> </span>the peak</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> findThePeak = <span class="function">(<span class="params">arr, i, j</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> current = <span class="built_in">parseInt</span>((i + j) / <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (arr[current] &lt; arr[current + <span class="number">1</span>]) <span class="keyword">return</span> findThePeak(arr, current, j);</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (arr[current] &lt; arr[current - <span class="number">1</span>]) <span class="keyword">return</span> findThePeak(arr, i, current);</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">return</span> arr[current];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Find the peak 2D</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Array&lt;Array&lt;number&gt;&gt;&#125;</span> </span>arr the Number[][] array</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> </span>start start row</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> </span>end end row</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns <span class="type">&#123;number&#125;</span> </span>the peak of the array</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> findThePeak2 = <span class="function">(<span class="params">arr, start, end</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> current = <span class="built_in">parseInt</span>((start + end) / <span class="number">2</span>);</span><br><span class="line">  <span class="keyword">let</span> rowMax = findThePeak(arr[current], <span class="number">0</span>, arr[current].length);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// get the index of column</span></span><br><span class="line">  <span class="comment">// let i = arr[current].indexOf(rowMax)</span></span><br><span class="line">  <span class="keyword">let</span> i = arr[current].map(<span class="function">(<span class="params">i, index</span>) =&gt;</span> i === rowMax &amp;&amp; index).filter(<span class="function"><span class="params">i</span> =&gt;</span> i !== <span class="literal">false</span>)[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (current - <span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; arr[current][i] &lt; arr[current - <span class="number">1</span>][i]) &#123; <span class="comment">// check the left part</span></span><br><span class="line">    <span class="keyword">return</span> findThePeak2(arr, start, current);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (current &lt; end - <span class="number">1</span> &amp;&amp; arr[current][i] &lt; arr[current + <span class="number">1</span>][i]) &#123; <span class="comment">// check the right part</span></span><br><span class="line">    <span class="keyword">return</span> findThePeak2(arr, current, end);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> rowMax;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, ];</span><br><span class="line"><span class="keyword">let</span> arr2 = [</span><br><span class="line">  [<span class="number">6</span>, <span class="number">3</span>, <span class="number">8</span>],</span><br><span class="line">  [<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>],</span><br><span class="line">  [<span class="number">4</span>, <span class="number">6</span>, <span class="number">1</span>]</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(findThePeak(arr, <span class="number">0</span>, arr.length));</span><br><span class="line"><span class="built_in">console</span>.log(findThePeak2(arr2, <span class="number">0</span>, arr2.length));</span><br></pre></td></tr></table></figure>
+<p>result:<br><code>6</code> <code>8</code></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/05/06/document-cookie/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Borderlands">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/06/document-cookie/" itemprop="url">document.cookie</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-06T15:43:51+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * set the cookie</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;String&#125;</span> </span>name </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;String&#125;</span> </span>value </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Number&#125;</span> </span>day </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> setCookie = <span class="function">(<span class="params">name, value, day</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">  date.setDate(date.getDate() + day);</span><br><span class="line">  <span class="built_in">document</span>.cookie = name + <span class="string">'='</span> + value + <span class="string">';expires='</span> + date;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * get the cookie by name</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;String&#125;</span> </span>name </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> getCookie = <span class="function"><span class="params">name</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> str = <span class="built_in">document</span>.cookie.split(<span class="string">'; '</span>).filter(<span class="function"><span class="params">i</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> result = i.split(<span class="string">'='</span>)</span><br><span class="line">    <span class="keyword">return</span> result[<span class="number">0</span>] == name</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> str.length ? str[<span class="number">0</span>].split(<span class="string">'='</span>)[<span class="number">1</span>] : <span class="string">''</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * check user</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> checkCookie = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> username = <span class="built_in">document</span>.cookie ? getCookie(<span class="string">'username'</span>) : <span class="string">''</span>;</span><br><span class="line">  <span class="keyword">if</span> (username != <span class="string">''</span>) &#123;</span><br><span class="line">    alert(<span class="string">'Welcome '</span> + username);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    username = prompt(<span class="string">'please input your username'</span>);</span><br><span class="line">    <span class="keyword">if</span> (username &amp;&amp; username != <span class="string">''</span>) &#123;</span><br><span class="line">      setCookie(<span class="string">'username'</span>, username, <span class="number">7</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">checkCookie()</span><br><span class="line"><span class="built_in">console</span>.log(getCookie(<span class="string">'username'</span>));</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/04/23/Linux基本命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1087,276 +1327,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/04/14/归纳法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Borderlands">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/14/归纳法/" itemprop="url">归纳法</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-14T19:45:57+08:00">
-                2019-04-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="自然数上的一般归纳原理"><a href="#自然数上的一般归纳原理" class="headerlink" title="自然数上的一般归纳原理"></a>自然数上的一般归纳原理</h3><p>假设$P$是自然数上的一个性质，则如果</p>
-<ol>
-<li>$P(0)$成立 — base case</li>
-<li>对所有的自然数$k$，$P(k)$蕴涵$P(k+1)$ — induction step</li>
-</ol>
-<p>则$P(n)$对所有自然数$n$成立</p>
-<script type="math/tex; mode=display">\ \ \ \ \ \ \ \ \ \ [P(k)]\\
-\frac{P(0)\ P(k+1)}{P(n)}</script><p>$[P(k)]$为归纳假设，$k$不能出现在$P(k + 1)$的任何假设中</p>
-<p><strong>定理：每个自然是要么是偶数，要么是奇数。</strong><br>用归纳法来证明：</p>
-<ol>
-<li>0是偶数 -&gt; 0是偶数或奇数</li>
-<li>假设k是偶数或奇数，证明k + 1是奇数或偶数：<ol>
-<li>k是偶数，则k + 1是奇数</li>
-<li>k是奇数，则k + 1是偶数</li>
-</ol>
-</li>
-<li>得证</li>
-</ol>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/14/归纳法/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/04/14/等式公理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Borderlands">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/14/等式公理/" itemprop="url">等式公理</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-14T14:30:14+08:00">
-                2019-04-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="公式-P-Q-R-P-Q-R"><a href="#公式-P-Q-R-P-Q-R" class="headerlink" title="公式: P\{Q\}R\ (\{P\}Q\{R\})"></a>公式: <script type="math/tex">P\{Q\}R\ (\{P\}Q\{R\})</script></h3><p>P和R都是一阶公式, 如果前提条件P在执行Q前成立, 则执行后得到满足条件R的状态<br>部分正确性断言: 如果P在Q执行前为真, 那么, 如果Q的执行终止,则终止在使R为真的某个状态<br>终止性断言:如果P在Q执行前为真, 那么Q将终止在使R为真的某个状态<br><strong>赋值公理: <script type="math/tex">\vdash P_0 \{x:=f\} P</script></strong></p>
-<h3 id="推理规则的表示"><a href="#推理规则的表示" class="headerlink" title="推理规则的表示"></a>推理规则的表示</h3><script type="math/tex; mode=display">\frac{premise -> f_0, f_1, ..., f_n}{conclusion -> f_0}</script><h3 id="推理规则"><a href="#推理规则" class="headerlink" title="推理规则"></a>推理规则</h3><ul>
-<li>Rules of Consequence: <script type="math/tex; mode=display">\frac{P\{Q\}R,\ R\rightarrow S}{P\{Q\}S}\ \ \ \ \ \frac{P\{Q\}R,\ S\rightarrow P}{S\{Q\}R}</script></li>
-<li>Rule of Composition:<script type="math/tex; mode=display">\frac{P\{Q_1\}R_1,\ R_1\{Q_2\}R}{P\{Q_1, Q_2\}R}</script></li>
-<li>Rules of Iteration:<script type="math/tex; mode=display">\frac{P\ \&\ B\{S\}P}{P\ \{while\ B\ do\ S\}\ \neg B \ \&\  P}</script><h3 id="等式公理"><a href="#等式公理" class="headerlink" title="等式公理"></a>等式公理</h3></li>
-<li>代换: $[N/x]M$ 表示表示M中的自由变元x用N代换的结果, <strong>N中的自由变元代换后不能成为约束变元</strong></li>
-<li>约束变元改名: $\lambda x:\sigma .M = \lambda y:\sigma.[y/x]M$ 例如:$\lambda x:\sigma.x + y = \lambda z:\sigma .z+y$</li>
-<li>等价公理: 计算函数实际就是在函数中使用实在变元替换形式变元, $(\lambda x:\sigma.M)N = [N/x]M$</li>
-<li>同余性规则: 相等的函数作用于相等的变元产生相等的结果, $\frac{M_1=M_2,\ N_1=N_2}{M_1N_1=M_2N_2}$</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1407,7 +1377,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">137</span>
+                  <span class="site-state-item-count">139</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://alazypig.github.io/2021/01/05/Battery-svg/</loc>
+    
+    <lastmod>2021-01-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://alazypig.github.io/2021/01/04/Mix-ins/</loc>
+    
+    <lastmod>2021-01-05</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://alazypig.github.io/2021/01/01/2021%E8%A7%82%E5%BD%B1%E8%AE%B0%E5%BD%95/</loc>
     
     <lastmod>2021-01-03</lastmod>
@@ -984,7 +998,7 @@
 
   <url>
     <loc>http://alazypig.github.io/</loc>
-    <lastmod>2021-01-03</lastmod>
+    <lastmod>2021-01-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -992,49 +1006,49 @@
   
   <url>
     <loc>http://alazypig.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2021-01-03</lastmod>
+    <lastmod>2021-01-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://alazypig.github.io/tags/%E9%9B%9C%E8%AB%87/</loc>
-    <lastmod>2021-01-03</lastmod>
+    <lastmod>2021-01-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://alazypig.github.io/tags/%E6%95%B4%E7%90%86/</loc>
-    <lastmod>2021-01-03</lastmod>
+    <lastmod>2021-01-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://alazypig.github.io/tags/%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2021-01-03</lastmod>
+    <lastmod>2021-01-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://alazypig.github.io/tags/Linux/</loc>
-    <lastmod>2021-01-03</lastmod>
+    <lastmod>2021-01-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://alazypig.github.io/tags/history/</loc>
-    <lastmod>2021-01-03</lastmod>
+    <lastmod>2021-01-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://alazypig.github.io/tags/%E6%97%85%E6%B8%B8/</loc>
-    <lastmod>2021-01-03</lastmod>
+    <lastmod>2021-01-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1043,49 +1057,49 @@
   
   <url>
     <loc>http://alazypig.github.io/categories/C/</loc>
-    <lastmod>2021-01-03</lastmod>
+    <lastmod>2021-01-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://alazypig.github.io/categories/Digital-currency/</loc>
-    <lastmod>2021-01-03</lastmod>
+    <lastmod>2021-01-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://alazypig.github.io/categories/ECMAScript/</loc>
-    <lastmod>2021-01-03</lastmod>
+    <lastmod>2021-01-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://alazypig.github.io/categories/HTML5/</loc>
-    <lastmod>2021-01-03</lastmod>
+    <lastmod>2021-01-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://alazypig.github.io/categories/TypeScript/</loc>
-    <lastmod>2021-01-03</lastmod>
+    <lastmod>2021-01-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://alazypig.github.io/categories/Vue/</loc>
-    <lastmod>2021-01-03</lastmod>
+    <lastmod>2021-01-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://alazypig.github.io/categories/WebGL/</loc>
-    <lastmod>2021-01-03</lastmod>
+    <lastmod>2021-01-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

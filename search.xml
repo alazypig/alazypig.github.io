@@ -248,6 +248,12 @@
       </tags>
   </entry>
   <entry>
+    <title>Battery svg</title>
+    <url>/2021/01/05/Battery-svg/</url>
+    <content><![CDATA[<p><img src="/svgs/battery.svg" alt="Battery"></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Block-level function</title>
     <url>/2019/04/17/Block-level-function/</url>
     <content><![CDATA[<h3 id="在某个论坛有人问了下面的一段代码"><a href="#在某个论坛有人问了下面的一段代码" class="headerlink" title="在某个论坛有人问了下面的一段代码"></a>在某个论坛有人问了下面的一段代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'outside'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  f()</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'inside'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">a()</span><br></pre></td></tr></table></figure>
@@ -955,6 +961,16 @@
       <tags>
         <tag>整理</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Mix-ins</title>
+    <url>/2021/01/04/Mix-ins/</url>
+    <content><![CDATA[<h3 id="Mix-ins"><a href="#Mix-ins" class="headerlink" title="Mix-ins"></a>Mix-ins</h3><blockquote>
+<p>Abstract subclasses or mix-ins are templates for classes. An ECMAScript class can only have a single superclass, so multiple inheritance from tooling classes, for example, is not possible. The functionality must be provided by the superclass.</p>
+</blockquote>
+<p>eg:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> calculatorMixin = <span class="function">(<span class="params">Base</span>) =&gt;</span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="keyword">extends</span> <span class="title">Base</span> </span>&#123;</span><br><span class="line">    calc() &#123;</span><br><span class="line">      <span class="comment">// do something</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> randomizerMixin = <span class="function">(<span class="params">Base</span>) =&gt;</span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="keyword">extends</span> <span class="title">Base</span> </span>&#123;</span><br><span class="line">    remdomize() &#123;</span><br><span class="line">      <span class="comment">// do something</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span> <span class="title">calculatorMixin</span>(<span class="title">randomizerMixin</span>(<span class="title">Foo</span>)) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">const</span> bar = <span class="keyword">new</span> Bar()</span><br><span class="line"><span class="built_in">console</span>.log(bar.calc)</span><br><span class="line"><span class="built_in">console</span>.log(bar.remdomize) <span class="comment">// also a function.</span></span><br></pre></td></tr></table></figure>
+]]></content>
   </entry>
   <entry>
     <title>Number的扩展</title>
