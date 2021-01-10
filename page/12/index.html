@@ -295,6 +295,254 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/03/13/并查集/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Borderlands">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/13/并查集/" itemprop="url">并查集</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-13T16:19:39+08:00">
+                2019-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h3><p>用集合中的某个元素来代表这个集合，该元素称为集合的代表元。<br>一个集合内的所有元素组织成以代表元为根的树形结构。<br>对于每一个元素<code>parent[x]</code>指向x在树形结构上的父亲节点。如果x是根节点，则令<code>parent[x] = x</code>。<br>对于查找操作，假设需要确定x所在的的集合，也就是确定集合的代表元。可以沿着<code>parent[x]</code>不断在树形结构中向上移动，直到到达根节点。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/13/并查集/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/03/13/广度优先搜索/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Borderlands">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/13/广度优先搜索/" itemprop="url">广度优先搜索</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-13T14:52:44+08:00">
+                2019-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h3><p>在 N * M 的网格中，从 start 走到 end 。<br>广度解法：需要一个队列，从 start 节点开始，当一个节点抛出时，将它周围的节点入队，直至抛出的节点是 end 节点。<br>模拟网格：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> map = [                  <span class="comment">// map[x][y]</span></span><br><span class="line">    [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">    [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">    [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">    [<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">    [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">    [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">    [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">2</span>],</span><br><span class="line">];</span><br><span class="line">find(map);</span><br></pre></td></tr></table></figure><br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/13/广度优先搜索/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/03/12/CSS垂直居中/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1022,254 +1270,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/02/28/简单的Queue实现/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Borderlands">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/28/简单的Queue实现/" itemprop="url">简单的Queue实现</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-28T11:45:31+08:00">
-                2019-02-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="简单的Queue实现"><a href="#简单的Queue实现" class="headerlink" title="简单的Queue实现"></a>简单的Queue实现</h3><h4 id="数组实现"><a href="#数组实现" class="headerlink" title="数组实现"></a>数组实现</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(size = 10) &#123;</span><br><span class="line">        <span class="keyword">this</span>.size = size;    <span class="comment">// 队列最大长度</span></span><br><span class="line">        <span class="keyword">this</span>.top = <span class="number">0</span>;        <span class="comment">// 首位置</span></span><br><span class="line">        <span class="keyword">this</span>.bottom = <span class="number">-1</span>;    <span class="comment">// 尾位置</span></span><br><span class="line">        <span class="keyword">this</span>.elems = <span class="number">0</span>;      <span class="comment">// 成员个数</span></span><br><span class="line">        <span class="keyword">this</span>.arr = []        <span class="comment">// 队列</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    add(elem) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.elems == <span class="keyword">this</span>.size) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'Queue is full'</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.bottom == <span class="keyword">this</span>.size - <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="comment">// 循环队列</span></span><br><span class="line">            <span class="keyword">this</span>.bottom = <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.arr[++<span class="keyword">this</span>.bottom] = elem;</span><br><span class="line">        <span class="keyword">this</span>.elems++;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    out() &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.elems == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'Queue is empty'</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">let</span> elem = <span class="keyword">this</span>.arr[<span class="keyword">this</span>.top]</span><br><span class="line">        <span class="keyword">this</span>.arr[<span class="keyword">this</span>.top] = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">this</span>.top++;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.top == <span class="keyword">this</span>.size) &#123;</span><br><span class="line">            <span class="keyword">this</span>.top = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.elems--;</span><br><span class="line">        <span class="keyword">return</span> elem;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> queue = <span class="keyword">new</span> Queue();</span><br><span class="line">queue.add(<span class="number">3</span>);</span><br><span class="line">queue.add(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(queue.out())</span><br><span class="line"><span class="built_in">console</span>.log(queue.out())</span><br><span class="line"><span class="built_in">console</span>.log(queue.out())</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/02/28/简单的Queue实现/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/02/28/简单的Stack实现/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Borderlands">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/28/简单的Stack实现/" itemprop="url">简单的Stack实现</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-28T11:22:35+08:00">
-                2019-02-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="简单的Stack实现"><a href="#简单的Stack实现" class="headerlink" title="简单的Stack实现"></a>简单的Stack实现</h3><h4 id="数组实现"><a href="#数组实现" class="headerlink" title="数组实现"></a>数组实现</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(size = 10) &#123;</span><br><span class="line">        <span class="keyword">this</span>.arr = [];      <span class="comment">// 栈</span></span><br><span class="line">        <span class="keyword">this</span>.size = size;   <span class="comment">// 最大长度</span></span><br><span class="line">        <span class="keyword">this</span>.top = <span class="number">-1</span>;      <span class="comment">// 栈顶</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    push(elem) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.top == <span class="keyword">this</span>.size) &#123;</span><br><span class="line">            <span class="keyword">this</span>.size *= <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.arr[++<span class="keyword">this</span>.top] = elem;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    pop() &#123;</span><br><span class="line">        <span class="keyword">let</span> elem = <span class="keyword">this</span>.arr[<span class="keyword">this</span>.top--];</span><br><span class="line">        <span class="keyword">return</span> elem;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    peekTop() &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.top == <span class="number">-1</span>) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'stack is empty'</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.arr[<span class="keyword">this</span>.top];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    print() &#123;</span><br><span class="line">        <span class="keyword">let</span> str = <span class="string">''</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= <span class="keyword">this</span>.top; i++) &#123;</span><br><span class="line">        str += <span class="keyword">this</span>.arr[i] + <span class="string">' '</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(str)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> stack = <span class="keyword">new</span> Stack();</span><br><span class="line">stack.push(<span class="number">1</span>);</span><br><span class="line">stack.push(<span class="number">2</span>);</span><br><span class="line">stack.pop();</span><br><span class="line"><span class="built_in">console</span>.log(stack.peekTop())</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/02/28/简单的Stack实现/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1320,7 +1320,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">139</span>
+                  <span class="site-state-item-count">141</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1342,7 +1342,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

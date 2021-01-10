@@ -295,6 +295,248 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/05/15/6-006-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Borderlands">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/15/6-006-3/" itemprop="url">6.006 - 3</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-15T16:51:17+08:00">
+                2019-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="about-the-heap"><a href="#about-the-heap" class="headerlink" title="about the heap"></a>about the heap</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Heap</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(arr) &#123;</span><br><span class="line">    <span class="keyword">this</span>.data = arr.reduce(<span class="function">(<span class="params">arr, elem</span>) =&gt;</span> &#123;</span><br><span class="line">      arr.push(elem);</span><br><span class="line">      <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;, []);</span><br><span class="line">    <span class="keyword">this</span>.size = <span class="keyword">this</span>.data.length;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  isEmpty() &#123; <span class="keyword">return</span> <span class="keyword">this</span>.size === <span class="number">0</span>; &#125;</span><br><span class="line"></span><br><span class="line">  build_max_heap() &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.size &lt;= <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="built_in">Math</span>.floor(<span class="keyword">this</span>.size / <span class="number">2</span>); i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">      <span class="comment">// start from the n / 2 because of the elem after n / 2 are all leaves</span></span><br><span class="line">      <span class="keyword">this</span>.max_heapify(i);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  sort() &#123;</span><br><span class="line">    <span class="keyword">let</span> result = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (!<span class="keyword">this</span>.isEmpty()) &#123;</span><br><span class="line">      result.push(<span class="keyword">this</span>.data.shift()); <span class="comment">// pop the max</span></span><br><span class="line">      <span class="keyword">this</span>.size--;</span><br><span class="line">      <span class="keyword">this</span>.build_max_heap(); <span class="comment">// rebuild the heap</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.data = result;</span><br><span class="line">    <span class="keyword">this</span>.size = result.length;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  add(value) &#123;</span><br><span class="line">    <span class="keyword">this</span>.data.push(value);</span><br><span class="line">    <span class="keyword">this</span>.size++;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.build_max_heap();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  max_heapify(current) &#123;</span><br><span class="line">    <span class="keyword">let</span> left = <span class="number">2</span> * current, <span class="comment">// get the left child</span></span><br><span class="line">        right = <span class="number">2</span> * current + <span class="number">1</span>, <span class="comment">// get the right child</span></span><br><span class="line">        largest = current; <span class="comment">// get the max node</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (left &lt; <span class="keyword">this</span>.size &amp;&amp; <span class="keyword">this</span>.data[left] &gt; <span class="keyword">this</span>.data[largest]) largest = left; <span class="comment">// left child is max</span></span><br><span class="line">    <span class="keyword">if</span> (right &lt; <span class="keyword">this</span>.size &amp;&amp; <span class="keyword">this</span>.data[right] &gt; <span class="keyword">this</span>.data[largest]) largest = right; <span class="comment">// right child is max</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (largest !== current) &#123; <span class="comment">// if the max node is not the current node</span></span><br><span class="line">      [<span class="keyword">this</span>.data[largest], <span class="keyword">this</span>.data[current]] = [<span class="keyword">this</span>.data[current], <span class="keyword">this</span>.data[largest]]; <span class="comment">// swap the value</span></span><br><span class="line">      <span class="keyword">this</span>.max_heapify(largest); <span class="comment">// recursive to check the modify child heap if is max heapify</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  print() &#123;</span><br><span class="line">    <span class="keyword">let</span> str = <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">this</span>.data.map(<span class="function"><span class="params">i</span> =&gt;</span> str += i + <span class="string">' '</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(str);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> heap = <span class="keyword">new</span> Heap([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">11</span>, <span class="number">14</span>]);</span><br><span class="line">heap.build_max_heap();</span><br><span class="line">heap.print();</span><br><span class="line"></span><br><span class="line">heap.sort();</span><br><span class="line">heap.print();</span><br><span class="line"></span><br><span class="line">heap.add(<span class="number">30</span>);</span><br><span class="line">heap.add(<span class="number">12</span>);</span><br><span class="line">heap.print();</span><br><span class="line"></span><br><span class="line">heap.sort();</span><br><span class="line">heap.print();</span><br></pre></td></tr></table></figure>
+<p>result:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">14 11 5 9 4 1 6 8 3 2</span><br><span class="line">14 11 9 8 6 5 4 3 2 1</span><br><span class="line">30 14 12 8 6 11 4 3 2 1 5 9</span><br><span class="line">30 14 12 11 9 8 6 5 4 3 2 1</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/05/15/6-006-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Borderlands">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/15/6-006-2/" itemprop="url">6.006 - 2</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-15T11:04:24+08:00">
+                2019-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * sort array</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Array&lt;number&gt;&#125;</span> </span>arr </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns <span class="type">&#123;Array&lt;number&gt;&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> sort = <span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>, len = arr.length; i &lt; len ; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> j = i;</span><br><span class="line">    <span class="keyword">while</span> (arr[j] &lt; arr[j - <span class="number">1</span>]) &#123;</span><br><span class="line">      [arr[j], arr[j - <span class="number">1</span>]] = [arr[j - <span class="number">1</span>], arr[j]];</span><br><span class="line">      <span class="keyword">if</span> (j == <span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line">      j--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">5</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sort(arr));</span><br></pre></td></tr></table></figure>
+<p>result:<br><code>1 2 3 4 5 6</code></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/05/14/6-006-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1069,264 +1311,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/04/16/巴黎圣母院大火/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Borderlands">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/16/巴黎圣母院大火/" itemprop="url">巴黎圣母院大火</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-16T12:54:43+08:00">
-                2019-04-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="又一次的见证历史。"><a href="#又一次的见证历史。" class="headerlink" title="又一次的见证历史。"></a>又一次的见证历史。</h3><blockquote>
-<p>卡西莫多失去了他心爱的姑娘，也失去了他心爱的钟楼。</p>
-</blockquote>
-<p><img src="https://images-1255795341.cos.ap-guangzhou.myqcloud.com/sub-buzz-10836-1555373659-1.webp" alt="大火照片1"></p>
-<p><img src="https://images-1255795341.cos.ap-guangzhou.myqcloud.com/mmexport1555390040545.jpg" alt="大火照片2"></p>
-<p><img src="https://images-1255795341.cos.ap-guangzhou.myqcloud.com/D4PlJ4tUUAEhzbX.jpeg" alt="大火照片3"></p>
-<p>废墟中的十字架依旧闪发着光芒</p>
-<p><img src="https://images-1255795341.cos.ap-guangzhou.myqcloud.com/D4PHEoaWsAIM7eR.jpeg" alt="废墟"></p>
-<p>PS： 看到一条推，说你看大火都没有把十字架给损毁，难道你还不相信上帝吗？下面回：因为金的熔点比木高很多。XD</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/04/15/随便聊聊/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Borderlands">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/15/随便聊聊/" itemprop="url">随便聊聊</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-15T08:58:33+08:00">
-                2019-04-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="一篇文章"><a href="#一篇文章" class="headerlink" title="一篇文章"></a>一篇文章</h3><p>昨天晚上看了某乎的一篇文章，叫<a href="https://zhuanlan.zhihu.com/p/62388759?utm_source=qq&amp;utm_medium=social&amp;utm_oi=709716343179448320" target="_blank" rel="noopener">《比996更该死的那些人》</a>，里面的开头：</p>
-<blockquote>
-<p>这几年真的觉得这个世界真的已经变得不可救药了<br>勤劳和奋斗不仅不再被传颂和赞扬，竟然成了被鄙视，被视作愚蠢的品质。<br>而享乐，投机取巧成这些在过去难以启齿的行为，成了光明正大，人人争相炫耀的东西。</p>
-</blockquote>
-<p>虽然这篇文章我开了开头就没看了，但是还是让我感触颇深，我不赞同第二句，但是第三句我是非常赞同的。在以前我是不会羡慕别人的，不知道从什么时候开始，我会越来越羡慕那些比我强、过的比我好、智商比我高的人。是欲望变了吗？我觉得是的。那个无欲无求的日子，我是不想去回忆的，因为对我来说，和坐牢一样。</p>
-<p>从不会去鄙视那些勤劳和奋斗的人，因为他们不知道什么时候就已经追上你并且超过你了，学如逆水行舟，不进则退，但是我实在无法理解的是，投机取巧，为什么在某些人眼里成了政治正确。炫耀享乐，这个我还是可以理解的，毕竟大部分的人还是喜欢被别夸，被别人羡慕嫉妒，当然也有真正是为了分享快乐。</p>
-<p>投机取巧的话，不知道是否是因为圈子不同，我觉得我周围认为投机取巧的人是正确的人还不少，甚至于在学校加大监管的情况下，组队进行“帮助”，并且在成绩还可以的时候，去蛊惑那些认真考试但成绩不佳的同学，试图拉他们下水。实在是不能理解那些人心里的想法，是为了让别人顺从自己从而获得心里的快感吗？我不太懂。似乎各大高校都有这种人的存在，这到底是为什么呢？<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/15/随便聊聊/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1377,7 +1361,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">139</span>
+                  <span class="site-state-item-count">141</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1399,7 +1383,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

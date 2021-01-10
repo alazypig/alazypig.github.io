@@ -1,0 +1,99 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  viewBox="0 0 300 300"
+  width="300"
+  height="300"
+>
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style xmlns="http://www.w3.org/1999/xhtml">
+        .container {
+          position: absolute;
+          background-color: black;
+          width: 100%;
+          height: 100%;
+        }
+
+        .div {
+          position: relative;
+          width: 27px;
+          height: 180px;
+          margin: 20px 150px 20px;
+          z-index: 1;
+          background-color: white;
+          box-shadow: 11.6px 10px 0 0 #fe2d52;
+          filter: drop-shadow(-10px -10px 0 #24f6fe) contrast(150%)
+            brightness(110%);
+          animation: move 3s infinite ease-in;
+        }
+
+        .div::before {
+          content: '';
+          height: 80px;
+          width: 80px;
+          border: 27px solid white;
+          border-radius: 50%;
+          border-top: 27px solid transparent;
+          transform: rotate(45deg);
+          position: absolute;
+          top: 111px;
+          left: -107px;
+          filter: drop-shadow(16px 0 0 #fe2d52);
+        }
+
+        .div::after {
+          content: '';
+          position: absolute;
+          width: 120px;
+          height: 120px;
+          border: 30px solid white;
+          border-radius: 100%;
+          border-right: 30px solid transparent;
+          border-top: 30px solid transparent;
+          border-left: 30px solid transparent;
+          top: -90px;
+          right: -153px;
+          transform: rotate(45deg);
+          z-index: -10;
+          filter: drop-shadow(14px 0 0 #fe2d52);
+        }
+
+        @keyframes move {
+          0% {
+            transform: skewX(0deg) translate(0px);
+          }
+          4% {
+            transform: skewX(20deg) translate(-30px);
+          }
+          7% {
+            transform: skewX(-10deg) translate(15px);
+          }
+          9% {
+            transform: skewX(5deg) translate(-8px);
+          }
+          10% {
+            transform: skewX(-4deg) translate(6px);
+          }
+          11% {
+            transform: skewX(3deg) translate(-4px);
+          }
+          12% {
+            transform: skewX(-2deg) translate(2px);
+          }
+          13% {
+            filter: drop-shadow(-10px -10px 0 #24f6fe) contrast(110%)
+              brightness(150%) blur(5px);
+          }
+          30% {
+            filter: drop-shadow(-10px -10px 0 #24f6fe) contrast(150%)
+              brightness(110%) blur(0);
+          }
+        }
+      </style>
+      <div class="container">
+        <div class="div"></div>
+      </div>
+    </div>
+  </foreignObject>
+</svg>
