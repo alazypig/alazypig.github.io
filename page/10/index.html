@@ -295,6 +295,412 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/04/22/Haskell-命令行参数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Borderlands">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/22/Haskell-命令行参数/" itemprop="url">Haskell 命令行参数</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-22T18:24:39+08:00">
+                2019-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> System.Environment</span><br><span class="line"><span class="keyword">import</span> System.Directory</span><br><span class="line"><span class="keyword">import</span> System.IO</span><br><span class="line"><span class="keyword">import</span> Data.List</span><br><span class="line"></span><br><span class="line"><span class="title">main</span> = <span class="keyword">do</span></span><br><span class="line">  (command:args) &lt;- getArgs                     <span class="comment">-- get the command</span></span><br><span class="line">  <span class="keyword">let</span> (<span class="type">Just</span> action) = lookup command dispatch   <span class="comment">-- find the command</span></span><br><span class="line">  action args                                   <span class="comment">-- do something</span></span><br><span class="line"></span><br><span class="line"><span class="title">add</span> :: [<span class="type">String</span>] -&gt; <span class="type">IO</span> ()</span><br><span class="line"><span class="title">add</span> [fileName, todoItem] = appendFile fileName (todoItem ++ <span class="string">"\n"</span>) <span class="comment">-- add the todoItem</span></span><br><span class="line"></span><br><span class="line"><span class="title">view</span> :: [<span class="type">String</span>] -&gt; <span class="type">IO</span> ()</span><br><span class="line"><span class="title">view</span> [fileName]     =  <span class="keyword">do</span>                                              <span class="comment">-- match the filename</span></span><br><span class="line">  contents          &lt;- readFile fileName                               <span class="comment">-- read the file</span></span><br><span class="line">  <span class="keyword">let</span> todoTasks     =  lines contents                                  <span class="comment">-- get the contents</span></span><br><span class="line">      numberedTasks =  zipWith (\n line -&gt; show n ++ <span class="string">": "</span> ++ line) [<span class="number">0.</span>.] todoTasks</span><br><span class="line">  putStrLn $ unlines numberedTasks                                     <span class="comment">-- show the items</span></span><br><span class="line"></span><br><span class="line"><span class="title">remove</span> :: [<span class="type">String</span>] -&gt; <span class="type">IO</span> ()</span><br><span class="line"><span class="title">remove</span> [fileName, numberString] = <span class="keyword">do</span>                              <span class="comment">-- get the filename and the line number</span></span><br><span class="line">  handle &lt;- openFile fileName <span class="type">ReadMode</span></span><br><span class="line">  (tempName, tempHandle) &lt;- openTempFile <span class="string">"."</span> <span class="string">"temp"</span>               <span class="comment">-- create a temp file</span></span><br><span class="line">  contents &lt;- hGetContents handle                                 <span class="comment">-- get contents from the handle</span></span><br><span class="line">  <span class="keyword">let</span> number = read numberString                                  <span class="comment">-- read the String to Number</span></span><br><span class="line">      todoTasks = lines contents</span><br><span class="line">      newTodoTasks = delete (todoTasks !! number) todoTasks       <span class="comment">-- remove the line of the number</span></span><br><span class="line">  hPutStr tempHandle $ unlines newTodoTasks                       <span class="comment">-- putStr into the tempfile</span></span><br><span class="line">  hClose handle                                                   <span class="comment">-- close handles</span></span><br><span class="line">  hClose tempHandle</span><br><span class="line">  removeFile fileName</span><br><span class="line">  renameFile tempName fileName</span><br><span class="line"></span><br><span class="line"><span class="title">dispatch</span> :: [(<span class="type">String</span>, [<span class="type">String</span>] -&gt; <span class="type">IO</span> ())]</span><br><span class="line"><span class="title">dispatch</span> = [</span><br><span class="line">    (<span class="string">"add"</span>, add),</span><br><span class="line">    (<span class="string">"view"</span>, view),</span><br><span class="line">    (<span class="string">"remove"</span>, remove)</span><br><span class="line">  ]</span><br><span class="line"></span><br><span class="line"><span class="comment">-- runhaskell arags-test.hs view newData.txt</span></span><br><span class="line"><span class="comment">-- runhaskell args-test.hs add newData.txt "Say Hello"</span></span><br><span class="line"><span class="comment">-- runhaskell args-test.hs remove newData.txt 4</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/04/22/Linux文件及文件系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Borderlands">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/22/Linux文件及文件系统/" itemprop="url">Linux文件及文件系统</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-22T11:14:43+08:00">
+                2019-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h3><ul>
+<li>普通文件</li>
+<li>目录文件</li>
+<li>链接文件：类似Windows的快捷方式，分软链接和硬链接</li>
+<li>设备文件：一般在/dev目录下，一种是块设备文件，一种是字符设备文件</li>
+</ul>
+<h3 id="文件属性"><a href="#文件属性" class="headerlink" title="文件属性"></a>文件属性</h3><p><code>-rwxrwxrwx</code></p>
+<ul>
+<li>r: read</li>
+<li>w: write</li>
+<li>x: execute</li>
+</ul>
+<p>第一个字符：</p>
+<ul>
+<li>- : 普通文件</li>
+<li>d : 目录文件</li>
+<li>l : 链接文件</li>
+<li>c : 字符设备</li>
+<li>b : 块设备</li>
+<li>p : 命名管道，如FIFO</li>
+<li>f : 堆栈文件，如LIFO</li>
+<li>s : 套接字</li>
+</ul>
+<p>之后的三个三位字符组：</p>
+<ol>
+<li>第一组代表文件拥有者(u)对该文件的权限</li>
+<li>第二组代表文件用户组(g)对该文件的权限</li>
+<li>第三组代表系统其它用户(o)对该文件的权限</li>
+</ol>
+<h3 id="文件系统类型"><a href="#文件系统类型" class="headerlink" title="文件系统类型"></a>文件系统类型</h3><ul>
+<li>ext2 &amp; ext3：ext3是ext2的升级版本</li>
+<li>swap：交换分区使用</li>
+<li>vfat：DOS中的系统（FAT12、FAT16和FAT32等）</li>
+<li>NFS：网络文件系统</li>
+<li>ISO9660：光盘文件系统
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/22/Linux文件及文件系统/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </li></ul></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/04/17/Block-level-function/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Borderlands">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/17/Block-level-function/" itemprop="url">Block-level function</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-17T10:08:22+08:00">
+                2019-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="在某个论坛有人问了下面的一段代码"><a href="#在某个论坛有人问了下面的一段代码" class="headerlink" title="在某个论坛有人问了下面的一段代码"></a>在某个论坛有人问了下面的一段代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'outside'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  f()</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'inside'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">a()</span><br></pre></td></tr></table></figure>
+<p>问的是为什么在浏览器中是<code>f is not a function</code>。<br>这个问题其实很好回答，存在函数提升，但是仔细想想又不对，因为函数提升是把整个函数都提升到当前作用域，所以按理来说f并不会是<code>undefined</code>。<br>如果按照函数提升的话，结果应该是像这样：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'outside'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'inside'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  f()</span><br><span class="line">  &#123;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">a()</span><br></pre></td></tr></table></figure></p>
+<p>所以结果应该是<code>inside</code>才对，用IE7可以发现结果确实是inside。<br>那这里为什么是undefined呢？<br>后面那位兄弟说在阮一峰的《ES6入门》中说道，ES6规定块级作用域中的函数定义规定为函数表达式。如果是定义为函数表达式的话，那就会像这样：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'outside'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> f</span><br><span class="line">  f()</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'inside'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">a()</span><br></pre></td></tr></table></figure></p>
+<p>这么一来这个<code>undefined</code>就可以解释了，因为只存在变量提升，而还未定义，所以就会出现<code>undefined</code>。但是那本书后还加了一句，浏览器并未遵循实现。<br>后面在starkoverflow上找到了一个老哥的回答，他的解释为这是因为<code>strict &amp; non-strict mode</code>的不同。</p>
+<ul>
+<li>let和const在两种模式下行为一样</li>
+<li>function在两种模式下的行为就不是一样的，因为浏览器会扩展非严格模式，从而兼容老代码。</li>
+</ul>
+<p>所以，在<code>strict mode</code>中，第一段代码输出的是<code>outside</code>，<code>non-strict mode</code>中就会报错，因为会变成下面这样：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'outside'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> f                                              <span class="comment">// function-scoped</span></span><br><span class="line">  f()</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">let</span> f1 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="string">'inside'</span>); &#125;  <span class="comment">// block-scoped</span></span><br><span class="line">    f = f1</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">a()</span><br></pre></td></tr></table></figure></p>
+<p>MDN中关于<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions#Block-level_functions_in_non-strict_code" target="_blank" rel="noopener">Block-level functions in non-strict code</a>的也只有一句话： <code>Don&#39;t.</code></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/04/16/巴黎圣母院大火/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -931,384 +1337,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/04/10/首张黑洞照片/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Borderlands">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/10/首张黑洞照片/" itemprop="url">首张黑洞照片</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-10T11:53:59+08:00">
-                2019-04-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="见证历史"><a href="#见证历史" class="headerlink" title="见证历史"></a>见证历史</h3><p><img src="https://images-1255795341.cos.ap-guangzhou.myqcloud.com/DeepinScreenshot_select-area_20190410212222.png" alt="黑洞图片"><br><strong>爱因斯坦是正确的!</strong><br><img src="https://images-1255795341.cos.ap-guangzhou.myqcloud.com/1425590745-641601247.jpg" alt="爱因斯坦"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/03/29/Maybe/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Borderlands">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/29/Maybe/" itemprop="url">Maybe</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-29T09:58:52+08:00">
-                2019-03-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h3><p>Let’s create a normal container first.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Container</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(x) &#123;</span><br><span class="line">    <span class="keyword">this</span>._value = x;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// use the of to create the container</span></span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">of</span>(x) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Container(x);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">Container.of(<span class="number">2</span>); <span class="comment">// Container &#123; _value: 2 &#125;</span></span><br><span class="line">Container.of(&#123; <span class="attr">name</span>: <span class="string">'jack'</span> &#125;);  <span class="comment">// Container &#123; _value: &#123; name: 'jack' &#125; &#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>But we should not directly manipulate the data in the container. We need a function to do this.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Container.prototype.map :: (a -&gt; b) -&gt; Container a -&gt; Container b</span></span><br><span class="line">Container.prototype.map = <span class="function"><span class="keyword">function</span> (<span class="params">f</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> Container.of(f(<span class="keyword">this</span>._value));</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> six = Container.of(<span class="number">2</span>).map(<span class="function"><span class="params">x</span> =&gt;</span> x * <span class="number">3</span>); <span class="comment">// Container &#123; _value: 6 &#125;</span></span><br><span class="line">six.map(<span class="function"><span class="params">x</span> =&gt;</span> x.toString()).map(<span class="function"><span class="params">x</span> =&gt;</span> <span class="string">'number: '</span> + x + <span class="string">'!'</span>); <span class="comment">// Container &#123; _value: 'number: 6!' &#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>After passing the values in the Container to the map function, we can let them manipulate it; after the operation is completed, in order to prevent accidents, put them back into the Container they belong to. The result is that we can call the map <strong>continuously</strong>, running any function we want to run.<br>And the <strong>Functor</strong> is a container type that implements the map function and adheres to certain rules.</p>
-<h3 id="Maybe"><a href="#Maybe" class="headerlink" title="Maybe"></a>Maybe</h3><p>In Haskell, the Maybe type is defined as follow:<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">data</span> <span class="type">Maybe</span> a = <span class="type">Just</span> a | <span class="type">Nothing</span></span></span><br></pre></td></tr></table></figure></p>
-<p>Maybe will check if its value is empty before calling the passed function. So let’s create a simple one.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Maybe</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(x) &#123;</span><br><span class="line">    <span class="keyword">this</span>._value = x;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">of</span>(x) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Maybe(x);</span><br><span class="line">  &#125;</span><br><span class="line">  isNothing() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._value === <span class="literal">null</span> || <span class="keyword">this</span>._value === <span class="literal">undefined</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// map :: (a -&gt; b) -&gt; Maybe a -&gt; Maybe b</span></span><br><span class="line">  map(f) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.isNothing() ? Maybe.of(<span class="literal">null</span>) : Maybe.of(f(<span class="keyword">this</span>._value));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">Maybe.of(<span class="string">'hello world'</span>).map(match(<span class="regexp">/o/ig</span>)); <span class="comment">// Maybe &#123; _value: [ 'o', 'o' ] &#125; </span></span><br><span class="line">Maybe.of(&#123; <span class="attr">name</span>: <span class="string">'jack'</span> &#125;).map($.prop(<span class="string">'age'</span>)).map(<span class="function"><span class="params">x</span> =&gt;</span> x + <span class="number">10</span>);  <span class="comment">// Maybe &#123; _value: null &#125;</span></span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/29/Maybe/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/03/28/The-Composition/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Borderlands">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/28/The-Composition/" itemprop="url">The composition</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-28T19:19:51+08:00">
-                2019-03-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="Function-Composition"><a href="#Function-Composition" class="headerlink" title="Function Composition"></a>Function Composition</h3><p><em><code>In computer science, function composition is an act or mechanism to combine simple functions to build more complicated ones. Like the usual composition of functions in mathematics, the result of each function is passed as the argument of the next, and the result of the last one is the result of the whole.  -- Wikipedia</code></em></p>
-<p>Example:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> compose = <span class="function">(<span class="params">f, g</span>) =&gt;</span> <span class="function"><span class="params">x</span> =&gt;</span> f(g(x));</span><br><span class="line"><span class="keyword">var</span> head = <span class="function"><span class="params">x</span> =&gt;</span> x[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> reverse = reduce(<span class="function">(<span class="params">a, x</span>) =&gt;</span> [x].concat(a), []);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> last = compose(head, reverse);</span><br><span class="line">last([<span class="string">'first'</span>, <span class="string">'second'</span>, <span class="string">'last'</span>]);  <span class="comment">// 'last'</span></span><br></pre></td></tr></table></figure></p>
-<p>In the definition of compose, g will be executed before f, thus creating a right-to-left data stream. This is much more readable than nesting a bunch of function calls.</p>
-<h3 id="Associativity"><a href="#Associativity" class="headerlink" title="Associativity"></a>Associativity</h3><p><em><code>Like many other functional programming concepts, associativity is derived from math.It is an expression in which the order of evaluation does not affect the end result provided the sequence of the operands does not get changed. -- JOSEPH REX</code></em></p>
-<p>Example:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span> + (<span class="number">3</span> + <span class="number">4</span>) === (<span class="number">2</span> + <span class="number">3</span>) + <span class="number">4</span>;  <span class="comment">// true</span></span><br><span class="line"><span class="number">2</span> * (<span class="number">3</span> * <span class="number">4</span>) === (<span class="number">2</span> * <span class="number">3</span>) * <span class="number">4</span>;  <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
-<p>Because of the grouping of calls to compose is not important, so the result is the same. This also gives us the ability to write a variadic compose.<br>Like this:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> last = compose(head, reverse);</span><br><span class="line">last([<span class="string">'first'</span>, <span class="string">'second'</span>, <span class="string">'last'</span>]);  <span class="comment">// 'last'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> upperLast = compose(head, reverse, toUppercase);</span><br><span class="line">upperLast([<span class="string">'first'</span>, <span class="string">'second'</span>, <span class="string">'last'</span>]); <span class="comment">// 'LAST'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> mediaUrl = _.compose(_.prop(<span class="string">'m'</span>), _.prop(<span class="string">'media'</span>));</span><br><span class="line"><span class="comment">// var images = _.compose(_.map(img), _.map(mediaUrl), _.prop('items'));</span></span><br><span class="line"><span class="comment">// use the associativity</span></span><br><span class="line"><span class="keyword">var</span> images = _.compose(_.map(_.compose(img, mediaUrl)), _.prop(<span class="string">'items'</span>));</span><br></pre></td></tr></table></figure></p>
-<p>There is no standard answer on how to composition, just make it more reusable.<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/28/The-Composition/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1359,7 +1387,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">141</span>
+                  <span class="site-state-item-count">144</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

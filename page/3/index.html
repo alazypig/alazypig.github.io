@@ -295,6 +295,427 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2020/10/01/Blog集成到CI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Borderlands">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/10/01/Blog集成到CI/" itemprop="url">Blog集成到CI</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-10-01T16:20:03+08:00">
+                2020-10-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="閑著無聊看了看如何部署"><a href="#閑著無聊看了看如何部署" class="headerlink" title="閑著無聊看了看如何部署"></a>閑著無聊看了看如何部署</h3><p>公司内部有 k8s 集群,所以也需要學習如何寫 deploy 脚本.目前服務挂在 Travis CI 上,後續可能會使用自己的機器裝個 Github Runner 啥的…</p>
+<p>步驟大致為:</p>
+<ol>
+<li>在 Travis 中登錄,然後選擇需要 watch 的倉庫</li>
+<li>編寫 deploy 文件,需要内部暴露字段的可以在 setting 中添加</li>
+<li>在 github 中拿到 person access token,添加到 Travis</li>
+</ol>
+<p>因爲 blog 還不需要 build 和 test 的步驟,所以我的 deploy file 暫時還沒有這些:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">language:</span> <span class="string">node_js</span></span><br><span class="line"><span class="attr">node_js:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="number">10</span> <span class="comment"># hexo目前似乎還不支持node 14版本</span></span><br><span class="line"></span><br><span class="line"><span class="attr">branches:</span></span><br><span class="line">  <span class="attr">only:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">master</span> <span class="comment"># 需要監聽的branch</span></span><br><span class="line"></span><br><span class="line"><span class="attr">before_install:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">-g</span> <span class="string">hexo-cli</span></span><br><span class="line"></span><br><span class="line"><span class="attr">install:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-deployer-git</span></span><br><span class="line"></span><br><span class="line"><span class="attr">before_script:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">config</span> <span class="string">user.name</span> <span class="string">"$&#123;username&#125;"</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">config</span> <span class="string">user.email</span> <span class="string">"$&#123;email&#125;"</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">rm</span> <span class="string">-rf</span> <span class="string">themes/next</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">clone</span> <span class="string">https://github.com/theme-next/hexo-theme-next</span> <span class="string">themes/next</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">cp</span> <span class="string">assets/config/_config.yml</span> <span class="string">themes/next/_config.yml</span> <span class="comment"># 我將自己的theme config存在assets中</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">cp</span> <span class="string">assets/images/avatar.jpg</span> <span class="string">themes/next/source/images/avatar.jpg</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">sed</span> <span class="string">-i</span> <span class="string">"s/github_token/$&#123;GITHUB_TOKEN&#125;/g"</span> <span class="string">_config.yml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">script:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">hexo</span> <span class="string">clean</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">hexo</span> <span class="string">generate</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">echo</span> <span class="string">"Generation finished."</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">hexo</span> <span class="string">deploy</span></span><br><span class="line"></span><br><span class="line"><span class="attr">notifications:</span></span><br><span class="line">  <span class="attr">email:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">foo@example.com</span></span><br><span class="line">  <span class="attr">on_success:</span> <span class="string">change</span></span><br><span class="line">  <span class="attr">on_failure:</span> <span class="string">always</span></span><br></pre></td></tr></table></figure>
+<h3 id="October-Plan"><a href="#October-Plan" class="headerlink" title="October Plan"></a>October Plan</h3><ul>
+<li>React Hook: 首要完成的目標</li>
+<li>shell: 不知道能學到什麽程度</li>
+<li>Linux 命令: 不知道能學到什麽程度</li>
+<li>優化之前的 code: 算是屎山了</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/10/01/Blog集成到CI/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2020/09/14/Alibaba-Cloud/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Borderlands">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/14/Alibaba-Cloud/" itemprop="url">Alibaba Cloud</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-14T19:48:42+08:00">
+                2020-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="買了個阿里雲服務"><a href="#買了個阿里雲服務" class="headerlink" title="買了個阿里雲服務"></a>買了個阿里雲服務</h3><p>有點太貴了。隨便跑點什麽Memory就100%。</p>
+<p>時常掉綫，不知道是不是網絡的問題。拿到公司Network環境一樣掉綫。</p>
+<p>想搭個Gatsby玩玩，還是用自己的電腦吧。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2020/09/11/一點總結/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Borderlands">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/11/一點總結/" itemprop="url">一點總結</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-11T23:58:15+08:00">
+                2020-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="工作以來的感受"><a href="#工作以來的感受" class="headerlink" title="工作以來的感受"></a>工作以來的感受</h3><p>最大的感受就是，需要學習的還有很多很多。獨立思考可以讓你的思維更加開放、活躍，同時可以激發更多的靈感。<br>目前的技術棧：<code>React+Mobx+TypeScirpt</code></p>
+<p>從前對狀態管理沒有什麽概念，自從接觸到工程項目之後，對爲何要進行State Management越來越清晰。<br>當然也產生了一定的不良影響 -&gt; 只要上手就會想如何設計State，導致有的地方代碼實在冗餘。</p>
+<p>同時在項目代碼中瞭解了許多新知識，如何去設計一個可繼承、可復用的Function；如何將Store封裝，便於使用；如何對請求進行封裝；何時使用Interface、何時使用Type；等等……</p>
+<h3 id="接下來需要做的"><a href="#接下來需要做的" class="headerlink" title="接下來需要做的"></a>接下來需要做的</h3><ul>
+<li>思考之前的代碼如何優化</li>
+<li>思考目前的代碼是否還能拆分</li>
+<li>閲讀State Management的文章</li>
+<li>……</li>
+</ul>
+<h3 id="課餘時間的活動"><a href="#課餘時間的活動" class="headerlink" title="課餘時間的活動"></a>課餘時間的活動</h3><ul>
+<li><p>書籍</p>
+<ul>
+<li>熵的世界</li>
+<li>我的簡史 - 霍金</li>
+</ul>
+</li>
+<li><p>日常</p>
+<ul>
+<li>陰陽師</li>
+<li>B站</li>
+<li>手游 - 跑跑卡丁車</li>
+<li>音樂</li>
+</ul>
+</li>
+<li><p>綜藝</p>
+<ul>
+<li>説唱新世代</li>
+<li>中國新説唱</li>
+</ul>
+</li>
+<li><p>影視劇</p>
+<ul>
+<li>甜蜜蜜</li>
+<li>投名狀</li>
+<li>親愛的</li>
+<li>八佰</li>
+<li>Mulan</li>
+<li>信條</li>
+</ul>
+</li>
+</ul>
+<h3 id="挖坑"><a href="#挖坑" class="headerlink" title="挖坑"></a>挖坑</h3><p>考慮用點什麽搭一個自己的博客。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2020/08/11/Higher-Order-Components/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -933,445 +1354,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2020/07/24/ECMAScript新增String方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Borderlands">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/24/ECMAScript新增String方法/" itemprop="url">ECMAScript新增String方法</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-24T00:19:17+08:00">
-                2020-07-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ECMAScript/" itemprop="url" rel="index">
-                    <span itemprop="name">ECMAScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="ES2017新增"><a href="#ES2017新增" class="headerlink" title="ES2017新增"></a>ES2017新增</h3><h5 id="padStart-padEnd"><a href="#padStart-padEnd" class="headerlink" title="padStart(), padEnd()"></a>padStart(), padEnd()</h5><p>字符串补全功能，接受两个参数，如果第二个参数为空，则默认使用空格补全。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// fill with the template</span></span><br><span class="line"><span class="string">'12'</span>.padStart(<span class="number">3</span>, <span class="string">'000'</span>) <span class="comment">// '012'</span></span><br><span class="line"><span class="string">'12'</span>.padEnd(<span class="number">3</span>, <span class="string">'000'</span>) <span class="comment">// '120'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// fill with space</span></span><br><span class="line"><span class="string">'12'</span>.padStart(<span class="number">4</span>) <span class="comment">// '  12'</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="ES2019新增"><a href="#ES2019新增" class="headerlink" title="ES2019新增"></a>ES2019新增</h3><h5 id="trimStart-trimEnd"><a href="#trimStart-trimEnd" class="headerlink" title="trimStart(), trimEnd()"></a>trimStart(), trimEnd()</h5><p>与<code>String.trim()</code>的行为一致，不会修改原字符串。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'    string    '</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// str.trimLeft()</span></span><br><span class="line">str.trimStart() <span class="comment">// 'string    '</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// str.trimRight()</span></span><br><span class="line">str.trimEnd() <span class="comment">// '    string'</span></span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2020/06/22/WebGL绘制不同颜色/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Borderlands">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/22/WebGL绘制不同颜色/" itemprop="url">绘制不同颜色</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-22T10:41:37+08:00">
-                2020-06-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/WebGL/" itemprop="url" rel="index">
-                    <span itemprop="name">WebGL</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="绘制过程"><a href="#绘制过程" class="headerlink" title="绘制过程"></a>绘制过程</h3><ol>
-<li>执行Vertex Shader，配置顶点。</li>
-<li>调用<code>gl.drawArrays()</code>，装配图形。</li>
-<li>光栅化，将图形转换为Fragment。</li>
-<li>执行Fragment Shader。</li>
-</ol>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p><strong>使用<code>varying</code>标识符</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> vShaderSource = <span class="string">`</span></span><br><span class="line"><span class="string">    attribute vec4 a_Position;</span></span><br><span class="line"><span class="string">    attribute vec4 a_Color;</span></span><br><span class="line"><span class="string">    varying vec4 v_Color;</span></span><br><span class="line"><span class="string">    void main() &#123;</span></span><br><span class="line"><span class="string">        gl_Position = a_Position;</span></span><br><span class="line"><span class="string">        gl_PointSize = 10.0;</span></span><br><span class="line"><span class="string">        v_Color = a_Color;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fShaderSource = <span class="string">`</span></span><br><span class="line"><span class="string">    precision mediump float;</span></span><br><span class="line"><span class="string">    varying vec4 v_Color;</span></span><br><span class="line"><span class="string">    void main() &#123;</span></span><br><span class="line"><span class="string">        gl_FragColor = v_Color;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> main = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> gl = <span class="built_in">document</span>.querySelector(<span class="string">'#canvas'</span>).getContext(<span class="string">'webgl'</span>);</span><br><span class="line">    <span class="keyword">if</span> (!initShaders(gl, vShaderSource, fShaderSource)) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> n = initVertexBuffers(gl);</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    gl.clearColor(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">    gl.clear(gl.COLOR_BUFFER_BIT);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// gl.drawArrays(gl.LINE_LOOP, 0, n);</span></span><br><span class="line">    gl.drawArrays(gl.TRIANGLES, <span class="number">0</span>, n);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> initVertexBuffers = <span class="function">(<span class="params">gl</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> verticesColor = <span class="keyword">new</span> <span class="built_in">Float32Array</span>([ <span class="comment">// [x, y, r, g, b]</span></span><br><span class="line">        <span class="number">0</span>, <span class="number">0.5</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>,</span><br><span class="line">        <span class="number">-0.5</span>, <span class="number">-0.5</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>,</span><br><span class="line">        <span class="number">0.5</span>, <span class="number">-0.5</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    ]);</span><br><span class="line">    <span class="keyword">let</span> n = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> vertexColorBuffer = gl.createBuffer();</span><br><span class="line">    <span class="keyword">if</span> (!vertexColorBuffer) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    gl.bindBuffer(gl.ARRAY_BUFFER, vertexColorBuffer);</span><br><span class="line">    gl.bufferData(gl.ARRAY_BUFFER, verticesColor, gl.STATIC_DRAW);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> SIZE = verticesColor.BYTES_PER_ELEMENT;</span><br><span class="line">    <span class="keyword">let</span> a_Position = gl.getAttribLocation(gl.program, <span class="string">'a_Position'</span>);</span><br><span class="line">    <span class="keyword">let</span> a_Color = gl.getAttribLocation(gl.program, <span class="string">'a_Color'</span>);</span><br><span class="line"></span><br><span class="line">    gl.vertexAttribPointer(a_Position, <span class="number">2</span>, gl.FLOAT, <span class="literal">false</span>, SIZE * <span class="number">5</span>, <span class="number">0</span>);</span><br><span class="line">    gl.enableVertexAttribArray(a_Position);</span><br><span class="line"></span><br><span class="line">    gl.vertexAttribPointer(a_Color, <span class="number">3</span>, gl.FLOAT, <span class="literal">false</span>, SIZE * <span class="number">5</span>, SIZE * <span class="number">2</span>);</span><br><span class="line">    gl.enableVertexAttribArray(a_Color);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2020/06/20/WebGL制作动画/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Borderlands">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/20/WebGL制作动画/" itemprop="url">制作动画</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-20T10:58:34+08:00">
-                2020-06-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/WebGL/" itemprop="url" rel="index">
-                    <span itemprop="name">WebGL</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="绘制流程"><a href="#绘制流程" class="headerlink" title="绘制流程"></a>绘制流程</h3><ol>
-<li>计算变换后的位置坐标。</li>
-<li>清空画板。</li>
-<li>绘制</li>
-<li>循环1-3操作。</li>
-</ol>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p><strong>使用库函数简化数学计算</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> vShaderSource = <span class="string">`</span></span><br><span class="line"><span class="string">    attribute vec4 a_Position;</span></span><br><span class="line"><span class="string">    uniform mat4 u_ModelMatrix;</span></span><br><span class="line"><span class="string">    void main() &#123;</span></span><br><span class="line"><span class="string">        gl_Position = u_ModelMatrix * a_Position;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fShaderSource = <span class="string">`</span></span><br><span class="line"><span class="string">    void main() &#123;</span></span><br><span class="line"><span class="string">        gl_FragColor = vec4(0.0, 1.0, 0.0, 1.0);</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> main = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> gl = <span class="built_in">document</span>.querySelector(<span class="string">'#canvas'</span>).getContext(<span class="string">'webgl'</span>);</span><br><span class="line">    <span class="keyword">if</span> (!initShaders(gl, vShaderSource, fShaderSource)) reutrn;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> n = initVertexBuffers(gl);</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    gl.clearColor(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    rotating(gl, n, <span class="number">360</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> rotating = <span class="function">(<span class="params">gl, n, ANGLE_STEP = <span class="number">30</span></span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> currentAngle = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> modelMatrix = <span class="keyword">new</span> Matrix4();</span><br><span class="line">    <span class="keyword">let</span> u_ModelMatrix = gl.getUniformLocation(gl.program, <span class="string">'u_ModelMatrix'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> tick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        currentAngle = animate(currentAngle, ANGLE_STEP);</span><br><span class="line">        draw(gl, n, currentAngle, modelMatrix, u_ModelMatrix);</span><br><span class="line">        requestAnimationFrame(tick);</span><br><span class="line">    &#125;</span><br><span class="line">    tick();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> draw = <span class="function">(<span class="params">gl, n, currentAngle, modelMatrix, u_ModelMatrix</span>) =&gt;</span> &#123;</span><br><span class="line">    modelMatrix.setRotate(currentAngle, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>); <span class="comment">// Set rotation matrix.</span></span><br><span class="line">    <span class="comment">// modelMatrix.translate(0.5, 0, 0);</span></span><br><span class="line">    gl.uniformMatrix4fv(u_ModelMatrix, <span class="literal">false</span>, modelMatrix.elements);</span><br><span class="line">    gl.clear(gl.COLOR_BUFFER_BIT); <span class="comment">// Clear canvas.</span></span><br><span class="line">    gl.drawArrays(gl.TRIANGLES, <span class="number">0</span>, n); <span class="comment">// Draw triangle.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> g_last = <span class="built_in">Date</span>.now();</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Get the new angle.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param </span>currentAngle &#123;number&#125;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param </span>ANGLE_STEP &#123;number&#125;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> animate = <span class="function">(<span class="params">currentAngle, ANGLE_STEP</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> now = <span class="built_in">Date</span>.now();</span><br><span class="line">    <span class="keyword">let</span> temp = now - g_last;</span><br><span class="line">    g_last = now;</span><br><span class="line">    <span class="keyword">return</span> (currentAngle + (ANGLE_STEP * temp) / <span class="number">1000</span>) % <span class="number">360</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1422,7 +1404,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">141</span>
+                  <span class="site-state-item-count">144</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

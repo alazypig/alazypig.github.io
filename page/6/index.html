@@ -295,6 +295,416 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2020/02/25/TypeScript-初探/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Borderlands">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/25/TypeScript-初探/" itemprop="url">TypeScript 初探</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-25T19:19:57+08:00">
+                2020-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/TypeScript/" itemprop="url" rel="index">
+                    <span itemprop="name">TypeScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h3><ul>
+<li>boolean:<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> done: <span class="built_in">boolean</span> = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure></li>
+<li>number:<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> count: <span class="built_in">number</span> = <span class="number">20</span>;</span><br></pre></td></tr></table></figure></li>
+<li>string:<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">'Edward Wang'</span>;</span><br></pre></td></tr></table></figure></li>
+<li>array:<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> list1: <span class="built_in">number</span>[] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> list2: <span class="built_in">Array</span>&lt;<span class="built_in">number</span>&gt; = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br></pre></td></tr></table></figure></li>
+<li>tuple:<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x: [<span class="built_in">string</span>, <span class="built_in">number</span>] = [<span class="string">'test'</span>, <span class="number">2</span>];</span><br></pre></td></tr></table></figure></li>
+<li>enum:<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> NUMBER &#123;</span><br><span class="line">    ONE,</span><br><span class="line">    TWO,</span><br><span class="line">    THREE    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = NUMBER.TWO;</span><br><span class="line"><span class="keyword">let</span> title: <span class="built_in">string</span> = NUMBER[<span class="number">3</span>];</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/02/25/TypeScript-初探/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </li></ul></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2020/01/09/Trump一番话影响经济市场/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Borderlands">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/09/Trump一番话影响经济市场/" itemprop="url">Trump一番话影响经济市场</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-09T14:57:24+08:00">
+                2020-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="川普不对伊朗动武-美股涨-金价回落-油价跳水"><a href="#川普不对伊朗动武-美股涨-金价回落-油价跳水" class="headerlink" title="川普不对伊朗动武 美股涨 金价回落 油价跳水"></a>川普不对伊朗动武 美股涨 金价回落 油价跳水</h3><p>伊朗袭击美军驻伊拉克基地后，美国总统川普表示将升级经济制裁取代付诸武力。市场乐观情绪上扬，美股上涨，金价回落，油价则大跳水。</p>
+<p>川普1月8日在白宫发表谈话，伊朗袭击并未伤害到任何美国人，称伊朗有所退让，暗示不会对伊朗动武，伊朗外交部长也称该国不寻求升级事态，这些消息都缓解了投资人对美伊局势的不安。</p>
+<p>8日美国股市上涨，道琼工业指数收涨161.41点或0.56%，报28745.09点。标普500指数收涨15.87点或0.49%，报3253.05点。那斯达克指数收涨60.66点或0.67%，报9129.24点。费城半导体指数上涨0.31点或0.02%，报1867.59点。</p>
+<p>那斯达克指数创收盘新高，道琼工业指数、标普500指数、费城半导体指数徘回历史次高位。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/01/09/Trump一番话影响经济市场/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2020/01/03/美国确认空袭导致伊朗将军苏莱曼尼死亡/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Borderlands">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/03/美国确认空袭导致伊朗将军苏莱曼尼死亡/" itemprop="url">美国确认空袭导致伊朗将军苏莱曼尼死亡</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-03T19:34:52+08:00">
+                2020-01-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>《纽约时报》美国当地时间1月2日报道说，美国官员确认，在美军对巴格达的一次空袭中，伊朗伊斯兰革命卫队特种部队“圣城旅”部队指挥官卡西姆·苏莱曼尼将军死亡。</p>
+<p>《纽约时报》报道，伊朗官方媒体确认了，伊拉克当地时间3日，伊朗将军卡西姆·苏莱曼尼在美军对巴格达国际机场一处目标的空袭中死亡。苏莱曼尼是伊朗革命卫队中的重要官员。美国国防部声明表示，美国发动了空袭。</p>
+<blockquote>
+<p>“苏莱曼尼将军积极筹划了对美国在伊拉克及地区的外交官和服务人员的攻击。苏莱曼尼将军和‘圣城旅’需要为美军和联军数百人死亡、数千人受伤负起责任。”</p>
+</blockquote>
+<h3 id="伊朗誓言为苏莱曼尼将军之死报复美国"><a href="#伊朗誓言为苏莱曼尼将军之死报复美国" class="headerlink" title="伊朗誓言为苏莱曼尼将军之死报复美国"></a>伊朗誓言为苏莱曼尼将军之死报复美国</h3><p>伊朗伊斯兰革命卫队（伊朗武装力量组成部分）前总司令、伊朗确定国家利益委员会秘书长穆赫辛·雷扎伊称，伊朗将为在巴格达死于火箭弹袭击的伊斯兰革命卫队圣城旅指挥官卡西姆·苏莱曼尼将军复仇。</p>
+<p>雷扎伊在推特上写道：</p>
+<blockquote>
+<p>“殉难的卡西姆·苏莱曼尼去找他的兄弟们了。我们会狠狠报复美国。”</p>
+</blockquote>
+<p>伊斯兰革命卫队圣城旅指挥官卡西姆·苏莱曼尼将军2日晚上在巴格达的火箭弹袭击中被炸死，伊拉克什叶派民兵武装“人民动员组织”(Al-Hashd al-Shaabi)的几位高级别成员也一同丧生，12名伊拉克士兵受伤。</p>
+<p>五角大楼称系按照美国总统川普的命令开展对苏莱曼尼的行动。五角大楼称，此次打击旨在预防伊朗方面的袭击，而苏莱曼尼本人涉嫌参与袭击联盟基地和美国驻伊拉克大使馆。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/12/25/Telegram批量邀请成员进组/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -972,366 +1382,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/11/20/美国参议院一致通过《香港人权与民主法案》/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Borderlands">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/20/美国参议院一致通过《香港人权与民主法案》/" itemprop="url">美国参议院一致通过《香港人权与民主法案》</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-20T17:58:03+08:00">
-                2019-11-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><em>Hong Kong Human Rights and Democracy Act</em></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/07/15/策略模式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Borderlands">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/15/策略模式/" itemprop="url">策略模式</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-15T23:15:18+08:00">
-                2019-07-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ResultState = <span class="function">(<span class="params">(</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> States = &#123;</span><br><span class="line">    state0: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'state0'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    state1: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'state1'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    state2: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'state2'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    state3: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'state3'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params">result</span>) </span>&#123;</span><br><span class="line">    States[<span class="string">'state'</span> + result] &amp;&amp; States[<span class="string">'state'</span> + result]();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    show</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="comment">// for test</span></span><br><span class="line">ResultState.show(<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> Price = <span class="function">(<span class="params">(</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> obj = &#123;</span><br><span class="line">    return30: <span class="function"><span class="params">price</span> =&gt;</span> +price + <span class="built_in">parseInt</span>(price / <span class="number">100</span>) * <span class="number">30</span>,</span><br><span class="line">    return50: <span class="function"><span class="params">price</span> =&gt;</span> +price + <span class="built_in">parseInt</span>(price / <span class="number">100</span>) * <span class="number">50</span>,</span><br><span class="line">    percent90: <span class="function"><span class="params">price</span> =&gt;</span> price * <span class="number">100</span> * <span class="number">90</span> / <span class="number">10000</span>,</span><br><span class="line">    percent80: <span class="function"><span class="params">price</span> =&gt;</span> price * <span class="number">100</span> * <span class="number">80</span> / <span class="number">10000</span></span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">algorithm, price</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> obj[algorithm] &amp;&amp; obj[algorithm](price);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="comment">// for test</span></span><br><span class="line"><span class="keyword">let</span> price = Price(<span class="string">'return50'</span>, <span class="number">321.13</span>);</span><br><span class="line"><span class="built_in">console</span>.log(price);</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/07/14/装饰器/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ĕ̸̢͙̳̈̕d̵͈̼̟̟̦̀̈́̀̈́w̶̢͇̻͎̘͓͉͓͎͙̅̈̐̃̋͘̚a̵̳̞͇̣̼͆͌̈́͝ŗ̶̤̯͈̺̠̞̝̣̎̿͆͑̃̕͝͠d̵̛͈̠͙͕͙̙͍̓̋͒̒͜">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Borderlands">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/14/装饰器/" itemprop="url">装饰器</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-14T22:47:42+08:00">
-                2019-07-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 为dom元素添加事件</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;&#125;</span> </span>dom </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>type </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>fn </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addEvent</span>(<span class="params">dom, type, fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (dom.addEventListener) &#123;</span><br><span class="line">    dom.addEventListener(type, fn, <span class="literal">false</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (dom.attachEvent) &#123;</span><br><span class="line">    dom.attachEvent(<span class="string">'on'</span> + type, fn);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    dom[<span class="string">'on'</span> + type] = fn;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 装饰已有对象</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>id </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>fn </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">decorator</span>(<span class="params">id, fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> obj = <span class="built_in">document</span>.querySelector(id);</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> id.onclick === <span class="string">'function'</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> oldFn = id.onclick;</span><br><span class="line">    id.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      oldFn();</span><br><span class="line">      fn();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    obj.onclick = fn;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> Observer = <span class="function">(<span class="params">(</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> _message = &#123;&#125;;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    regist: <span class="function"><span class="keyword">function</span> (<span class="params">type, fn</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> _message[type] === <span class="string">'undefined'</span>) &#123;</span><br><span class="line">        _message[type] = [fn];</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        _message[type].push(fn);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    fire: <span class="function"><span class="keyword">function</span> (<span class="params">type, args</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (!_message[type]) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">let</span> events = &#123;</span><br><span class="line">        type,</span><br><span class="line">        args: args || &#123;&#125;</span><br><span class="line">      &#125;;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, len = _message[type].length; i &lt; len; i++) &#123;</span><br><span class="line">        _message[type][i].call(<span class="keyword">this</span>, events);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    remove: <span class="function"><span class="keyword">function</span> (<span class="params">type, fn</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (_message[type] <span class="keyword">instanceof</span> <span class="built_in">Array</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = _message[type].length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">          _message[type][i] === fn &amp;&amp; _message[type].splice(i, <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line">Observer.regist(<span class="string">'test'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123; <span class="comment">// register</span></span><br><span class="line">  <span class="built_in">console</span>.log(e.type, e.args.msg);</span><br><span class="line">&#125;)</span><br><span class="line">Observer.fire(<span class="string">'test'</span>, &#123; <span class="attr">msg</span>: <span class="string">'this is some test message'</span> &#125;); <span class="comment">// send</span></span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1382,7 +1432,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">141</span>
+                  <span class="site-state-item-count">144</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
