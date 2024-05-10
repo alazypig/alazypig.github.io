@@ -1,0 +1,139 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  viewBox="0 0 300 300"
+  width="300"
+  height="300"
+>
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style xmlns="http://www.w3.org/1999/xhtml">
+        .page {
+          background-color: black;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 300px;
+        }
+
+        .container {
+          width: 100px;
+          margin: 300px auto;
+          position: relative;
+        }
+
+        .header {
+          position: absolute;
+          width: 26px;
+          height: 10px;
+          left: 50%;
+          top: 0;
+          transform: translate(-50%, -10px);
+          background-color: white;
+          opacity: 0.88;
+          border-radius: 5px 5px 0 0;
+        }
+
+        .battery {
+          position: relative;
+          background-color: #fff;
+          height: 220px;
+          border-radius: 15px 15px 5px 5px;
+          box-sizing: border-box;
+          z-index: 1;
+        }
+
+        .battery::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          top: 80%;
+          background: linear-gradient(
+            to bottom,
+            #f8aeee 0%,
+            #ff8bff 44%,
+            #ff38ee 100%
+          );
+          filter: hue-rotate(90dge);
+          border-radius: 0 0 5px 5px;
+          animation: charging 5s linear infinite;
+        }
+
+        @keyframes charging {
+          50% {
+            box-shadow: 0 14px 28px rgba(255, 255, 255, 0.83),
+              0 4px 10px rgba(255, 255, 255, 0.4);
+          }
+          95% {
+            top: 5%;
+            filter: hue-rotate(0deg);
+            border-radius: 0 0 5px 5px;
+            box-shadow: 0 14px 28px rgba(255, 255, 255, 0.2),
+              0 10px 10px rgba(255, 255, 255, 0.08);
+          }
+          100% {
+            top: 0%;
+            filter: hue-rotate(0deg);
+            border-radius: 15px 15px 5px 5px;
+            box-shadow: 0 14px 28px rgba(4, 188, 213, 0),
+              0 10px 10px rgba(9, 188, 214, 0);
+          }
+        }
+
+        .battery-copy {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 220px;
+          width: 100px;
+          border-radius: 15px 15px 5px 5px;
+          overflow: hidden;
+        }
+
+        .wave {
+          position: absolute;
+          width: 300px;
+          height: 300px;
+          background-color: #fff;
+          opacity: 0.8;
+          z-index: 1;
+          bottom: 0px;
+          left: 50%;
+          transform: translate(-50%, 0);
+          border-radius: 45% 47% 44% 46%;
+          animation: move 5s linear infinite;
+        }
+
+        .wave:nth-child(2) {
+          border-radius: 45% 47% 44% 46%;
+          transform: translate(-50%, 0) rotate(-135deg);
+        }
+
+        .wave:nth-child(2) {
+          border-radius: 45% 47% 44% 46%;
+          transform: translate(-50%, 0) rotate(135deg);
+        }
+
+        @keyframes move {
+          100% {
+            transform: translate(-50%, -220px) rotate(720deg);
+          }
+        }
+      </style>
+      <div class="page">
+        <div class="container">
+          <div class="header"></div>
+          <div class="battery"></div>
+          <div class="battery-copy">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </foreignObject>
+</svg>
