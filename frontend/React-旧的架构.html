@@ -17,15 +17,14 @@
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f9fafb">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   
-  <title>Live Note</title>
+  <title>Frontend: React-旧的架构 - Live Note</title>
 
   
   <meta name="description" content="在上一节中我们了解了React的理念，简单概括就是快速响应。
-React从v15升级到v16后重构了整个架构。本节我们聊聊v15，看看他为什么不能满足快速响应的理念，以至于被重构。
-React15架构React15架构可以分为两层：
+React从 v15 升级到 v16 后重构了整个架构。本节我们聊聊 v15，看看他为什么不能满足快速响应的理念，以至于被重构。
+React15 架构React15 架构可以分为两层：
 
-Reconciler（协调器）—— 负责找出变化的组件
-R...">
+Reconciler（协调器）—— 负责找出...">
   
   <meta name="keywords" content="Blog, play, Technology, BitCoin, IDCard, Frontend, React">
 
@@ -44,19 +43,22 @@ R...">
 </head>
 <body>
 
+
+
 <div class="l_body s:aa content story" id="start" layout="page" text-indent><aside class="l_left"><div class="leftbar-container">
 
 
-<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://avatars.githubusercontent.com/u/22055633?v=4" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Live Note</div><div class="sub cap">Remain optimistic</div></a></div></header>
+<header class="header"><div class="logo-wrap"><div class="icon"><img no-lazy class="icon" src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2779789.png" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></div><a class="title" href="/frontend/CLS-Cumulative%20Layout%20Shift.html"><div class="main" ff="title">Frontend</div></a></div></header>
 
 <div class="nav-area">
-<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="Search"></form><div id="search-result"></div><div class="search-no-result">No Results!</div></div>
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="Search in Frontend"></form><div id="search-result"></div><div class="search-no-result">No Results!</div></div>
 
 
-<nav class="menu dis-select"><a class="nav-item" title="posts" href="/" style="color:#7469B6"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item" title="Notes" href="/wiki/" style="color:#AD88C6"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M14.25 4.48v3.057c0 .111 0 .27.02.406a.936.936 0 0 0 .445.683a.96.96 0 0 0 .783.072c.13-.04.272-.108.378-.159L17 8.005l1.124.534c.106.05.248.119.378.16a.958.958 0 0 0 .783-.073a.936.936 0 0 0 .444-.683c.021-.136.021-.295.021-.406V3.031c.113-.005.224-.01.332-.013C21.154 2.98 22 3.86 22 4.933v11.21c0 1.112-.906 2.01-2.015 2.08c-.97.06-2.108.179-2.985.41c-1.082.286-1.99 1.068-3.373 1.436c-.626.167-1.324.257-1.627.323V5.174c.32-.079 1.382-.203 1.674-.371c.184-.107.377-.216.576-.323m5.478 8.338a.75.75 0 0 1-.546.91l-4 1a.75.75 0 0 1-.364-1.456l4-1a.75.75 0 0 1 .91.546" clip-rule="evenodd"/><path fill="currentColor" d="M18.25 3.151c-.62.073-1.23.18-1.75.336a8.2 8.2 0 0 0-.75.27v3.182l.75-.356l.008-.005a1.13 1.13 0 0 1 .492-.13c.047 0 .094.004.138.01c.175.029.315.1.354.12l.009.005l.749.356V3.647z"/><path fill="currentColor" d="M12 5.214c-.334-.064-1.057-.161-1.718-.339C8.938 4.515 8.05 3.765 7 3.487c-.887-.234-2.041-.352-3.018-.412C2.886 3.007 2 3.9 2 4.998v11.146c0 1.11.906 2.01 2.015 2.079c.97.06 2.108.179 2.985.41c.486.129 1.216.431 1.873.726c1.005.451 2.052.797 3.127 1.034z" opacity=".5"/><path fill="currentColor" d="M4.273 12.818a.75.75 0 0 1 .91-.545l4 1a.75.75 0 1 1-.365 1.455l-4-1a.75.75 0 0 1-.545-.91m.909-4.545a.75.75 0 1 0-.364 1.455l4 1a.75.75 0 0 0 .364-1.455z"/></svg></a></nav>
+<nav class="menu dis-select"><a class="nav-item" title="posts" href="/" style="color:#7469B6"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item active" title="Notes" href="/wiki/" style="color:#AD88C6"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M14.25 4.48v3.057c0 .111 0 .27.02.406a.936.936 0 0 0 .445.683a.96.96 0 0 0 .783.072c.13-.04.272-.108.378-.159L17 8.005l1.124.534c.106.05.248.119.378.16a.958.958 0 0 0 .783-.073a.936.936 0 0 0 .444-.683c.021-.136.021-.295.021-.406V3.031c.113-.005.224-.01.332-.013C21.154 2.98 22 3.86 22 4.933v11.21c0 1.112-.906 2.01-2.015 2.08c-.97.06-2.108.179-2.985.41c-1.082.286-1.99 1.068-3.373 1.436c-.626.167-1.324.257-1.627.323V5.174c.32-.079 1.382-.203 1.674-.371c.184-.107.377-.216.576-.323m5.478 8.338a.75.75 0 0 1-.546.91l-4 1a.75.75 0 0 1-.364-1.456l4-1a.75.75 0 0 1 .91.546" clip-rule="evenodd"/><path fill="currentColor" d="M18.25 3.151c-.62.073-1.23.18-1.75.336a8.2 8.2 0 0 0-.75.27v3.182l.75-.356l.008-.005a1.13 1.13 0 0 1 .492-.13c.047 0 .094.004.138.01c.175.029.315.1.354.12l.009.005l.749.356V3.647z"/><path fill="currentColor" d="M12 5.214c-.334-.064-1.057-.161-1.718-.339C8.938 4.515 8.05 3.765 7 3.487c-.887-.234-2.041-.352-3.018-.412C2.886 3.007 2 3.9 2 4.998v11.146c0 1.11.906 2.01 2.015 2.079c.97.06 2.108.179 2.985.41c.486.129 1.216.431 1.873.726c1.005.451 2.052.797 3.127 1.034z" opacity=".5"/><path fill="currentColor" d="M4.273 12.818a.75.75 0 0 1 .91-.545l4 1a.75.75 0 1 1-.365 1.455l-4-1a.75.75 0 0 1-.545-.91m.909-4.545a.75.75 0 1 0-.364 1.455l4 1a.75.75 0 0 0 .364-1.455z"/></svg></a></nav>
 </div>
 <div class="widgets">
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">Recent Update</span></div><div class="widget-body fs14"><a class="item title" href="/2020/03/03/TypeScript-Functions/"><span class="title">TypeScript Functions</span></a><a class="item title" href="/2020/03/05/TypeScript-Enums/"><span class="title">TypeScript Enums</span></a><a class="item title" href="/2021/06/16/Typescript-Enum%E5%8F%96key-value/"><span class="title">Typescript Enum取key&value</span></a><a class="item title" href="/2020/02/29/TypeScript-Classes/"><span class="title">TypeScript Classes</span></a><a class="item title" href="/2020/02/25/TypeScript-%E5%88%9D%E6%8E%A2/"><span class="title">TypeScript 初探</span></a><a class="item title" href="/2020/01/09/Trump%E4%B8%80%E7%95%AA%E8%AF%9D%E5%BD%B1%E5%93%8D%E7%BB%8F%E6%B5%8E%E5%B8%82%E5%9C%BA/"><span class="title">Trump一番话影响经济市场</span></a><a class="item title" href="/2020/10/03/Transducer/"><span class="title">Transducer</span></a><a class="item title" href="/2021/01/08/TikTok-svg/"><span class="title">TikTok svg</span></a><a class="item title" href="/2019/03/27/The-currying/"><span class="title">The Currying</span></a><a class="item title" href="/2019/03/28/The-Composition/"><span class="title">The composition</span></a></div></widget>
+
+<widget class="widget-wrapper post-list"><div class="widget-body fs14"><a class="link" href="/frontend/CLS-Cumulative%20Layout%20Shift.html#start"><span class="toc-text">CLS-Cumulative Layout Shift</span></a><a class="link" href="/frontend/Event%20Loop.html"><span class="toc-text">Event Loop</span></a><a class="link" href="/frontend/Fiber%E6%9E%B6%E6%9E%84%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.html"><span class="toc-text">Fiber架构的实现原理</span></a><a class="link" href="/frontend/Fiber%E6%9E%B6%E6%9E%84%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.html"><span class="toc-text">Fiber架构的工作原理</span></a><a class="link" href="/frontend/Fiber%E6%9E%B6%E6%9E%84%E7%9A%84%E5%BF%83%E6%99%BA%E6%A8%A1%E5%9E%8B.html"><span class="toc-text">Fiber架构的心智模型</span></a><a class="link" href="/frontend/React%20Native%20Bug%20%E5%AE%9A%E4%BD%8D.html"><span class="toc-text">React Native Bug 定位</span></a><a class="link" href="/frontend/React-Native%E9%94%99%E8%AF%AF%E9%87%87%E9%9B%86%E5%8E%9F%E7%90%86%20&%20%E5%AE%9E%E7%8E%B0.html"><span class="toc-text">React-Native错误采集原理 & 实现</span></a><a class="link" href="/frontend/React-native%20%E7%8E%AF%E5%A2%83.html"><span class="toc-text">React-native 环境</span></a><a class="link" href="/frontend/React-%E6%96%B0%E7%9A%84%E6%9E%B6%E6%9E%84.html"><span class="toc-text">React-新的架构</span></a><a class="link active" href="/frontend/React-%E6%97%A7%E7%9A%84%E6%9E%B6%E6%9E%84.html"><span class="toc-text">React-旧的架构</span><svg class="active-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.225 2.225 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.238 2.238 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333C5.636 2 7.758 2 12 2c4.243 0 6.364 0 7.682 1.332C21 4.665 21 6.81 21 11.098" opacity=".5"/><path fill="currentColor" d="M9 5.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5z"/></svg></a><a class="link" href="/frontend/React%E6%BA%90%E7%A0%81%E7%9A%84%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.html"><span class="toc-text">React源码的文件结构</span></a><a class="link" href="/frontend/%E5%AE%9E%E7%8E%B0JS%20compiler.html"><span class="toc-text">实现JS compiler</span></a><a class="link" href="/frontend/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D%20Layout.js.html"><span class="toc-text">移动端适配 Layout.js</span></a><a class="link" href="/frontend/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAbabel%E6%8F%92%E4%BB%B6.html"><span class="toc-text">编写一个babel插件</span></a><a class="link" href="/frontend/index.html"><span class="toc-text">Frontend Notes</span></a><a class="link" href="/frontend/%E8%BE%93%E5%85%A5URL%EF%BC%8C%E6%8C%89%E4%B8%8BEnter%E4%B9%8B%E5%90%8E%EF%BC%8C%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88%E3%80%82.html"><span class="toc-text">输入URL，按下Enter之后，发生了什么。</span></a><a class="link" href="/frontend/%E9%98%BF%E9%87%8C%E9%92%89%E9%92%89%E5%9B%A2%E9%98%9F%E5%89%8D%E7%AB%AF%E8%80%83%E8%AF%95%E5%8D%B7.html"><span class="toc-text">阿里钉钉团队前端考试卷</span></a></div></widget>
 </div>
 <footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://github.com/alazypig" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"/></a></div></footer>
 </div></aside><div class="l_main" id="main">
@@ -68,55 +70,62 @@ R...">
 <div class="article banner top">
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">Home</a>
-
-  <span class="sep"></span>
-  <a class="cap breadcrumb" href="/frontend/React-%E6%97%A7%E7%9A%84%E6%9E%B6%E6%9E%84.html"></a>
-  </div>
-<div class="flex-row" id="post-meta"><span class="text created">Posted on: <time datetime="2024-05-11T10:27:26.986Z">2024-05-11</time></span><span class="sep updated"></span><span class="text updated">Updated on: <time datetime="2024-05-11T10:27:26.985Z">2024-05-11</time></span></div></div></div>
+<span class="sep"></span><a class="cap breadcrumb" id="menu" href="/wiki">Wiki</a><span class="sep"></span><a class="cap breadcrumb" id="proj" href="/frontend/CLS-Cumulative%20Layout%20Shift.html">Frontend</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">Updated on: <time datetime="2024-05-13T10:48:22.304Z">2024-05-13</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>React-旧的架构</span></h1>
+        
+      </div>
+    </div>
     
   </div>
   </div><article class="md-text content"><p>在上一节中我们了解了<code>React</code>的理念，简单概括就是快速响应。</p>
-<p><code>React</code>从v15升级到v16后重构了整个架构。本节我们聊聊v15，看看他为什么不能满足快速响应的理念，以至于被重构。</p>
-<h2 id="React15架构"><a href="#React15架构" class="headerlink" title="React15架构"></a>React15架构</h2><p>React15架构可以分为两层：</p>
+<p><code>React</code>从 v15 升级到 v16 后重构了整个架构。本节我们聊聊 v15，看看他为什么不能满足快速响应的理念，以至于被重构。</p>
+<h2 id="React15-架构"><a href="#React15-架构" class="headerlink" title="React15 架构"></a>React15 架构</h2><p>React15 架构可以分为两层：</p>
 <ul>
 <li>Reconciler（协调器）—— 负责找出变化的组件</li>
 <li>Renderer（渲染器）—— 负责将变化的组件渲染到页面上</li>
 </ul>
-<h3 id="Reconciler（协调器）"><a href="#Reconciler（协调器）" class="headerlink" title="Reconciler（协调器）"></a>Reconciler（协调器）</h3><p>我们知道，在<code>React</code>中可以通过<code>this.setState</code>、<code>this.forceUpdate</code>、<code>ReactDOM.render</code>等API触发更新。</p>
-<p>每当有更新发生时，Reconciler会做如下工作：</p>
+<h3 id="Reconciler（协调器）"><a href="#Reconciler（协调器）" class="headerlink" title="Reconciler（协调器）"></a>Reconciler（协调器）</h3><p>我们知道，在<code>React</code>中可以通过<code>this.setState</code>、<code>this.forceUpdate</code>、<code>ReactDOM.render</code>等 API 触发更新。</p>
+<p>每当有更新发生时，Reconciler 会做如下工作：</p>
 <ul>
-<li>调用函数组件、或class组件的<code>render</code>方法，将返回的JSX转化为虚拟DOM</li>
-<li>将虚拟DOM和上次更新时的虚拟DOM对比</li>
-<li>通过对比找出本次更新中变化的虚拟DOM</li>
-<li>通知Renderer将变化的虚拟DOM渲染到页面上</li>
+<li>调用函数组件、或 class 组件的<code>render</code>方法，将返回的 JSX 转化为虚拟 DOM</li>
+<li>将虚拟 DOM 和上次更新时的虚拟 DOM 对比</li>
+<li>通过对比找出本次更新中变化的虚拟 DOM</li>
+<li>通知 Renderer 将变化的虚拟 DOM 渲染到页面上</li>
 </ul>
 <blockquote>
-<p>你可以在<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/codebase-overview.html#reconcilers">这里 (opens new window)</a>看到<code>React</code>官方对Reconciler的解释</p>
+<p>你可以在<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/codebase-overview.html#reconcilers">这里  (opens new window)</a>看到<code>React</code>官方对 Reconciler 的解释</p>
 </blockquote>
-<h3 id="Renderer（渲染器）"><a href="#Renderer（渲染器）" class="headerlink" title="Renderer（渲染器）"></a>Renderer（渲染器）</h3><p>由于<code>React</code>支持跨平台，所以不同平台有不同的Renderer。我们前端最熟悉的是负责在浏览器环境渲染的Renderer —— <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/react-dom">ReactDOM (opens new window)</a>。</p>
+<h3 id="Renderer（渲染器）"><a href="#Renderer（渲染器）" class="headerlink" title="Renderer（渲染器）"></a>Renderer（渲染器）</h3><p>由于<code>React</code>支持跨平台，所以不同平台有不同的 Renderer。我们前端最熟悉的是负责在浏览器环境渲染的 Renderer —— <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/react-dom">ReactDOM (opens new window)</a>。</p>
 <p>除此之外，还有：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/react-native">ReactNative (opens new window)</a>渲染器，渲染App原生组件</li>
-<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/react-test-Renderer">ReactTest (opens new window)</a>渲染器，渲染出纯Js对象用于测试</li>
-<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/react-art">ReactArt (opens new window)</a>渲染器，渲染到Canvas, SVG 或 VML (IE8)</li>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/react-native">ReactNative (opens new window)</a>渲染器，渲染 App 原生组件</li>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/react-test-Renderer">ReactTest (opens new window)</a>渲染器，渲染出纯 Js 对象用于测试</li>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/react-art">ReactArt (opens new window)</a>渲染器，渲染到 Canvas, SVG 或 VML (IE8)</li>
 </ul>
-<p>在每次更新发生时，Renderer接到Reconciler通知，将变化的组件渲染在当前宿主环境。</p>
+<p>在每次更新发生时，Renderer 接到 Reconciler 通知，将变化的组件渲染在当前宿主环境。</p>
 <blockquote>
-<p>你可以在<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/codebase-overview.html#renderers">这里 (opens new window)</a>看到<code>React</code>官方对Renderer的解释</p>
+<p>你可以在<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/codebase-overview.html#renderers">这里  (opens new window)</a>看到<code>React</code>官方对 Renderer 的解释</p>
 </blockquote>
-<h2 id="React15架构的缺点"><a href="#React15架构的缺点" class="headerlink" title="React15架构的缺点"></a>React15架构的缺点</h2><p>在Reconciler中，<code>mount</code>的组件会调用<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/15-stable/src/renderers/dom/shared/ReactDOMComponent.js#L498">mountComponent (opens new window)</a>，<code>update</code>的组件会调用<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/15-stable/src/renderers/dom/shared/ReactDOMComponent.js#L877">updateComponent (opens new window)</a>。这两个方法都会递归更新子组件。</p>
-<h3 id="递归更新的缺点"><a href="#递归更新的缺点" class="headerlink" title="递归更新的缺点"></a>递归更新的缺点</h3><p>由于递归执行，所以更新一旦开始，中途就无法中断。当层级很深时，递归更新时间超过了16ms，用户交互就会卡顿。</p>
-<p>在上一节中，我们已经提出了解决办法——用可中断的异步更新代替同步的更新。那么React15的架构支持异步更新么？让我们看一个例子：</p>
+<h2 id="React15-架构的缺点"><a href="#React15-架构的缺点" class="headerlink" title="React15 架构的缺点"></a>React15 架构的缺点</h2><p>在 Reconciler 中，<code>mount</code>的组件会调用<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/15-stable/src/renderers/dom/shared/ReactDOMComponent.js#L498">mountComponent (opens new window)</a>，<code>update</code>的组件会调用<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/15-stable/src/renderers/dom/shared/ReactDOMComponent.js#L877">updateComponent (opens new window)</a>。这两个方法都会递归更新子组件。</p>
+<h3 id="递归更新的缺点"><a href="#递归更新的缺点" class="headerlink" title="递归更新的缺点"></a>递归更新的缺点</h3><p>由于递归执行，所以更新一旦开始，中途就无法中断。当层级很深时，递归更新时间超过了 16ms，用户交互就会卡顿。</p>
+<p>在上一节中，我们已经提出了解决办法——用可中断的异步更新代替同步的更新。那么 React15 的架构支持异步更新么？让我们看一个例子：</p>
 <p>我用红色标注了更新的步骤。</p>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/%E7%AC%94%E8%AE%B0/frontend/images/5.png" alt="更新流程"></p>
-<p>我们可以看到，Reconciler和Renderer是交替工作的，当第一个<code>li</code>在页面上已经变化后，第二个<code>li</code>再进入Reconciler。</p>
-<p>由于整个过程都是同步的，所以在用户看来所有DOM是同时更新的。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/frontend/5.png" alt="更新流程"></p>
+<p>我们可以看到，Reconciler 和 Renderer 是交替工作的，当第一个<code>li</code>在页面上已经变化后，第二个<code>li</code>再进入 Reconciler。</p>
+<p>由于整个过程都是同步的，所以在用户看来所有 DOM 是同时更新的。</p>
 <p>接下来，让我们模拟一下，如果中途中断更新会怎么样？</p>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/%E7%AC%94%E8%AE%B0/frontend/images/6.png" alt="中断更新流程"></p>
-<p>当第一个<code>li</code>完成更新时中断更新，即步骤3完成后中断更新，此时后面的步骤都还未执行。</p>
-<p>用户本来期望<code>123</code>变为<code>246</code>。实际却看见更新不完全的DOM！（即<code>223</code>）</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/frontend/6.png" alt="中断更新流程"></p>
+<p>当第一个<code>li</code>完成更新时中断更新，即步骤 3 完成后中断更新，此时后面的步骤都还未执行。</p>
+<p>用户本来期望<code>123</code>变为<code>246</code>。实际却看见更新不完全的 DOM！（即<code>223</code>）</p>
 <p>基于这个原因，<code>React</code>决定重写整个架构。</p>
 </article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">Prev</div><a href="/frontend/React-%E6%96%B0%E7%9A%84%E6%9E%B6%E6%9E%84.html">React-新的架构</a></div><div class="item" id="next"><div class="note">Next</div><a href="/frontend/React%E6%BA%90%E7%A0%81%E7%9A%84%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.html">React源码的文件结构</a></div></section></div>
+
 
 
 
@@ -125,7 +134,9 @@ R...">
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
 <div class="widgets">
 
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">On This Page</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#React15%E6%9E%B6%E6%9E%84"><span class="toc-text">React15架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Reconciler%EF%BC%88%E5%8D%8F%E8%B0%83%E5%99%A8%EF%BC%89"><span class="toc-text">Reconciler（协调器）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Renderer%EF%BC%88%E6%B8%B2%E6%9F%93%E5%99%A8%EF%BC%89"><span class="toc-text">Renderer（渲染器）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#React15%E6%9E%B6%E6%9E%84%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-text">React15架构的缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E6%9B%B4%E6%96%B0%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-text">递归更新的缺点</span></a></li></ol></li></ol></div><div class="widget-footer">
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">On This Page</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#React15-%E6%9E%B6%E6%9E%84"><span class="toc-text">React15 架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Reconciler%EF%BC%88%E5%8D%8F%E8%B0%83%E5%99%A8%EF%BC%89"><span class="toc-text">Reconciler（协调器）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Renderer%EF%BC%88%E6%B8%B2%E6%9F%93%E5%99%A8%EF%BC%89"><span class="toc-text">Renderer（渲染器）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#React15-%E6%9E%B6%E6%9E%84%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-text">React15 架构的缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E6%9B%B4%E6%96%B0%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-text">递归更新的缺点</span></a></li></ol></li></ol></div><div class="widget-footer">
 
 <a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>Scroll to Top</span></a><a class="buttom" onclick="util.scrollComment()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M10.46 1.25h3.08c1.603 0 2.86 0 3.864.095c1.023.098 1.861.3 2.6.752a5.75 5.75 0 0 1 1.899 1.899c.452.738.654 1.577.752 2.6c.095 1.004.095 2.261.095 3.865v1.067c0 1.141 0 2.036-.05 2.759c-.05.735-.153 1.347-.388 1.913a5.75 5.75 0 0 1-3.112 3.112c-.805.334-1.721.408-2.977.43a10.81 10.81 0 0 0-.929.036c-.198.022-.275.054-.32.08c-.047.028-.112.078-.224.232c-.121.166-.258.396-.476.764l-.542.916c-.773 1.307-2.69 1.307-3.464 0l-.542-.916a10.605 10.605 0 0 0-.476-.764c-.112-.154-.177-.204-.224-.232c-.045-.026-.122-.058-.32-.08c-.212-.023-.49-.03-.93-.037c-1.255-.021-2.171-.095-2.976-.429A5.75 5.75 0 0 1 1.688 16.2c-.235-.566-.338-1.178-.389-1.913c-.049-.723-.049-1.618-.049-2.76v-1.066c0-1.604 0-2.86.095-3.865c.098-1.023.3-1.862.752-2.6a5.75 5.75 0 0 1 1.899-1.899c.738-.452 1.577-.654 2.6-.752C7.6 1.25 8.857 1.25 10.461 1.25M6.739 2.839c-.914.087-1.495.253-1.959.537A4.25 4.25 0 0 0 3.376 4.78c-.284.464-.45 1.045-.537 1.96c-.088.924-.089 2.11-.089 3.761v1c0 1.175 0 2.019.046 2.685c.045.659.131 1.089.278 1.441a4.25 4.25 0 0 0 2.3 2.3c.515.214 1.173.294 2.429.316h.031c.398.007.747.013 1.037.045c.311.035.616.104.909.274c.29.17.5.395.682.645c.169.232.342.525.538.856l.559.944a.52.52 0 0 0 .882 0l.559-.944c.196-.331.37-.624.538-.856c.182-.25.392-.476.682-.645c.293-.17.598-.24.909-.274c.29-.032.639-.038 1.037-.045h.032c1.255-.022 1.913-.102 2.428-.316a4.25 4.25 0 0 0 2.3-2.3c.147-.352.233-.782.278-1.441c.046-.666.046-1.51.046-2.685v-1c0-1.651 0-2.837-.089-3.762c-.087-.914-.253-1.495-.537-1.959a4.25 4.25 0 0 0-1.403-1.403c-.464-.284-1.045-.45-1.96-.537c-.924-.088-2.11-.089-3.761-.089h-3c-1.651 0-2.837 0-3.762.089" clip-rule="evenodd"/><path fill="currentColor" d="M9 11a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><span>Join Discussion</span></a></div></widget>
 </div></aside><div class='float-panel blur'>
