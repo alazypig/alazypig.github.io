@@ -1,0 +1,541 @@
+
+<!DOCTYPE html><html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.28.1" theme-name="Stellar" theme-version="1.28.1">
+  
+  <meta name="generator" content="Hexo 7.2.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f9fafb">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  
+  <title>Frontend: Fiber架构的心智模型 - Live Note</title>
+
+  
+  <meta name="description" content="React 核心团队成员Sebastian Markbåge (opens new window)（React Hooks的发明者）曾说：我们在React中做的就是践行代数效应（Algebraic Effects）。
+那么，代数效应是什么呢？他和React有什么关系呢。
+什么是代数效应代数效应...">
+  
+  <meta name="keywords" content="Blog, play, Technology, BitCoin, IDCard, Frontend, React">
+
+  <!-- feed -->
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.28.1">
+
+  
+    <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/22055633?v=4">
+  
+
+  
+
+  
+</head>
+<body>
+
+
+
+<div class="l_body s:aa content story" id="start" layout="page" text-indent><aside class="l_left"><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><div class="icon"><img no-lazy class="icon" src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2779789.png" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></div><a class="title" href="/frontend/CLS-Cumulative%20Layout%20Shift.html"><div class="main" ff="title">Frontend</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="Search in Frontend"></form><div id="search-result"></div><div class="search-no-result">No Results!</div></div>
+
+
+<nav class="menu dis-select"><a class="nav-item" title="posts" href="/" style="color:#7469B6"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item active" title="Notes" href="/wiki/" style="color:#AD88C6"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M14.25 4.48v3.057c0 .111 0 .27.02.406a.936.936 0 0 0 .445.683a.96.96 0 0 0 .783.072c.13-.04.272-.108.378-.159L17 8.005l1.124.534c.106.05.248.119.378.16a.958.958 0 0 0 .783-.073a.936.936 0 0 0 .444-.683c.021-.136.021-.295.021-.406V3.031c.113-.005.224-.01.332-.013C21.154 2.98 22 3.86 22 4.933v11.21c0 1.112-.906 2.01-2.015 2.08c-.97.06-2.108.179-2.985.41c-1.082.286-1.99 1.068-3.373 1.436c-.626.167-1.324.257-1.627.323V5.174c.32-.079 1.382-.203 1.674-.371c.184-.107.377-.216.576-.323m5.478 8.338a.75.75 0 0 1-.546.91l-4 1a.75.75 0 0 1-.364-1.456l4-1a.75.75 0 0 1 .91.546" clip-rule="evenodd"/><path fill="currentColor" d="M18.25 3.151c-.62.073-1.23.18-1.75.336a8.2 8.2 0 0 0-.75.27v3.182l.75-.356l.008-.005a1.13 1.13 0 0 1 .492-.13c.047 0 .094.004.138.01c.175.029.315.1.354.12l.009.005l.749.356V3.647z"/><path fill="currentColor" d="M12 5.214c-.334-.064-1.057-.161-1.718-.339C8.938 4.515 8.05 3.765 7 3.487c-.887-.234-2.041-.352-3.018-.412C2.886 3.007 2 3.9 2 4.998v11.146c0 1.11.906 2.01 2.015 2.079c.97.06 2.108.179 2.985.41c.486.129 1.216.431 1.873.726c1.005.451 2.052.797 3.127 1.034z" opacity=".5"/><path fill="currentColor" d="M4.273 12.818a.75.75 0 0 1 .91-.545l4 1a.75.75 0 1 1-.365 1.455l-4-1a.75.75 0 0 1-.545-.91m.909-4.545a.75.75 0 1 0-.364 1.455l4 1a.75.75 0 0 0 .364-1.455z"/></svg></a></nav>
+</div>
+<div class="widgets">
+
+<widget class="widget-wrapper post-list"><div class="widget-body fs14"><a class="link" href="/frontend/CLS-Cumulative%20Layout%20Shift.html#start"><span class="toc-text">CLS-Cumulative Layout Shift</span></a><a class="link" href="/frontend/Fiber%E6%9E%B6%E6%9E%84%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.html"><span class="toc-text">Fiber架构的实现原理</span></a><a class="link" href="/frontend/Fiber%E6%9E%B6%E6%9E%84%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.html"><span class="toc-text">Fiber架构的工作原理</span></a><a class="link active" href="/frontend/Fiber%E6%9E%B6%E6%9E%84%E7%9A%84%E5%BF%83%E6%99%BA%E6%A8%A1%E5%9E%8B.html"><span class="toc-text">Fiber架构的心智模型</span><svg class="active-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.225 2.225 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.238 2.238 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333C5.636 2 7.758 2 12 2c4.243 0 6.364 0 7.682 1.332C21 4.665 21 6.81 21 11.098" opacity=".5"/><path fill="currentColor" d="M9 5.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5z"/></svg></a><a class="link" href="/frontend/React%20Native%20Bug%20%E5%AE%9A%E4%BD%8D.html"><span class="toc-text">React Native Bug 定位</span></a><a class="link" href="/frontend/Event%20Loop.html"><span class="toc-text">Event Loop</span></a><a class="link" href="/frontend/React-%E6%96%B0%E7%9A%84%E6%9E%B6%E6%9E%84.html"><span class="toc-text">React-新的架构</span></a><a class="link" href="/frontend/React-Native%E9%94%99%E8%AF%AF%E9%87%87%E9%9B%86%E5%8E%9F%E7%90%86%20&%20%E5%AE%9E%E7%8E%B0.html"><span class="toc-text">React-Native错误采集原理 & 实现</span></a><a class="link" href="/frontend/React-%E6%97%A7%E7%9A%84%E6%9E%B6%E6%9E%84.html"><span class="toc-text">React-旧的架构</span></a><a class="link" href="/frontend/React-native%20%E7%8E%AF%E5%A2%83.html"><span class="toc-text">React-native 环境</span></a><a class="link" href="/frontend/index.html"><span class="toc-text">Frontend Notes</span></a><a class="link" href="/frontend/%E5%AE%9E%E7%8E%B0JS%20compiler.html"><span class="toc-text">实现JS compiler</span></a><a class="link" href="/frontend/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D%20Layout.js.html"><span class="toc-text">移动端适配 Layout.js</span></a><a class="link" href="/frontend/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAbabel%E6%8F%92%E4%BB%B6.html"><span class="toc-text">编写一个babel插件</span></a><a class="link" href="/frontend/%E8%BE%93%E5%85%A5URL%EF%BC%8C%E6%8C%89%E4%B8%8BEnter%E4%B9%8B%E5%90%8E%EF%BC%8C%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88%E3%80%82.html"><span class="toc-text">输入URL，按下Enter之后，发生了什么。</span></a><a class="link" href="/frontend/React%E6%BA%90%E7%A0%81%E7%9A%84%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.html"><span class="toc-text">React源码的文件结构</span></a><a class="link" href="/frontend/%E9%98%BF%E9%87%8C%E9%92%89%E9%92%89%E5%9B%A2%E9%98%9F%E5%89%8D%E7%AB%AF%E8%80%83%E8%AF%95%E5%8D%B7.html"><span class="toc-text">阿里钉钉团队前端考试卷</span></a></div></widget>
+</div>
+<footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://github.com/alazypig" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"/></a></div></footer>
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">Home</a>
+<span class="sep"></span><a class="cap breadcrumb" id="menu" href="/wiki">Wiki</a><span class="sep"></span><a class="cap breadcrumb" id="proj" href="/frontend/CLS-Cumulative%20Layout%20Shift.html">Frontend</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">Updated on: <time datetime="2024-05-13T10:44:34.112Z">2024-05-13</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>Fiber架构的心智模型</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><p>React 核心团队成员<a target="_blank" rel="noopener" href="https://github.com/sebmarkbage/">Sebastian Markbåge (opens new window)</a>（<code>React Hooks</code>的发明者）曾说：我们在<code>React</code>中做的就是践行<code>代数效应</code>（Algebraic Effects）。</p>
+<p>那么，<code>代数效应</code>是什么呢？他和<code>React</code>有什么关系呢。</p>
+<h2 id="什么是代数效应"><a href="#什么是代数效应" class="headerlink" title="什么是代数效应"></a>什么是代数效应</h2><p><code>代数效应</code>是<code>函数式编程</code>中的一个概念，用于将<code>副作用</code>从<code>函数</code>调用中分离。</p>
+<p>接下来我们用<code>虚构的语法</code>来解释。</p>
+<p>假设我们有一个函数<code>getTotalPicNum</code>，传入 2 个<code>用户名称</code>后，分别查找该用户在平台保存的图片数量，最后将图片数量相加后返回。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getTotalPicNum</span>(<span class="params">user1, user2</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> picNum1 = <span class="title function_">getPicNum</span>(user1)</span><br><span class="line">  <span class="keyword">const</span> picNum2 = <span class="title function_">getPicNum</span>(user2)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> picNum1 + picNum2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>getTotalPicNum</code>中，我们不关注<code>getPicNum</code>的实现，只在乎“获取到两个数字后将他们相加的结果返回”这一过程。</p>
+<p>接下来我们来实现<code>getPicNum</code>。</p>
+<p>“用户在平台保存的图片数量”是保存在服务器中的。所以，为了获取该值，我们需要发起异步请求。</p>
+<p>为了尽量保持<code>getTotalPicNum</code>的调用方式不变，我们首先想到了使用<code>async await</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">getTotalPicNum</span>(<span class="params">user1, user2</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> picNum1 = <span class="keyword">await</span> <span class="title function_">getPicNum</span>(user1)</span><br><span class="line">  <span class="keyword">const</span> picNum2 = <span class="keyword">await</span> <span class="title function_">getPicNum</span>(user2)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> picNum1 + picNum2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是，<code>async await</code>是有<code>传染性</code>的 —— 当一个函数变为<code>async</code>后，这意味着调用他的函数也需要是<code>async</code>，这破坏了<code>getTotalPicNum</code>的同步特性。</p>
+<p>有没有什么办法能保持<code>getTotalPicNum</code>保持现有调用方式不变的情况下实现异步请求呢？</p>
+<p>没有。不过我们可以<code>虚构</code>一个。</p>
+<p>我们虚构一个类似<code>try...catch</code>的语法 —— <code>try...handle</code>与两个操作符<code>perform</code>、<code>resume</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getPicNum</span>(<span class="params">name</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> picNum = perform name;</span><br><span class="line">  <span class="keyword">return</span> picNum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="title function_">getTotalPicNum</span>(<span class="string">&#x27;kaSong&#x27;</span>, <span class="string">&#x27;xiaoMing&#x27;</span>);</span><br><span class="line">&#125; handle (who) &#123;</span><br><span class="line">  <span class="keyword">switch</span> (who) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;kaSong&#x27;</span>:</span><br><span class="line">      resume <span class="keyword">with</span> <span class="number">230</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;xiaoMing&#x27;</span>:</span><br><span class="line">      resume <span class="keyword">with</span> <span class="number">122</span>;</span><br><span class="line">    <span class="attr">default</span>:</span><br><span class="line">      resume <span class="keyword">with</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当执行到<code>getTotalPicNum</code>内部的<code>getPicNum</code>方法时，会执行<code>perform name</code>。</p>
+<p>此时函数调用栈会从<code>getPicNum</code>方法内跳出，被最近一个<code>try...handle</code>捕获。类似<code>throw Error</code>后被最近一个<code>try...catch</code>捕获。</p>
+<p>类似<code>throw Error</code>后<code>Error</code>会作为<code>catch</code>的参数，<code>perform name</code>后<code>name</code>会作为<code>handle</code>的参数。</p>
+<p>与<code>try...catch</code>最大的不同在于：当<code>Error</code>被<code>catch</code>捕获后，之前的调用栈就销毁了。而<code>handle</code>执行<code>resume</code>后会回到之前<code>perform</code>的调用栈。</p>
+<p>对于<code>case &#39;kaSong&#39;</code>，执行完<code>resume with 230;</code>后调用栈会回到<code>getPicNum</code>，此时<code>picNum === 230</code></p>
+<p>注意</p>
+<p>再次申明，<code>try...handle</code>的语法是虚构的，只是为了演示<code>代数效应</code>的思想。</p>
+<p>总结一下：<code>代数效应</code>能够将<code>副作用</code>（例子中为<code>请求图片数量</code>）从函数逻辑中分离，使函数关注点保持纯粹。</p>
+<p>并且，从例子中可以看出，<code>perform resume</code>不需要区分同步异步。</p>
+<h2 id="代数效应在-React-中的应用"><a href="#代数效应在-React-中的应用" class="headerlink" title="代数效应在 React 中的应用"></a>代数效应在 React 中的应用</h2><p>那么<code>代数效应</code>与<code>React</code>有什么关系呢？最明显的例子就是<code>Hooks</code>。</p>
+<p>对于类似<code>useState</code>、<code>useReducer</code>、<code>useRef</code>这样的<code>Hook</code>，我们不需要关注<code>FunctionComponent</code>的<code>state</code>在<code>Hook</code>中是如何保存的，<code>React</code>会为我们处理。</p>
+<p>我们只需要假设<code>useState</code>返回的是我们想要的<code>state</code>，并编写业务逻辑就行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [num, updateNum] = <span class="title function_">useState</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> updateNum((num) =&gt; num + 1)&#125;&gt;&#123;num&#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果这个例子还不够明显，可以看看官方的<a target="_blank" rel="noopener" href="https://codesandbox.io/s/frosty-hermann-bztrp?file=/src/index.js:152-160">Suspense Demo(opens new window)</a></p>
+<p>在<code>Demo</code>中<code>ProfileDetails</code>用于展示<code>用户名称</code>。而<code>用户名称</code>是<code>异步请求</code>的。</p>
+<p>但是<code>Demo</code>中完全是<code>同步</code>的写法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">ProfileDetails</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> user = resource.<span class="property">user</span>.<span class="title function_">read</span>()</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;user.name&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="代数效应与-Generator"><a href="#代数效应与-Generator" class="headerlink" title="代数效应与 Generator"></a>代数效应与 Generator</h2><p>从<code>React15</code>到<code>React16</code>，协调器（<code>Reconciler</code>）重构的一大目的是：将老的<code>同步更新</code>的架构变为<code>异步可中断更新</code>。</p>
+<p><code>异步可中断更新</code>可以理解为：<code>更新</code>在执行过程中可能会被打断（浏览器时间分片用尽或有更高优任务插队），当可以继续执行时恢复之前执行的中间状态。</p>
+<p>这就是<code>代数效应</code>中<code>try...handle</code>的作用。</p>
+<p>其实，浏览器原生就支持类似的实现，这就是<code>Generator</code>。</p>
+<p>但是<code>Generator</code>的一些缺陷使<code>React</code>团队放弃了他：</p>
+<ul>
+<li>类似<code>async</code>，<code>Generator</code>也是<code>传染性</code>的，使用了<code>Generator</code>则上下文的其他函数也需要作出改变。这样心智负担比较重。</li>
+<li><code>Generator</code>执行的<code>中间状态</code>是上下文关联的。</li>
+</ul>
+<p>考虑如下例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">doWork</span>(<span class="params">A, B, C</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> x = <span class="title function_">doExpensiveWorkA</span>(A)</span><br><span class="line">  <span class="keyword">yield</span></span><br><span class="line">  <span class="keyword">var</span> y = x + <span class="title function_">doExpensiveWorkB</span>(B)</span><br><span class="line">  <span class="keyword">yield</span></span><br><span class="line">  <span class="keyword">var</span> z = y + <span class="title function_">doExpensiveWorkC</span>(C)</span><br><span class="line">  <span class="keyword">return</span> z</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>每当浏览器有空闲时间都会依次执行其中一个<code>doExpensiveWork</code>，当时间用尽则会中断，当再次恢复时会从中断位置继续执行。</p>
+<p>只考虑“单一优先级任务的中断与继续”情况下<code>Generator</code>可以很好的实现<code>异步可中断更新</code>。</p>
+<p>但是当我们考虑“高优先级任务插队”的情况，如果此时已经完成<code>doExpensiveWorkA</code>与<code>doExpensiveWorkB</code>计算出<code>x</code>与<code>y</code>。</p>
+<p>此时<code>B</code>组件接收到一个<code>高优更新</code>，由于<code>Generator</code>执行的<code>中间状态</code>是上下文关联的，所以计算<code>y</code>时无法复用之前已经计算出的<code>x</code>，需要重新计算。</p>
+<p>如果通过<code>全局变量</code>保存之前执行的<code>中间状态</code>，又会引入新的复杂度。</p>
+<blockquote>
+<p>更详细的解释可以参考<a target="_blank" rel="noopener" href="https://github.com/facebook/react/issues/7942#issuecomment-254987818">这个 issue(opens new window)</a></p>
+</blockquote>
+<p>基于这些原因，<code>React</code>没有采用<code>Generator</code>实现<code>协调器</code>。</p>
+<h2 id="代数效应与-Fiber"><a href="#代数效应与-Fiber" class="headerlink" title="代数效应与 Fiber"></a>代数效应与 Fiber</h2><p><code>Fiber</code>并不是计算机术语中的新名词，他的中文翻译叫做<code>纤程</code>，与进程（Process）、线程（Thread）、协程（Coroutine）同为程序执行过程。</p>
+<p>在很多文章中将<code>纤程</code>理解为<code>协程</code>的一种实现。在<code>JS</code>中，<code>协程</code>的实现便是<code>Generator</code>。</p>
+<p>所以，我们可以将<code>纤程</code>(Fiber)、<code>协程</code>(Generator)理解为<code>代数效应</code>思想在<code>JS</code>中的体现。</p>
+<p><code>React Fiber</code>可以理解为：</p>
+<p><code>React</code>内部实现的一套状态更新机制。支持任务不同<code>优先级</code>，可中断与恢复，并且恢复后可以复用之前的<code>中间状态</code>。</p>
+<p>其中每个任务更新单元为<code>React Element</code>对应的<code>Fiber节点</code>。</p>
+<h2 id="其他文章"><a href="#其他文章" class="headerlink" title="其他文章"></a>其他文章</h2><ul>
+<li>[[Fiber架构的工作原理]]</li>
+<li>[[Fiber架构的实现原理]]</li>
+</ul>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">Prev</div><a href="/frontend/Fiber%E6%9E%B6%E6%9E%84%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.html">Fiber架构的工作原理</a></div><div class="item" id="next"><div class="note">Next</div><a href="/frontend/React%20Native%20Bug%20%E5%AE%9A%E4%BD%8D.html">React Native Bug 定位</a></div></section></div>
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>Since 2016 Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><br><strong>This work is licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>. Please indicate the source for reprinting.</strong></p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">On This Page</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BB%A3%E6%95%B0%E6%95%88%E5%BA%94"><span class="toc-text">什么是代数效应</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E6%95%B0%E6%95%88%E5%BA%94%E5%9C%A8-React-%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-text">代数效应在 React 中的应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E6%95%B0%E6%95%88%E5%BA%94%E4%B8%8E-Generator"><span class="toc-text">代数效应与 Generator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E6%95%B0%E6%95%88%E5%BA%94%E4%B8%8E-Fiber"><span class="toc-text">代数效应与 Fiber</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%96%87%E7%AB%A0"><span class="toc-text">其他文章</span></a></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>Scroll to Top</span></a><a class="buttom" onclick="util.scrollComment()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M10.46 1.25h3.08c1.603 0 2.86 0 3.864.095c1.023.098 1.861.3 2.6.752a5.75 5.75 0 0 1 1.899 1.899c.452.738.654 1.577.752 2.6c.095 1.004.095 2.261.095 3.865v1.067c0 1.141 0 2.036-.05 2.759c-.05.735-.153 1.347-.388 1.913a5.75 5.75 0 0 1-3.112 3.112c-.805.334-1.721.408-2.977.43a10.81 10.81 0 0 0-.929.036c-.198.022-.275.054-.32.08c-.047.028-.112.078-.224.232c-.121.166-.258.396-.476.764l-.542.916c-.773 1.307-2.69 1.307-3.464 0l-.542-.916a10.605 10.605 0 0 0-.476-.764c-.112-.154-.177-.204-.224-.232c-.045-.026-.122-.058-.32-.08c-.212-.023-.49-.03-.93-.037c-1.255-.021-2.171-.095-2.976-.429A5.75 5.75 0 0 1 1.688 16.2c-.235-.566-.338-1.178-.389-1.913c-.049-.723-.049-1.618-.049-2.76v-1.066c0-1.604 0-2.86.095-3.865c.098-1.023.3-1.862.752-2.6a5.75 5.75 0 0 1 1.899-1.899c.738-.452 1.577-.654 2.6-.752C7.6 1.25 8.857 1.25 10.461 1.25M6.739 2.839c-.914.087-1.495.253-1.959.537A4.25 4.25 0 0 0 3.376 4.78c-.284.464-.45 1.045-.537 1.96c-.088.924-.089 2.11-.089 3.761v1c0 1.175 0 2.019.046 2.685c.045.659.131 1.089.278 1.441a4.25 4.25 0 0 0 2.3 2.3c.515.214 1.173.294 2.429.316h.031c.398.007.747.013 1.037.045c.311.035.616.104.909.274c.29.17.5.395.682.645c.169.232.342.525.538.856l.559.944a.52.52 0 0 0 .882 0l.559-.944c.196-.331.37-.624.538-.856c.182-.25.392-.476.682-.645c.293-.17.598-.24.909-.274c.29-.032.639-.038 1.037-.045h.032c1.255-.022 1.913-.102 2.428-.316a4.25 4.25 0 0 0 2.3-2.3c.147-.352.233-.782.278-1.441c.046-.666.046-1.51.046-2.685v-1c0-1.651 0-2.837-.089-3.762c-.087-.914-.253-1.495-.537-1.959a4.25 4.25 0 0 0-1.403-1.403c-.464-.284-1.045-.45-1.96-.537c-.924-.088-2.11-.089-3.761-.089h-3c-1.651 0-2.837 0-3.762.089" clip-rule="evenodd"/><path fill="currentColor" d="M9 11a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><span>Join Discussion</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+<script type="text/javascript">
+  const ctx = {
+    date_suffix: {
+      just: `Just`,
+      min: `minutes ago`,
+      hour: `hours ago`,
+      day: `days ago`,
+    },
+    root : `/`,
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+  };
+  const deps = {
+    jquery: `https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js`,
+    marked: `https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+    
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      let retryTimes = 3;
+      utils.onLoading(el);
+      function req() {
+        return new Promise((resolve, reject) => {
+          let status = 0; // 0 等待 1 完成 2 超时
+          let timer = setTimeout(() => {
+            if (status === 0) {
+              status = 2;
+              timer = null;
+              reject('请求超时');
+              if (retryTimes == 0) {
+                onFailure();
+              }
+            }
+          }, 5000);
+          fetch(url).then(function(response) {
+            if (status !== 2) {
+              clearTimeout(timer);
+              resolve(response);
+              timer = null;
+              status = 1;
+            }
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          }).then(function(data) {
+            retryTimes = 0;
+            utils.onLoadSuccess(el);
+            callback(data);
+          }).catch(function(error) {
+            if (retryTimes > 0) {
+              retryTimes -= 1;
+              setTimeout(() => {
+                req();
+              }, 5000);
+            } else {
+              utils.onLoadFailure(el);
+              onFailure();
+            }
+          });
+        });
+      }
+      req();
+    },
+  };
+</script>
+
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.28.1" async></script>
+
+<!-- optional -->
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"></script><script defer src="https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+</script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css`,
+    js: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js`
+  };
+  var selector = '[data-fancybox]:not(.error)';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const els = document.getElementsByClassName('ds-memos');
+    if (els != undefined && els.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || slide.triggerEl.dataset.caption || null
+        }
+      });
+    })
+  }
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          rewind: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>
