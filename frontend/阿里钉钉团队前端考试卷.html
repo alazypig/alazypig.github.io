@@ -1,85 +1,249 @@
-
-<!DOCTYPE html><html lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.28.1" theme-name="Stellar" theme-version="1.28.1">
-  
-  <meta name="generator" content="Hexo 7.2.0">
-  <meta http-equiv='x-dns-prefetch-control' content='on' />
-  
-  <meta name="renderer" content="webkit">
-  <meta name="force-rendering" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <meta name="HandheldFriendly" content="True" >
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f9fafb">
-  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
-  
-  <title>Frontend: 阿里钉钉团队前端考试卷 - Live Note</title>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-  
-  <meta name="description" content="3.什么是指令和指令集？答：指令一般是指机器指令，是计算机可完成一个独立计算逻辑所要执行的的命令；一台常规的计算机的所有指令的集合，就是该计算机的指令集。
-4.JavaScript 是如何运行的？解释型语言和编译型语言的差异是什么？答：①JS 代码-&gt;解析成 AST (期间伴随词法分析、...">
-  
-  <meta name="keywords" content="Blog, play, Technology, BitCoin, IDCard, Frontend, React">
+<link rel="stylesheet" href="/css/main.css">
 
-  <!-- feed -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"alazypig.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="3.什么是指令和指令集？答：指令一般是指机器指令，是计算机可完成一个独立计算逻辑所要执行的的命令；一台常规的计算机的所有指令的集合，就是该计算机的指令集。 4.JavaScript 是如何运行的？解释型语言和编译型语言的差异是什么？答：①JS 代码-&gt;解析成 AST (期间伴随词法分析、语法分析)-&gt;生成字节码（V8）-&gt;生成机器码（编译器） ② 很多资料会说，JavaScrip">
+<meta property="og:type" content="website">
+<meta property="og:title" content="阿里钉钉团队前端考试卷">
+<meta property="og:url" content="http://alazypig.github.io/frontend/%E9%98%BF%E9%87%8C%E9%92%89%E9%92%89%E5%9B%A2%E9%98%9F%E5%89%8D%E7%AB%AF%E8%80%83%E8%AF%95%E5%8D%B7.html">
+<meta property="og:site_name" content="Live Note">
+<meta property="og:description" content="3.什么是指令和指令集？答：指令一般是指机器指令，是计算机可完成一个独立计算逻辑所要执行的的命令；一台常规的计算机的所有指令的集合，就是该计算机的指令集。 4.JavaScript 是如何运行的？解释型语言和编译型语言的差异是什么？答：①JS 代码-&gt;解析成 AST (期间伴随词法分析、语法分析)-&gt;生成字节码（V8）-&gt;生成机器码（编译器） ② 很多资料会说，JavaScrip">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-03-31T03:46:39.000Z">
+<meta property="article:modified_time" content="2024-05-21T06:58:23.724Z">
+<meta property="article:author" content="Edward">
+<meta property="article:tag" content="Blog, play, Technology, BitCoin, IDCard, Frontend, React">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://alazypig.github.io/frontend/%E9%98%BF%E9%87%8C%E9%92%89%E9%92%89%E5%9B%A2%E9%98%9F%E5%89%8D%E7%AB%AF%E8%80%83%E8%AF%95%E5%8D%B7">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'en'
+  };
+</script>
+
+  <title>阿里钉钉团队前端考试卷 | Live Note
+</title>
   
 
-  <link rel="stylesheet" href="/css/main.css?v=1.28.1">
 
-  
-    <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/22055633?v=4">
-  
 
-  
 
-  
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
 </head>
-<body>
 
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
 
-
-<div class="l_body s:aa content story" id="start" layout="page" text-indent><aside class="l_left"><div class="leftbar-container">
-
-
-<header class="header"><div class="logo-wrap"><div class="icon"><img no-lazy class="icon" src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2779789.png" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></div><a class="title" href="/frontend/CLS-Cumulative%20Layout%20Shift.html"><div class="main" ff="title">Frontend</div></a></div></header>
-
-<div class="nav-area">
-<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="Search in Frontend"></form><div id="search-result"></div><div class="search-no-result">No Results!</div></div>
-
-
-<nav class="menu dis-select"><a class="nav-item" title="posts" href="/" style="color:#7469B6"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item active" title="Notes" href="/wiki/" style="color:#AD88C6"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M14.25 4.48v3.057c0 .111 0 .27.02.406a.936.936 0 0 0 .445.683a.96.96 0 0 0 .783.072c.13-.04.272-.108.378-.159L17 8.005l1.124.534c.106.05.248.119.378.16a.958.958 0 0 0 .783-.073a.936.936 0 0 0 .444-.683c.021-.136.021-.295.021-.406V3.031c.113-.005.224-.01.332-.013C21.154 2.98 22 3.86 22 4.933v11.21c0 1.112-.906 2.01-2.015 2.08c-.97.06-2.108.179-2.985.41c-1.082.286-1.99 1.068-3.373 1.436c-.626.167-1.324.257-1.627.323V5.174c.32-.079 1.382-.203 1.674-.371c.184-.107.377-.216.576-.323m5.478 8.338a.75.75 0 0 1-.546.91l-4 1a.75.75 0 0 1-.364-1.456l4-1a.75.75 0 0 1 .91.546" clip-rule="evenodd"/><path fill="currentColor" d="M18.25 3.151c-.62.073-1.23.18-1.75.336a8.2 8.2 0 0 0-.75.27v3.182l.75-.356l.008-.005a1.13 1.13 0 0 1 .492-.13c.047 0 .094.004.138.01c.175.029.315.1.354.12l.009.005l.749.356V3.647z"/><path fill="currentColor" d="M12 5.214c-.334-.064-1.057-.161-1.718-.339C8.938 4.515 8.05 3.765 7 3.487c-.887-.234-2.041-.352-3.018-.412C2.886 3.007 2 3.9 2 4.998v11.146c0 1.11.906 2.01 2.015 2.079c.97.06 2.108.179 2.985.41c.486.129 1.216.431 1.873.726c1.005.451 2.052.797 3.127 1.034z" opacity=".5"/><path fill="currentColor" d="M4.273 12.818a.75.75 0 0 1 .91-.545l4 1a.75.75 0 1 1-.365 1.455l-4-1a.75.75 0 0 1-.545-.91m.909-4.545a.75.75 0 1 0-.364 1.455l4 1a.75.75 0 0 0 .364-1.455z"/></svg></a></nav>
-</div>
-<div class="widgets">
-
-<widget class="widget-wrapper post-list"><div class="widget-body fs14"><a class="link" href="/frontend/CLS-Cumulative%20Layout%20Shift.html#start"><span class="toc-text">CLS-Cumulative Layout Shift</span></a><a class="link" href="/frontend/Fiber%E6%9E%B6%E6%9E%84%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.html"><span class="toc-text">Fiber架构的实现原理</span></a><a class="link" href="/frontend/Fiber%E6%9E%B6%E6%9E%84%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.html"><span class="toc-text">Fiber架构的工作原理</span></a><a class="link" href="/frontend/Fiber%E6%9E%B6%E6%9E%84%E7%9A%84%E5%BF%83%E6%99%BA%E6%A8%A1%E5%9E%8B.html"><span class="toc-text">Fiber架构的心智模型</span></a><a class="link" href="/frontend/React%20Native%20Bug%20%E5%AE%9A%E4%BD%8D.html"><span class="toc-text">React Native Bug 定位</span></a><a class="link" href="/frontend/Event%20Loop.html"><span class="toc-text">Event Loop</span></a><a class="link" href="/frontend/React-%E6%96%B0%E7%9A%84%E6%9E%B6%E6%9E%84.html"><span class="toc-text">React-新的架构</span></a><a class="link" href="/frontend/React-Native%E9%94%99%E8%AF%AF%E9%87%87%E9%9B%86%E5%8E%9F%E7%90%86%20&%20%E5%AE%9E%E7%8E%B0.html"><span class="toc-text">React-Native错误采集原理 & 实现</span></a><a class="link" href="/frontend/React-%E6%97%A7%E7%9A%84%E6%9E%B6%E6%9E%84.html"><span class="toc-text">React-旧的架构</span></a><a class="link" href="/frontend/React-native%20%E7%8E%AF%E5%A2%83.html"><span class="toc-text">React-native 环境</span></a><a class="link" href="/frontend/index.html"><span class="toc-text">Frontend Notes</span></a><a class="link" href="/frontend/%E5%AE%9E%E7%8E%B0JS%20compiler.html"><span class="toc-text">实现JS compiler</span></a><a class="link" href="/frontend/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D%20Layout.js.html"><span class="toc-text">移动端适配 Layout.js</span></a><a class="link" href="/frontend/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAbabel%E6%8F%92%E4%BB%B6.html"><span class="toc-text">编写一个babel插件</span></a><a class="link" href="/frontend/%E8%BE%93%E5%85%A5URL%EF%BC%8C%E6%8C%89%E4%B8%8BEnter%E4%B9%8B%E5%90%8E%EF%BC%8C%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88%E3%80%82.html"><span class="toc-text">输入URL，按下Enter之后，发生了什么。</span></a><a class="link" href="/frontend/React%E6%BA%90%E7%A0%81%E7%9A%84%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.html"><span class="toc-text">React源码的文件结构</span></a><a class="link active" href="/frontend/%E9%98%BF%E9%87%8C%E9%92%89%E9%92%89%E5%9B%A2%E9%98%9F%E5%89%8D%E7%AB%AF%E8%80%83%E8%AF%95%E5%8D%B7.html"><span class="toc-text">阿里钉钉团队前端考试卷</span><svg class="active-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.225 2.225 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.238 2.238 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333C5.636 2 7.758 2 12 2c4.243 0 6.364 0 7.682 1.332C21 4.665 21 6.81 21 11.098" opacity=".5"/><path fill="currentColor" d="M9 5.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5z"/></svg></a></div></widget>
-</div>
-<footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://github.com/alazypig" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"/></a></div></footer>
-</div></aside><div class="l_main" id="main">
-
-
-
-
-
-<div class="article banner top">
-  <div class="content">
-    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">Home</a>
-<span class="sep"></span><a class="cap breadcrumb" id="menu" href="/wiki">Wiki</a><span class="sep"></span><a class="cap breadcrumb" id="proj" href="/frontend/CLS-Cumulative%20Layout%20Shift.html">Frontend</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">Updated on: <time datetime="2024-05-13T10:41:51.208Z">2024-05-13</time></span></div></div></div>
-    
-    <div class="bottom only-title">
-      
-      <div class="text-area">
-        <h1 class="text title"><span>阿里钉钉团队前端考试卷</span></h1>
-        
-      </div>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-    
   </div>
-  </div><article class="md-text content"><h5 id="3-什么是指令和指令集？"><a href="#3-什么是指令和指令集？" class="headerlink" title="3.什么是指令和指令集？"></a>3.什么是指令和指令集？</h5><p>答：指令一般是指机器指令，是计算机可完成一个独立计算逻辑所要执行的的命令；一台常规的计算机的所有指令的集合，就是该计算机的指令集。</p>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Live Note</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Remain optimistic</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">41</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">27</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">174</span></a>
+
+  </li>
+        <li class="menu-item menu-item-algorithm">
+
+    <a href="/algorithm/" rel="section"><i class="fa fa-code fa-fw"></i>algorithm</a>
+
+  </li>
+        <li class="menu-item menu-item-battery">
+
+    <a href="/battery/" rel="section"><i class="fa fa-battery-full fa-fw"></i>battery</a>
+
+  </li>
+        <li class="menu-item menu-item-frontend">
+
+    <a href="/frontend/" rel="section"><i class="fa fa-laptop fa-fw"></i>frontend</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-sticky-note fa-fw"></i>notes</a>
+
+  </li>
+        <li class="menu-item menu-item-stm32">
+
+    <a href="/stm32/" rel="section"><i class="fa fa-microchip fa-fw"></i>stm32</a>
+
+  </li>
+        <li class="menu-item menu-item-ziwei">
+
+    <a href="/ziwei/" rel="section"><i class="fa fa-yin-yang fa-fw"></i>ziwei</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+      
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="en">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">阿里钉钉团队前端考试卷
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <h5 id="3-什么是指令和指令集？"><a href="#3-什么是指令和指令集？" class="headerlink" title="3.什么是指令和指令集？"></a>3.什么是指令和指令集？</h5><p>答：指令一般是指机器指令，是计算机可完成一个独立计算逻辑所要执行的的命令；一台常规的计算机的所有指令的集合，就是该计算机的指令集。</p>
 <h5 id="4-JavaScript-是如何运行的？解释型语言和编译型语言的差异是什么？"><a href="#4-JavaScript-是如何运行的？解释型语言和编译型语言的差异是什么？" class="headerlink" title="4.JavaScript 是如何运行的？解释型语言和编译型语言的差异是什么？"></a>4.JavaScript 是如何运行的？解释型语言和编译型语言的差异是什么？</h5><p>答：①JS 代码-&gt;解析成 AST (期间伴随词法分析、语法分析)-&gt;生成字节码（V8）-&gt;生成机器码（编译器）</p>
 <p>② 很多资料会说，JavaScript、Python、Ruby 都是”解释型语言”，是通过解释器来实现的。这么说其实很容易引起误解：语言一般只会定义其抽象语义，而不会强制性要求采用某种实现方式。</p>
 <p>例如说 C 一般被认为是“编译型语言”，但 C 的解释器也是存在的，例如 Ch。同样，C++也有解释器版本的实现，例如 Cint。</p>
@@ -1072,393 +1236,219 @@
 <li>系统：Mac、Windows、Linux 系统配置的实践</li>
 <li>后端：Redis 缓存、数据库、Graphql、SSR、模板引擎等了解和使用</li>
 </ul>
-</article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">Prev</div><a href="/frontend/React%E6%BA%90%E7%A0%81%E7%9A%84%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.html">React源码的文件结构</a></div><div class="item" id="next"></div></section></div>
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
 
 
+          </div>
+          
 
-
-<footer class="page-footer footnote"><hr><div class="text"><p>Since 2016 Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><br><strong>This work is licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>. Please indicate the source for reprinting.</strong></p>
-</div></footer>
-<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-<div class="widgets">
-
-
-
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">On This Page</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E4%BB%80%E4%B9%88%E6%98%AF%E6%8C%87%E4%BB%A4%E5%92%8C%E6%8C%87%E4%BB%A4%E9%9B%86%EF%BC%9F"><span class="toc-text">3.什么是指令和指令集？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-JavaScript-%E6%98%AF%E5%A6%82%E4%BD%95%E8%BF%90%E8%A1%8C%E7%9A%84%EF%BC%9F%E8%A7%A3%E9%87%8A%E5%9E%8B%E8%AF%AD%E8%A8%80%E5%92%8C%E7%BC%96%E8%AF%91%E5%9E%8B%E8%AF%AD%E8%A8%80%E7%9A%84%E5%B7%AE%E5%BC%82%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">4.JavaScript 是如何运行的？解释型语言和编译型语言的差异是什么？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-%E7%AE%80%E5%8D%95%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B-Babel-%E7%9A%84%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B%EF%BC%9F"><span class="toc-text">5.简单描述一下 Babel 的编译过程？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-JavaScript-%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8C%E5%87%BD%E6%95%B0%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD%E6%98%AF%E5%A6%82%E4%BD%95%E5%AD%98%E5%82%A8%E7%9A%84%EF%BC%9F"><span class="toc-text">6.JavaScript 中的数组和函数在内存中是如何存储的？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%92%8C-Node-js-%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">7.浏览器和 Node.js 中的事件循环机制有什么区别？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-ES6-Modules-%E7%9B%B8%E5%AF%B9%E4%BA%8E-CommonJS-%E7%9A%84%E4%BC%98%E5%8A%BF%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">8.ES6 Modules 相对于 CommonJS 的优势是什么？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#9-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E6%98%AF%E5%A6%82%E4%BD%95%E7%BC%96%E8%AF%91%E6%88%90%E6%9C%BA%E5%99%A8%E8%AF%AD%E8%A8%80%E7%9A%84%EF%BC%9F"><span class="toc-text">9.高级程序设计语言是如何编译成机器语言的？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-%E7%BC%96%E8%AF%91%E5%99%A8%E4%B8%80%E8%88%AC%E7%94%B1%E5%93%AA%E5%87%A0%E4%B8%AA%E9%98%B6%E6%AE%B5%E7%BB%84%E6%88%90%EF%BC%9F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5%E4%B8%80%E8%88%AC%E5%9C%A8%E4%BB%80%E4%B9%88%E9%98%B6%E6%AE%B5%E8%BF%9B%E8%A1%8C%EF%BC%9F"><span class="toc-text">10.编译器一般由哪几个阶段组成？数据类型检查一般在什么阶段进行？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11-%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">11.编译过程中虚拟机的作用是什么？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#12-%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%EF%BC%88IR%EF%BC%89%EF%BC%8C%E5%AE%83%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">12.什么是中间代码（IR），它的作用是什么？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#13-%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%EF%BC%9F"><span class="toc-text">13.什么是交叉编译？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#14-%E5%8F%91%E5%B8%83-%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">14.发布 &#x2F; 订阅模式和观察者模式的区别是什么？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#15-%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F%E4%B8%80%E8%88%AC%E4%BC%9A%E5%9C%A8%E4%BB%80%E4%B9%88%E5%9C%BA%E5%90%88%E4%BD%BF%E7%94%A8%EF%BC%9F"><span class="toc-text">15.装饰器模式一般会在什么场合使用？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#16-%E8%B0%88%E8%B0%88%E4%BD%A0%E5%AF%B9%E5%A4%A7%E5%9E%8B%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%BB%A3%E7%A0%81%E8%A7%A3%E8%80%A6%E8%AE%BE%E8%AE%A1%E7%90%86%E8%A7%A3%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF-Ioc%EF%BC%9F%E4%B8%80%E8%88%AC-DI-%E9%87%87%E7%94%A8%E4%BB%80%E4%B9%88%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0%EF%BC%9F"><span class="toc-text">16.谈谈你对大型项目的代码解耦设计理解？什么是 Ioc？一般 DI 采用什么设计模式实现？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#17-%E5%88%97%E4%B8%BE%E4%BD%A0%E6%89%80%E4%BA%86%E8%A7%A3%E7%9A%84%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F%EF%BC%9F"><span class="toc-text">17.列举你所了解的编程范式？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#18-%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%EF%BC%88AOP%EF%BC%89%E7%9A%84%E7%BC%96%E7%A8%8B%EF%BC%9F"><span class="toc-text">18.什么是面向切面（AOP）的编程？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#19-%E4%BB%80%E4%B9%88%E6%98%AF%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF%E5%87%BD%E6%95%B0%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B%EF%BC%9F"><span class="toc-text">19.什么是函数式编程？什么是响应式编程？什么是函数响应式编程？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#20-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E4%B8%8A%E4%B8%AD%E4%B8%8B%E4%B8%89%E8%A1%8C%E5%B8%83%E5%B1%80%EF%BC%8C%E9%A1%B6%E9%83%A8%E5%92%8C%E5%BA%95%E9%83%A8%E6%9C%80%E5%B0%8F%E9%AB%98%E5%BA%A6%E6%98%AF-100px%EF%BC%8C%E4%B8%AD%E9%97%B4%E8%87%AA%E9%80%82%E5%BA%94"><span class="toc-text">20.如何实现一个上中下三行布局，顶部和底部最小高度是 100px，中间自适应?</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#21-%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0-CSS-%E6%A0%B7%E5%BC%8F%E6%BA%A2%E5%87%BA%EF%BC%8C%E4%BB%8E%E8%80%8C%E5%8F%AF%E4%BB%A5%E9%80%89%E6%8B%A9%E6%80%A7%E7%9A%84%E5%8A%A0-title-%E6%88%96%E8%80%85-Tooltip"><span class="toc-text">21.如何判断一个元素 CSS 样式溢出，从而可以选择性的加 title 或者 Tooltip?</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#22-%E5%A6%82%E4%BD%95%E8%AE%A9-CSS-%E5%85%83%E7%B4%A0%E5%B7%A6%E4%BE%A7%E8%87%AA%E5%8A%A8%E6%BA%A2%E5%87%BA%EF%BC%88%E2%80%A6-%E6%BA%A2%E5%87%BA%E5%9C%A8%E5%B7%A6%E4%BE%A7%EF%BC%89%EF%BC%9F"><span class="toc-text">22.如何让 CSS 元素左侧自动溢出（… 溢出在左侧）？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#23-%E4%BB%80%E4%B9%88%E6%98%AF%E6%B2%99%E7%AE%B1%EF%BC%9F%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E6%B2%99%E7%AE%B1%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="toc-text">23.什么是沙箱？浏览器的沙箱有什么作用？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#24-%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%A1%A8%E5%8D%95%E9%A1%B9%E7%9A%84%E5%AF%86%E7%A0%81%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-text">24.如何处理浏览器中表单项的密码自动填充问题？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#25-Hash-%E5%92%8C-History-%E8%B7%AF%E7%94%B1%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="toc-text">25.Hash 和 History 路由的区别和优缺点？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#26-JavaScript-%E4%B8%AD%E7%9A%84-const-%E6%95%B0%E7%BB%84%E5%8F%AF%E4%BB%A5%E8%BF%9B%E8%A1%8C-push-%E6%93%8D%E4%BD%9C%E5%90%97%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">26.JavaScript 中的 const 数组可以进行 push 操作吗？为什么？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#27-JavaScript-%E4%B8%AD%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B1%9E%E6%80%A7%E6%8F%8F%E8%BF%B0%E7%AC%A6%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="toc-text">27.JavaScript 中对象的属性描述符有哪些？分别有什么作用？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#28-JavaScript-%E4%B8%AD-console-%E6%9C%89%E5%93%AA%E4%BA%9B-api"><span class="toc-text">28.JavaScript 中 console 有哪些 api ?</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#29-%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94%E4%B8%80%E4%B8%8B-Callback%E3%80%81Promise%E3%80%81Generator%E3%80%81Async-%E5%87%A0%E4%B8%AA%E5%BC%82%E6%AD%A5-API-%E7%9A%84%E4%BC%98%E5%8A%A3%EF%BC%9F"><span class="toc-text">29.简单对比一下 Callback、Promise、Generator、Async 几个异步 API 的优劣？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#30-Object-defineProperty-%E6%9C%89%E5%93%AA%E5%87%A0%E4%B8%AA%E5%8F%82%E6%95%B0%EF%BC%9F%E5%90%84%E8%87%AA%E9%83%BD%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="toc-text">30.Object.defineProperty 有哪几个参数？各自都有什么作用？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#31-Object-defineProperty-%E5%92%8C-ES6-%E7%9A%84-Proxy-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">31.Object.defineProperty 和 ES6 的 Proxy 有什么区别？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#32-ES6-%E4%B8%AD-Symbol%E3%80%81Map%E3%80%81Decorator-%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E6%88%96%E8%80%85%E4%BD%A0%E5%9C%A8%E5%93%AA%E4%BA%9B%E5%BA%93%E7%9A%84%E6%BA%90%E7%A0%81%E9%87%8C%E8%A7%81%E8%BF%87%E8%BF%99%E4%BA%9B-API-%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9F"><span class="toc-text">32.ES6 中 Symbol、Map、Decorator 的使用场景有哪些？或者你在哪些库的源码里见过这些 API 的使用？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#33-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8-TypeScript-TypeScript-%E7%9B%B8%E5%AF%B9%E4%BA%8E-JavaScript-%E7%9A%84%E4%BC%98%E5%8A%BF%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">33.为什么要使用 TypeScript ? TypeScript 相对于 JavaScript 的优势是什么？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#34-TypeScript-%E4%B8%AD-const-%E5%92%8C-readonly-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F%E6%9E%9A%E4%B8%BE%E5%92%8C%E5%B8%B8%E9%87%8F%E6%9E%9A%E4%B8%BE%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">34.TypeScript 中 const 和 readonly 的区别？枚举和常量枚举的区别？接口和类型别名的区别？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#35-TypeScript-%E4%B8%AD-any-%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">35.TypeScript 中 any 类型的作用是什么？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#36-TypeScript-%E4%B8%AD-any%E3%80%81never%E3%80%81unknown-%E5%92%8C-void-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">36.TypeScript 中 any、never、unknown 和 void 有什么区别？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#37-TypeScript-%E4%B8%AD-interface-%E5%8F%AF%E4%BB%A5%E7%BB%99-Function-Array-Class%EF%BC%88Indexable%EF%BC%89%E5%81%9A%E5%A3%B0%E6%98%8E%E5%90%97%EF%BC%9F"><span class="toc-text">37.TypeScript 中 interface 可以给 Function &#x2F; Array &#x2F; Class（Indexable）做声明吗？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#38-TypeScript-%E4%B8%AD%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8-String%E3%80%81Number%E3%80%81Boolean%E3%80%81Symbol%E3%80%81Object-%E7%AD%89%E7%BB%99%E7%B1%BB%E5%9E%8B%E5%81%9A%E5%A3%B0%E6%98%8E%E5%90%97%EF%BC%9F"><span class="toc-text">38.TypeScript 中可以使用 String、Number、Boolean、Symbol、Object 等给类型做声明吗？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#39-TypeScript-%E4%B8%AD%E7%9A%84-this-%E5%92%8C-JavaScript-%E4%B8%AD%E7%9A%84-this-%E6%9C%89%E4%BB%80%E4%B9%88%E5%B7%AE%E5%BC%82%EF%BC%9F"><span class="toc-text">39.TypeScript 中的 this 和 JavaScript 中的 this 有什么差异？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#40-TypeScript-%E4%B8%AD%E4%BD%BF%E7%94%A8-Unions-%E6%97%B6%E6%9C%89%E5%93%AA%E4%BA%9B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%EF%BC%9F"><span class="toc-text">40.TypeScript 中使用 Unions 时有哪些注意事项？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#41-TypeScript-%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1-Class-%E7%9A%84%E5%A3%B0%E6%98%8E%EF%BC%9F"><span class="toc-text">41.TypeScript 如何设计 Class 的声明？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#42-TypeScript-%E4%B8%AD%E5%A6%82%E4%BD%95%E8%81%94%E5%90%88%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B%E7%9A%84-Key"><span class="toc-text">42.TypeScript 中如何联合枚举类型的 Key?</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#43-TypeScript-%E4%B8%AD-%E3%80%81-%E3%80%81-%E3%80%81-%E3%80%81-%E7%AD%89%E7%AC%A6%E5%8F%B7%E7%9A%84%E5%90%AB%E4%B9%89%EF%BC%9F"><span class="toc-text">43.TypeScript 中 ?.、??、!.、_、** 等符号的含义？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#44-TypeScript-%E4%B8%AD%E9%A2%84%E5%AE%9A%E4%B9%89%E7%9A%84%E6%9C%89%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-text">44.TypeScript 中预定义的有条件类型有哪些？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#45-%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B-TypeScript-%E6%A8%A1%E5%9D%97%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="toc-text">45.简单介绍一下 TypeScript 模块的加载机制？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#46-%E7%AE%80%E5%8D%95%E8%81%8A%E8%81%8A%E4%BD%A0%E5%AF%B9-TypeScript-%E7%B1%BB%E5%9E%8B%E5%85%BC%E5%AE%B9%E6%80%A7%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F%E6%8A%97%E5%8F%98%E3%80%81%E5%8F%8C%E5%8F%98%E3%80%81%E5%8D%8F%E5%8F%98%E5%92%8C%E9%80%86%E5%8F%98%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="toc-text">46.简单聊聊你对 TypeScript 类型兼容性的理解？抗变、双变、协变和逆变的简单理解？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#47-TypeScript-%E4%B8%AD%E5%AF%B9%E8%B1%A1%E5%B1%95%E5%BC%80%E4%BC%9A%E6%9C%89%E4%BB%80%E4%B9%88%E5%89%AF%E4%BD%9C%E7%94%A8%E5%90%97%EF%BC%9F"><span class="toc-text">47.TypeScript 中对象展开会有什么副作用吗？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#48-TypeScript-%E4%B8%AD-interface%E3%80%81type%E3%80%81enum-%E5%A3%B0%E6%98%8E%E6%9C%89%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E5%8A%9F%E8%83%BD%E5%90%97%EF%BC%9F"><span class="toc-text">48.TypeScript 中 interface、type、enum 声明有作用域的功能吗？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#49-TypeScript-%E4%B8%AD%E5%90%8C%E5%90%8D%E7%9A%84-interface-%E6%88%96%E8%80%85%E5%90%8C%E5%90%8D%E7%9A%84-interface-%E5%92%8C-class-%E5%8F%AF%E4%BB%A5%E5%90%88%E5%B9%B6%E5%90%97%EF%BC%9F"><span class="toc-text">49.TypeScript 中同名的 interface 或者同名的 interface 和 class 可以合并吗？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#50-%E5%A6%82%E4%BD%95%E4%BD%BF-TypeScript-%E9%A1%B9%E7%9B%AE%E5%BC%95%E5%85%A5%E5%B9%B6%E8%AF%86%E5%88%AB%E7%BC%96%E8%AF%91%E4%B8%BA-JavaScript-%E7%9A%84-npm-%E5%BA%93%E5%8C%85%EF%BC%9F"><span class="toc-text">50.如何使 TypeScript 项目引入并识别编译为 JavaScript 的 npm 库包？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#51-TypeScript-%E7%9A%84-tsconfig-json-%E4%B8%AD%E6%9C%89%E5%93%AA%E4%BA%9B%E9%85%8D%E7%BD%AE%E9%A1%B9%E4%BF%A1%E6%81%AF%EF%BC%9F"><span class="toc-text">51.TypeScript 的 tsconfig.json 中有哪些配置项信息？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#52-TypeScript-%E4%B8%AD%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E6%A8%A1%E5%9D%97%E5%AF%BC%E5%85%A5%E7%9A%84%E8%B7%AF%E5%BE%84%E5%88%AB%E5%90%8D%EF%BC%9F"><span class="toc-text">52.TypeScript 中如何设置模块导入的路径别名？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#53-React-Class-%E7%BB%84%E4%BB%B6%E6%9C%89%E5%93%AA%E4%BA%9B%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0%EF%BC%9F%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="toc-text">53.React Class 组件有哪些周期函数？分别有什么作用？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#54-React-Class-%E7%BB%84%E4%BB%B6%E4%B8%AD%E8%AF%B7%E6%B1%82%E5%8F%AF%E4%BB%A5%E5%9C%A8-componentWillMount-%E4%B8%AD%E5%8F%91%E8%B5%B7%E5%90%97%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">54.React Class 组件中请求可以在 componentWillMount 中发起吗？为什么？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#55-React-Class-%E7%BB%84%E4%BB%B6%E5%92%8C-React-Hook-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-text">55.React Class 组件和 React Hook 的区别有哪些？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#56-React-%E4%B8%AD%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89-Hook-%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="toc-text">56.React 中高阶函数和自定义 Hook 的优缺点？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#57-%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E-React-Hook-%E4%B8%AD-useState-%E5%92%8C-useEffect-%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="toc-text">57.简要说明 React Hook 中 useState 和 useEffect 的运行原理？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#58-React-%E5%A6%82%E4%BD%95%E5%8F%91%E7%8E%B0%E9%87%8D%E6%B8%B2%E6%9F%93%E3%80%81%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0%E5%AE%B9%E6%98%93%E9%80%A0%E6%88%90%E9%87%8D%E6%B8%B2%E6%9F%93%E3%80%81%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E9%87%8D%E6%B8%B2%E6%9F%93%EF%BC%9F"><span class="toc-text">58.React 如何发现重渲染、什么原因容易造成重渲染、如何避免重渲染？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#59-React-Hook-%E4%B8%AD-useEffect-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8F%82%E6%95%B0%EF%BC%8C%E5%A6%82%E4%BD%95%E6%A3%80%E6%B5%8B%E6%95%B0%E7%BB%84%E4%BE%9D%E8%B5%96%E9%A1%B9%E7%9A%84%E5%8F%98%E5%8C%96%EF%BC%9F"><span class="toc-text">59.React Hook 中 useEffect 有哪些参数，如何检测数组依赖项的变化？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#60-React-%E7%9A%84-useEffect-%E6%98%AF%E5%A6%82%E4%BD%95%E7%9B%91%E5%90%AC%E6%95%B0%E7%BB%84%E4%BE%9D%E8%B5%96%E9%A1%B9%E7%9A%84%E5%8F%98%E5%8C%96%E7%9A%84%EF%BC%9F"><span class="toc-text">60.React 的 useEffect 是如何监听数组依赖项的变化的？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#61-React-Hook-%E5%92%8C%E9%97%AD%E5%8C%85%E6%9C%89%E4%BB%80%E4%B9%88%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB%EF%BC%9F"><span class="toc-text">61.React Hook 和闭包有什么关联关系？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#62-React-%E4%B8%AD-useState-%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E6%95%B0%E6%8D%AE%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%EF%BC%9F"><span class="toc-text">62.React 中 useState 是如何做数据初始化的？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#63-%E5%88%97%E4%B8%BE%E4%BD%A0%E5%B8%B8%E7%94%A8%E7%9A%84-React-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7%EF%BC%9F"><span class="toc-text">63.列举你常用的 React 性能优化技巧？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#64-Vue-2-x-%E6%A8%A1%E6%9D%BF%E4%B8%AD%E7%9A%84%E6%8C%87%E4%BB%A4%E6%98%AF%E5%A6%82%E4%BD%95%E8%A7%A3%E6%9E%90%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="toc-text">64.Vue 2.x 模板中的指令是如何解析实现的？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#65-%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E-Vue-2-x-%E7%9A%84%E5%85%A8%E9%93%BE%E8%B7%AF%E8%BF%90%E4%BD%9C%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="toc-text">65.简要说明 Vue 2.x 的全链路运作机制？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#66-%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B-Element-UI-%E7%9A%84%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1%EF%BC%9F"><span class="toc-text">66.简单介绍一下 Element UI 的框架设计？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#67-%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3-Vue-%E6%98%AF%E4%B8%80%E4%B8%AA%E6%B8%90%E8%BF%9B%E5%BC%8F%E6%A1%86%E6%9E%B6%EF%BC%9F"><span class="toc-text">67.如何理解 Vue 是一个渐进式框架？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#68-Vue-%E9%87%8C%E5%AE%9E%E7%8E%B0%E8%B7%A8%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-text">68.Vue 里实现跨组件通信的方式有哪些？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#69-Vue-%E4%B8%AD%E5%93%8D%E5%BA%94%E5%BC%8F%E6%95%B0%E6%8D%AE%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E5%88%B0%E5%AF%B9%E6%9F%90%E4%B8%AA%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B7%B1%E5%B1%82%E6%AC%A1%E5%B1%9E%E6%80%A7%E7%9A%84%E7%9B%91%E5%90%AC%E7%9A%84%EF%BC%9F"><span class="toc-text">69.Vue 中响应式数据是如何做到对某个对象的深层次属性的监听的？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#70-MVVM%E3%80%81MVC-%E5%92%8C-MVP-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%90%84%E8%87%AA%E6%9C%89%E4%BB%80%E4%B9%88%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F%E3%80%81"><span class="toc-text">70.MVVM、MVC 和 MVP 的区别是什么？各自有什么应用场景？、</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#71-%E4%BB%80%E4%B9%88%E6%98%AF-MVVM-%E6%A1%86%E6%9E%B6%EF%BC%9F"><span class="toc-text">71.什么是 MVVM 框架？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#72-Vue-CLI-3-x-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8A%9F%E8%83%BD%EF%BC%9FVue-CLI-3-x-%E7%9A%84%E6%8F%92%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%BA%86%E8%A7%A3%EF%BC%9F"><span class="toc-text">72.Vue CLI 3.x 有哪些功能？Vue CLI 3.x 的插件系统了解？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#73-Vue-CLI-3-x-%E4%B8%AD%E7%9A%84-Webpack-%E6%98%AF%E5%A6%82%E4%BD%95%E7%BB%84%E8%A3%85%E5%A4%84%E7%90%86%E7%9A%84%EF%BC%9F"><span class="toc-text">73.Vue CLI 3.x 中的 Webpack 是如何组装处理的？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#74-Vue-2-x-%E5%A6%82%E4%BD%95%E6%94%AF%E6%8C%81-TypeScript-%E8%AF%AD%E6%B3%95%EF%BC%9F"><span class="toc-text">74.Vue 2.x 如何支持 TypeScript 语法？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#75-%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E4%BD%BF%E5%BE%97-JavaScript-%E9%A1%B9%E7%9B%AE%E5%8F%AF%E4%BB%A5%E6%94%AF%E6%8C%81-TypeScript-%E8%AF%AD%E6%B3%95%EF%BC%9F"><span class="toc-text">75.如何配置环境使得 JavaScript 项目可以支持 TypeScript 语法？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#76-%E5%A6%82%E4%BD%95%E5%AF%B9-TypeScript-%E8%BF%9B%E8%A1%8C-Lint-%E6%A0%A1%E9%AA%8C%EF%BC%9FESLint-%E5%92%8C-TSLint-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">76.如何对 TypeScript 进行 Lint 校验？ESLint 和 TSLint 有什么区别？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#77-Node-js-%E5%A6%82%E4%BD%95%E6%94%AF%E6%8C%81-TypeScript-%E8%AF%AD%E6%B3%95%EF%BC%9F"><span class="toc-text">77.Node.js 如何支持 TypeScript 语法？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#78-TypeScript-%E5%A6%82%E4%BD%95%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%BA%93%E5%8C%85%E7%9A%84%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6%EF%BC%9F"><span class="toc-text">78.TypeScript 如何自动生成库包的声明文件？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#79-Babel-%E5%AF%B9%E4%BA%8E-TypeScript-%E7%9A%84%E6%94%AF%E6%8C%81%E6%9C%89%E5%93%AA%E4%BA%9B%E9%99%90%E5%88%B6%EF%BC%9F"><span class="toc-text">79.Babel 对于 TypeScript 的支持有哪些限制？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#80-Webpack-%E4%B8%AD-Loader-%E5%92%8C-Plugin-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">80.Webpack 中 Loader 和 Plugin 的区别是什么？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#81-%E5%9C%A8-Webpack-%E4%B8%AD%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E5%88%B0%E6%94%AF%E6%8C%81%E7%B1%BB%E4%BC%BC%E4%BA%8E-JSX-%E8%AF%AD%E6%B3%95%E7%9A%84-Sourcemap-%E5%AE%9A%E4%BD%8D%EF%BC%9F"><span class="toc-text">81.在 Webpack 中是如何做到支持类似于 JSX 语法的 Sourcemap 定位？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#82-%E5%8F%91%E5%B8%83-Npm-%E5%8C%85%E5%A6%82%E4%BD%95%E6%8C%87%E5%AE%9A%E5%BC%95%E5%85%A5%E5%9C%B0%E5%9D%80%EF%BC%9F"><span class="toc-text">82.发布 Npm 包如何指定引入地址？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#83-%E5%A6%82%E4%BD%95%E5%8F%91%E5%B8%83%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%89%B9%E5%AE%9A%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%BA-Npm-%E5%8C%85%E7%9A%84%E6%A0%B9%E7%9B%AE%E5%BD%95%EF%BC%9F"><span class="toc-text">83.如何发布开发项目的特定文件夹为 Npm 包的根目录？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#84-%E5%A6%82%E4%BD%95%E5%8F%91%E5%B8%83%E4%B8%80%E4%B8%AA%E6%94%AF%E6%8C%81-Tree-Shaking-%E6%9C%BA%E5%88%B6%E7%9A%84-Npm-%E5%8C%85%EF%BC%9F"><span class="toc-text">84.如何发布一个支持 Tree Shaking 机制的 Npm 包？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#85-Npm-%E5%8C%85%E4%B8%AD-peerDependencies-%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">85.Npm 包中 peerDependencies 的作用是什么？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#86-%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E8%B0%83%E8%AF%95%E9%9C%80%E8%A6%81%E5%8F%91%E5%B8%83%E7%9A%84-Npm-%E5%8C%85%EF%BC%9F"><span class="toc-text">86.如何优雅的调试需要发布的 Npm 包？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#87-%E5%9C%A8%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%BA%9B%E5%BA%93%E5%8C%85%E6%97%B6%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E7%89%88%E6%9C%AC%E6%97%A5%E5%BF%97%EF%BC%9F"><span class="toc-text">87.在设计一些库包时如何生成版本日志？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#88-%E4%BA%86%E8%A7%A3-Git-%EF%BC%88Submodule%EF%BC%89%E5%AD%90%E6%A8%A1%E5%9D%97%E5%90%97%EF%BC%9F%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B-Git-%E5%AD%90%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="toc-text">88.了解 Git （Submodule）子模块吗？简单介绍一下 Git 子模块的作用？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#89-Git-%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9%E5%B7%B2%E7%BB%8F%E6%8F%90%E4%BA%A4%E7%9A%84-Commit-%E4%BF%A1%E6%81%AF%EF%BC%9F"><span class="toc-text">89.Git 如何修改已经提交的 Commit 信息？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#90-Git-%E5%A6%82%E4%BD%95%E6%92%A4%E9%94%80-Commit-%E5%B9%B6%E4%BF%9D%E5%AD%98%E4%B9%8B%E5%89%8D%E7%9A%84%E4%BF%AE%E6%94%B9%EF%BC%9F"><span class="toc-text">90.Git 如何撤销 Commit 并保存之前的修改？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#91-Git-%E5%A6%82%E4%BD%95-ignore-%E8%A2%AB-commit-%E8%BF%87%E7%9A%84%E6%96%87%E4%BB%B6%EF%BC%9F"><span class="toc-text">91.Git 如何 ignore 被 commit 过的文件？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#92-%E5%9C%A8%E4%BD%BF%E7%94%A8-Git-%E7%9A%84%E6%97%B6%E5%80%99%E5%A6%82%E4%BD%95%E8%A7%84%E8%8C%83-Git-%E7%9A%84%E6%8F%90%E4%BA%A4%E8%AF%B4%E6%98%8E%EF%BC%88Commit-%E4%BF%A1%E6%81%AF%EF%BC%89%EF%BC%9F"><span class="toc-text">92.在使用 Git 的时候如何规范 Git 的提交说明（Commit 信息）？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#93-%E7%AE%80%E8%BF%B0%E7%AC%A6%E5%90%88-Angular-%E8%A7%84%E8%8C%83%E7%9A%84%E6%8F%90%E4%BA%A4%E8%AF%B4%E6%98%8E%E7%9A%84%E7%BB%93%E6%9E%84%E7%BB%84%E6%88%90%EF%BC%9F"><span class="toc-text">93.简述符合 Angular 规范的提交说明的结构组成？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#94-Commit-%E4%BF%A1%E6%81%AF%E5%A6%82%E4%BD%95%E5%92%8C-Github-Issues-%E5%85%B3%E8%81%94%EF%BC%9F"><span class="toc-text">94.Commit 信息如何和 Github Issues 关联？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#95-Git-Hook-%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%93%AA%E4%BA%9B%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="toc-text">95.Git Hook 在项目中哪些作用？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#96-Git-Hook-%E4%B8%AD%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%92%8C%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%92%A9%E5%AD%90%E5%90%84%E8%87%AA%E7%94%A8%E4%BA%8E%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="toc-text">96.Git Hook 中客户端和服务端钩子各自用于什么作用？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#97-Git-Hook-%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E9%92%A9%E5%AD%90%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-text">97.Git Hook 中常用的钩子有哪些？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#98-pre-commit-%E5%92%8C-commit-msg-%E9%92%A9%E5%AD%90%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%90%84%E8%87%AA%E5%8F%AF%E7%94%A8%E4%BA%8E%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">98.pre-commit 和 commit-msg 钩子的区别是什么？各自可用于做什么？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#99-husky-%E4%BB%A5%E5%8F%8A-ghook-%E7%AD%89%E5%B7%A5%E5%85%B7%E5%88%B6%E4%BD%9C-Git-Hook-%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">99.husky 以及 ghook 等工具制作 Git Hook 的原理是什么？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#100-%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E9%80%9A%E7%94%A8%E7%9A%84-Git-Hook-%EF%BC%9F"><span class="toc-text">100.如何设计一个通用的 Git Hook ？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#101-Git-Hook-%E5%8F%AF%E4%BB%A5%E9%87%87%E7%94%A8-Node-%E8%84%9A%E6%9C%AC%E8%BF%9B%E8%A1%8C%E8%AE%BE%E8%AE%A1%E5%90%97%EF%BC%9F%E5%A6%82%E4%BD%95%E5%81%9A%E5%88%B0%EF%BC%9F"><span class="toc-text">101.Git Hook 可以采用 Node 脚本进行设计吗？如何做到？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#102-%E5%A6%82%E4%BD%95%E7%A1%AE%E4%BF%9D%E5%88%AB%E4%BA%BA%E4%B8%8A%E4%BC%A0%E7%9A%84%E4%BB%A3%E7%A0%81%E6%B2%A1%E6%9C%89-Lint-%E9%94%99%E8%AF%AF%EF%BC%9F%E5%A6%82%E4%BD%95%E7%A1%AE%E4%BF%9D%E4%BB%A3%E7%A0%81%E6%9E%84%E5%BB%BA%E6%B2%A1%E6%9C%89-Lint-%E9%94%99%E8%AF%AF%EF%BC%9F"><span class="toc-text">102.如何确保别人上传的代码没有 Lint 错误？如何确保代码构建没有 Lint 错误？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#103-%E5%A6%82%E4%BD%95%E5%9C%A8-Vs-Code-%E4%B8%AD%E8%BF%9B%E8%A1%8C-Lint-%E6%A0%A1%E9%AA%8C%E6%8F%90%E7%A4%BA%EF%BC%9F%E5%A6%82%E4%BD%95%E5%9C%A8-Vs-Code-%E4%B8%AD%E8%BF%9B%E8%A1%8C-Lint-%E4%BF%9D%E5%AD%98%E6%A0%BC%E5%BC%8F%E5%8C%96%EF%BC%9F"><span class="toc-text">103.如何在 Vs Code 中进行 Lint 校验提示？如何在 Vs Code 中进行 Lint 保存格式化？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#104-ESLint-%E5%92%8C-Prettier-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E4%B8%A4%E8%80%85%E5%9C%A8%E4%B8%80%E8%B5%B7%E5%B7%A5%E4%BD%9C%E6%97%B6%E4%BC%9A%E4%BA%A7%E7%94%9F%E9%97%AE%E9%A2%98%E5%90%97%EF%BC%9F"><span class="toc-text">104.ESLint 和 Prettier 的区别是什么？两者在一起工作时会产生问题吗？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#105-%E5%A6%82%E4%BD%95%E6%9C%89%E6%95%88%E7%9A%84%E8%AF%86%E5%88%AB-ESLint-%E5%92%8C-Prettier-%E5%8F%AF%E8%83%BD%E4%BA%A7%E7%94%9F%E5%86%B2%E7%AA%81%E7%9A%84%E6%A0%BC%E5%BC%8F%E8%A7%84%E5%88%99%EF%BC%9F%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E6%AD%A4%E7%B1%BB%E8%A7%84%E5%88%99%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-text">105.如何有效的识别 ESLint 和 Prettier 可能产生冲突的格式规则？如何解决此类规则冲突问题？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#106-%E5%9C%A8%E9%80%9A%E5%B8%B8%E7%9A%84%E8%84%9A%E6%89%8B%E6%9E%B6%E9%A1%B9%E7%9B%AE%E4%B8%AD%E8%BF%9B%E8%A1%8C%E7%83%AD%E6%9B%B4%E6%96%B0%EF%BC%88hot-module-replacement%EF%BC%89%E6%97%B6%E5%A6%82%E4%BD%95%E5%81%9A%E5%88%B0-ESLint-%E5%AE%9E%E6%97%B6%E6%89%93%E5%8D%B0%E6%A0%A1%E9%AA%8C%E9%94%99%E8%AF%AF%E4%BF%A1%E6%81%AF%EF%BC%9F"><span class="toc-text">106.在通常的脚手架项目中进行热更新（hot module replacement）时如何做到 ESLint 实时打印校验错误信息？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#107-%E8%B0%88%E8%B0%88%E4%BD%A0%E5%AF%B9-SourceMap-%E7%9A%84%E4%BA%86%E8%A7%A3%EF%BC%9F"><span class="toc-text">107.谈谈你对 SourceMap 的了解？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#108-%E5%A6%82%E4%BD%95%E8%B0%83%E8%AF%95-Node-js-%E4%BB%A3%E7%A0%81%EF%BC%9F%E5%A6%82%E4%BD%95%E8%B0%83%E8%AF%95-Node-js-TypeScript-%E4%BB%A3%E7%A0%81%EF%BC%9F%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E8%AF%95-Node-js-%E4%BB%A3%E7%A0%81%EF%BC%9F"><span class="toc-text">108.如何调试 Node.js 代码？如何调试 Node.js TypeScript 代码？在浏览器中如何调试 Node.js 代码？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#109-%E5%88%97%E4%B8%BE%E4%BD%A0%E7%9F%A5%E9%81%93%E7%9A%84%E6%89%80%E6%9C%89%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E5%B9%B6%E8%AF%B4%E8%AF%B4%E8%BF%99%E4%BA%9B%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9F%E8%BF%99%E4%BA%9B%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E5%9C%A8%E4%B8%8D%E5%90%8C%E7%9A%84%E5%9C%BA%E6%99%AF%E4%B8%8B%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E9%80%89%E5%9E%8B%EF%BC%9F"><span class="toc-text">109.列举你知道的所有构建工具并说说这些工具的优缺点？这些构建工具在不同的场景下应该如何选型？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#110-VS-Code-%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84%E7%94%A8%E6%88%B7%E5%92%8C%E5%B7%A5%E4%BD%9C%E5%8C%BA%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">110.VS Code 配置中的用户和工作区有什么区别？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#111-VS-Code-%E7%9A%84%E6%8F%92%E4%BB%B6%E5%8F%AF%E4%BB%A5%E5%8F%AA%E5%AF%B9%E5%BD%93%E5%89%8D%E9%A1%B9%E7%9B%AE%E7%94%9F%E6%95%88%E5%90%97%EF%BC%9F"><span class="toc-text">111.VS Code 的插件可以只对当前项目生效吗？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#112-%E4%BD%A0%E6%89%80%E7%9F%A5%E9%81%93%E7%9A%84%E6%B5%8B%E8%AF%95%E6%9C%89%E5%93%AA%E4%BA%9B%E6%B5%8B%E8%AF%95%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="toc-text">112.你所知道的测试有哪些测试类型？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#113-%E4%BD%A0%E6%89%80%E7%9F%A5%E9%81%93%E7%9A%84%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-text">113.你所知道的测试框架有哪些？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#114-%E4%BB%80%E4%B9%88%E6%98%AF-e2e-%E6%B5%8B%E8%AF%95%EF%BC%9F%E6%9C%89%E5%93%AA%E4%BA%9B-e2e-%E7%9A%84%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6%EF%BC%9F"><span class="toc-text">114.什么是 e2e 测试？有哪些 e2e 的测试框架？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#115-%E5%81%87%E8%AE%BE%E7%8E%B0%E5%9C%A8%E6%9C%89%E4%B8%80%E4%B8%AA%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%EF%BC%8C%E5%A6%82%E4%BD%95%E5%AF%B9%E8%AF%A5%E7%AE%97%E6%B3%95%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%EF%BC%9F"><span class="toc-text">115.假设现在有一个插入排序算法，如何对该算法进行单元测试？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#116-CDN-%E6%9C%8D%E5%8A%A1%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%BB%9C%E5%8A%A0%E9%80%9F%EF%BC%9F"><span class="toc-text">116.CDN 服务如何实现网络加速？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#117-WebSocket-%E4%BD%BF%E7%94%A8%E7%9A%84%E6%98%AF-TCP-%E8%BF%98%E6%98%AF-UDP-%E5%8D%8F%E8%AE%AE%EF%BC%9F"><span class="toc-text">117.WebSocket 使用的是 TCP 还是 UDP 协议？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#118-%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%95%E5%B7%A5%E3%80%81%E5%8D%8A%E5%8F%8C%E5%B7%A5%E5%92%8C%E5%85%A8%E5%8F%8C%E5%B7%A5%E9%80%9A%E4%BF%A1%EF%BC%9F"><span class="toc-text">118.什么是单工、半双工和全双工通信？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#119-%E7%AE%80%E5%8D%95%E6%8F%8F%E8%BF%B0-HTTP-%E5%8D%8F%E8%AE%AE%E5%8F%91%E9%80%81%E4%B8%80%E4%B8%AA%E5%B8%A6%E5%9F%9F%E5%90%8D%E7%9A%84-URL-%E8%AF%B7%E6%B1%82%E7%9A%84%E5%8D%8F%E8%AE%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%EF%BC%9F%EF%BC%88DNS%E3%80%81TCP%E3%80%81IP%E3%80%81%E9%93%BE%E8%B7%AF%EF%BC%89"><span class="toc-text">119.简单描述 HTTP 协议发送一个带域名的 URL 请求的协议传输过程？（DNS、TCP、IP、链路）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#120-%E4%BB%80%E4%B9%88%E6%98%AF%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%EF%BC%9F"><span class="toc-text">120.什么是正向代理？什么是反向代理？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#121-Cookie-%E5%8F%AF%E4%BB%A5%E5%9C%A8%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%94%9F%E6%88%90%E5%90%97%EF%BC%9FCookie-%E5%9C%A8%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%94%9F%E6%88%90%E5%90%8E%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E6%98%AF%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%EF%BC%9F"><span class="toc-text">121.Cookie 可以在服务端生成吗？Cookie 在服务端生成后的工作流程是什么样的？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#122-Session%E3%80%81Cookie-%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%85%B3%E8%81%94%EF%BC%9F%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E4%B8%B4%E6%97%B6%E6%80%A7%E5%92%8C%E6%B0%B8%E4%B9%85%E6%80%A7%E7%9A%84-Session-%E5%AD%98%E5%82%A8%EF%BC%9F"><span class="toc-text">122.Session、Cookie 的区别和关联？如何进行临时性和永久性的 Session 存储？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#123-%E8%AE%BE%E7%BD%AE-Cookie-%E6%97%B6%E5%80%99%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2-XSS-%E6%94%BB%E5%87%BB%EF%BC%9F"><span class="toc-text">123.设置 Cookie 时候如何防止 XSS 攻击？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#124-%E7%AE%80%E5%8D%95%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B%E7%94%A8%E6%88%B7%E5%85%8D%E7%99%BB%E9%99%86%E7%9A%84%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B%EF%BC%9F%E5%8F%AF%E8%83%BD%E4%BC%9A%E5%87%BA%E7%8E%B0%E5%93%AA%E4%BA%9B%E5%AE%89%E5%85%A8%E6%80%A7%E9%97%AE%E9%A2%98%EF%BC%9F%E4%B8%80%E8%88%AC%E5%A6%82%E4%BD%95%E5%AF%B9%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%9A%84%E5%AF%86%E7%A0%81%E8%BF%9B%E8%A1%8C%E5%8A%A0%E5%AF%86%EF%BC%9F"><span class="toc-text">124.简单描述一下用户免登陆的实现过程？可能会出现哪些安全性问题？一般如何对用户登录的密码进行加密？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#125-HTTP-%E4%B8%AD%E6%8F%90%E5%8D%87%E4%BC%A0%E8%BE%93%E9%80%9F%E7%8E%87%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%B8%B8%E7%94%A8%E7%9A%84%E5%86%85%E5%AE%B9%E7%BC%96%E7%A0%81%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-text">125.HTTP 中提升传输速率的方式有哪些？常用的内容编码方式有哪些？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#126-%E4%BC%A0%E8%BE%93%E5%9B%BE%E7%89%87%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%A6%82%E6%9E%9C%E7%AA%81%E7%84%B6%E4%B8%AD%E6%96%AD%EF%BC%8C%E5%A6%82%E4%BD%95%E5%9C%A8%E6%81%A2%E5%A4%8D%E5%90%8E%E4%BB%8E%E4%B9%8B%E5%89%8D%E7%9A%84%E4%B8%AD%E6%96%AD%E4%B8%AD%E6%81%A2%E5%A4%8D%E4%BC%A0%E8%BE%93%EF%BC%9F"><span class="toc-text">126.传输图片的过程中如果突然中断，如何在恢复后从之前的中断中恢复传输？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#127-%E4%BB%80%E4%B9%88%E6%98%AF%E4%BB%A3%E7%90%86%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF%E7%BD%91%E5%85%B3%EF%BC%9F%E4%BB%A3%E7%90%86%E5%92%8C%E7%BD%91%E5%85%B3%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">127.什么是代理？什么是网关？代理和网关的作用是什么？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#128-HTTPS-%E7%9B%B8%E6%AF%94-HTTP-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9B%B4%E5%8A%A0%E5%AE%89%E5%85%A8%E5%8F%AF%E9%9D%A0%EF%BC%9F"><span class="toc-text">128.HTTPS 相比 HTTP 为什么更加安全可靠？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#129-%E4%BB%80%E4%B9%88%E6%98%AF%E5%AF%B9%E7%A7%B0%E5%AF%86%E9%92%A5%EF%BC%88%E5%85%B1%E4%BA%AB%E5%AF%86%E9%92%A5%EF%BC%89%E5%8A%A0%E5%AF%86%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%AF%86%E9%92%A5%EF%BC%88%E5%85%AC%E5%BC%80%E5%AF%86%E9%92%A5%EF%BC%89%E5%8A%A0%E5%AF%86%EF%BC%9F%E5%93%AA%E4%B8%AA%E6%9B%B4%E5%8A%A0%E5%AE%89%E5%85%A8%EF%BC%9F"><span class="toc-text">129.什么是对称密钥（共享密钥）加密？什么是非对称密钥（公开密钥）加密？哪个更加安全？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#130-%E4%BD%A0%E8%A7%89%E5%BE%97-HTTP-%E5%8D%8F%E8%AE%AE%E7%9B%AE%E5%89%8D%E5%AD%98%E5%9C%A8%E5%93%AA%E4%BA%9B%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="toc-text">130.你觉得 HTTP 协议目前存在哪些缺点？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#131-%E5%9C%A8-React-%E4%B8%AD%E5%A6%82%E4%BD%95%E8%AF%86%E5%88%AB%E4%B8%80%E4%B8%AA%E8%A1%A8%E5%8D%95%E9%A1%B9%E9%87%8C%E7%9A%84%E8%A1%A8%E5%8D%95%E5%81%9A%E5%88%B0%E4%BA%86%E6%9C%80%E5%B0%8F%E7%B2%92%E5%BA%A6-%E4%BB%A3%E4%BB%B7%E7%9A%84%E6%B8%B2%E6%9F%93%EF%BC%9F"><span class="toc-text">131.在 React 中如何识别一个表单项里的表单做到了最小粒度 &#x2F; 代价的渲染？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#132-%E5%9C%A8-React-%E7%9A%84%E5%BC%80%E5%8F%91%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E4%BD%A0%E8%83%BD%E6%83%B3%E5%88%B0%E5%93%AA%E4%BA%9B%E6%8E%A7%E5%88%B6%E6%B8%B2%E6%9F%93%E6%88%90%E6%9C%AC%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9F"><span class="toc-text">132.在 React 的开发的过程中你能想到哪些控制渲染成本的方法？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#133-Vue-CLI-3-x-%E7%9A%84%E6%8F%92%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E7%9A%84%EF%BC%9F"><span class="toc-text">133.Vue CLI 3.x 的插件系统是如何设计的？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#134-Webpack-%E4%B8%AD%E7%9A%84%E6%8F%92%E4%BB%B6%E6%9C%BA%E5%88%B6%E6%98%AF%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E7%9A%84%EF%BC%9F"><span class="toc-text">134.Webpack 中的插件机制是如何设计的？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#135-r-n%EF%BC%88CRLF%EF%BC%89-%E5%92%8C-n-%EF%BC%88LF%EF%BC%89%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F-Vs-Code-%E7%9A%84%E5%8F%B3%E4%B8%8B%E8%A7%92%E5%8F%AF%E4%BB%A5%E5%88%87%E6%8D%A2"><span class="toc-text">135.\r\n（CRLF） 和 \n （LF）的区别是什么？(Vs Code 的右下角可以切换)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#136-dev-null-%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E5%95%A5%EF%BC%9F"><span class="toc-text">136.&#x2F;dev&#x2F;null 的作用是啥？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#137-%E5%A6%82%E4%BD%95%E5%9C%A8-Mac-%E7%9A%84%E7%BB%88%E7%AB%AF%E4%B8%AD%E8%AE%BE%E7%BD%AE%E4%B8%80%E4%B8%AA%E5%91%BD%E4%BB%A4%E7%9A%84%E5%88%AB%E5%90%8D%EF%BC%9F"><span class="toc-text">137.如何在 Mac 的终端中设置一个命令的别名？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#138-%E5%A6%82%E4%BD%95%E5%9C%A8-Windows-%E4%B8%AD%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%9F"><span class="toc-text">138.如何在 Windows 中设置环境变量？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#139-Mac-%E7%9A%84%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E9%BB%98%E8%AE%A4%E5%8C%BA%E5%88%86%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E7%9A%84%E5%A4%A7%E5%B0%8F%E5%86%99%E5%90%97%EF%BC%9F"><span class="toc-text">139.Mac 的文件操作系统默认区分文件路径的大小写吗？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#140-%E7%BC%96%E5%86%99-Shell-%E8%84%9A%E6%9C%AC%E6%97%B6%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84%EF%BC%9F"><span class="toc-text">140.编写 Shell 脚本时如何设置文件的绝对路径？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#141-Session%E3%80%81Cookie-%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%85%B3%E8%81%94%EF%BC%9F%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E4%B8%B4%E6%97%B6%E6%80%A7%E5%92%8C%E6%B0%B8%E4%B9%85%E6%80%A7%E7%9A%84-Session-%E5%AD%98%E5%82%A8%EF%BC%9F"><span class="toc-text">141.Session、Cookie 的区别和关联？如何进行临时性和永久性的 Session 存储？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#142-%E5%A6%82%E4%BD%95%E9%83%A8%E7%BD%B2-Node-js-%E5%BA%94%E7%94%A8%EF%BC%9F%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%AD-Session-%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-text">142.如何部署 Node.js 应用？如何处理负载均衡中 Session 的一致性问题？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#143-%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87-Node-js-%E4%BB%A3%E7%A0%81%E7%9A%84%E8%BF%90%E8%A1%8C%E7%A8%B3%E5%AE%9A%E6%80%A7%EF%BC%9F"><span class="toc-text">143.如何提升 Node.js 代码的运行稳定性？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#144-GraphQL-%E4%B8%8E-Restful-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%8C%E5%AE%83%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F"><span class="toc-text">144.GraphQL 与 Restful 的区别，它有什么优点？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#145-Vue-SSR-%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%9FVuex-%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A6%82%E4%BD%95%E5%90%8C%E6%9E%84%E6%B8%B2%E6%9F%93%EF%BC%9F"><span class="toc-text">145.Vue SSR 的工作原理？Vuex 的数据如何同构渲染？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#146-SSR-%E6%8A%80%E6%9C%AF%E5%92%8C-SPA-%E6%8A%80%E6%9C%AF%E7%9A%84%E5%90%84%E8%87%AA%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">146.SSR 技术和 SPA 技术的各自的优缺点是什么？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#147-%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86-Node-js-%E6%B8%B2%E6%9F%93-HTML-%E5%8E%8B%E5%8A%9B%E8%BF%87%E5%A4%A7%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-text">147.如何处理 Node.js 渲染 HTML 压力过大问题？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#148-%E4%BD%A0%E6%89%80%E7%9F%A5%E9%81%93%E7%9A%84-CI-CD-%E5%B7%A5%E5%85%B7%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E6%9C%89%E6%8E%A5%E8%A7%A6%E8%BF%87%E7%B1%BB%E4%BC%BC%E7%9A%84%E6%B5%81%E7%A8%8B%E5%90%97%EF%BC%9F"><span class="toc-text">148.你所知道的 CI &#x2F; CD 工具有哪些？在项目中有接触过类似的流程吗？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#149-%E5%A6%82%E6%9E%9C%E8%AE%A9%E4%BD%A0%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA-Web-%E5%89%8D%E7%AB%AF%E7%9A%84-CI-CD-%E5%B7%A5%E7%A8%8B%E7%A0%94%E5%8F%91%E5%B9%B3%E5%8F%B0%EF%BC%8C%E4%BD%A0%E4%BC%9A%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%EF%BC%9F"><span class="toc-text">149.如果让你实现一个 Web 前端的 CI &#x2F; CD 工程研发平台，你会如何设计？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#150-%E5%A6%82%E6%9E%9C%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E5%B0%86%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E7%BA%BF%E4%B8%8A%E4%BA%A7%E7%89%A9%E8%B5%84%E6%BA%90%EF%BC%88%E4%BE%8B%E5%A6%82%E5%9B%BE%E7%89%87%EF%BC%89%E8%BD%AC%E6%8D%A2%E6%88%90%E6%9C%AC%E5%9C%B0%E7%A7%81%E6%9C%89%E5%8C%96%E8%B5%84%E6%BA%90%EF%BC%8C%E4%BD%A0%E6%9C%89%E4%BB%80%E4%B9%88%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9F"><span class="toc-text">150.如果我们需要将已有项目中的线上产物资源（例如图片）转换成本地私有化资源，你有什么解决方案？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#151-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-Vue-CLI-3-x-%E5%AE%9A%E5%88%B6%E4%B8%80%E4%B8%AA%E8%84%9A%E6%89%8B%E6%9E%B6%EF%BC%9F%E6%AF%94%E5%A6%82%E5%86%85%E9%83%A8%E8%87%AA%E5%8A%A8%E9%9B%86%E6%88%90%E4%BA%86-i18n%E3%80%81-axios%E3%80%81Element-UI%E3%80%81%E8%B7%AF%E7%94%B1%E5%AE%88%E5%8D%AB%E7%AD%89%EF%BC%9F"><span class="toc-text">151.如何使用 Vue CLI 3.x 定制一个脚手架？比如内部自动集成了 i18n、 axios、Element UI、路由守卫等？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#152-Jenkins-%E5%A6%82%E4%BD%95%E9%85%8D%E5%90%88-Node-js-%E8%84%9A%E6%9C%AC%E8%BF%9B%E8%A1%8C-CI-CD-%E8%AE%BE%E8%AE%A1%EF%BC%9F"><span class="toc-text">152.Jenkins 如何配合 Node.js 脚本进行 CI &#x2F; CD 设计？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#153-%E5%A6%82%E6%9E%9C%E8%AE%A9%E4%BD%A0%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E9%80%9A%E7%94%A8%E7%9A%84%E9%A1%B9%E7%9B%AE%E8%84%9A%E6%89%8B%E6%9E%B6%EF%BC%8C%E4%BD%A0%E4%BC%9A%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%EF%BC%9F%E4%B8%80%E4%B8%AA%E9%80%9A%E7%94%A8%E7%9A%84%E8%84%9A%E6%89%8B%E6%9E%B6%E4%B8%80%E8%88%AC%E9%9C%80%E8%A6%81%E5%85%B7%E5%A4%87%E5%93%AA%E4%BA%9B%E8%83%BD%E5%8A%9B%EF%BC%9F"><span class="toc-text">153.如果让你设计一个通用的项目脚手架，你会如何设计？一个通用的脚手架一般需要具备哪些能力？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#154-%E5%A6%82%E6%9E%9C%E8%AE%A9%E4%BD%A0%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E9%80%9A%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E5%BA%93%EF%BC%8C%E4%BD%A0%E4%BC%9A%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%EF%BC%9F%E4%B8%80%E4%B8%AA%E9%80%9A%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E5%BA%93%E4%B8%80%E8%88%AC%E9%9C%80%E8%A6%81%E5%85%B7%E5%A4%87%E5%93%AA%E4%BA%9B%E8%83%BD%E5%8A%9B%EF%BC%9F"><span class="toc-text">154.如果让你设计一个通用的工具库，你会如何设计？一个通用的工具库一般需要具备哪些能力？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#155-%E5%81%87%E8%AE%BE%E4%BD%A0%E8%87%AA%E5%B7%B1%E5%AE%9E%E7%8E%B0%E7%9A%84-React-%E6%88%96-Vue-%E7%9A%84%E7%BB%84%E4%BB%B6%E5%BA%93%E8%A6%81%E8%AE%BE%E8%AE%A1%E6%BC%94%E7%A4%BA%E6%96%87%E6%A1%A3%EF%BC%8C%E4%BD%A0%E4%BC%9A%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%EF%BC%9F%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%96%87%E6%A1%A3%E9%9C%80%E8%A6%81%E5%AE%9E%E7%8E%B0%E5%93%AA%E4%BA%9B%E5%8A%9F%E8%83%BD%EF%BC%9F"><span class="toc-text">155.假设你自己实现的 React 或 Vue 的组件库要设计演示文档，你会如何设计？设计的文档需要实现哪些功能？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#156-%E5%9C%A8%E8%AE%BE%E8%AE%A1%E5%B7%A5%E5%85%B7%E5%BA%93%E5%8C%85%E7%9A%84%E6%97%B6%E5%80%99%E4%BD%A0%E6%98%AF%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1-API-%E6%96%87%E6%A1%A3%E7%9A%84%EF%BC%9F"><span class="toc-text">156.在设计工具库包的时候你是如何设计 API 文档的？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#157-%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%EF%BC%9F%E5%A6%82%E4%BD%95%E5%81%9A%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%EF%BC%9F"><span class="toc-text">157.什么是单点登录？如何做单点登录？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#158-%E5%A6%82%E4%BD%95%E5%81%9A%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%9B%BD%E9%99%85%E5%8C%96%E6%96%B9%E6%A1%88%EF%BC%9F"><span class="toc-text">158.如何做一个项目的国际化方案？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#159-%E5%A6%82%E4%BD%95%E5%81%9A%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%9B%91%E6%8E%A7%E5%92%8C%E5%9F%8B%E7%82%B9%E6%96%B9%E6%A1%88%EF%BC%9F"><span class="toc-text">159.如何做一个项目的监控和埋点方案？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#160-%E5%A6%82%E4%BD%95%E5%BB%BA%E8%AE%BE%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%A8%B3%E5%AE%9A%E6%80%A7%EF%BC%88%E7%9B%91%E6%8E%A7%E3%80%81%E7%81%B0%E5%BA%A6%E3%80%81%E9%94%99%E8%AF%AF%E9%99%8D%E7%BA%A7%E3%80%81%E5%9B%9E%E6%BB%9A%E2%80%A6%EF%BC%89%EF%BC%9F"><span class="toc-text">160.如何建设项目的稳定性（监控、灰度、错误降级、回滚…）？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#161-%E4%B8%80%E8%88%AC%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0%E5%9E%8B%E7%9A%84%E5%BA%94%E7%94%A8%E9%9C%80%E8%A6%81%E8%80%83%E8%99%91%E5%93%AA%E4%BA%9B%E6%80%A7%E8%83%BD%E6%96%B9%E9%9D%A2%E7%9A%84%E4%BC%98%E5%8C%96%EF%BC%9F"><span class="toc-text">161.一般管理后台型的应用需要考虑哪些性能方面的优化？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#162-%E7%AE%80%E8%BF%B0%E4%B8%80%E4%BA%9B%E6%8F%90%E5%8D%87%E9%A1%B9%E7%9B%AE%E4%BD%93%E9%AA%8C%E7%9A%84%E6%A1%88%E4%BE%8B%E5%92%8C%E6%8A%80%E6%9C%AF%E6%96%B9%E6%A1%88%EF%BC%88%E9%AA%A8%E6%9E%B6%E5%B1%8F%E3%80%81Loading-%E5%A4%84%E7%90%86%E3%80%81%E7%BC%93%E5%AD%98%E3%80%81%E9%94%99%E8%AF%AF%E9%99%8D%E7%BA%A7%E3%80%81%E8%AF%B7%E6%B1%82%E9%87%8D%E8%AF%95%E2%80%A6%EF%BC%89%EF%BC%9F"><span class="toc-text">162.简述一些提升项目体验的案例和技术方案（骨架屏、Loading 处理、缓存、错误降级、请求重试…）？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#163-%E5%81%87%E8%AE%BE%E9%9C%80%E8%A6%81%E5%AF%B9%E9%A1%B5%E9%9D%A2%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E6%B0%B4%E5%8D%B0%E6%96%B9%E6%A1%88%EF%BC%8C%E4%BD%A0%E4%BC%9A%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%EF%BC%9F"><span class="toc-text">163.假设需要对页面设计一个水印方案，你会如何设计？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#164-%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E9%80%9A%E7%94%A8%E7%9A%84-JSON-Schema-%E5%8D%8F%E8%AE%AE%E4%BD%BF%E5%85%B6%E5%8F%AF%E4%BB%A5%E5%8A%A8%E6%80%81%E6%B8%B2%E6%9F%93%E4%B8%80%E4%B8%AA%E9%80%9A%E7%94%A8%E7%9A%84%E8%81%94%E5%8A%A8%E8%A1%A8%E5%8D%95%EF%BC%9F"><span class="toc-text">164.如何设计一个通用的 JSON Schema 协议使其可以动态渲染一个通用的联动表单？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#165-%E4%B8%80%E8%88%AC%E7%9A%84%E4%BD%8E%E4%BB%A3%E7%A0%81%E5%B9%B3%E5%8F%B0%E9%9C%80%E8%A6%81%E5%85%B7%E5%A4%87%E5%93%AA%E4%BA%9B%E8%83%BD%E5%8A%9B%EF%BC%9F"><span class="toc-text">165.一般的低代码平台需要具备哪些能力？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#166-%E4%BD%BF%E7%94%A8-TypeScript-%E8%AF%AD%E6%B3%95%E5%B0%86%E6%B2%A1%E6%9C%89%E5%B1%82%E7%BA%A7%E7%9A%84%E6%89%81%E5%B9%B3%E6%95%B0%E6%8D%AE%E8%BD%AC%E6%8D%A2%E6%88%90%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="toc-text">166.使用 TypeScript 语法将没有层级的扁平数据转换成树形结构的数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#167-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E"><span class="toc-text">167.实现一个简易的模板引擎</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#168-%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%91%E5%B8%83-%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F"><span class="toc-text">168.简单实现一个发布 &#x2F; 订阅模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#169-%E5%8C%B9%E9%85%8D%E5%87%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD-const-a-require-%E2%80%98xxx%E2%80%99-%E4%B8%AD%E7%9A%84-xxx"><span class="toc-text">169.匹配出字符串中 const a &#x3D; require(‘xxx’) 中的 xxx</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></div><div class="widget-footer">
-
-<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>Scroll to Top</span></a><a class="buttom" onclick="util.scrollComment()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M10.46 1.25h3.08c1.603 0 2.86 0 3.864.095c1.023.098 1.861.3 2.6.752a5.75 5.75 0 0 1 1.899 1.899c.452.738.654 1.577.752 2.6c.095 1.004.095 2.261.095 3.865v1.067c0 1.141 0 2.036-.05 2.759c-.05.735-.153 1.347-.388 1.913a5.75 5.75 0 0 1-3.112 3.112c-.805.334-1.721.408-2.977.43a10.81 10.81 0 0 0-.929.036c-.198.022-.275.054-.32.08c-.047.028-.112.078-.224.232c-.121.166-.258.396-.476.764l-.542.916c-.773 1.307-2.69 1.307-3.464 0l-.542-.916a10.605 10.605 0 0 0-.476-.764c-.112-.154-.177-.204-.224-.232c-.045-.026-.122-.058-.32-.08c-.212-.023-.49-.03-.93-.037c-1.255-.021-2.171-.095-2.976-.429A5.75 5.75 0 0 1 1.688 16.2c-.235-.566-.338-1.178-.389-1.913c-.049-.723-.049-1.618-.049-2.76v-1.066c0-1.604 0-2.86.095-3.865c.098-1.023.3-1.862.752-2.6a5.75 5.75 0 0 1 1.899-1.899c.738-.452 1.577-.654 2.6-.752C7.6 1.25 8.857 1.25 10.461 1.25M6.739 2.839c-.914.087-1.495.253-1.959.537A4.25 4.25 0 0 0 3.376 4.78c-.284.464-.45 1.045-.537 1.96c-.088.924-.089 2.11-.089 3.761v1c0 1.175 0 2.019.046 2.685c.045.659.131 1.089.278 1.441a4.25 4.25 0 0 0 2.3 2.3c.515.214 1.173.294 2.429.316h.031c.398.007.747.013 1.037.045c.311.035.616.104.909.274c.29.17.5.395.682.645c.169.232.342.525.538.856l.559.944a.52.52 0 0 0 .882 0l.559-.944c.196-.331.37-.624.538-.856c.182-.25.392-.476.682-.645c.293-.17.598-.24.909-.274c.29-.032.639-.038 1.037-.045h.032c1.255-.022 1.913-.102 2.428-.316a4.25 4.25 0 0 0 2.3-2.3c.147-.352.233-.782.278-1.441c.046-.666.046-1.51.046-2.685v-1c0-1.651 0-2.837-.089-3.762c-.087-.914-.253-1.495-.537-1.959a4.25 4.25 0 0 0-1.403-1.403c-.464-.284-1.045-.45-1.96-.537c-.924-.088-2.11-.089-3.761-.089h-3c-1.651 0-2.837 0-3.762.089" clip-rule="evenodd"/><path fill="currentColor" d="M9 11a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><span>Join Discussion</span></a></div></widget>
-</div></aside><div class='float-panel blur'>
-  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
-  </button>
-  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
-  </button>
-</div>
-</div><div class="scripts">
-<script type="text/javascript">
-  const ctx = {
-    date_suffix: {
-      just: `Just`,
-      min: `minutes ago`,
-      hour: `hours ago`,
-      day: `days ago`,
-    },
-    root : `/`,
-  };
-
-  // required plugins (only load if needs)
-  if (`local_search`) {
-    ctx.search = {};
-    ctx.search.service = `local_search`;
-    if (ctx.search.service == 'local_search') {
-      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"sort":"-date"}`);
-      ctx.search[ctx.search.service] = service_obj;
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
     }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
-  const def = {
-    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
-    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
-  };
-  const deps = {
-    jquery: `https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js`,
-    marked: `https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js`
-  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E4%BB%80%E4%B9%88%E6%98%AF%E6%8C%87%E4%BB%A4%E5%92%8C%E6%8C%87%E4%BB%A4%E9%9B%86%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">3.什么是指令和指令集？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-JavaScript-%E6%98%AF%E5%A6%82%E4%BD%95%E8%BF%90%E8%A1%8C%E7%9A%84%EF%BC%9F%E8%A7%A3%E9%87%8A%E5%9E%8B%E8%AF%AD%E8%A8%80%E5%92%8C%E7%BC%96%E8%AF%91%E5%9E%8B%E8%AF%AD%E8%A8%80%E7%9A%84%E5%B7%AE%E5%BC%82%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">4.JavaScript 是如何运行的？解释型语言和编译型语言的差异是什么？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-%E7%AE%80%E5%8D%95%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B-Babel-%E7%9A%84%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">5.简单描述一下 Babel 的编译过程？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-JavaScript-%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8C%E5%87%BD%E6%95%B0%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD%E6%98%AF%E5%A6%82%E4%BD%95%E5%AD%98%E5%82%A8%E7%9A%84%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">6.JavaScript 中的数组和函数在内存中是如何存储的？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%92%8C-Node-js-%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">5.</span> <span class="nav-text">7.浏览器和 Node.js 中的事件循环机制有什么区别？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-ES6-Modules-%E7%9B%B8%E5%AF%B9%E4%BA%8E-CommonJS-%E7%9A%84%E4%BC%98%E5%8A%BF%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">6.</span> <span class="nav-text">8.ES6 Modules 相对于 CommonJS 的优势是什么？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E6%98%AF%E5%A6%82%E4%BD%95%E7%BC%96%E8%AF%91%E6%88%90%E6%9C%BA%E5%99%A8%E8%AF%AD%E8%A8%80%E7%9A%84%EF%BC%9F"><span class="nav-number">7.</span> <span class="nav-text">9.高级程序设计语言是如何编译成机器语言的？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-%E7%BC%96%E8%AF%91%E5%99%A8%E4%B8%80%E8%88%AC%E7%94%B1%E5%93%AA%E5%87%A0%E4%B8%AA%E9%98%B6%E6%AE%B5%E7%BB%84%E6%88%90%EF%BC%9F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5%E4%B8%80%E8%88%AC%E5%9C%A8%E4%BB%80%E4%B9%88%E9%98%B6%E6%AE%B5%E8%BF%9B%E8%A1%8C%EF%BC%9F"><span class="nav-number">8.</span> <span class="nav-text">10.编译器一般由哪几个阶段组成？数据类型检查一般在什么阶段进行？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#11-%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">9.</span> <span class="nav-text">11.编译过程中虚拟机的作用是什么？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12-%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%EF%BC%88IR%EF%BC%89%EF%BC%8C%E5%AE%83%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">10.</span> <span class="nav-text">12.什么是中间代码（IR），它的作用是什么？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#13-%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%EF%BC%9F"><span class="nav-number">11.</span> <span class="nav-text">13.什么是交叉编译？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#14-%E5%8F%91%E5%B8%83-%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">12.</span> <span class="nav-text">14.发布 &#x2F; 订阅模式和观察者模式的区别是什么？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#15-%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F%E4%B8%80%E8%88%AC%E4%BC%9A%E5%9C%A8%E4%BB%80%E4%B9%88%E5%9C%BA%E5%90%88%E4%BD%BF%E7%94%A8%EF%BC%9F"><span class="nav-number">13.</span> <span class="nav-text">15.装饰器模式一般会在什么场合使用？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#16-%E8%B0%88%E8%B0%88%E4%BD%A0%E5%AF%B9%E5%A4%A7%E5%9E%8B%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%BB%A3%E7%A0%81%E8%A7%A3%E8%80%A6%E8%AE%BE%E8%AE%A1%E7%90%86%E8%A7%A3%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF-Ioc%EF%BC%9F%E4%B8%80%E8%88%AC-DI-%E9%87%87%E7%94%A8%E4%BB%80%E4%B9%88%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0%EF%BC%9F"><span class="nav-number">14.</span> <span class="nav-text">16.谈谈你对大型项目的代码解耦设计理解？什么是 Ioc？一般 DI 采用什么设计模式实现？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#17-%E5%88%97%E4%B8%BE%E4%BD%A0%E6%89%80%E4%BA%86%E8%A7%A3%E7%9A%84%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F%EF%BC%9F"><span class="nav-number">15.</span> <span class="nav-text">17.列举你所了解的编程范式？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#18-%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%EF%BC%88AOP%EF%BC%89%E7%9A%84%E7%BC%96%E7%A8%8B%EF%BC%9F"><span class="nav-number">16.</span> <span class="nav-text">18.什么是面向切面（AOP）的编程？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#19-%E4%BB%80%E4%B9%88%E6%98%AF%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF%E5%87%BD%E6%95%B0%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B%EF%BC%9F"><span class="nav-number">17.</span> <span class="nav-text">19.什么是函数式编程？什么是响应式编程？什么是函数响应式编程？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#20-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E4%B8%8A%E4%B8%AD%E4%B8%8B%E4%B8%89%E8%A1%8C%E5%B8%83%E5%B1%80%EF%BC%8C%E9%A1%B6%E9%83%A8%E5%92%8C%E5%BA%95%E9%83%A8%E6%9C%80%E5%B0%8F%E9%AB%98%E5%BA%A6%E6%98%AF-100px%EF%BC%8C%E4%B8%AD%E9%97%B4%E8%87%AA%E9%80%82%E5%BA%94"><span class="nav-number">18.</span> <span class="nav-text">20.如何实现一个上中下三行布局，顶部和底部最小高度是 100px，中间自适应?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#21-%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0-CSS-%E6%A0%B7%E5%BC%8F%E6%BA%A2%E5%87%BA%EF%BC%8C%E4%BB%8E%E8%80%8C%E5%8F%AF%E4%BB%A5%E9%80%89%E6%8B%A9%E6%80%A7%E7%9A%84%E5%8A%A0-title-%E6%88%96%E8%80%85-Tooltip"><span class="nav-number">19.</span> <span class="nav-text">21.如何判断一个元素 CSS 样式溢出，从而可以选择性的加 title 或者 Tooltip?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#22-%E5%A6%82%E4%BD%95%E8%AE%A9-CSS-%E5%85%83%E7%B4%A0%E5%B7%A6%E4%BE%A7%E8%87%AA%E5%8A%A8%E6%BA%A2%E5%87%BA%EF%BC%88%E2%80%A6-%E6%BA%A2%E5%87%BA%E5%9C%A8%E5%B7%A6%E4%BE%A7%EF%BC%89%EF%BC%9F"><span class="nav-number">20.</span> <span class="nav-text">22.如何让 CSS 元素左侧自动溢出（… 溢出在左侧）？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#23-%E4%BB%80%E4%B9%88%E6%98%AF%E6%B2%99%E7%AE%B1%EF%BC%9F%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E6%B2%99%E7%AE%B1%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="nav-number">21.</span> <span class="nav-text">23.什么是沙箱？浏览器的沙箱有什么作用？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#24-%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%A1%A8%E5%8D%95%E9%A1%B9%E7%9A%84%E5%AF%86%E7%A0%81%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">22.</span> <span class="nav-text">24.如何处理浏览器中表单项的密码自动填充问题？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#25-Hash-%E5%92%8C-History-%E8%B7%AF%E7%94%B1%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="nav-number">23.</span> <span class="nav-text">25.Hash 和 History 路由的区别和优缺点？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#26-JavaScript-%E4%B8%AD%E7%9A%84-const-%E6%95%B0%E7%BB%84%E5%8F%AF%E4%BB%A5%E8%BF%9B%E8%A1%8C-push-%E6%93%8D%E4%BD%9C%E5%90%97%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">24.</span> <span class="nav-text">26.JavaScript 中的 const 数组可以进行 push 操作吗？为什么？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#27-JavaScript-%E4%B8%AD%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B1%9E%E6%80%A7%E6%8F%8F%E8%BF%B0%E7%AC%A6%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="nav-number">25.</span> <span class="nav-text">27.JavaScript 中对象的属性描述符有哪些？分别有什么作用？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#28-JavaScript-%E4%B8%AD-console-%E6%9C%89%E5%93%AA%E4%BA%9B-api"><span class="nav-number">26.</span> <span class="nav-text">28.JavaScript 中 console 有哪些 api ?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#29-%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94%E4%B8%80%E4%B8%8B-Callback%E3%80%81Promise%E3%80%81Generator%E3%80%81Async-%E5%87%A0%E4%B8%AA%E5%BC%82%E6%AD%A5-API-%E7%9A%84%E4%BC%98%E5%8A%A3%EF%BC%9F"><span class="nav-number">27.</span> <span class="nav-text">29.简单对比一下 Callback、Promise、Generator、Async 几个异步 API 的优劣？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#30-Object-defineProperty-%E6%9C%89%E5%93%AA%E5%87%A0%E4%B8%AA%E5%8F%82%E6%95%B0%EF%BC%9F%E5%90%84%E8%87%AA%E9%83%BD%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="nav-number">28.</span> <span class="nav-text">30.Object.defineProperty 有哪几个参数？各自都有什么作用？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#31-Object-defineProperty-%E5%92%8C-ES6-%E7%9A%84-Proxy-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">29.</span> <span class="nav-text">31.Object.defineProperty 和 ES6 的 Proxy 有什么区别？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#32-ES6-%E4%B8%AD-Symbol%E3%80%81Map%E3%80%81Decorator-%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E6%88%96%E8%80%85%E4%BD%A0%E5%9C%A8%E5%93%AA%E4%BA%9B%E5%BA%93%E7%9A%84%E6%BA%90%E7%A0%81%E9%87%8C%E8%A7%81%E8%BF%87%E8%BF%99%E4%BA%9B-API-%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9F"><span class="nav-number">30.</span> <span class="nav-text">32.ES6 中 Symbol、Map、Decorator 的使用场景有哪些？或者你在哪些库的源码里见过这些 API 的使用？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#33-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8-TypeScript-TypeScript-%E7%9B%B8%E5%AF%B9%E4%BA%8E-JavaScript-%E7%9A%84%E4%BC%98%E5%8A%BF%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">31.</span> <span class="nav-text">33.为什么要使用 TypeScript ? TypeScript 相对于 JavaScript 的优势是什么？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#34-TypeScript-%E4%B8%AD-const-%E5%92%8C-readonly-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F%E6%9E%9A%E4%B8%BE%E5%92%8C%E5%B8%B8%E9%87%8F%E6%9E%9A%E4%B8%BE%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">32.</span> <span class="nav-text">34.TypeScript 中 const 和 readonly 的区别？枚举和常量枚举的区别？接口和类型别名的区别？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#35-TypeScript-%E4%B8%AD-any-%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">33.</span> <span class="nav-text">35.TypeScript 中 any 类型的作用是什么？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#36-TypeScript-%E4%B8%AD-any%E3%80%81never%E3%80%81unknown-%E5%92%8C-void-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">34.</span> <span class="nav-text">36.TypeScript 中 any、never、unknown 和 void 有什么区别？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#37-TypeScript-%E4%B8%AD-interface-%E5%8F%AF%E4%BB%A5%E7%BB%99-Function-Array-Class%EF%BC%88Indexable%EF%BC%89%E5%81%9A%E5%A3%B0%E6%98%8E%E5%90%97%EF%BC%9F"><span class="nav-number">35.</span> <span class="nav-text">37.TypeScript 中 interface 可以给 Function &#x2F; Array &#x2F; Class（Indexable）做声明吗？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#38-TypeScript-%E4%B8%AD%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8-String%E3%80%81Number%E3%80%81Boolean%E3%80%81Symbol%E3%80%81Object-%E7%AD%89%E7%BB%99%E7%B1%BB%E5%9E%8B%E5%81%9A%E5%A3%B0%E6%98%8E%E5%90%97%EF%BC%9F"><span class="nav-number">36.</span> <span class="nav-text">38.TypeScript 中可以使用 String、Number、Boolean、Symbol、Object 等给类型做声明吗？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#39-TypeScript-%E4%B8%AD%E7%9A%84-this-%E5%92%8C-JavaScript-%E4%B8%AD%E7%9A%84-this-%E6%9C%89%E4%BB%80%E4%B9%88%E5%B7%AE%E5%BC%82%EF%BC%9F"><span class="nav-number">37.</span> <span class="nav-text">39.TypeScript 中的 this 和 JavaScript 中的 this 有什么差异？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#40-TypeScript-%E4%B8%AD%E4%BD%BF%E7%94%A8-Unions-%E6%97%B6%E6%9C%89%E5%93%AA%E4%BA%9B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%EF%BC%9F"><span class="nav-number">38.</span> <span class="nav-text">40.TypeScript 中使用 Unions 时有哪些注意事项？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#41-TypeScript-%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1-Class-%E7%9A%84%E5%A3%B0%E6%98%8E%EF%BC%9F"><span class="nav-number">39.</span> <span class="nav-text">41.TypeScript 如何设计 Class 的声明？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#42-TypeScript-%E4%B8%AD%E5%A6%82%E4%BD%95%E8%81%94%E5%90%88%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B%E7%9A%84-Key"><span class="nav-number">40.</span> <span class="nav-text">42.TypeScript 中如何联合枚举类型的 Key?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#43-TypeScript-%E4%B8%AD-%E3%80%81-%E3%80%81-%E3%80%81-%E3%80%81-%E7%AD%89%E7%AC%A6%E5%8F%B7%E7%9A%84%E5%90%AB%E4%B9%89%EF%BC%9F"><span class="nav-number">41.</span> <span class="nav-text">43.TypeScript 中 ?.、??、!.、_、** 等符号的含义？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#44-TypeScript-%E4%B8%AD%E9%A2%84%E5%AE%9A%E4%B9%89%E7%9A%84%E6%9C%89%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-number">42.</span> <span class="nav-text">44.TypeScript 中预定义的有条件类型有哪些？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#45-%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B-TypeScript-%E6%A8%A1%E5%9D%97%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-number">43.</span> <span class="nav-text">45.简单介绍一下 TypeScript 模块的加载机制？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#46-%E7%AE%80%E5%8D%95%E8%81%8A%E8%81%8A%E4%BD%A0%E5%AF%B9-TypeScript-%E7%B1%BB%E5%9E%8B%E5%85%BC%E5%AE%B9%E6%80%A7%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F%E6%8A%97%E5%8F%98%E3%80%81%E5%8F%8C%E5%8F%98%E3%80%81%E5%8D%8F%E5%8F%98%E5%92%8C%E9%80%86%E5%8F%98%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="nav-number">44.</span> <span class="nav-text">46.简单聊聊你对 TypeScript 类型兼容性的理解？抗变、双变、协变和逆变的简单理解？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#47-TypeScript-%E4%B8%AD%E5%AF%B9%E8%B1%A1%E5%B1%95%E5%BC%80%E4%BC%9A%E6%9C%89%E4%BB%80%E4%B9%88%E5%89%AF%E4%BD%9C%E7%94%A8%E5%90%97%EF%BC%9F"><span class="nav-number">45.</span> <span class="nav-text">47.TypeScript 中对象展开会有什么副作用吗？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#48-TypeScript-%E4%B8%AD-interface%E3%80%81type%E3%80%81enum-%E5%A3%B0%E6%98%8E%E6%9C%89%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E5%8A%9F%E8%83%BD%E5%90%97%EF%BC%9F"><span class="nav-number">46.</span> <span class="nav-text">48.TypeScript 中 interface、type、enum 声明有作用域的功能吗？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#49-TypeScript-%E4%B8%AD%E5%90%8C%E5%90%8D%E7%9A%84-interface-%E6%88%96%E8%80%85%E5%90%8C%E5%90%8D%E7%9A%84-interface-%E5%92%8C-class-%E5%8F%AF%E4%BB%A5%E5%90%88%E5%B9%B6%E5%90%97%EF%BC%9F"><span class="nav-number">47.</span> <span class="nav-text">49.TypeScript 中同名的 interface 或者同名的 interface 和 class 可以合并吗？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#50-%E5%A6%82%E4%BD%95%E4%BD%BF-TypeScript-%E9%A1%B9%E7%9B%AE%E5%BC%95%E5%85%A5%E5%B9%B6%E8%AF%86%E5%88%AB%E7%BC%96%E8%AF%91%E4%B8%BA-JavaScript-%E7%9A%84-npm-%E5%BA%93%E5%8C%85%EF%BC%9F"><span class="nav-number">48.</span> <span class="nav-text">50.如何使 TypeScript 项目引入并识别编译为 JavaScript 的 npm 库包？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#51-TypeScript-%E7%9A%84-tsconfig-json-%E4%B8%AD%E6%9C%89%E5%93%AA%E4%BA%9B%E9%85%8D%E7%BD%AE%E9%A1%B9%E4%BF%A1%E6%81%AF%EF%BC%9F"><span class="nav-number">49.</span> <span class="nav-text">51.TypeScript 的 tsconfig.json 中有哪些配置项信息？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#52-TypeScript-%E4%B8%AD%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E6%A8%A1%E5%9D%97%E5%AF%BC%E5%85%A5%E7%9A%84%E8%B7%AF%E5%BE%84%E5%88%AB%E5%90%8D%EF%BC%9F"><span class="nav-number">50.</span> <span class="nav-text">52.TypeScript 中如何设置模块导入的路径别名？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#53-React-Class-%E7%BB%84%E4%BB%B6%E6%9C%89%E5%93%AA%E4%BA%9B%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0%EF%BC%9F%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="nav-number">51.</span> <span class="nav-text">53.React Class 组件有哪些周期函数？分别有什么作用？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#54-React-Class-%E7%BB%84%E4%BB%B6%E4%B8%AD%E8%AF%B7%E6%B1%82%E5%8F%AF%E4%BB%A5%E5%9C%A8-componentWillMount-%E4%B8%AD%E5%8F%91%E8%B5%B7%E5%90%97%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">52.</span> <span class="nav-text">54.React Class 组件中请求可以在 componentWillMount 中发起吗？为什么？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#55-React-Class-%E7%BB%84%E4%BB%B6%E5%92%8C-React-Hook-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-number">53.</span> <span class="nav-text">55.React Class 组件和 React Hook 的区别有哪些？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#56-React-%E4%B8%AD%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89-Hook-%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="nav-number">54.</span> <span class="nav-text">56.React 中高阶函数和自定义 Hook 的优缺点？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#57-%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E-React-Hook-%E4%B8%AD-useState-%E5%92%8C-useEffect-%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="nav-number">55.</span> <span class="nav-text">57.简要说明 React Hook 中 useState 和 useEffect 的运行原理？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#58-React-%E5%A6%82%E4%BD%95%E5%8F%91%E7%8E%B0%E9%87%8D%E6%B8%B2%E6%9F%93%E3%80%81%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0%E5%AE%B9%E6%98%93%E9%80%A0%E6%88%90%E9%87%8D%E6%B8%B2%E6%9F%93%E3%80%81%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E9%87%8D%E6%B8%B2%E6%9F%93%EF%BC%9F"><span class="nav-number">56.</span> <span class="nav-text">58.React 如何发现重渲染、什么原因容易造成重渲染、如何避免重渲染？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#59-React-Hook-%E4%B8%AD-useEffect-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8F%82%E6%95%B0%EF%BC%8C%E5%A6%82%E4%BD%95%E6%A3%80%E6%B5%8B%E6%95%B0%E7%BB%84%E4%BE%9D%E8%B5%96%E9%A1%B9%E7%9A%84%E5%8F%98%E5%8C%96%EF%BC%9F"><span class="nav-number">57.</span> <span class="nav-text">59.React Hook 中 useEffect 有哪些参数，如何检测数组依赖项的变化？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#60-React-%E7%9A%84-useEffect-%E6%98%AF%E5%A6%82%E4%BD%95%E7%9B%91%E5%90%AC%E6%95%B0%E7%BB%84%E4%BE%9D%E8%B5%96%E9%A1%B9%E7%9A%84%E5%8F%98%E5%8C%96%E7%9A%84%EF%BC%9F"><span class="nav-number">58.</span> <span class="nav-text">60.React 的 useEffect 是如何监听数组依赖项的变化的？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#61-React-Hook-%E5%92%8C%E9%97%AD%E5%8C%85%E6%9C%89%E4%BB%80%E4%B9%88%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB%EF%BC%9F"><span class="nav-number">59.</span> <span class="nav-text">61.React Hook 和闭包有什么关联关系？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#62-React-%E4%B8%AD-useState-%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E6%95%B0%E6%8D%AE%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%EF%BC%9F"><span class="nav-number">60.</span> <span class="nav-text">62.React 中 useState 是如何做数据初始化的？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#63-%E5%88%97%E4%B8%BE%E4%BD%A0%E5%B8%B8%E7%94%A8%E7%9A%84-React-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7%EF%BC%9F"><span class="nav-number">61.</span> <span class="nav-text">63.列举你常用的 React 性能优化技巧？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#64-Vue-2-x-%E6%A8%A1%E6%9D%BF%E4%B8%AD%E7%9A%84%E6%8C%87%E4%BB%A4%E6%98%AF%E5%A6%82%E4%BD%95%E8%A7%A3%E6%9E%90%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="nav-number">62.</span> <span class="nav-text">64.Vue 2.x 模板中的指令是如何解析实现的？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#65-%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E-Vue-2-x-%E7%9A%84%E5%85%A8%E9%93%BE%E8%B7%AF%E8%BF%90%E4%BD%9C%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-number">63.</span> <span class="nav-text">65.简要说明 Vue 2.x 的全链路运作机制？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#66-%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B-Element-UI-%E7%9A%84%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1%EF%BC%9F"><span class="nav-number">64.</span> <span class="nav-text">66.简单介绍一下 Element UI 的框架设计？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#67-%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3-Vue-%E6%98%AF%E4%B8%80%E4%B8%AA%E6%B8%90%E8%BF%9B%E5%BC%8F%E6%A1%86%E6%9E%B6%EF%BC%9F"><span class="nav-number">65.</span> <span class="nav-text">67.如何理解 Vue 是一个渐进式框架？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#68-Vue-%E9%87%8C%E5%AE%9E%E7%8E%B0%E8%B7%A8%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-number">66.</span> <span class="nav-text">68.Vue 里实现跨组件通信的方式有哪些？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#69-Vue-%E4%B8%AD%E5%93%8D%E5%BA%94%E5%BC%8F%E6%95%B0%E6%8D%AE%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E5%88%B0%E5%AF%B9%E6%9F%90%E4%B8%AA%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B7%B1%E5%B1%82%E6%AC%A1%E5%B1%9E%E6%80%A7%E7%9A%84%E7%9B%91%E5%90%AC%E7%9A%84%EF%BC%9F"><span class="nav-number">67.</span> <span class="nav-text">69.Vue 中响应式数据是如何做到对某个对象的深层次属性的监听的？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#70-MVVM%E3%80%81MVC-%E5%92%8C-MVP-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%90%84%E8%87%AA%E6%9C%89%E4%BB%80%E4%B9%88%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F%E3%80%81"><span class="nav-number">68.</span> <span class="nav-text">70.MVVM、MVC 和 MVP 的区别是什么？各自有什么应用场景？、</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#71-%E4%BB%80%E4%B9%88%E6%98%AF-MVVM-%E6%A1%86%E6%9E%B6%EF%BC%9F"><span class="nav-number">69.</span> <span class="nav-text">71.什么是 MVVM 框架？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#72-Vue-CLI-3-x-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8A%9F%E8%83%BD%EF%BC%9FVue-CLI-3-x-%E7%9A%84%E6%8F%92%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%BA%86%E8%A7%A3%EF%BC%9F"><span class="nav-number">70.</span> <span class="nav-text">72.Vue CLI 3.x 有哪些功能？Vue CLI 3.x 的插件系统了解？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#73-Vue-CLI-3-x-%E4%B8%AD%E7%9A%84-Webpack-%E6%98%AF%E5%A6%82%E4%BD%95%E7%BB%84%E8%A3%85%E5%A4%84%E7%90%86%E7%9A%84%EF%BC%9F"><span class="nav-number">71.</span> <span class="nav-text">73.Vue CLI 3.x 中的 Webpack 是如何组装处理的？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#74-Vue-2-x-%E5%A6%82%E4%BD%95%E6%94%AF%E6%8C%81-TypeScript-%E8%AF%AD%E6%B3%95%EF%BC%9F"><span class="nav-number">72.</span> <span class="nav-text">74.Vue 2.x 如何支持 TypeScript 语法？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#75-%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E4%BD%BF%E5%BE%97-JavaScript-%E9%A1%B9%E7%9B%AE%E5%8F%AF%E4%BB%A5%E6%94%AF%E6%8C%81-TypeScript-%E8%AF%AD%E6%B3%95%EF%BC%9F"><span class="nav-number">73.</span> <span class="nav-text">75.如何配置环境使得 JavaScript 项目可以支持 TypeScript 语法？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#76-%E5%A6%82%E4%BD%95%E5%AF%B9-TypeScript-%E8%BF%9B%E8%A1%8C-Lint-%E6%A0%A1%E9%AA%8C%EF%BC%9FESLint-%E5%92%8C-TSLint-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">74.</span> <span class="nav-text">76.如何对 TypeScript 进行 Lint 校验？ESLint 和 TSLint 有什么区别？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#77-Node-js-%E5%A6%82%E4%BD%95%E6%94%AF%E6%8C%81-TypeScript-%E8%AF%AD%E6%B3%95%EF%BC%9F"><span class="nav-number">75.</span> <span class="nav-text">77.Node.js 如何支持 TypeScript 语法？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#78-TypeScript-%E5%A6%82%E4%BD%95%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%BA%93%E5%8C%85%E7%9A%84%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6%EF%BC%9F"><span class="nav-number">76.</span> <span class="nav-text">78.TypeScript 如何自动生成库包的声明文件？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#79-Babel-%E5%AF%B9%E4%BA%8E-TypeScript-%E7%9A%84%E6%94%AF%E6%8C%81%E6%9C%89%E5%93%AA%E4%BA%9B%E9%99%90%E5%88%B6%EF%BC%9F"><span class="nav-number">77.</span> <span class="nav-text">79.Babel 对于 TypeScript 的支持有哪些限制？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#80-Webpack-%E4%B8%AD-Loader-%E5%92%8C-Plugin-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">78.</span> <span class="nav-text">80.Webpack 中 Loader 和 Plugin 的区别是什么？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#81-%E5%9C%A8-Webpack-%E4%B8%AD%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E5%88%B0%E6%94%AF%E6%8C%81%E7%B1%BB%E4%BC%BC%E4%BA%8E-JSX-%E8%AF%AD%E6%B3%95%E7%9A%84-Sourcemap-%E5%AE%9A%E4%BD%8D%EF%BC%9F"><span class="nav-number">79.</span> <span class="nav-text">81.在 Webpack 中是如何做到支持类似于 JSX 语法的 Sourcemap 定位？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#82-%E5%8F%91%E5%B8%83-Npm-%E5%8C%85%E5%A6%82%E4%BD%95%E6%8C%87%E5%AE%9A%E5%BC%95%E5%85%A5%E5%9C%B0%E5%9D%80%EF%BC%9F"><span class="nav-number">80.</span> <span class="nav-text">82.发布 Npm 包如何指定引入地址？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#83-%E5%A6%82%E4%BD%95%E5%8F%91%E5%B8%83%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%89%B9%E5%AE%9A%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%BA-Npm-%E5%8C%85%E7%9A%84%E6%A0%B9%E7%9B%AE%E5%BD%95%EF%BC%9F"><span class="nav-number">81.</span> <span class="nav-text">83.如何发布开发项目的特定文件夹为 Npm 包的根目录？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#84-%E5%A6%82%E4%BD%95%E5%8F%91%E5%B8%83%E4%B8%80%E4%B8%AA%E6%94%AF%E6%8C%81-Tree-Shaking-%E6%9C%BA%E5%88%B6%E7%9A%84-Npm-%E5%8C%85%EF%BC%9F"><span class="nav-number">82.</span> <span class="nav-text">84.如何发布一个支持 Tree Shaking 机制的 Npm 包？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#85-Npm-%E5%8C%85%E4%B8%AD-peerDependencies-%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">83.</span> <span class="nav-text">85.Npm 包中 peerDependencies 的作用是什么？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#86-%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E8%B0%83%E8%AF%95%E9%9C%80%E8%A6%81%E5%8F%91%E5%B8%83%E7%9A%84-Npm-%E5%8C%85%EF%BC%9F"><span class="nav-number">84.</span> <span class="nav-text">86.如何优雅的调试需要发布的 Npm 包？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#87-%E5%9C%A8%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%BA%9B%E5%BA%93%E5%8C%85%E6%97%B6%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E7%89%88%E6%9C%AC%E6%97%A5%E5%BF%97%EF%BC%9F"><span class="nav-number">85.</span> <span class="nav-text">87.在设计一些库包时如何生成版本日志？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#88-%E4%BA%86%E8%A7%A3-Git-%EF%BC%88Submodule%EF%BC%89%E5%AD%90%E6%A8%A1%E5%9D%97%E5%90%97%EF%BC%9F%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B-Git-%E5%AD%90%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="nav-number">86.</span> <span class="nav-text">88.了解 Git （Submodule）子模块吗？简单介绍一下 Git 子模块的作用？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#89-Git-%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9%E5%B7%B2%E7%BB%8F%E6%8F%90%E4%BA%A4%E7%9A%84-Commit-%E4%BF%A1%E6%81%AF%EF%BC%9F"><span class="nav-number">87.</span> <span class="nav-text">89.Git 如何修改已经提交的 Commit 信息？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#90-Git-%E5%A6%82%E4%BD%95%E6%92%A4%E9%94%80-Commit-%E5%B9%B6%E4%BF%9D%E5%AD%98%E4%B9%8B%E5%89%8D%E7%9A%84%E4%BF%AE%E6%94%B9%EF%BC%9F"><span class="nav-number">88.</span> <span class="nav-text">90.Git 如何撤销 Commit 并保存之前的修改？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#91-Git-%E5%A6%82%E4%BD%95-ignore-%E8%A2%AB-commit-%E8%BF%87%E7%9A%84%E6%96%87%E4%BB%B6%EF%BC%9F"><span class="nav-number">89.</span> <span class="nav-text">91.Git 如何 ignore 被 commit 过的文件？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#92-%E5%9C%A8%E4%BD%BF%E7%94%A8-Git-%E7%9A%84%E6%97%B6%E5%80%99%E5%A6%82%E4%BD%95%E8%A7%84%E8%8C%83-Git-%E7%9A%84%E6%8F%90%E4%BA%A4%E8%AF%B4%E6%98%8E%EF%BC%88Commit-%E4%BF%A1%E6%81%AF%EF%BC%89%EF%BC%9F"><span class="nav-number">90.</span> <span class="nav-text">92.在使用 Git 的时候如何规范 Git 的提交说明（Commit 信息）？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#93-%E7%AE%80%E8%BF%B0%E7%AC%A6%E5%90%88-Angular-%E8%A7%84%E8%8C%83%E7%9A%84%E6%8F%90%E4%BA%A4%E8%AF%B4%E6%98%8E%E7%9A%84%E7%BB%93%E6%9E%84%E7%BB%84%E6%88%90%EF%BC%9F"><span class="nav-number">91.</span> <span class="nav-text">93.简述符合 Angular 规范的提交说明的结构组成？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#94-Commit-%E4%BF%A1%E6%81%AF%E5%A6%82%E4%BD%95%E5%92%8C-Github-Issues-%E5%85%B3%E8%81%94%EF%BC%9F"><span class="nav-number">92.</span> <span class="nav-text">94.Commit 信息如何和 Github Issues 关联？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#95-Git-Hook-%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%93%AA%E4%BA%9B%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="nav-number">93.</span> <span class="nav-text">95.Git Hook 在项目中哪些作用？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#96-Git-Hook-%E4%B8%AD%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%92%8C%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%92%A9%E5%AD%90%E5%90%84%E8%87%AA%E7%94%A8%E4%BA%8E%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="nav-number">94.</span> <span class="nav-text">96.Git Hook 中客户端和服务端钩子各自用于什么作用？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#97-Git-Hook-%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E9%92%A9%E5%AD%90%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-number">95.</span> <span class="nav-text">97.Git Hook 中常用的钩子有哪些？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#98-pre-commit-%E5%92%8C-commit-msg-%E9%92%A9%E5%AD%90%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%90%84%E8%87%AA%E5%8F%AF%E7%94%A8%E4%BA%8E%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">96.</span> <span class="nav-text">98.pre-commit 和 commit-msg 钩子的区别是什么？各自可用于做什么？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#99-husky-%E4%BB%A5%E5%8F%8A-ghook-%E7%AD%89%E5%B7%A5%E5%85%B7%E5%88%B6%E4%BD%9C-Git-Hook-%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">97.</span> <span class="nav-text">99.husky 以及 ghook 等工具制作 Git Hook 的原理是什么？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#100-%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E9%80%9A%E7%94%A8%E7%9A%84-Git-Hook-%EF%BC%9F"><span class="nav-number">98.</span> <span class="nav-text">100.如何设计一个通用的 Git Hook ？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#101-Git-Hook-%E5%8F%AF%E4%BB%A5%E9%87%87%E7%94%A8-Node-%E8%84%9A%E6%9C%AC%E8%BF%9B%E8%A1%8C%E8%AE%BE%E8%AE%A1%E5%90%97%EF%BC%9F%E5%A6%82%E4%BD%95%E5%81%9A%E5%88%B0%EF%BC%9F"><span class="nav-number">99.</span> <span class="nav-text">101.Git Hook 可以采用 Node 脚本进行设计吗？如何做到？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#102-%E5%A6%82%E4%BD%95%E7%A1%AE%E4%BF%9D%E5%88%AB%E4%BA%BA%E4%B8%8A%E4%BC%A0%E7%9A%84%E4%BB%A3%E7%A0%81%E6%B2%A1%E6%9C%89-Lint-%E9%94%99%E8%AF%AF%EF%BC%9F%E5%A6%82%E4%BD%95%E7%A1%AE%E4%BF%9D%E4%BB%A3%E7%A0%81%E6%9E%84%E5%BB%BA%E6%B2%A1%E6%9C%89-Lint-%E9%94%99%E8%AF%AF%EF%BC%9F"><span class="nav-number">100.</span> <span class="nav-text">102.如何确保别人上传的代码没有 Lint 错误？如何确保代码构建没有 Lint 错误？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#103-%E5%A6%82%E4%BD%95%E5%9C%A8-Vs-Code-%E4%B8%AD%E8%BF%9B%E8%A1%8C-Lint-%E6%A0%A1%E9%AA%8C%E6%8F%90%E7%A4%BA%EF%BC%9F%E5%A6%82%E4%BD%95%E5%9C%A8-Vs-Code-%E4%B8%AD%E8%BF%9B%E8%A1%8C-Lint-%E4%BF%9D%E5%AD%98%E6%A0%BC%E5%BC%8F%E5%8C%96%EF%BC%9F"><span class="nav-number">101.</span> <span class="nav-text">103.如何在 Vs Code 中进行 Lint 校验提示？如何在 Vs Code 中进行 Lint 保存格式化？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#104-ESLint-%E5%92%8C-Prettier-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E4%B8%A4%E8%80%85%E5%9C%A8%E4%B8%80%E8%B5%B7%E5%B7%A5%E4%BD%9C%E6%97%B6%E4%BC%9A%E4%BA%A7%E7%94%9F%E9%97%AE%E9%A2%98%E5%90%97%EF%BC%9F"><span class="nav-number">102.</span> <span class="nav-text">104.ESLint 和 Prettier 的区别是什么？两者在一起工作时会产生问题吗？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#105-%E5%A6%82%E4%BD%95%E6%9C%89%E6%95%88%E7%9A%84%E8%AF%86%E5%88%AB-ESLint-%E5%92%8C-Prettier-%E5%8F%AF%E8%83%BD%E4%BA%A7%E7%94%9F%E5%86%B2%E7%AA%81%E7%9A%84%E6%A0%BC%E5%BC%8F%E8%A7%84%E5%88%99%EF%BC%9F%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E6%AD%A4%E7%B1%BB%E8%A7%84%E5%88%99%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">103.</span> <span class="nav-text">105.如何有效的识别 ESLint 和 Prettier 可能产生冲突的格式规则？如何解决此类规则冲突问题？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#106-%E5%9C%A8%E9%80%9A%E5%B8%B8%E7%9A%84%E8%84%9A%E6%89%8B%E6%9E%B6%E9%A1%B9%E7%9B%AE%E4%B8%AD%E8%BF%9B%E8%A1%8C%E7%83%AD%E6%9B%B4%E6%96%B0%EF%BC%88hot-module-replacement%EF%BC%89%E6%97%B6%E5%A6%82%E4%BD%95%E5%81%9A%E5%88%B0-ESLint-%E5%AE%9E%E6%97%B6%E6%89%93%E5%8D%B0%E6%A0%A1%E9%AA%8C%E9%94%99%E8%AF%AF%E4%BF%A1%E6%81%AF%EF%BC%9F"><span class="nav-number">104.</span> <span class="nav-text">106.在通常的脚手架项目中进行热更新（hot module replacement）时如何做到 ESLint 实时打印校验错误信息？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#107-%E8%B0%88%E8%B0%88%E4%BD%A0%E5%AF%B9-SourceMap-%E7%9A%84%E4%BA%86%E8%A7%A3%EF%BC%9F"><span class="nav-number">105.</span> <span class="nav-text">107.谈谈你对 SourceMap 的了解？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#108-%E5%A6%82%E4%BD%95%E8%B0%83%E8%AF%95-Node-js-%E4%BB%A3%E7%A0%81%EF%BC%9F%E5%A6%82%E4%BD%95%E8%B0%83%E8%AF%95-Node-js-TypeScript-%E4%BB%A3%E7%A0%81%EF%BC%9F%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E8%AF%95-Node-js-%E4%BB%A3%E7%A0%81%EF%BC%9F"><span class="nav-number">106.</span> <span class="nav-text">108.如何调试 Node.js 代码？如何调试 Node.js TypeScript 代码？在浏览器中如何调试 Node.js 代码？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#109-%E5%88%97%E4%B8%BE%E4%BD%A0%E7%9F%A5%E9%81%93%E7%9A%84%E6%89%80%E6%9C%89%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E5%B9%B6%E8%AF%B4%E8%AF%B4%E8%BF%99%E4%BA%9B%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9F%E8%BF%99%E4%BA%9B%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E5%9C%A8%E4%B8%8D%E5%90%8C%E7%9A%84%E5%9C%BA%E6%99%AF%E4%B8%8B%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E9%80%89%E5%9E%8B%EF%BC%9F"><span class="nav-number">107.</span> <span class="nav-text">109.列举你知道的所有构建工具并说说这些工具的优缺点？这些构建工具在不同的场景下应该如何选型？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#110-VS-Code-%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84%E7%94%A8%E6%88%B7%E5%92%8C%E5%B7%A5%E4%BD%9C%E5%8C%BA%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">108.</span> <span class="nav-text">110.VS Code 配置中的用户和工作区有什么区别？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#111-VS-Code-%E7%9A%84%E6%8F%92%E4%BB%B6%E5%8F%AF%E4%BB%A5%E5%8F%AA%E5%AF%B9%E5%BD%93%E5%89%8D%E9%A1%B9%E7%9B%AE%E7%94%9F%E6%95%88%E5%90%97%EF%BC%9F"><span class="nav-number">109.</span> <span class="nav-text">111.VS Code 的插件可以只对当前项目生效吗？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#112-%E4%BD%A0%E6%89%80%E7%9F%A5%E9%81%93%E7%9A%84%E6%B5%8B%E8%AF%95%E6%9C%89%E5%93%AA%E4%BA%9B%E6%B5%8B%E8%AF%95%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="nav-number">110.</span> <span class="nav-text">112.你所知道的测试有哪些测试类型？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#113-%E4%BD%A0%E6%89%80%E7%9F%A5%E9%81%93%E7%9A%84%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-number">111.</span> <span class="nav-text">113.你所知道的测试框架有哪些？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#114-%E4%BB%80%E4%B9%88%E6%98%AF-e2e-%E6%B5%8B%E8%AF%95%EF%BC%9F%E6%9C%89%E5%93%AA%E4%BA%9B-e2e-%E7%9A%84%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6%EF%BC%9F"><span class="nav-number">112.</span> <span class="nav-text">114.什么是 e2e 测试？有哪些 e2e 的测试框架？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#115-%E5%81%87%E8%AE%BE%E7%8E%B0%E5%9C%A8%E6%9C%89%E4%B8%80%E4%B8%AA%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%EF%BC%8C%E5%A6%82%E4%BD%95%E5%AF%B9%E8%AF%A5%E7%AE%97%E6%B3%95%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%EF%BC%9F"><span class="nav-number">113.</span> <span class="nav-text">115.假设现在有一个插入排序算法，如何对该算法进行单元测试？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#116-CDN-%E6%9C%8D%E5%8A%A1%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%BB%9C%E5%8A%A0%E9%80%9F%EF%BC%9F"><span class="nav-number">114.</span> <span class="nav-text">116.CDN 服务如何实现网络加速？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#117-WebSocket-%E4%BD%BF%E7%94%A8%E7%9A%84%E6%98%AF-TCP-%E8%BF%98%E6%98%AF-UDP-%E5%8D%8F%E8%AE%AE%EF%BC%9F"><span class="nav-number">115.</span> <span class="nav-text">117.WebSocket 使用的是 TCP 还是 UDP 协议？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#118-%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%95%E5%B7%A5%E3%80%81%E5%8D%8A%E5%8F%8C%E5%B7%A5%E5%92%8C%E5%85%A8%E5%8F%8C%E5%B7%A5%E9%80%9A%E4%BF%A1%EF%BC%9F"><span class="nav-number">116.</span> <span class="nav-text">118.什么是单工、半双工和全双工通信？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#119-%E7%AE%80%E5%8D%95%E6%8F%8F%E8%BF%B0-HTTP-%E5%8D%8F%E8%AE%AE%E5%8F%91%E9%80%81%E4%B8%80%E4%B8%AA%E5%B8%A6%E5%9F%9F%E5%90%8D%E7%9A%84-URL-%E8%AF%B7%E6%B1%82%E7%9A%84%E5%8D%8F%E8%AE%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%EF%BC%9F%EF%BC%88DNS%E3%80%81TCP%E3%80%81IP%E3%80%81%E9%93%BE%E8%B7%AF%EF%BC%89"><span class="nav-number">117.</span> <span class="nav-text">119.简单描述 HTTP 协议发送一个带域名的 URL 请求的协议传输过程？（DNS、TCP、IP、链路）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#120-%E4%BB%80%E4%B9%88%E6%98%AF%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%EF%BC%9F"><span class="nav-number">118.</span> <span class="nav-text">120.什么是正向代理？什么是反向代理？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#121-Cookie-%E5%8F%AF%E4%BB%A5%E5%9C%A8%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%94%9F%E6%88%90%E5%90%97%EF%BC%9FCookie-%E5%9C%A8%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%94%9F%E6%88%90%E5%90%8E%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E6%98%AF%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%EF%BC%9F"><span class="nav-number">119.</span> <span class="nav-text">121.Cookie 可以在服务端生成吗？Cookie 在服务端生成后的工作流程是什么样的？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#122-Session%E3%80%81Cookie-%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%85%B3%E8%81%94%EF%BC%9F%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E4%B8%B4%E6%97%B6%E6%80%A7%E5%92%8C%E6%B0%B8%E4%B9%85%E6%80%A7%E7%9A%84-Session-%E5%AD%98%E5%82%A8%EF%BC%9F"><span class="nav-number">120.</span> <span class="nav-text">122.Session、Cookie 的区别和关联？如何进行临时性和永久性的 Session 存储？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#123-%E8%AE%BE%E7%BD%AE-Cookie-%E6%97%B6%E5%80%99%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2-XSS-%E6%94%BB%E5%87%BB%EF%BC%9F"><span class="nav-number">121.</span> <span class="nav-text">123.设置 Cookie 时候如何防止 XSS 攻击？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#124-%E7%AE%80%E5%8D%95%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B%E7%94%A8%E6%88%B7%E5%85%8D%E7%99%BB%E9%99%86%E7%9A%84%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B%EF%BC%9F%E5%8F%AF%E8%83%BD%E4%BC%9A%E5%87%BA%E7%8E%B0%E5%93%AA%E4%BA%9B%E5%AE%89%E5%85%A8%E6%80%A7%E9%97%AE%E9%A2%98%EF%BC%9F%E4%B8%80%E8%88%AC%E5%A6%82%E4%BD%95%E5%AF%B9%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%9A%84%E5%AF%86%E7%A0%81%E8%BF%9B%E8%A1%8C%E5%8A%A0%E5%AF%86%EF%BC%9F"><span class="nav-number">122.</span> <span class="nav-text">124.简单描述一下用户免登陆的实现过程？可能会出现哪些安全性问题？一般如何对用户登录的密码进行加密？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#125-HTTP-%E4%B8%AD%E6%8F%90%E5%8D%87%E4%BC%A0%E8%BE%93%E9%80%9F%E7%8E%87%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%B8%B8%E7%94%A8%E7%9A%84%E5%86%85%E5%AE%B9%E7%BC%96%E7%A0%81%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-number">123.</span> <span class="nav-text">125.HTTP 中提升传输速率的方式有哪些？常用的内容编码方式有哪些？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#126-%E4%BC%A0%E8%BE%93%E5%9B%BE%E7%89%87%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%A6%82%E6%9E%9C%E7%AA%81%E7%84%B6%E4%B8%AD%E6%96%AD%EF%BC%8C%E5%A6%82%E4%BD%95%E5%9C%A8%E6%81%A2%E5%A4%8D%E5%90%8E%E4%BB%8E%E4%B9%8B%E5%89%8D%E7%9A%84%E4%B8%AD%E6%96%AD%E4%B8%AD%E6%81%A2%E5%A4%8D%E4%BC%A0%E8%BE%93%EF%BC%9F"><span class="nav-number">124.</span> <span class="nav-text">126.传输图片的过程中如果突然中断，如何在恢复后从之前的中断中恢复传输？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#127-%E4%BB%80%E4%B9%88%E6%98%AF%E4%BB%A3%E7%90%86%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF%E7%BD%91%E5%85%B3%EF%BC%9F%E4%BB%A3%E7%90%86%E5%92%8C%E7%BD%91%E5%85%B3%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">125.</span> <span class="nav-text">127.什么是代理？什么是网关？代理和网关的作用是什么？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#128-HTTPS-%E7%9B%B8%E6%AF%94-HTTP-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9B%B4%E5%8A%A0%E5%AE%89%E5%85%A8%E5%8F%AF%E9%9D%A0%EF%BC%9F"><span class="nav-number">126.</span> <span class="nav-text">128.HTTPS 相比 HTTP 为什么更加安全可靠？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#129-%E4%BB%80%E4%B9%88%E6%98%AF%E5%AF%B9%E7%A7%B0%E5%AF%86%E9%92%A5%EF%BC%88%E5%85%B1%E4%BA%AB%E5%AF%86%E9%92%A5%EF%BC%89%E5%8A%A0%E5%AF%86%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%AF%86%E9%92%A5%EF%BC%88%E5%85%AC%E5%BC%80%E5%AF%86%E9%92%A5%EF%BC%89%E5%8A%A0%E5%AF%86%EF%BC%9F%E5%93%AA%E4%B8%AA%E6%9B%B4%E5%8A%A0%E5%AE%89%E5%85%A8%EF%BC%9F"><span class="nav-number">127.</span> <span class="nav-text">129.什么是对称密钥（共享密钥）加密？什么是非对称密钥（公开密钥）加密？哪个更加安全？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#130-%E4%BD%A0%E8%A7%89%E5%BE%97-HTTP-%E5%8D%8F%E8%AE%AE%E7%9B%AE%E5%89%8D%E5%AD%98%E5%9C%A8%E5%93%AA%E4%BA%9B%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="nav-number">128.</span> <span class="nav-text">130.你觉得 HTTP 协议目前存在哪些缺点？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#131-%E5%9C%A8-React-%E4%B8%AD%E5%A6%82%E4%BD%95%E8%AF%86%E5%88%AB%E4%B8%80%E4%B8%AA%E8%A1%A8%E5%8D%95%E9%A1%B9%E9%87%8C%E7%9A%84%E8%A1%A8%E5%8D%95%E5%81%9A%E5%88%B0%E4%BA%86%E6%9C%80%E5%B0%8F%E7%B2%92%E5%BA%A6-%E4%BB%A3%E4%BB%B7%E7%9A%84%E6%B8%B2%E6%9F%93%EF%BC%9F"><span class="nav-number">129.</span> <span class="nav-text">131.在 React 中如何识别一个表单项里的表单做到了最小粒度 &#x2F; 代价的渲染？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#132-%E5%9C%A8-React-%E7%9A%84%E5%BC%80%E5%8F%91%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E4%BD%A0%E8%83%BD%E6%83%B3%E5%88%B0%E5%93%AA%E4%BA%9B%E6%8E%A7%E5%88%B6%E6%B8%B2%E6%9F%93%E6%88%90%E6%9C%AC%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9F"><span class="nav-number">130.</span> <span class="nav-text">132.在 React 的开发的过程中你能想到哪些控制渲染成本的方法？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#133-Vue-CLI-3-x-%E7%9A%84%E6%8F%92%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E7%9A%84%EF%BC%9F"><span class="nav-number">131.</span> <span class="nav-text">133.Vue CLI 3.x 的插件系统是如何设计的？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#134-Webpack-%E4%B8%AD%E7%9A%84%E6%8F%92%E4%BB%B6%E6%9C%BA%E5%88%B6%E6%98%AF%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E7%9A%84%EF%BC%9F"><span class="nav-number">132.</span> <span class="nav-text">134.Webpack 中的插件机制是如何设计的？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#135-r-n%EF%BC%88CRLF%EF%BC%89-%E5%92%8C-n-%EF%BC%88LF%EF%BC%89%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F-Vs-Code-%E7%9A%84%E5%8F%B3%E4%B8%8B%E8%A7%92%E5%8F%AF%E4%BB%A5%E5%88%87%E6%8D%A2"><span class="nav-number">133.</span> <span class="nav-text">135.\r\n（CRLF） 和 \n （LF）的区别是什么？(Vs Code 的右下角可以切换)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#136-dev-null-%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E5%95%A5%EF%BC%9F"><span class="nav-number">134.</span> <span class="nav-text">136.&#x2F;dev&#x2F;null 的作用是啥？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#137-%E5%A6%82%E4%BD%95%E5%9C%A8-Mac-%E7%9A%84%E7%BB%88%E7%AB%AF%E4%B8%AD%E8%AE%BE%E7%BD%AE%E4%B8%80%E4%B8%AA%E5%91%BD%E4%BB%A4%E7%9A%84%E5%88%AB%E5%90%8D%EF%BC%9F"><span class="nav-number">135.</span> <span class="nav-text">137.如何在 Mac 的终端中设置一个命令的别名？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#138-%E5%A6%82%E4%BD%95%E5%9C%A8-Windows-%E4%B8%AD%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%9F"><span class="nav-number">136.</span> <span class="nav-text">138.如何在 Windows 中设置环境变量？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#139-Mac-%E7%9A%84%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E9%BB%98%E8%AE%A4%E5%8C%BA%E5%88%86%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E7%9A%84%E5%A4%A7%E5%B0%8F%E5%86%99%E5%90%97%EF%BC%9F"><span class="nav-number">137.</span> <span class="nav-text">139.Mac 的文件操作系统默认区分文件路径的大小写吗？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#140-%E7%BC%96%E5%86%99-Shell-%E8%84%9A%E6%9C%AC%E6%97%B6%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84%EF%BC%9F"><span class="nav-number">138.</span> <span class="nav-text">140.编写 Shell 脚本时如何设置文件的绝对路径？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#141-Session%E3%80%81Cookie-%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%85%B3%E8%81%94%EF%BC%9F%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E4%B8%B4%E6%97%B6%E6%80%A7%E5%92%8C%E6%B0%B8%E4%B9%85%E6%80%A7%E7%9A%84-Session-%E5%AD%98%E5%82%A8%EF%BC%9F"><span class="nav-number">139.</span> <span class="nav-text">141.Session、Cookie 的区别和关联？如何进行临时性和永久性的 Session 存储？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#142-%E5%A6%82%E4%BD%95%E9%83%A8%E7%BD%B2-Node-js-%E5%BA%94%E7%94%A8%EF%BC%9F%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%AD-Session-%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">140.</span> <span class="nav-text">142.如何部署 Node.js 应用？如何处理负载均衡中 Session 的一致性问题？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#143-%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87-Node-js-%E4%BB%A3%E7%A0%81%E7%9A%84%E8%BF%90%E8%A1%8C%E7%A8%B3%E5%AE%9A%E6%80%A7%EF%BC%9F"><span class="nav-number">141.</span> <span class="nav-text">143.如何提升 Node.js 代码的运行稳定性？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#144-GraphQL-%E4%B8%8E-Restful-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%8C%E5%AE%83%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F"><span class="nav-number">142.</span> <span class="nav-text">144.GraphQL 与 Restful 的区别，它有什么优点？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#145-Vue-SSR-%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%9FVuex-%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A6%82%E4%BD%95%E5%90%8C%E6%9E%84%E6%B8%B2%E6%9F%93%EF%BC%9F"><span class="nav-number">143.</span> <span class="nav-text">145.Vue SSR 的工作原理？Vuex 的数据如何同构渲染？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#146-SSR-%E6%8A%80%E6%9C%AF%E5%92%8C-SPA-%E6%8A%80%E6%9C%AF%E7%9A%84%E5%90%84%E8%87%AA%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">144.</span> <span class="nav-text">146.SSR 技术和 SPA 技术的各自的优缺点是什么？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#147-%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86-Node-js-%E6%B8%B2%E6%9F%93-HTML-%E5%8E%8B%E5%8A%9B%E8%BF%87%E5%A4%A7%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">145.</span> <span class="nav-text">147.如何处理 Node.js 渲染 HTML 压力过大问题？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#148-%E4%BD%A0%E6%89%80%E7%9F%A5%E9%81%93%E7%9A%84-CI-CD-%E5%B7%A5%E5%85%B7%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E6%9C%89%E6%8E%A5%E8%A7%A6%E8%BF%87%E7%B1%BB%E4%BC%BC%E7%9A%84%E6%B5%81%E7%A8%8B%E5%90%97%EF%BC%9F"><span class="nav-number">146.</span> <span class="nav-text">148.你所知道的 CI &#x2F; CD 工具有哪些？在项目中有接触过类似的流程吗？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#149-%E5%A6%82%E6%9E%9C%E8%AE%A9%E4%BD%A0%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA-Web-%E5%89%8D%E7%AB%AF%E7%9A%84-CI-CD-%E5%B7%A5%E7%A8%8B%E7%A0%94%E5%8F%91%E5%B9%B3%E5%8F%B0%EF%BC%8C%E4%BD%A0%E4%BC%9A%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%EF%BC%9F"><span class="nav-number">147.</span> <span class="nav-text">149.如果让你实现一个 Web 前端的 CI &#x2F; CD 工程研发平台，你会如何设计？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#150-%E5%A6%82%E6%9E%9C%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E5%B0%86%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E7%BA%BF%E4%B8%8A%E4%BA%A7%E7%89%A9%E8%B5%84%E6%BA%90%EF%BC%88%E4%BE%8B%E5%A6%82%E5%9B%BE%E7%89%87%EF%BC%89%E8%BD%AC%E6%8D%A2%E6%88%90%E6%9C%AC%E5%9C%B0%E7%A7%81%E6%9C%89%E5%8C%96%E8%B5%84%E6%BA%90%EF%BC%8C%E4%BD%A0%E6%9C%89%E4%BB%80%E4%B9%88%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9F"><span class="nav-number">148.</span> <span class="nav-text">150.如果我们需要将已有项目中的线上产物资源（例如图片）转换成本地私有化资源，你有什么解决方案？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#151-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-Vue-CLI-3-x-%E5%AE%9A%E5%88%B6%E4%B8%80%E4%B8%AA%E8%84%9A%E6%89%8B%E6%9E%B6%EF%BC%9F%E6%AF%94%E5%A6%82%E5%86%85%E9%83%A8%E8%87%AA%E5%8A%A8%E9%9B%86%E6%88%90%E4%BA%86-i18n%E3%80%81-axios%E3%80%81Element-UI%E3%80%81%E8%B7%AF%E7%94%B1%E5%AE%88%E5%8D%AB%E7%AD%89%EF%BC%9F"><span class="nav-number">149.</span> <span class="nav-text">151.如何使用 Vue CLI 3.x 定制一个脚手架？比如内部自动集成了 i18n、 axios、Element UI、路由守卫等？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#152-Jenkins-%E5%A6%82%E4%BD%95%E9%85%8D%E5%90%88-Node-js-%E8%84%9A%E6%9C%AC%E8%BF%9B%E8%A1%8C-CI-CD-%E8%AE%BE%E8%AE%A1%EF%BC%9F"><span class="nav-number">150.</span> <span class="nav-text">152.Jenkins 如何配合 Node.js 脚本进行 CI &#x2F; CD 设计？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#153-%E5%A6%82%E6%9E%9C%E8%AE%A9%E4%BD%A0%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E9%80%9A%E7%94%A8%E7%9A%84%E9%A1%B9%E7%9B%AE%E8%84%9A%E6%89%8B%E6%9E%B6%EF%BC%8C%E4%BD%A0%E4%BC%9A%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%EF%BC%9F%E4%B8%80%E4%B8%AA%E9%80%9A%E7%94%A8%E7%9A%84%E8%84%9A%E6%89%8B%E6%9E%B6%E4%B8%80%E8%88%AC%E9%9C%80%E8%A6%81%E5%85%B7%E5%A4%87%E5%93%AA%E4%BA%9B%E8%83%BD%E5%8A%9B%EF%BC%9F"><span class="nav-number">151.</span> <span class="nav-text">153.如果让你设计一个通用的项目脚手架，你会如何设计？一个通用的脚手架一般需要具备哪些能力？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#154-%E5%A6%82%E6%9E%9C%E8%AE%A9%E4%BD%A0%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E9%80%9A%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E5%BA%93%EF%BC%8C%E4%BD%A0%E4%BC%9A%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%EF%BC%9F%E4%B8%80%E4%B8%AA%E9%80%9A%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E5%BA%93%E4%B8%80%E8%88%AC%E9%9C%80%E8%A6%81%E5%85%B7%E5%A4%87%E5%93%AA%E4%BA%9B%E8%83%BD%E5%8A%9B%EF%BC%9F"><span class="nav-number">152.</span> <span class="nav-text">154.如果让你设计一个通用的工具库，你会如何设计？一个通用的工具库一般需要具备哪些能力？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#155-%E5%81%87%E8%AE%BE%E4%BD%A0%E8%87%AA%E5%B7%B1%E5%AE%9E%E7%8E%B0%E7%9A%84-React-%E6%88%96-Vue-%E7%9A%84%E7%BB%84%E4%BB%B6%E5%BA%93%E8%A6%81%E8%AE%BE%E8%AE%A1%E6%BC%94%E7%A4%BA%E6%96%87%E6%A1%A3%EF%BC%8C%E4%BD%A0%E4%BC%9A%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%EF%BC%9F%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%96%87%E6%A1%A3%E9%9C%80%E8%A6%81%E5%AE%9E%E7%8E%B0%E5%93%AA%E4%BA%9B%E5%8A%9F%E8%83%BD%EF%BC%9F"><span class="nav-number">153.</span> <span class="nav-text">155.假设你自己实现的 React 或 Vue 的组件库要设计演示文档，你会如何设计？设计的文档需要实现哪些功能？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#156-%E5%9C%A8%E8%AE%BE%E8%AE%A1%E5%B7%A5%E5%85%B7%E5%BA%93%E5%8C%85%E7%9A%84%E6%97%B6%E5%80%99%E4%BD%A0%E6%98%AF%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1-API-%E6%96%87%E6%A1%A3%E7%9A%84%EF%BC%9F"><span class="nav-number">154.</span> <span class="nav-text">156.在设计工具库包的时候你是如何设计 API 文档的？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#157-%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%EF%BC%9F%E5%A6%82%E4%BD%95%E5%81%9A%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%EF%BC%9F"><span class="nav-number">155.</span> <span class="nav-text">157.什么是单点登录？如何做单点登录？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#158-%E5%A6%82%E4%BD%95%E5%81%9A%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%9B%BD%E9%99%85%E5%8C%96%E6%96%B9%E6%A1%88%EF%BC%9F"><span class="nav-number">156.</span> <span class="nav-text">158.如何做一个项目的国际化方案？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#159-%E5%A6%82%E4%BD%95%E5%81%9A%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%9B%91%E6%8E%A7%E5%92%8C%E5%9F%8B%E7%82%B9%E6%96%B9%E6%A1%88%EF%BC%9F"><span class="nav-number">157.</span> <span class="nav-text">159.如何做一个项目的监控和埋点方案？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#160-%E5%A6%82%E4%BD%95%E5%BB%BA%E8%AE%BE%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%A8%B3%E5%AE%9A%E6%80%A7%EF%BC%88%E7%9B%91%E6%8E%A7%E3%80%81%E7%81%B0%E5%BA%A6%E3%80%81%E9%94%99%E8%AF%AF%E9%99%8D%E7%BA%A7%E3%80%81%E5%9B%9E%E6%BB%9A%E2%80%A6%EF%BC%89%EF%BC%9F"><span class="nav-number">158.</span> <span class="nav-text">160.如何建设项目的稳定性（监控、灰度、错误降级、回滚…）？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#161-%E4%B8%80%E8%88%AC%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0%E5%9E%8B%E7%9A%84%E5%BA%94%E7%94%A8%E9%9C%80%E8%A6%81%E8%80%83%E8%99%91%E5%93%AA%E4%BA%9B%E6%80%A7%E8%83%BD%E6%96%B9%E9%9D%A2%E7%9A%84%E4%BC%98%E5%8C%96%EF%BC%9F"><span class="nav-number">159.</span> <span class="nav-text">161.一般管理后台型的应用需要考虑哪些性能方面的优化？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#162-%E7%AE%80%E8%BF%B0%E4%B8%80%E4%BA%9B%E6%8F%90%E5%8D%87%E9%A1%B9%E7%9B%AE%E4%BD%93%E9%AA%8C%E7%9A%84%E6%A1%88%E4%BE%8B%E5%92%8C%E6%8A%80%E6%9C%AF%E6%96%B9%E6%A1%88%EF%BC%88%E9%AA%A8%E6%9E%B6%E5%B1%8F%E3%80%81Loading-%E5%A4%84%E7%90%86%E3%80%81%E7%BC%93%E5%AD%98%E3%80%81%E9%94%99%E8%AF%AF%E9%99%8D%E7%BA%A7%E3%80%81%E8%AF%B7%E6%B1%82%E9%87%8D%E8%AF%95%E2%80%A6%EF%BC%89%EF%BC%9F"><span class="nav-number">160.</span> <span class="nav-text">162.简述一些提升项目体验的案例和技术方案（骨架屏、Loading 处理、缓存、错误降级、请求重试…）？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#163-%E5%81%87%E8%AE%BE%E9%9C%80%E8%A6%81%E5%AF%B9%E9%A1%B5%E9%9D%A2%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E6%B0%B4%E5%8D%B0%E6%96%B9%E6%A1%88%EF%BC%8C%E4%BD%A0%E4%BC%9A%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%EF%BC%9F"><span class="nav-number">161.</span> <span class="nav-text">163.假设需要对页面设计一个水印方案，你会如何设计？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#164-%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E9%80%9A%E7%94%A8%E7%9A%84-JSON-Schema-%E5%8D%8F%E8%AE%AE%E4%BD%BF%E5%85%B6%E5%8F%AF%E4%BB%A5%E5%8A%A8%E6%80%81%E6%B8%B2%E6%9F%93%E4%B8%80%E4%B8%AA%E9%80%9A%E7%94%A8%E7%9A%84%E8%81%94%E5%8A%A8%E8%A1%A8%E5%8D%95%EF%BC%9F"><span class="nav-number">162.</span> <span class="nav-text">164.如何设计一个通用的 JSON Schema 协议使其可以动态渲染一个通用的联动表单？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#165-%E4%B8%80%E8%88%AC%E7%9A%84%E4%BD%8E%E4%BB%A3%E7%A0%81%E5%B9%B3%E5%8F%B0%E9%9C%80%E8%A6%81%E5%85%B7%E5%A4%87%E5%93%AA%E4%BA%9B%E8%83%BD%E5%8A%9B%EF%BC%9F"><span class="nav-number">163.</span> <span class="nav-text">165.一般的低代码平台需要具备哪些能力？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#166-%E4%BD%BF%E7%94%A8-TypeScript-%E8%AF%AD%E6%B3%95%E5%B0%86%E6%B2%A1%E6%9C%89%E5%B1%82%E7%BA%A7%E7%9A%84%E6%89%81%E5%B9%B3%E6%95%B0%E6%8D%AE%E8%BD%AC%E6%8D%A2%E6%88%90%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="nav-number">164.</span> <span class="nav-text">166.使用 TypeScript 语法将没有层级的扁平数据转换成树形结构的数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#167-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E"><span class="nav-number">165.</span> <span class="nav-text">167.实现一个简易的模板引擎</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#168-%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%91%E5%B8%83-%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F"><span class="nav-number">166.</span> <span class="nav-text">168.简单实现一个发布 &#x2F; 订阅模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#169-%E5%8C%B9%E9%85%8D%E5%87%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD-const-a-require-%E2%80%98xxx%E2%80%99-%E4%B8%AD%E7%9A%84-xxx"><span class="nav-number">167.</span> <span class="nav-text">169.匹配出字符串中 const a &#x3D; require(‘xxx’) 中的 xxx</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number"></span> <span class="nav-text">参考文献</span></a></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Edward"
+      src="https://avatars.githubusercontent.com/u/22055633?v=4">
+  <p class="site-author-name" itemprop="name">Edward</p>
+  <div class="site-description" itemprop="description">Nothing to describe.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">174</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/alazypig" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;alazypig" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-bug"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Edward Wang</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
   
 
-</script>
-
-<script type="text/javascript">
-  const utils = {
-    // 懒加载 css https://github.com/filamentgroup/loadCSS
-    css: (href, before, media, attributes) => {
-      var doc = window.document;
-      var ss = doc.createElement("link");
-      var ref;
-      if (before) {
-        ref = before;
-      } else {
-        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
-        ref = refs[refs.length - 1];
-      }
-      var sheets = doc.styleSheets;
-      if (attributes) {
-        for (var attributeName in attributes) {
-          if (attributes.hasOwnProperty(attributeName)) {
-            ss.setAttribute(attributeName, attributes[attributeName]);
-          }
-        }
-      }
-      ss.rel = "stylesheet";
-      ss.href = href;
-      ss.media = "only x";
-      function ready(cb) {
-        if (doc.body) {
-          return cb();
-        }
-        setTimeout(function () {
-          ready(cb);
-        });
-      }
-      ready(function () {
-        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
-      });
-      var onloadcssdefined = function (cb) {
-        var resolvedHref = ss.href;
-        var i = sheets.length;
-        while (i--) {
-          if (sheets[i].href === resolvedHref) {
-            return cb();
-          }
-        }
-        setTimeout(function () {
-          onloadcssdefined(cb);
-        });
-      };
-      function loadCB() {
-        if (ss.addEventListener) {
-          ss.removeEventListener("load", loadCB);
-        }
-        ss.media = media || "all";
-      }
-      if (ss.addEventListener) {
-        ss.addEventListener("load", loadCB);
-      }
-      ss.onloadcssdefined = onloadcssdefined;
-      onloadcssdefined(loadCB);
-      return ss;
-    },
-
-    js: (src, opt) => new Promise((resolve, reject) => {
-      var script = document.createElement('script');
-      if (src.startsWith('/')){
-        src = ctx.root + src.substring(1);
-      }
-      script.src = src;
-      if (opt) {
-        for (let key of Object.keys(opt)) {
-          script[key] = opt[key]
-        }
-      } else {
-        // 默认异步，如果需要同步，第二个参数传入 {} 即可
-        script.async = true
-      }
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    }),
-
-    jq: (fn) => {
-      if (typeof jQuery === 'undefined') {
-        utils.js(deps.jquery).then(fn)
-      } else {
-        fn()
-      }
-    },
-    
-    onLoading: (el) => {
-      if (el) {
-        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
-      }
-    },
-    onLoadSuccess: (el) => {
-      if (el) {
-        $(el).find('.loading-wrap').remove();
-      }
-    },
-    onLoadFailure: (el) => {
-      if (el) {
-        $(el).find('.loading-wrap svg').remove();
-        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
-        $(el).find('.loading-wrap').addClass('error');
-      }
-    },
-    request: (el, url, callback, onFailure) => {
-      let retryTimes = 3;
-      utils.onLoading(el);
-      function req() {
-        return new Promise((resolve, reject) => {
-          let status = 0; // 0 等待 1 完成 2 超时
-          let timer = setTimeout(() => {
-            if (status === 0) {
-              status = 2;
-              timer = null;
-              reject('请求超时');
-              if (retryTimes == 0) {
-                onFailure();
-              }
-            }
-          }, 5000);
-          fetch(url).then(function(response) {
-            if (status !== 2) {
-              clearTimeout(timer);
-              resolve(response);
-              timer = null;
-              status = 1;
-            }
-            if (response.ok) {
-              return response.json();
-            }
-            throw new Error('Network response was not ok.');
-          }).then(function(data) {
-            retryTimes = 0;
-            utils.onLoadSuccess(el);
-            callback(data);
-          }).catch(function(error) {
-            if (retryTimes > 0) {
-              retryTimes -= 1;
-              setTimeout(() => {
-                req();
-              }, 5000);
-            } else {
-              utils.onLoadFailure(el);
-              onFailure();
-            }
-          });
-        });
-      }
-      req();
-    },
-  };
-</script>
-
-<script>
-  const sidebar = {
-    leftbar: () => {
-      if (l_body) {
-        l_body.toggleAttribute('leftbar');
-        l_body.removeAttribute('rightbar');
-      }
-    },
-    rightbar: () => {
-      if (l_body) {
-        l_body.toggleAttribute('rightbar');
-        l_body.removeAttribute('leftbar');
-      }
-    },
-    dismiss: () => {
-      if (l_body) {
-        l_body.removeAttribute('leftbar');
-        l_body.removeAttribute('rightbar');
-      }
-    },
-    toggleTOC: () => {
-      document.querySelector('#data-toc').classList.toggle('collapse');
-    }
-  }
-</script>
-
-<!-- required -->
-<script src="/js/main.js?v=1.28.1" async></script>
-
-<!-- optional -->
 
 
 
-<script defer>
-  window.addEventListener('DOMContentLoaded', (event) => {
-    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"}}`));
-    for (let id of Object.keys(ctx.services)) {
-      const js = ctx.services[id].js;
-      if (id == 'siteinfo') {
-        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
-        if (ctx.cardlinks?.length > 0) {
-          utils.js(js, { defer: true }).then(function () {
-            setCardLink(ctx.cardlinks);
-          });
-        }
-      } else {
-        const els = document.getElementsByClassName(`ds-${id}`);
-        if (els?.length > 0) {
-          utils.jq(() => {
-            if (id == 'timeline' || 'memos' || 'marked') {
-              utils.js(deps.marked).then(function () {
-                utils.js(js, { defer: true });
-              });
-            } else {
-              utils.js(js, { defer: true });
-            }
-          });
-        }
-      }
-    }
-  });
-</script>
-
-<script>
-  window.addEventListener('DOMContentLoaded', (event) => {
-    ctx.search = {
-      path: `/search.json`,
-    }
-    utils.js('/js/search/local-search.js', { defer: true });
-  });
-</script><script>
-  window.FPConfig = {
-    delay: 0,
-    ignoreKeywords: [],
-    maxRPS: 5,
-    hoverDelay: 25
-  };
-</script>
-<script defer src="https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"></script><script defer src="https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js"></script>
-<script>
-  // https://www.npmjs.com/package/vanilla-lazyload
-  // Set the options globally
-  // to make LazyLoad self-initialize
-  window.lazyLoadOptions = {
-    elements_selector: ".lazy",
-  };
-  // Listen to the initialization event
-  // and get the instance of LazyLoad
-  window.addEventListener(
-    "LazyLoad::Initialized",
-    function (event) {
-      window.lazyLoadInstance = event.detail.instance;
-    },
-    false
-  );
-  document.addEventListener('DOMContentLoaded', function () {
-    window.lazyLoadInstance?.update();
-  });
-</script><script>
-  ctx.fancybox = {
-    selector: `.timenode p>img`,
-    css: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css`,
-    js: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js`
-  };
-  var selector = '[data-fancybox]:not(.error)';
-  if (ctx.fancybox.selector) {
-    selector += `, ${ctx.fancybox.selector}`
-  }
-  var needFancybox = document.querySelectorAll(selector).length !== 0;
-  if (!needFancybox) {
-    const els = document.getElementsByClassName('ds-memos');
-    if (els != undefined && els.length > 0) {
-      needFancybox = true;
-    }
-  }
-  if (needFancybox) {
-    utils.css(ctx.fancybox.css);
-    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
-      Fancybox.bind(selector, {
-        hideScrollbar: false,
-        Thumbs: {
-          autoStart: false,
-        },
-        caption: (fancybox, slide) => {
-          return slide.triggerEl.alt || slide.triggerEl.dataset.caption || null
-        }
-      });
-    })
-  }
-</script>
-<script>
-  window.addEventListener('DOMContentLoaded', (event) => {
-    const swiper_api = document.getElementById('swiper-api');
-    if (swiper_api != undefined) {
-      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
-      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
-        const effect = swiper_api.getAttribute('effect') || '';
-        var swiper = new Swiper('.swiper#swiper-api', {
-          slidesPerView: 'auto',
-          spaceBetween: 8,
-          centeredSlides: true,
-          effect: effect,
-          rewind: true,
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-          },
-          navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-          },
-        });
-      })
-    }
-  });
-</script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    window.codeElements = document.querySelectorAll('.code');
-    if (window.codeElements.length > 0) {
-      ctx.copycode = {
-        default_text: `Copy`,
-        success_text: `Copied`,
-        toast: `复制成功`,
-      };
-      utils.js('/js/plugins/copycode.js');
-    }
-  });
-</script>
+  
+<script src="//cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
+<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
+<script src="/js/algolia-search.js"></script>
 
 
-<!-- inject -->
 
-</div></body></html>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
