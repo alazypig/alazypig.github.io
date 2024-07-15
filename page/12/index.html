@@ -120,17 +120,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">41</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">43</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">27</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">23</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">174</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">176</span></a>
 
   </li>
         <li class="menu-item menu-item-algorithm">
@@ -217,6 +217,152 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/04/14/%E7%AD%89%E5%BC%8F%E5%85%AC%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/14/%E7%AD%89%E5%BC%8F%E5%85%AC%E7%90%86/" class="post-title-link" itemprop="url">等式公理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-04-14 14:30:14" itemprop="dateCreated datePublished" datetime="2019-04-14T14:30:14+08:00">2019-04-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="公式-P-Q-R-P-Q-R"><a href="#公式-P-Q-R-P-Q-R" class="headerlink" title="公式: $$P{Q}R\ ({P}Q{R})$$"></a>公式: $$P{Q}R\ ({P}Q{R})$$</h3><p>P 和 R 都是一阶公式, 如果前提条件 P 在执行 Q 前成立, 则执行后得到满足条件 R 的状态<br>部分正确性断言: 如果 P 在 Q 执行前为真, 那么, 如果 Q 的执行终止,则终止在使 R 为真的某个状态<br>终止性断言:如果 P 在 Q 执行前为真, 那么 Q 将终止在使 R 为真的某个状态<br><strong>赋值公理: $$\vdash P_0 {x:&#x3D;f} P$$</strong></p>
+<h3 id="推理规则的表示"><a href="#推理规则的表示" class="headerlink" title="推理规则的表示"></a>推理规则的表示</h3><p>$$\frac{premise -&gt; f_0, f_1, …, f_n}{conclusion -&gt; f_0}$$</p>
+<h3 id="推理规则"><a href="#推理规则" class="headerlink" title="推理规则"></a>推理规则</h3><ul>
+<li>Rules of Consequence:<br>$$\frac{P{Q}R,\ R\rightarrow S}{P{Q}S}\ \ \ \ \ \frac{P{Q}R,\ S\rightarrow P}{S{Q}R}$$</li>
+<li>Rule of Composition:<br>$$\frac{P{Q_1}R_1,\ R_1{Q_2}R}{P{Q_1, Q_2}R}$$</li>
+<li>Rules of Iteration:<br>$$\frac{P\ &amp;\ B{S}P}{P\ {while\ B\ do\ S}\ \neg B \ &amp;\  P}$$</li>
+</ul>
+<h3 id="等式公理"><a href="#等式公理" class="headerlink" title="等式公理"></a>等式公理</h3><ul>
+<li>代换: $[N&#x2F;x]M$ 表示表示 M 中的自由变元 x 用 N 代换的结果, <strong>N 中的自由变元代换后不能成为约束变元</strong></li>
+<li>约束变元改名: $\lambda x:\sigma .M &#x3D; \lambda y:\sigma.[y&#x2F;x]M$ 例如:$\lambda x:\sigma.x + y &#x3D; \lambda z:\sigma .z+y$</li>
+<li>等价公理: 计算函数实际就是在函数中使用实在变元替换形式变元, $(\lambda x:\sigma.M)N &#x3D; [N&#x2F;x]M$</li>
+<li>同余性规则: 相等的函数作用于相等的变元产生相等的结果, $\frac{M_1&#x3D;M_2,\ N_1&#x3D;N_2}{M_1N_1&#x3D;M_2N_2}$</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/04/11/%E7%AE%80%E9%99%8BVDOM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/11/%E7%AE%80%E9%99%8BVDOM/" class="post-title-link" itemprop="url">简陋VDOM</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-04-11 21:33:06" itemprop="dateCreated datePublished" datetime="2019-04-11T21:33:06+08:00">2019-04-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="一个简陋的-VDOM"><a href="#一个简陋的-VDOM" class="headerlink" title="一个简陋的 VDOM"></a>一个简陋的 VDOM</h3><p>希望以后会慢慢完善吧…</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> data = &#123;</span><br><span class="line">  <span class="attr">tag</span>: <span class="string">&#x27;div&#x27;</span>,</span><br><span class="line">  <span class="attr">children</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">tag</span>: <span class="string">&#x27;span&#x27;</span>,</span><br><span class="line">      <span class="attr">children</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">tag</span>: <span class="string">&#x27;#text&#x27;</span>,</span><br><span class="line">          <span class="attr">content</span>: <span class="string">&#x27;hello world&#x27;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">tag</span>: <span class="string">&#x27;p&#x27;</span>,</span><br><span class="line">      <span class="attr">children</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">tag</span>: <span class="string">&#x27;#text&#x27;</span>,</span><br><span class="line">          <span class="attr">content</span>: <span class="string">&#x27;This is a paragraph!&#x27;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">tag</span>: <span class="string">&#x27;h1&#x27;</span>,</span><br><span class="line">          <span class="attr">children</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="attr">tag</span>: <span class="string">&#x27;#text&#x27;</span>,</span><br><span class="line">              <span class="attr">content</span>: <span class="string">&#x27;This is a H1 tag&#x27;</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">          ],</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">tag</span>: <span class="string">&#x27;h6&#x27;</span>,</span><br><span class="line">          <span class="attr">children</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="attr">tag</span>: <span class="string">&#x27;#text&#x27;</span>,</span><br><span class="line">              <span class="attr">content</span>: <span class="string">&quot;and I&#x27;m h6&quot;</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">          ],</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">VDOM</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">data</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">tag</span> = data.<span class="property">tag</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">children</span> = data.<span class="property">children</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">content</span> = data.<span class="property">content</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">render</span>(<span class="params">data</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> _this = <span class="keyword">new</span> <span class="title function_">VDOM</span>(data)</span><br><span class="line">    <span class="keyword">if</span> (_this.<span class="property">tag</span> === <span class="string">&#x27;#text&#x27;</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="variable language_">document</span>.<span class="title function_">createTextNode</span>(_this.<span class="property">content</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> node = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(_this.<span class="property">tag</span>)</span><br><span class="line">    _this.<span class="property">children</span>.<span class="title function_">map</span>(<span class="function">(<span class="params">child</span>) =&gt;</span> node.<span class="title function_">appendChild</span>(<span class="variable constant_">VDOM</span>.<span class="title function_">render</span>(child)))</span><br><span class="line">    <span class="keyword">return</span> node</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="title function_">diff</span> = (<span class="params">root, oldV, newV, current = <span class="number">0</span></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (!oldV) root.<span class="title function_">appendChild</span>(newV)</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (!newV) root.<span class="title function_">removeChild</span>(root.<span class="property">childNodes</span>[current])</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (newV.<span class="property">tag</span> !== oldV.<span class="property">tag</span> || newV.<span class="property">content</span> !== oldV.<span class="property">content</span>)</span><br><span class="line">    root.<span class="title function_">replaceChild</span>(<span class="keyword">new</span> <span class="title function_">VDOM</span>(newV).<span class="title function_">render</span>(), root.<span class="property">childNodes</span>[current])</span><br><span class="line">  <span class="comment">// 递归判断</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; newV.<span class="property">children</span>.<span class="property">length</span> || i &lt; oldV.<span class="property">children</span>.<span class="property">length</span>; i++)</span><br><span class="line">      <span class="title function_">diff</span>(root.<span class="property">childNodes</span>[i], oldV.<span class="property">children</span>[i], newV.<span class="property">children</span>[i], i)</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#root&#x27;</span>).<span class="title function_">appendChild</span>(<span class="variable constant_">VDOM</span>.<span class="title function_">render</span>(data))</span><br></pre></td></tr></table></figure>
+
+<p>结构为:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>hello world<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">      This is a paragraph!</span><br><span class="line">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>This is a H1 tag<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h6</span>&gt;</span>and I&#x27;m h6<span class="tag">&lt;/<span class="name">h6</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -409,7 +555,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+                <time title="Modified: 2024-07-15 08:57:57" itemprop="dateModified" datetime="2024-07-15T08:57:57+08:00">2024-07-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -417,7 +563,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Function-Programming/" itemprop="url" rel="index"><span itemprop="name">Function Programming</span></a>
+                  <a href="/categories/Functional-Programming/" itemprop="url" rel="index"><span itemprop="name">Functional Programming</span></a>
                 </span>
             </span>
 
@@ -855,147 +1001,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/03/14/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/03/14/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="post-title-link" itemprop="url">动态规划</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-03-14 16:57:58" itemprop="dateCreated datePublished" datetime="2019-03-14T16:57:58+08:00">2019-03-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><p>通过把问题分解成子问题，再根据子问题的解得出原问题的解。<br>例如：<code>1+1+1 = 3</code>，<code>1+1+1+2 = 5</code>。因为<code>(1+1+1)+2 = 3 + 2 = 5</code>。<br>这时我们可以把每次计算过的值给存起来，这样下次计算时就不用重新计算。</p>
-<h3 id="用最少的东西拿需求的重量"><a href="#用最少的东西拿需求的重量" class="headerlink" title="用最少的东西拿需求的重量"></a>用最少的东西拿需求的重量</h3><p>假设有个包，现在有<code>1, 3, 3, 4</code>四样东西，如何在规定的重量内拿到最少的物品。<br>假设需要拿<code>6</code>重量的东西，如果用贪心就会拿到<code>[4, 1, 1]</code>，但是显然我们需要的是<code>[3, 3]</code>，这时就需要使用到上面的思想。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/03/14/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/03/14/%E5%9B%BE%E7%9A%84%E9%82%BB%E6%8E%A5%E8%A1%A8%E8%A1%A8%E7%A4%BA%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/03/14/%E5%9B%BE%E7%9A%84%E9%82%BB%E6%8E%A5%E8%A1%A8%E8%A1%A8%E7%A4%BA%E6%B3%95/" class="post-title-link" itemprop="url">图的邻接表表示法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-03-14 15:42:12" itemprop="dateCreated datePublished" datetime="2019-03-14T15:42:12+08:00">2019-03-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h3><p>存储方式：表头存放节点，相邻节点存放于之后的链表中。<br>** 使用 Map 模拟 **</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Graph</span> &#123;</span><br><span class="line"><span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">point</span> = [];</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">map</span> = <span class="keyword">new</span> <span class="title class_">Map</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">addPoint</span>(<span class="params">point</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">point</span>.<span class="title function_">push</span>(point);</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">map</span>.<span class="title function_">set</span>(point, []);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 无向</span></span><br><span class="line">    <span class="title function_">addEdge</span>(<span class="params">pointA, pointB</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">map</span>.<span class="title function_">get</span>(pointA).<span class="title function_">push</span>(pointB);</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">map</span>.<span class="title function_">get</span>(pointB).<span class="title function_">push</span>(pointA);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">print</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> <span class="variable language_">this</span>.<span class="property">point</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(item + <span class="string">&#x27; -&gt; &#x27;</span> + <span class="variable language_">this</span>.<span class="property">map</span>.<span class="title function_">get</span>(item).<span class="title function_">join</span>(<span class="string">&#x27;,&#x27;</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> graph = <span class="keyword">new</span> <span class="title class_">Graph</span>()</span><br><span class="line"><span class="keyword">var</span> topArr = [<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;E&#x27;</span>, <span class="string">&#x27;F&#x27;</span>, <span class="string">&#x27;G&#x27;</span>, <span class="string">&#x27;H&#x27;</span>, <span class="string">&#x27;I&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> topArr) &#123;</span><br><span class="line">graph.<span class="title function_">addPoint</span>(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">graph.<span class="title function_">addEdge</span>(<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>);</span><br><span class="line">graph.<span class="title function_">addEdge</span>(<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;D&#x27;</span>);</span><br><span class="line">graph.<span class="title function_">addEdge</span>(<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;E&#x27;</span>);</span><br><span class="line">graph.<span class="title function_">addEdge</span>(<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;H&#x27;</span>);</span><br><span class="line">graph.<span class="title function_">addEdge</span>(<span class="string">&#x27;F&#x27;</span>, <span class="string">&#x27;G&#x27;</span>);</span><br><span class="line">graph.<span class="title function_">addEdge</span>(<span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;B&#x27;</span>);</span><br><span class="line">graph.<span class="title function_">addEdge</span>(<span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;C&#x27;</span>);</span><br><span class="line"></span><br><span class="line">graph.<span class="title function_">print</span>();</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1067,20 +1072,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">174</span>
+          <span class="site-state-item-count">176</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-count">43</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -1201,6 +1206,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

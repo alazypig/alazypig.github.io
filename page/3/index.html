@@ -120,17 +120,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">41</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">43</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">27</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">23</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">174</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">176</span></a>
 
   </li>
         <li class="menu-item menu-item-algorithm">
@@ -217,6 +217,255 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2021/09/13/%E9%80%9A%E7%94%A8%E4%B8%AD%E5%BF%83%E8%B7%AF%E7%94%B1%E5%9F%BA%E5%BA%A7%E5%BC%8F%E5%BE%AE%E5%89%8D%E7%AB%AF%E5%AE%9E%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/13/%E9%80%9A%E7%94%A8%E4%B8%AD%E5%BF%83%E8%B7%AF%E7%94%B1%E5%9F%BA%E5%BA%A7%E5%BC%8F%E5%BE%AE%E5%89%8D%E7%AB%AF%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">通用中心路由基座式微前端实现</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-09-13 13:24:14" itemprop="dateCreated datePublished" datetime="2021-09-13T13:24:14+08:00">2021-09-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="什么是微前端"><a href="#什么是微前端" class="headerlink" title="什么是微前端"></a>什么是微前端</h1><p>微前端架构具备以下几个核心价值</p>
+<ul>
+<li>技术栈无关：主框架不限制接入应用的技术栈，子应用具备完全自主权</li>
+<li>独立开发、独立部署：子应用仓库独立，前后端可独立开发，部署完成后主框架自动完成同步更新</li>
+<li>独立运行时：每个子应用之间状态隔离，运行时状态不共享</li>
+</ul>
+<h1 id="现有解决方案"><a href="#现有解决方案" class="headerlink" title="现有解决方案"></a>现有解决方案</h1><ul>
+<li>路由分发（nginx）</li>
+<li>npm 子包：基座负责打包构建发布，打包时集成；</li>
+<li>iframe：应用之间完全独立；需要基座提供通信方案；</li>
+<li>通用中心路由基座式：完全独立；需要基座提供通信方案；使用 DOM 实现；（阿里乾坤）</li>
+<li>特定中心路由基座式：相同技术栈；复用基座公共基建内容；（美团广告业务）</li>
+</ul>
+<h3 id="方案对比"><a href="#方案对比" class="headerlink" title="方案对比"></a>方案对比</h3><table>
+<thead>
+<tr>
+<th align="center">方案</th>
+<th align="center">技术栈是否能统一</th>
+<th align="center">单独打包</th>
+<th align="center">单独部署</th>
+<th align="center">打包部署速度</th>
+<th align="center">单页应用体验</th>
+<th align="center">子工程切换速度</th>
+<th align="center">工程间通信难度</th>
+<th align="center">现有工程侵入性</th>
+<th align="center">学习成本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>NPM 式</strong></td>
+<td align="center">是（不强制）</td>
+<td align="center">否</td>
+<td align="center">否</td>
+<td align="center">慢</td>
+<td align="center">是</td>
+<td align="center">快</td>
+<td align="center">正常</td>
+<td align="center">高</td>
+<td align="center">高</td>
+</tr>
+<tr>
+<td align="center"><strong>iframe 式</strong></td>
+<td align="center">是（不强制）</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">正常</td>
+<td align="center">否</td>
+<td align="center">慢</td>
+<td align="center">高</td>
+<td align="center">高</td>
+<td align="center">低</td>
+</tr>
+<tr>
+<td align="center"><strong>通用中心路由基座式</strong></td>
+<td align="center">是（不强制）</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">正常</td>
+<td align="center">是</td>
+<td align="center">慢</td>
+<td align="center">高</td>
+<td align="center">高</td>
+<td align="center">高</td>
+</tr>
+<tr>
+<td align="center"><strong>特定中心路由基座式</strong></td>
+<td align="center">是（强制）</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">快</td>
+<td align="center">是</td>
+<td align="center">快</td>
+<td align="center">正常</td>
+<td align="center">低</td>
+<td align="center">低</td>
+</tr>
+</tbody></table>
+<h1 id="通用中心路由基座式实现"><a href="#通用中心路由基座式实现" class="headerlink" title="通用中心路由基座式实现"></a>通用中心路由基座式实现</h1><h3 id="应用架构"><a href="#应用架构" class="headerlink" title="应用架构"></a>应用架构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line">App[App]</span><br><span class="line">App --&gt; App1[App1]</span><br><span class="line">App --&gt; App2[App2]</span><br><span class="line">App --&gt; App3[App3]</span><br><span class="line">App --&gt; App4[...]</span><br></pre></td></tr></table></figure>
+
+<h3 id="实现方案"><a href="#实现方案" class="headerlink" title="实现方案"></a>实现方案</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Start(Start)</span><br><span class="line">Start --&gt; Route(/subapp/xxx/index)</span><br><span class="line">Route --&gt; Match(根路由匹配到 /subapp)</span><br><span class="line">Match --&gt; DoubleMatch&#123;二级路由xxx匹配到子路由注册信息&#125;</span><br><span class="line">DoubleMatch --&gt; | 匹配失败 | MatchError(失败处理) --&gt; End(End)</span><br><span class="line">DoubleMatch --&gt; | 匹配成功 | IsLoaded&#123;检查是否已经加载&#125;</span><br><span class="line">IsLoaded --&gt; | 是 | Loaded(直接获取模块) --&gt; End</span><br><span class="line">IsLoaded --&gt; | 否 | LoadJs&#123;异步获取JS&#125;</span><br><span class="line">LoadJs --&gt; | 失败 | MatchJsError(失败处理) --&gt; End</span><br><span class="line">LoadJs --&gt; | 成功 | MatchSuccess(获取子工程模块) --&gt; LoadPage(显示子工程页面) --&gt; End</span><br></pre></td></tr></table></figure>
+
+<h2 id="核心流程"><a href="#核心流程" class="headerlink" title="核心流程"></a>核心流程</h2><h3 id="1、注册子应用"><a href="#1、注册子应用" class="headerlink" title="1、注册子应用"></a>1、注册子应用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Start(Start) --&gt; GetList[拿到子应用列表] --&gt; Init[将子应用初始状态设置为 NOT_LOADED] --&gt; GlobalHook(设置全局生命周期) --&gt; End(End)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、运行"><a href="#2、运行" class="headerlink" title="2、运行"></a>2、运行</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Start(Start) --&gt; Hijack[Hijack Route] --&gt; Reroute[ReRoute] --&gt; LoadOther(对其他子应用进行资源预加载) --&gt; End(End)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、页面路由切换"><a href="#3、页面路由切换" class="headerlink" title="3、页面路由切换"></a>3、页面路由切换</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Start(Start) --&gt; ReRoute --&gt; End(end)</span><br></pre></td></tr></table></figure>
+
+<h2 id="核心代码逻辑"><a href="#核心代码逻辑" class="headerlink" title="核心代码逻辑"></a>核心代码逻辑</h2><h3 id="1、Hijack-Route"><a href="#1、Hijack-Route" class="headerlink" title="1、Hijack Route"></a>1、Hijack Route</h3><ol>
+<li>设置全局变量 <code>HistoryEvent</code></li>
+<li>重写 <code>pushState</code> 方法，每次调用之后生成一个 <code>PopStateEvent</code>，赋值给 <code>HistoryEvent</code></li>
+<li>重写 <code>replaceState</code> 方法，每次调用之后生成一个 <code>PopStateEvent</code> ，赋值给 <code>HistoryEvent</code></li>
+<li>监听 <code>hashChange</code> ，调用 <code>reroute</code></li>
+<li>监听 <code>popstate</code>，调用<code>reroute</code></li>
+<li>对<code>addEventListener</code>和<code>removeEventListener</code>注入，对<code>hashChange</code>和<code>popstate</code>进行拦截</li>
+</ol>
+<h3 id="2、ReRoute"><a href="#2、ReRoute" class="headerlink" title="2、ReRoute"></a>2、ReRoute</h3><ul>
+<li>actives：所有处于 <code>active</code> 状态的子应用列表</li>
+<li>unmounted：所有处于 <code>unmount</code> 状态的子应用列表</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Start(Start) --&gt; IfUrl&#123;url !== lastUrl&#125;</span><br><span class="line">IfUrl --&gt; | false | End(End)</span><br><span class="line">IfUrl --&gt; | true | AppList[拿到app的状态列表]</span><br><span class="line">AppList --&gt; | unmount | UnMount --&gt; Finish[Finish]</span><br><span class="line">AppList --&gt; | active | BeforeLoad --&gt; Assets --&gt; Mounted --&gt; Finish</span><br><span class="line">Finish --&gt; OpenListener[启动监听] --&gt; End</span><br></pre></td></tr></table></figure>
+
+<h2 id="生命周期函数"><a href="#生命周期函数" class="headerlink" title="生命周期函数"></a>生命周期函数</h2><h3 id="1、beforeLoad"><a href="#1、beforeLoad" class="headerlink" title="1、beforeLoad"></a>1、beforeLoad</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Start --&gt; Loading[set app state to LOADING] --&gt; GlobalHook --&gt; LoadHTML --&gt; Loaded[set app state to LOADED] --&gt; End</span><br></pre></td></tr></table></figure>
+
+<p><strong>LoadHTML：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Start --&gt; Init[get container ant entry] --&gt; Dom[get dom node] --&gt; parseHTML --&gt; CSS[get external css] --&gt; JS[get external js] --&gt; RunCode --&gt; Return[return application]</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、Assets"><a href="#2、Assets" class="headerlink" title="2、Assets"></a>2、Assets</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Start --&gt; IsLoaded&#123;&quot;status === LOADED&quot;&#125;</span><br><span class="line">IsLoaded --&gt; | false | End</span><br><span class="line">IsLoaded --&gt; | true | Assets[set app state to ASSETS_LOADING] --&gt; RunApp[run app.assets] --&gt; NotMounted[set app state to NOT_MOUNTED] --&gt; End</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、Mounted"><a href="#3、Mounted" class="headerlink" title="3、Mounted"></a>3、Mounted</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Start --&gt; Mounting[set app state to MOUNTING] --&gt; RunApp[run app.mounted] --&gt; GloalHook --&gt; Mounted[set app state to MOUNTED] --&gt; End</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、UnMounted"><a href="#4、UnMounted" class="headerlink" title="4、UnMounted"></a>4、UnMounted</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Start --&gt; UnMounting[set app state to UNMOUNTING] --&gt; RunApp[run app.unmount] --&gt; GlobalHook --&gt; NotMounted[set app state to NOT_MOUNTED] --&gt; End</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2021/07/19/module%E5%AF%BC%E5%85%A5script%E6%96%B9%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/19/module%E5%AF%BC%E5%85%A5script%E6%96%B9%E5%BC%8F/" class="post-title-link" itemprop="url">module导入script方式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-07-19 14:20:12" itemprop="dateCreated datePublished" datetime="2021-07-19T14:20:12+08:00">2021-07-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="type-module"><a href="#type-module" class="headerlink" title="type=&quot;module&quot;"></a><code>type=&quot;module&quot;</code></h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// will not block the button</span></span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>) <span class="comment">// undefined</span></span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">url</span>) <span class="comment">// the url of import file</span></span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// will block the button</span></span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>) <span class="comment">// window</span></span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">async</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span> <span class="attr">src</span>=<span class="string">&quot;http://example.com/test.js&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// will run immediate when the file is load</span></span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// example.com needs the Access-Control-Allow-Origin flag</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">import</span> &#123;sayHi&#125; <span class="keyword">from</span> <span class="string">&#x27;sayHi&#x27;</span> <span class="comment">// this will get error because no path import in this module block.</span></span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">nomodule</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="title function_">alert</span>(<span class="string">&#x27;The Browser can not support the module import.&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span>&gt;</span>Button<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -686,7 +935,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+                <time title="Modified: 2024-07-15 08:58:25" itemprop="dateModified" datetime="2024-07-15T08:58:25+08:00">2024-07-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -694,7 +943,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a>
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
                 </span>
             </span>
 
@@ -768,7 +1017,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+                <time title="Modified: 2024-07-15 08:57:32" itemprop="dateModified" datetime="2024-07-15T08:57:32+08:00">2024-07-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -776,7 +1025,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Typescript/" itemprop="url" rel="index"><span itemprop="name">Typescript</span></a>
+                  <a href="/categories/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
                 </span>
             </span>
 
@@ -873,163 +1122,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2021/05/09/2021-05-09/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/09/2021-05-09/" class="post-title-link" itemprop="url">2021-05-09</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-05-09 10:36:53" itemprop="dateCreated datePublished" datetime="2021-05-09T10:36:53+08:00">2021-05-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="天下无不散的宴席"><a href="#天下无不散的宴席" class="headerlink" title="天下无不散的宴席"></a>天下无不散的宴席</h3><p>实习生只剩下一个了，其他都离职了。对他们来说是件好事，呆在这里也不能提高多少。</p>
-<p>最近发生的事情太多了：</p>
-<ul>
-<li>养了一只猫：某天突然就想养只猫了，下午决定晚上就去领了一只。回家后花了不少精力，现在活得还算不错。</li>
-<li>新买了个镜头：入了个 35mm f2.0 镜头，扫街+人像应该够了。</li>
-<li>不知不觉喜欢上了一个女生：深入了解后发现希望不大，还是放弃了。</li>
-<li>去了家公司参观：这家公司有 Node 中间层，是以前未接触过的。今后还需努力。</li>
-<li>刷了一点 leetcode：在公司需求不多，就刷着为以后做准备了。</li>
-<li>买了一点书：身体和心灵总有一个在路上。</li>
-<li>去桂山岛旅游：看了看人烟稀少的小镇是什么样的生活。</li>
-</ul>
-<h3 id="币圈疯狂的人们"><a href="#币圈疯狂的人们" class="headerlink" title="币圈疯狂的人们"></a>币圈疯狂的人们</h3><p>数字货币的世界，涨跌不需要理由。<br>公司一群人炒币，只有一个人脱身，其余的加起来估计亏了百来万。<br>地铁上，公交上，餐厅奶茶店；俊男靓女，大爷大妈，所有人都在炒币，太疯狂了。</p>
-<p>人的欲望总是无穷的，赌徒只需要输一次就能将所有的钱输完，人性的弱点。<br>大家都希望山底买，山顶卖。但是谁又知道你是不是买在山顶呢。大家都信仰最大傻瓜理论，觉得自己不是那个大傻瓜。</p>
-<h3 id="安心生活"><a href="#安心生活" class="headerlink" title="安心生活"></a>安心生活</h3><p>周末出去走走看看世界<br>看一场电影<br>看几本书<br>与朋友游戏几局<br>平安喜乐就够了</p>
-<h3 id="还是决定关闭-blog-了。"><a href="#还是决定关闭-blog-了。" class="headerlink" title="还是决定关闭 blog 了。"></a>还是决定关闭 blog 了。</h3><p>太多黑历史，何况还有骂 GCD 的东西。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2021/01/27/Flutter-%E8%AF%AD%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/27/Flutter-%E8%AF%AD%E6%B3%95/" class="post-title-link" itemprop="url">Flutter 语法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-01-27 16:11:11" itemprop="dateCreated datePublished" datetime="2021-01-27T16:11:11+08:00">2021-01-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Null-aware-operators"><a href="#Null-aware-operators" class="headerlink" title="Null-aware operators"></a>Null-aware operators</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span> foo = <span class="string">&#x27;a string&#x27;</span>;</span><br><span class="line"><span class="built_in">String</span> bar; <span class="comment">// Unassigned objects are null by default.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Substitute an operator that makes &#x27;a string&#x27; be assigned to baz.</span></span><br><span class="line"><span class="built_in">String</span> baz = foo ?? bar;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> updateSomeVars() &#123;</span><br><span class="line">  <span class="comment">// Substitute an operator that makes &#x27;a string&#x27; be assigned to bar.</span></span><br><span class="line">  bar ??= <span class="string">&#x27;a string&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Conditional-property-access"><a href="#Conditional-property-access" class="headerlink" title="Conditional property access"></a>Conditional property access</h3><p><code>myObject?.someProperty</code> equals to <code>(myObject != null) ? myObject.someProperty : null</code>.</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This method should return the uppercase version of `str`</span></span><br><span class="line"><span class="comment">// or null if `str` is null.</span></span><br><span class="line"><span class="built_in">String</span> upperCaseIt(<span class="built_in">String</span> str) &#123;</span><br><span class="line">  <span class="comment">// Try conditionally accessing the `toUpperCase` method here.</span></span><br><span class="line">  <span class="keyword">return</span> str?.toUpperCase();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Cascades"><a href="#Cascades" class="headerlink" title="Cascades"></a>Cascades</h3><p><code>myObject.someMethod()</code> will get the return value of the <code>someMethod()</code>, <code>myObject..someMethod()</code> will get the reference of the <code>myObject</code>.</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BigObject</span> </span>&#123;</span><br><span class="line">  <span class="built_in">int</span> anInt = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">String</span> aString = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="built_in">List</span>&lt;<span class="built_in">double</span>&gt; aList = [];</span><br><span class="line">  <span class="built_in">bool</span> _done = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> allDone() &#123;</span><br><span class="line">    _done = <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">BigObject fillBigObject(BigObject obj) &#123;</span><br><span class="line">  <span class="comment">// Create a single statement that will update and return obj:</span></span><br><span class="line">  <span class="keyword">return</span> obj</span><br><span class="line">    ..anInt = <span class="number">1</span></span><br><span class="line">    ..aString = <span class="string">&quot;String!&quot;</span></span><br><span class="line">    ..aList = [<span class="number">3.0</span>]</span><br><span class="line">    ..allDone();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/27/Flutter-%E8%AF%AD%E6%B3%95/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1101,20 +1193,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">174</span>
+          <span class="site-state-item-count">176</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-count">43</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
