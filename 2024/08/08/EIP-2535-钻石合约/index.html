@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"alazypig.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="什么是 DiamondDiamond 指的是一种设计模式，称为 EIP-2535 Diamonds。这种模式用于构建可模块化和可升级的以太坊智能合约。   模块化架构：Diamond 是一种创建单一、模块化合约（称为 Diamond）的方式，该合约将不同的功能委托给分离的、可互换的合约组件（称为 Facets）。这有助于更好地组织代码和分离关注点。 Facets：每个 Facet 包含特定的功能，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EIP-2535 钻石合约">
+<meta property="og:url" content="http://alazypig.github.io/2024/08/08/EIP-2535-%E9%92%BB%E7%9F%B3%E5%90%88%E7%BA%A6/index.html">
+<meta property="og:site_name" content="Live Note">
+<meta property="og:description" content="什么是 DiamondDiamond 指的是一种设计模式，称为 EIP-2535 Diamonds。这种模式用于构建可模块化和可升级的以太坊智能合约。   模块化架构：Diamond 是一种创建单一、模块化合约（称为 Diamond）的方式，该合约将不同的功能委托给分离的、可互换的合约组件（称为 Facets）。这有助于更好地组织代码和分离关注点。 Facets：每个 Facet 包含特定的功能，">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://alazypig.github.io/images/eip-diamond-1.jpg">
+<meta property="og:image" content="http://alazypig.github.io/images/eip-diamond-2.png">
+<meta property="og:image" content="http://alazypig.github.io/images/eip-diamond-3.jpg">
+<meta property="article:published_time" content="2024-08-08T08:57:48.000Z">
+<meta property="article:modified_time" content="2024-08-08T09:34:28.851Z">
+<meta property="article:author" content="Edward">
+<meta property="article:tag" content="web3">
+<meta property="article:tag" content="区块链">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://alazypig.github.io/images/eip-diamond-1.jpg">
+
+<link rel="canonical" href="http://alazypig.github.io/2024/08/08/EIP-2535-%E9%92%BB%E7%9F%B3%E5%90%88%E7%BA%A6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>EIP-2535 钻石合约 | Live Note</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Live Note</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Remain optimistic</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">46</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">24</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">180</span></a>
+
+  </li>
+        <li class="menu-item menu-item-photo">
+
+    <a href="/photo/" rel="section"><i class="fa fa-camera fa-fw"></i>photo</a>
+
+  </li>
+        <li class="menu-item menu-item-algorithm">
+
+    <a href="/algorithm/" rel="section"><i class="fa fa-code fa-fw"></i>algorithm</a>
+
+  </li>
+        <li class="menu-item menu-item-battery">
+
+    <a href="/battery/" rel="section"><i class="fa fa-battery-full fa-fw"></i>battery</a>
+
+  </li>
+        <li class="menu-item menu-item-frontend">
+
+    <a href="/frontend/" rel="section"><i class="fa fa-laptop fa-fw"></i>frontend</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-sticky-note fa-fw"></i>notes</a>
+
+  </li>
+        <li class="menu-item menu-item-stm32">
+
+    <a href="/stm32/" rel="section"><i class="fa fa-microchip fa-fw"></i>stm32</a>
+
+  </li>
+        <li class="menu-item menu-item-ziwei">
+
+    <a href="/ziwei/" rel="section"><i class="fa fa-yin-yang fa-fw"></i>ziwei</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+      
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2024/08/08/EIP-2535-%E9%92%BB%E7%9F%B3%E5%90%88%E7%BA%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          EIP-2535 钻石合约
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-08-08 16:57:48 / Modified: 17:34:28" itemprop="dateCreated datePublished" datetime="2024-08-08T16:57:48+08:00">2024-08-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/" itemprop="url" rel="index"><span itemprop="name">区块链</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="什么是-Diamond"><a href="#什么是-Diamond" class="headerlink" title="什么是 Diamond"></a>什么是 Diamond</h1><p>Diamond 指的是一种设计模式，称为 EIP-2535 Diamonds。这种模式用于构建可模块化和可升级的以太坊智能合约。</p>
+<p><img src="/images/eip-diamond-1.jpg" alt="Diamond"></p>
+<ul>
+<li>模块化架构：Diamond 是一种创建单一、模块化合约（称为 Diamond）的方式，该合约将不同的功能委托给分离的、可互换的合约组件（称为 Facets）。这有助于更好地组织代码和分离关注点。</li>
+<li>Facets：每个 Facet 包含特定的功能，并可以独立升级。例如，一个 Facet 可能处理用户管理，而另一个处理交易。</li>
+<li>Diamond Storage：在 Diamond 模式中，合约的存储结构被设计成可以支持不同 Facets 的升级，而不影响整体合约的其他部分。</li>
+</ul>
+<p>对外部世界（如用户界面、其他智能合约和软件&#x2F;脚本）而言，Diamond 看起来是一个单一的智能合约，具有一个单一的以太坊地址。但在内部，它使用一组称为 Facets 的合约来处理其外部功能，这些 Facets 对外部是隐藏的。</p>
+<span id="more"></span>
+
+<p>当外部软件程序（如其他智能合约或用户界面）对 Diamond 发起函数调用时，Diamond 会检查是否有包含该函数的 Facet，如果存在，则使用该 Facet。</p>
+<p>要理解 Diamonds，需要了解以下几点：</p>
+<ul>
+<li><strong>Diamond 是一个智能合约</strong>：其以太坊地址是外部软件与之交互的唯一地址。</li>
+<li><strong>内部结构</strong>：Diamond 内部使用一组称为 Facets 的合约来处理外部函数。</li>
+<li><strong>状态变量存储</strong>：所有的状态变量存储数据都保存在 Diamond 中，而不是在 Facets 中。</li>
+<li><strong>数据访问</strong>：Facets 的外部函数可以直接读取和写入存储在 Diamond 中的数据。这使得 Facets 编写起来简单且节省 Gas。</li>
+<li><strong>实现机制</strong>：Diamond 通常通过一个 fallback 函数实现，该函数使用 delegatecall 将外部函数调用路由到 Facets。</li>
+<li><strong>外部函数</strong>：Diamond 本身通常没有任何外部函数——它使用 Facets 处理外部函数，这些函数读取&#x2F;写入 Diamond 的数据。</li>
+</ul>
+<p>EIP-2535 规范了添加、替换、移除函数和 Facets 的机制和合约接口，以及检查 Diamond 以了解其拥有的函数和 Facets 的方法，并记录升级。EIP-2535 使得可以编写能够与任何和所有 Diamonds 兼容或集成的软件。</p>
+<p>以下是帮助可视化 Diamond 的几张图片。第一张图片展示了函数如何映射到持有函数代码的 Facets 上：</p>
+<p><img src="/images/eip-diamond-2.png" alt="Diamond"></p>
+<p>接下来的图片展示了所有状态变量数据都存储在 Diamond 代理合约中，而 Diamond 使用的代码来自 Facets。请注意，虽然 Facets 中的代码可以定义具有状态变量的结构体，但所有存储的值都保存在 Diamond 代理合约中，而不是在 Facets 中。该图片还显示了 Facets 可以在 Diamond 代理合约中拥有自己的数据，并且可以与其他 Facets 共享数据。这张图片只是一个示例。</p>
+<p><img src="/images/eip-diamond-3.jpg" alt="Diamond"></p>
+<h1 id="为-Diamond-组织-Facet"><a href="#为-Diamond-组织-Facet" class="headerlink" title="为 Diamond 组织 Facet"></a>为 Diamond 组织 Facet</h1><p>Facets 可以像文件系统一样进行组织。文件系统的常见组织方式如下：</p>
+<ul>
+<li><strong>相关和相似的数据放在同一个文件中</strong>：例如，将所有与用户管理相关的函数放在一个 Facet 中。</li>
+<li><strong>相关和相似的文件放在同一个文件夹中</strong>：例如，将所有用户管理相关的 Facets 放在同一个 Facet 文件夹中。</li>
+<li><strong>相关和相似的文件夹放在同一个父文件夹中</strong>：例如，将所有与用户管理和交易处理相关的 Facets 放在一个更大的父 Facet 文件夹中。</li>
+</ul>
+<p>这种组织方式有助于提高代码的模块化和可维护性，使得不同功能的 Facets 更加清晰和易于管理。</p>
+<p>Diamond 的 Facets 也可以类似地进行组织：</p>
+<ul>
+<li><strong>相似和相关的函数放在同一个 Facet 中</strong>：例如，将所有用户管理相关的函数放在一个 Facet 中，以保持功能的集中性。</li>
+<li><strong>相似和相关的 Facets 放在同一个文件夹中</strong>相似和相关的 Facets 放在同一个文件夹中：例如，将所有与用户管理相关的 Facets 放在一个特定的 Facet 文件夹中，这样可以更好地组织和管理。</li>
+<li><strong>相似和相关的文件夹放在同一个父文件夹中</strong>：例如，将所有与用户管理和交易处理相关的 Facets 放在一个更大的父 Facet 文件夹中，便于整体结构的管理和扩展。</li>
+</ul>
+<p>例如，在实现 ERC721 代币时，可以将 ERC721 标准中的外部函数实现放在一个名为 <code>ERC721Facet</code> 的 Facet 中，而将自定义功能放在另一个 Facet 中。</p>
+<p>即使 24KB 的最大合约限制被移除，我仍然会使用 EIP-2535 Diamonds，因为它提供了一种系统化的方式来组织、升级和扩展智能合约系统。</p>
+<p>最初，EIP-2535 Diamonds 是为了解决 24KB 合约限制而创建的，但它的应用范围远不止于此。它提供了一个构建更大规模智能合约系统的框架，并且能够支持生产环境中不断增长的合约系统。</p>
+<h1 id="确保数据准确"><a href="#确保数据准确" class="headerlink" title="确保数据准确"></a>确保数据准确</h1><p>Solidity 在合约中使用数字地址空间来存储数据。第一个状态变量存储在位置 0，下一个状态变量存储在位置 1，再下一个状态变量存储在位置 2，依此类推。</p>
+<p>Diamond 的 Facets 共享相同的存储地址空间，因为它们具有相同的 Diamond，且 Facets 仅读取和写入 Diamond 中的状态变量，而不是它们自己。如果不了解这一点，你需要理解 delegatecall 的工作原理，因为所有 Facet 的外部函数都是通过 delegatecall 从 Diamond 调用的。</p>
+<p>如果处理不当，这可能会引发问题。例如，假设一个 Diamond 具有两个 Facets：FacetA 和 FacetB。假设 FacetA 声明了状态变量 uint first; 和 bytes32 second;，而 FacetB 声明了状态变量 uint first; 和 string name;。</p>
+<p>由于两个 Facets 都在位置 0 存储 uint first，因此它们都可以读取和写入这个变量而不会有问题。</p>
+<p>但这两个 Facets 在位置 1 写入和读取的是不同的数据——‘bytes32 second’ 和 ‘string name’。它们会互相覆盖或混淆彼此的数据，因为它们在位置 1 解释和写入的数据不同。这就是为什么同一个 Diamond 的 Facets 需要以相同的顺序声明相同的状态变量，以确保它们读取和写入相同的位置。</p>
+<p>要解决这个问题，需要有策略来确保 Facets 声明相同的状态变量，并保持相同的顺序。即使在进行升级时，只要有良好的策略，这通常没有问题。</p>
+<h2 id="Inherited-Storage"><a href="#Inherited-Storage" class="headerlink" title="Inherited Storage"></a>Inherited Storage</h2><p>创建一个合约来声明所有 Facets 使用的状态变量，并让每个 Facet 继承这个合约（例如，命名为 Storage），是一种简单的策略。这种策略确实有效，并且在生产环境中已经成功使用。然而，它也有一些限制。</p>
+<p>Inherited Storage 的限制：</p>
+<ul>
+<li>复用性问题： 由于状态变量是通过继承合约来管理的，这种方式可能会限制 Facets 的复用。如果一个 Facet 使用了 Inherited Storage，它可能无法与具有不同状态变量的其他 Diamond 进行重用。这使得在不同 Diamond 之间迁移或共享 Facet 变得困难。</li>
+<li>命名冲突： 在大型 Diamond 中，拥有 100 个或更多状态变量时，很容易发生命名冲突。尤其是如果内部函数或局部变量与状态变量同名，就可能导致名称冲突。这种情况可能会使代码维护变得复杂。</li>
+</ul>
+<p>可能的解决方案：</p>
+<ul>
+<li>命名约定：使用代码命名约定来防止命名冲突。例如，为状态变量、内部函数和局部变量使用不同的前缀或命名规则，以减少命名冲突的风险。</li>
+<li>模块化存储：考虑使用模块化存储策略，将状态变量分组到多个存储合约中，而不是将所有变量放在一个合约中。这种方式可以提高复用性，并减少命名冲突的风险。</li>
+<li>更灵活的存储管理：探索其他存储管理策略，例如动态存储管理合约，通过配置和管理存储布局来提高 Facets 的复用性。</li>
+</ul>
+<p>通过这些改进措施，可以克服 Inherited Storage 的一些局限性，同时提高代码的复用性和维护性。</p>
+<h2 id="Diamond-Storage"><a href="#Diamond-Storage" class="headerlink" title="Diamond Storage"></a>Diamond Storage</h2><p>不同 Diamond 的 Facets 实际上并不需要声明相同的状态变量或以相同的顺序存储状态变量，只要 Facets 存储数据的位置不同即可。</p>
+<p>正如前面提到的，Solidity 自动将状态变量存储在从 0 开始并递增的存储位置上。然而，我们并不一定要使用 Solidity 的默认存储布局机制。我们可以指定在地址空间中存储数据的起始位置，因此可以为不同的 Facets 指定不同的存储位置，从而避免不同 Facets 中不同状态变量发生存储位置冲突。这就是 Diamond Storage 的工作原理。</p>
+<p>我们可以通过对唯一字符串进行哈希来获取一个随机的存储位置，并在该位置存储一个结构体。该结构体可以包含我们想要的所有状态变量。唯一字符串可以充当特定功能的命名空间。</p>
+<p>例如，我们可以实现一个 ERC721Facet。这个 Facet 可以在位置 keccak256(“com.myproject.erc721”); 存储一个名为 ERC721Storage 的结构体。这个结构体可以包含所有与 ERC721 相关的状态变量，这些变量是 ERC721Facet 读写的，并且不包含其他变量。这样做有几个优点：</p>
+<ul>
+<li>Facet 的复用性：ERC721Facet 可以仅部署一次，并可以与多个使用不同状态变量的 Diamond 配合使用。这种复用性使得开发和部署更加高效。</li>
+<li>简洁性：ERC721Facet 不会被不相关的状态变量声明所 clutter，保持了代码的简洁性和可维护性。只包含它实际使用的状态变量，从而避免了混乱和潜在的命名冲突。</li>
+</ul>
+<p>通过这种方式，可以有效管理 Diamond 的状态变量，确保 Facets 的高效和清晰。</p>
+<h2 id="AppStorage"><a href="#AppStorage" class="headerlink" title="AppStorage"></a>AppStorage</h2><p>AppStorage 是一种类似于 Inherited Storage 的机制，但它解决了名称冲突的问题，在实际应用中，这一点非常有用。AppStorage 的设计不仅避免了状态变量与内部函数或局部变量的名称冲突，还通过结构化的方式提高了代码的可读性。如果你注重代码的可读性，那么你会喜欢 AppStorage。</p>
+<p>AppStorage 强制使用命名或访问约定，避免了状态变量与其他元素名称冲突的问题。</p>
+<p>AppStorage 的工作原理如下：</p>
+<ul>
+<li>定义结构体：在 Solidity 文件中定义一个名为 AppStorage 的结构体。该结构体包含将在 Facets 之间共享的状态变量。</li>
+<li>使用结构体：Facet 导入 AppStorage 结构体，并将 AppStorage internal s; 声明为 Facet 中的第一个也是唯一的状态变量。这样，Facet 中的所有状态变量都通过结构体进行访问。例如，使用 s.myFirstVariable、s.mySecondVariable 等来访问状态变量。</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>AppStorage.sol</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// AppStorage.sol</span><br><span class="line">pragma solidity ^0.8.0;</span><br><span class="line"></span><br><span class="line">contract AppStorage &#123;</span><br><span class="line">   struct Storage &#123;</span><br><span class="line">       uint256 myFirstVariable;</span><br><span class="line">       uint256 mySecondVariable;</span><br><span class="line">       // Add other state variables here</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><figcaption><span>MyFacet.sol</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// MyFacet.sol</span><br><span class="line">pragma solidity ^0.8.0;</span><br><span class="line"></span><br><span class="line">import &quot;./AppStorage.sol&quot;;</span><br><span class="line"></span><br><span class="line">contract MyFacet &#123;</span><br><span class="line">    AppStorage.Storage internal s;</span><br><span class="line"></span><br><span class="line">    function setFirstVariable(uint256 _value) external &#123;</span><br><span class="line">        s.myFirstVariable = _value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function getFirstVariable() external view returns (uint256) &#123;</span><br><span class="line">        return s.myFirstVariable;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Additional functions interacting with `s` here</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>优势</strong>：</p>
+<ul>
+<li><strong>避免名称冲突</strong>：通过将所有状态变量放入一个结构体中，避免了与内部函数或局部变量的名称冲突。</li>
+<li><strong>提高代码可读性</strong>：结构化的方式使得状态变量的管理更加清晰，使代码更容易阅读和维护。</li>
+</ul>
+<p>AppStorage 是一种有效的策略，用于管理和组织 Facets 中的状态变量，特别适合需要高代码可读性的场景。</p>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><ul>
+<li>diamond: 合约本体，实际上是一个代理合约</li>
+<li>facet: 业务合约</li>
+<li>loupe: 也是一个 facet，用于查询 diamond 提供的 facet 以及 facet 提供的所有函数</li>
+<li>diamondCut: 用于增加&#x2F;删除&#x2F;修改 diamond 上的 facet 的函数</li>
+</ul>
+<h2 id="Loupe"><a href="#Loupe" class="headerlink" title="Loupe"></a>Loupe</h2><figure class="highlight plaintext"><figcaption><span>IDiamondLoupe.sol</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.0;</span><br><span class="line"></span><br><span class="line">/******************************************************************************\</span><br><span class="line">* Author: Nick Mudge &lt;nick@perfectabstractions.com&gt; (https://twitter.com/mudgen)</span><br><span class="line">* EIP-2535 Diamonds: https://eips.ethereum.org/EIPS/eip-2535</span><br><span class="line">/******************************************************************************/</span><br><span class="line"></span><br><span class="line">// A loupe is a small magnifying glass used to look at diamonds.</span><br><span class="line">interface IDiamondLoupe &#123;</span><br><span class="line"></span><br><span class="line">    struct Facet &#123;</span><br><span class="line">        address facetAddress;</span><br><span class="line">        bytes4[] functionSelectors;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /// 获取某个 diamond 的所有 facet</span><br><span class="line">    function facets() external view returns (Facet[] memory facets_);</span><br><span class="line"></span><br><span class="line">    /// 获取某个 facet 的所有函数选择器</span><br><span class="line">    function facetFunctionSelectors(address _facet) external view returns (bytes4[] memory facetFunctionSelectors_);</span><br><span class="line"></span><br><span class="line">    /// 获取某个 diamond 的所有 facet 地址</span><br><span class="line">    function facetAddresses() external view returns (address[] memory facetAddresses_);</span><br><span class="line"></span><br><span class="line">    /// 获取某个 diamond 的某个函数选择器对应的 facet 地址</span><br><span class="line">    function facetAddress(bytes4 _functionSelector) external view returns (address facetAddress_);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="DiamondCut"><a href="#DiamondCut" class="headerlink" title="DiamondCut"></a>DiamondCut</h2><figure class="highlight plaintext"><figcaption><span>IDiamondCut.sol</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.0;</span><br><span class="line"></span><br><span class="line">/******************************************************************************\</span><br><span class="line">* Author: Nick Mudge &lt;nick@perfectabstractions.com&gt; (https://twitter.com/mudgen)</span><br><span class="line">* EIP-2535 Diamonds: https://eips.ethereum.org/EIPS/eip-2535</span><br><span class="line">/******************************************************************************/</span><br><span class="line"></span><br><span class="line">interface IDiamondCut &#123;</span><br><span class="line">    enum FacetCutAction &#123;Add, Replace, Remove&#125;</span><br><span class="line">    // Add=0, Replace=1, Remove=2</span><br><span class="line"></span><br><span class="line">    struct FacetCut &#123;</span><br><span class="line">        address facetAddress;</span><br><span class="line">        FacetCutAction action;</span><br><span class="line">        bytes4[] functionSelectors;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /// 增加/替换/删除 facet</span><br><span class="line">    function diamondCut(</span><br><span class="line">        FacetCut[] calldata _diamondCut,</span><br><span class="line">        address _init,</span><br><span class="line">        bytes calldata _calldata</span><br><span class="line">    ) external;</span><br><span class="line"></span><br><span class="line">    /// 每次调用 DiamondCut 都需要触发该事件</span><br><span class="line">    event DiamondCut(FacetCut[] _diamondCut, address _init, bytes _calldata);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Diamond"><a href="#Diamond" class="headerlink" title="Diamond"></a>Diamond</h2><figure class="highlight plaintext"><figcaption><span>LibDiamond.sol</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.0;</span><br><span class="line"></span><br><span class="line">/******************************************************************************\</span><br><span class="line">* Author: Nick Mudge &lt;nick@perfectabstractions.com&gt; (https://twitter.com/mudgen)</span><br><span class="line">* EIP-2535 Diamonds: https://eips.ethereum.org/EIPS/eip-2535</span><br><span class="line">/******************************************************************************/</span><br><span class="line">import &#123; IDiamondCut &#125; from &quot;../interfaces/IDiamondCut.sol&quot;;</span><br><span class="line"></span><br><span class="line">// EIP2535 diamond 标准里 loupe 函数是必须的</span><br><span class="line"></span><br><span class="line">error InitializationFunctionReverted(address _initializationContractAddress, bytes _calldata);</span><br><span class="line"></span><br><span class="line">library LibDiamond &#123;</span><br><span class="line">    // 32位的 keccak 哈希值，用于作为 diamond 存储位置的字符串。</span><br><span class="line">    bytes32 constant DIAMOND_STORAGE_POSITION = keccak256(&quot;diamond.standard.diamond.storage&quot;);</span><br><span class="line"></span><br><span class="line">    struct FacetAddressAndPosition &#123;</span><br><span class="line">        address facetAddress;</span><br><span class="line">        uint96 functionSelectorPosition;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    struct FacetFunctionSelectors &#123;</span><br><span class="line">        bytes4[] functionSelectors;</span><br><span class="line">        uint256 facetAddressPosition;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    struct DiamondStorage &#123;</span><br><span class="line">        // 函数选择器到 facet 地址和选择器在 facetFunctionSelectors.selectors 数组中的位置的映射</span><br><span class="line">        mapping(bytes4 =&gt; FacetAddressAndPosition) selectorToFacetAndPosition;</span><br><span class="line"></span><br><span class="line">        // facet 地址到 facet 函数选择器的映射</span><br><span class="line">        mapping(address =&gt; FacetFunctionSelectors) facetFunctionSelectors;</span><br><span class="line"></span><br><span class="line">        // facet 地址</span><br><span class="line">        address[] facetAddresses;</span><br><span class="line"></span><br><span class="line">        // 查询某个合约是否实现某个接口。用于实现 ERC-165。</span><br><span class="line">        mapping(bytes4 =&gt; bool) supportedInterfaces;</span><br><span class="line"></span><br><span class="line">        // 合约所有者</span><br><span class="line">        address contractOwner;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function diamondStorage() internal pure returns (DiamondStorage storage ds) &#123;</span><br><span class="line">        bytes32 position = DIAMOND_STORAGE_POSITION;</span><br><span class="line">        // 将结构体存储槽分配给存储位置</span><br><span class="line">        assembly &#123;</span><br><span class="line">            ds.slot := position</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);</span><br><span class="line"></span><br><span class="line">    function setContractOwner(address _newOwner) internal &#123;</span><br><span class="line">        DiamondStorage storage ds = diamondStorage();</span><br><span class="line">        address previousOwner = ds.contractOwner;</span><br><span class="line">        ds.contractOwner = _newOwner;</span><br><span class="line">        emit OwnershipTransferred(previousOwner, _newOwner);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function contractOwner() internal view returns (address contractOwner_) &#123;</span><br><span class="line">        contractOwner_ = diamondStorage().contractOwner;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function enforceIsContractOwner() internal view &#123;</span><br><span class="line">        require(msg.sender == diamondStorage().contractOwner, &quot;LibDiamond: Must be contract owner&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    event DiamondCut(IDiamondCut.FacetCut[] _diamondCut, address _init, bytes _calldata);</span><br><span class="line"></span><br><span class="line">    // 内部函数版本的 diamondCut</span><br><span class="line">    function diamondCut(</span><br><span class="line">        IDiamondCut.FacetCut[] memory _diamondCut,</span><br><span class="line">        address _init,</span><br><span class="line">        bytes memory _calldata</span><br><span class="line">    ) internal &#123;</span><br><span class="line">        for (uint256 facetIndex; facetIndex &lt; _diamondCut.length; facetIndex++) &#123;</span><br><span class="line">            IDiamondCut.FacetCutAction action = _diamondCut[facetIndex].action;</span><br><span class="line">            if (action == IDiamondCut.FacetCutAction.Add) &#123;</span><br><span class="line">                addFunctions(_diamondCut[facetIndex].facetAddress, _diamondCut[facetIndex].functionSelectors);</span><br><span class="line">            &#125; else if (action == IDiamondCut.FacetCutAction.Replace) &#123;</span><br><span class="line">                replaceFunctions(_diamondCut[facetIndex].facetAddress, _diamondCut[facetIndex].functionSelectors);</span><br><span class="line">            &#125; else if (action == IDiamondCut.FacetCutAction.Remove) &#123;</span><br><span class="line">                removeFunctions(_diamondCut[facetIndex].facetAddress, _diamondCut[facetIndex].functionSelectors);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                revert(&quot;LibDiamondCut: Incorrect FacetCutAction&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        emit DiamondCut(_diamondCut, _init, _calldata);</span><br><span class="line">        initializeDiamondCut(_init, _calldata);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function addFunctions(address _facetAddress, bytes4[] memory _functionSelectors) internal &#123;</span><br><span class="line">        require(_functionSelectors.length &gt; 0, &quot;LibDiamondCut: No selectors in facet to cut&quot;);</span><br><span class="line">        DiamondStorage storage ds = diamondStorage();</span><br><span class="line">        require(_facetAddress != address(0), &quot;LibDiamondCut: Add facet can&#x27;t be address(0)&quot;);</span><br><span class="line">        uint96 selectorPosition = uint96(ds.facetFunctionSelectors[_facetAddress].functionSelectors.length);</span><br><span class="line">        // 如果 facet 地址不存在，则添加</span><br><span class="line">        if (selectorPosition == 0) &#123;</span><br><span class="line">            addFacet(ds, _facetAddress);</span><br><span class="line">        &#125;</span><br><span class="line">        for (uint256 selectorIndex; selectorIndex &lt; _functionSelectors.length; selectorIndex++) &#123;</span><br><span class="line">            bytes4 selector = _functionSelectors[selectorIndex];</span><br><span class="line">            address oldFacetAddress = ds.selectorToFacetAndPosition[selector].facetAddress;</span><br><span class="line">            require(oldFacetAddress == address(0), &quot;LibDiamondCut: Can&#x27;t add function that already exists&quot;);</span><br><span class="line">            addFunction(ds, selector, selectorPosition, _facetAddress);</span><br><span class="line">            selectorPosition++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function replaceFunctions(address _facetAddress, bytes4[] memory _functionSelectors) internal &#123;</span><br><span class="line">        require(_functionSelectors.length &gt; 0, &quot;LibDiamondCut: No selectors in facet to cut&quot;);</span><br><span class="line">        DiamondStorage storage ds = diamondStorage();</span><br><span class="line">        require(_facetAddress != address(0), &quot;LibDiamondCut: Add facet can&#x27;t be address(0)&quot;);</span><br><span class="line">        uint96 selectorPosition = uint96(ds.facetFunctionSelectors[_facetAddress].functionSelectors.length);</span><br><span class="line">        // 如果 facet 地址不存在，则添加</span><br><span class="line">        if (selectorPosition == 0) &#123;</span><br><span class="line">            addFacet(ds, _facetAddress);</span><br><span class="line">        &#125;</span><br><span class="line">        for (uint256 selectorIndex; selectorIndex &lt; _functionSelectors.length; selectorIndex++) &#123;</span><br><span class="line">            bytes4 selector = _functionSelectors[selectorIndex];</span><br><span class="line">            address oldFacetAddress = ds.selectorToFacetAndPosition[selector].facetAddress;</span><br><span class="line">            require(oldFacetAddress != _facetAddress, &quot;LibDiamondCut: Can&#x27;t replace function with same function&quot;);</span><br><span class="line">            removeFunction(ds, oldFacetAddress, selector);</span><br><span class="line">            addFunction(ds, selector, selectorPosition, _facetAddress);</span><br><span class="line">            selectorPosition++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function removeFunctions(address _facetAddress, bytes4[] memory _functionSelectors) internal &#123;</span><br><span class="line">        require(_functionSelectors.length &gt; 0, &quot;LibDiamondCut: No selectors in facet to cut&quot;);</span><br><span class="line">        DiamondStorage storage ds = diamondStorage();</span><br><span class="line">        // 如果 facet 地址不存在，则不做任何操作并返回</span><br><span class="line">        require(_facetAddress == address(0), &quot;LibDiamondCut: Remove facet address must be address(0)&quot;);</span><br><span class="line">        for (uint256 selectorIndex; selectorIndex &lt; _functionSelectors.length; selectorIndex++) &#123;</span><br><span class="line">            bytes4 selector = _functionSelectors[selectorIndex];</span><br><span class="line">            address oldFacetAddress = ds.selectorToFacetAndPosition[selector].facetAddress;</span><br><span class="line">            removeFunction(ds, oldFacetAddress, selector);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function addFacet(DiamondStorage storage ds, address _facetAddress) internal &#123;</span><br><span class="line">        enforceHasContractCode(_facetAddress, &quot;LibDiamondCut: New facet has no code&quot;);</span><br><span class="line">        ds.facetFunctionSelectors[_facetAddress].facetAddressPosition = ds.facetAddresses.length;</span><br><span class="line">        ds.facetAddresses.push(_facetAddress);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    function addFunction(DiamondStorage storage ds, bytes4 _selector, uint96 _selectorPosition, address _facetAddress) internal &#123;</span><br><span class="line">        ds.selectorToFacetAndPosition[_selector].functionSelectorPosition = _selectorPosition;</span><br><span class="line">        ds.facetFunctionSelectors[_facetAddress].functionSelectors.push(_selector);</span><br><span class="line">        ds.selectorToFacetAndPosition[_selector].facetAddress = _facetAddress;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function removeFunction(DiamondStorage storage ds, address _facetAddress, bytes4 _selector) internal &#123;</span><br><span class="line">        require(_facetAddress != address(0), &quot;LibDiamondCut: Can&#x27;t remove function that doesn&#x27;t exist&quot;);</span><br><span class="line">        // immutable function 指的是定义在 diamond 里的函数，不能被修改。</span><br><span class="line">        require(_facetAddress != address(this), &quot;LibDiamondCut: Can&#x27;t remove immutable function&quot;);</span><br><span class="line">        // 选择器位置前移，然后删除最后一个选择器</span><br><span class="line">        uint256 selectorPosition = ds.selectorToFacetAndPosition[_selector].functionSelectorPosition;</span><br><span class="line">        uint256 lastSelectorPosition = ds.facetFunctionSelectors[_facetAddress].functionSelectors.length - 1;</span><br><span class="line">        // 如果不相同，则替换 _selector 与最后一个选择器</span><br><span class="line">        if (selectorPosition != lastSelectorPosition) &#123;</span><br><span class="line">            bytes4 lastSelector = ds.facetFunctionSelectors[_facetAddress].functionSelectors[lastSelectorPosition];</span><br><span class="line">            ds.facetFunctionSelectors[_facetAddress].functionSelectors[selectorPosition] = lastSelector;</span><br><span class="line">            ds.selectorToFacetAndPosition[lastSelector].functionSelectorPosition = uint96(selectorPosition);</span><br><span class="line">        &#125;</span><br><span class="line">        // 删除最后一个选择器</span><br><span class="line">        ds.facetFunctionSelectors[_facetAddress].functionSelectors.pop();</span><br><span class="line">        delete ds.selectorToFacetAndPosition[_selector];</span><br><span class="line"></span><br><span class="line">        // 如果没有选择器了，则删除 facet 地址</span><br><span class="line">        if (lastSelectorPosition == 0) &#123;</span><br><span class="line">            // replace facet address with last facet address and delete last facet address</span><br><span class="line">            uint256 lastFacetAddressPosition = ds.facetAddresses.length - 1;</span><br><span class="line">            uint256 facetAddressPosition = ds.facetFunctionSelectors[_facetAddress].facetAddressPosition;</span><br><span class="line">            if (facetAddressPosition != lastFacetAddressPosition) &#123;</span><br><span class="line">                address lastFacetAddress = ds.facetAddresses[lastFacetAddressPosition];</span><br><span class="line">                ds.facetAddresses[facetAddressPosition] = lastFacetAddress;</span><br><span class="line">                ds.facetFunctionSelectors[lastFacetAddress].facetAddressPosition = facetAddressPosition;</span><br><span class="line">            &#125;</span><br><span class="line">            ds.facetAddresses.pop();</span><br><span class="line">            delete ds.facetFunctionSelectors[_facetAddress].facetAddressPosition;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function initializeDiamondCut(address _init, bytes memory _calldata) internal &#123;</span><br><span class="line">        if (_init == address(0)) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        enforceHasContractCode(_init, &quot;LibDiamondCut: _init address has no code&quot;);</span><br><span class="line">        (bool success, bytes memory error) = _init.delegatecall(_calldata);</span><br><span class="line">        if (!success) &#123;</span><br><span class="line">            if (error.length &gt; 0) &#123;</span><br><span class="line">                // bubble up error</span><br><span class="line">                /// @solidity memory-safe-assembly</span><br><span class="line">                assembly &#123;</span><br><span class="line">                    let returndata_size := mload(error)</span><br><span class="line">                    revert(add(32, error), returndata_size)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                revert InitializationFunctionReverted(_init, _calldata);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function enforceHasContractCode(address _contract, string memory _errorMessage) internal view &#123;</span><br><span class="line">        uint256 contractSize;</span><br><span class="line">        assembly &#123;</span><br><span class="line">            contractSize := extcodesize(_contract)</span><br><span class="line">        &#125;</span><br><span class="line">        require(contractSize &gt; 0, _errorMessage);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实现方式：<a target="_blank" rel="noopener" href="https://github.com/mudgen/Diamond">Diamond</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/web3/" rel="tag"># web3</a>
+              <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag"># 区块链</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/08/07/%E4%BB%80%E4%B9%88%E6%98%AFWeb3%EF%BC%9F/" rel="prev" title="什么是Web3？">
+      <i class="fa fa-chevron-left"></i> 什么是Web3？
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Diamond"><span class="nav-number">1.</span> <span class="nav-text">什么是 Diamond</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA-Diamond-%E7%BB%84%E7%BB%87-Facet"><span class="nav-number">2.</span> <span class="nav-text">为 Diamond 组织 Facet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A1%AE%E4%BF%9D%E6%95%B0%E6%8D%AE%E5%87%86%E7%A1%AE"><span class="nav-number">3.</span> <span class="nav-text">确保数据准确</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Inherited-Storage"><span class="nav-number">3.1.</span> <span class="nav-text">Inherited Storage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Diamond-Storage"><span class="nav-number">3.2.</span> <span class="nav-text">Diamond Storage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AppStorage"><span class="nav-number">3.3.</span> <span class="nav-text">AppStorage</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Loupe"><span class="nav-number">4.1.</span> <span class="nav-text">Loupe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DiamondCut"><span class="nav-number">4.2.</span> <span class="nav-text">DiamondCut</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Diamond"><span class="nav-number">4.3.</span> <span class="nav-text">Diamond</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Edward"
+      src="https://avatars.githubusercontent.com/u/22055633?v=4">
+  <p class="site-author-name" itemprop="name">Edward</p>
+  <div class="site-description" itemprop="description">Nothing to describe.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">180</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/alazypig" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;alazypig" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-bug"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Edward Wang</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
+<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

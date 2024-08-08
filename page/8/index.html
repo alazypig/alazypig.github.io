@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">179</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">180</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,89 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2020/03/06/TypeScript-Type-Compatibility/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/06/TypeScript-Type-Compatibility/" class="post-title-link" itemprop="url">TypeScript Type Compatibility</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-03-06 11:28:32" itemprop="dateCreated datePublished" datetime="2020-03-06T11:28:32+08:00">2020-03-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> A &#123;</span><br><span class="line"><span class="attr">text</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span> &#123;</span><br><span class="line"><span class="attr">text</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="attr">a</span>: A = <span class="keyword">new</span> <span class="title function_">B</span>(); <span class="comment">// no error</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="At-least-same-member"><a href="#At-least-same-member" class="headerlink" title="At least same member"></a>At least same member</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> A &#123;</span><br><span class="line"><span class="attr">text</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params">obj: &#123; text: <span class="built_in">string</span> &#125;</span>): <span class="built_in">string</span> &#123;</span><br><span class="line"><span class="keyword">return</span> obj.<span class="property">text</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">text</span>: <span class="string">&#x27;some text&#x27;</span>, <span class="attr">num</span>: <span class="number">3</span>&#125;;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">a</span>: A = obj; <span class="comment">// success</span></span><br><span class="line"><span class="title function_">foo</span>(obj); <span class="comment">// success</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/06/TypeScript-Type-Compatibility/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -958,88 +1041,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/12/20/CNN-%E6%AF%94%E7%89%B9%E5%B8%81%E6%98%AF%E8%BF%87%E5%8E%BB%E5%8D%81%E5%B9%B4%E6%9C%80%E5%A5%BD%E6%8A%95%E8%B5%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/20/CNN-%E6%AF%94%E7%89%B9%E5%B8%81%E6%98%AF%E8%BF%87%E5%8E%BB%E5%8D%81%E5%B9%B4%E6%9C%80%E5%A5%BD%E6%8A%95%E8%B5%84/" class="post-title-link" itemprop="url">CNN: 比特币是过去十年最好投资</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-12-20 14:03:52" itemprop="dateCreated datePublished" datetime="2019-12-20T14:03:52+08:00">2019-12-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Digital-currency/" itemprop="url" rel="index"><span itemprop="name">Digital currency</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="The-best-investment-of-the-decade-turned-1-into-90-000"><a href="#The-best-investment-of-the-decade-turned-1-into-90-000" class="headerlink" title="The best investment of the decade turned $1 into $90,000"></a>The best investment of the decade turned $1 into $90,000</h1><p>The decade is almost over — and one incredibly volatile investment stood out from all the rest as the best of the 2010s. Want to guess what it was?</p>
-<p style="font-size: 2em; text-align: center; font-weight: blod; color: red; text-shadow: 1px 1px 2px black;">Bitcoin</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/12/20/CNN-%E6%AF%94%E7%89%B9%E5%B8%81%E6%98%AF%E8%BF%87%E5%8E%BB%E5%8D%81%E5%B9%B4%E6%9C%80%E5%A5%BD%E6%8A%95%E8%B5%84/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1111,7 +1112,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">179</span>
+          <span class="site-state-item-count">180</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
