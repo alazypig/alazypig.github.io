@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">46</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">47</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">180</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">181</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,121 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/04/22/Linux%E6%96%87%E4%BB%B6%E5%8F%8A%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/22/Linux%E6%96%87%E4%BB%B6%E5%8F%8A%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="post-title-link" itemprop="url">Linux文件及文件系统</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-04-22 11:14:43" itemprop="dateCreated datePublished" datetime="2019-04-22T11:14:43+08:00">2019-04-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h3><ul>
+<li>普通文件</li>
+<li>目录文件</li>
+<li>链接文件：类似 Windows 的快捷方式，分软链接和硬链接</li>
+<li>设备文件：一般在&#x2F;dev 目录下，一种是块设备文件，一种是字符设备文件</li>
+</ul>
+<h3 id="文件属性"><a href="#文件属性" class="headerlink" title="文件属性"></a>文件属性</h3><p><code>-rwxrwxrwx</code></p>
+<ul>
+<li>r: read</li>
+<li>w: write</li>
+<li>x: execute</li>
+</ul>
+<p>第一个字符：</p>
+<ul>
+<li>- : 普通文件</li>
+<li>d : 目录文件</li>
+<li>l : 链接文件</li>
+<li>c : 字符设备</li>
+<li>b : 块设备</li>
+<li>p : 命名管道，如 FIFO</li>
+<li>f : 堆栈文件，如 LIFO</li>
+<li>s : 套接字</li>
+</ul>
+<p>之后的三个三位字符组：</p>
+<ol>
+<li>第一组代表文件拥有者(u)对该文件的权限</li>
+<li>第二组代表文件用户组(g)对该文件的权限</li>
+<li>第三组代表系统其它用户(o)对该文件的权限</li>
+</ol>
+<h3 id="文件系统类型"><a href="#文件系统类型" class="headerlink" title="文件系统类型"></a>文件系统类型</h3><ul>
+<li>ext2 &amp; ext3：ext3 是 ext2 的升级版本</li>
+<li>swap：交换分区使用</li>
+<li>vfat：DOS 中的系统（FAT12、FAT16 和 FAT32 等）</li>
+<li>NFS：网络文件系统</li>
+<li>ISO9660：光盘文件系统
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/04/22/Linux%E6%96%87%E4%BB%B6%E5%8F%8A%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -948,95 +1063,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/03/27/The-currying/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/03/27/The-currying/" class="post-title-link" itemprop="url">The Currying</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-03-27 22:55:21" itemprop="dateCreated datePublished" datetime="2019-03-27T22:55:21+08:00">2019-03-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Functional-Programming/" itemprop="url" rel="index"><span itemprop="name">Functional Programming</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="What-is-currying"><a href="#What-is-currying" class="headerlink" title="What is currying"></a>What is currying</h3><p><em><code>Currying is the technique of translating the evaluation of a function that takes multiple arguments into evaluating a sequence of functions, each with a single argument. -- Wikipedia</code></em><br>It mean this:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="title function_">add</span> = (<span class="params">x</span>) =&gt; <span class="function">(<span class="params">y</span>) =&gt;</span> x + y</span><br><span class="line"><span class="keyword">let</span> addOne = <span class="title function_">add</span>(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">let</span> addTwo = <span class="title function_">add</span>(<span class="number">2</span>)</span><br><span class="line"><span class="title function_">addOne</span>(<span class="number">11</span>) <span class="comment">// 12</span></span><br><span class="line"><span class="title function_">addTwo</span>(<span class="number">11</span>) <span class="comment">// 13</span></span><br></pre></td></tr></table></figure>
-
-<p>In order to define functions more easily, we need the <code>loadsh</code>, it will help us to currying the function.</p>
-<h3 id="make-some-using-thing"><a href="#make-some-using-thing" class="headerlink" title="make some using thing"></a>make some using thing</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _ = <span class="built_in">require</span>(<span class="string">&#x27;loadsh&#x27;</span>).<span class="property">curry</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> match = <span class="title function_">_</span>(<span class="function">(<span class="params">regex, str</span>) =&gt;</span> str.<span class="title function_">match</span>(regex))</span><br><span class="line"><span class="keyword">var</span> replace = <span class="title function_">_</span>(<span class="function">(<span class="params">regex, replacement, str</span>) =&gt;</span> str.<span class="title function_">replace</span>(regex, replacement))</span><br><span class="line"><span class="keyword">var</span> filter = <span class="title function_">_</span>(<span class="function">(<span class="params">f, array</span>) =&gt;</span> array.<span class="title function_">filter</span>(f))</span><br><span class="line"><span class="title function_">match</span>(<span class="regexp">/\s+/g</span>, <span class="string">&#x27;test Message&#x27;</span>) <span class="comment">// [&#x27; &#x27;]</span></span><br><span class="line"><span class="title function_">match</span>(<span class="regexp">/\s+/g</span>)(<span class="string">&#x27;test Message&#x27;</span>) <span class="comment">// [&#x27; &#x27;]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> hasSpace = <span class="title function_">match</span>(<span class="regexp">/\s+/g</span>)</span><br><span class="line"><span class="title function_">hasSpace</span>(<span class="string">&#x27;testMessage&#x27;</span>) <span class="comment">// null</span></span><br><span class="line"><span class="title function_">filter</span>(hasSpace, [<span class="string">&#x27;testMessage1&#x27;</span>, <span class="string">&#x27;test Message2&#x27;</span>, <span class="string">&#x27;test Message 3&#x27;</span>]) <span class="comment">// [&#x27;test Message2&#x27;, &#x27;test Message 3&#x27;]</span></span><br><span class="line"><span class="keyword">var</span> noA = <span class="title function_">replace</span>(<span class="regexp">/[Aa]+/g</span>, <span class="string">&#x27;*&#x27;</span>)</span><br><span class="line"><span class="title function_">noA</span>(<span class="string">&#x27;aaaabbbAAAc&#x27;</span>) <span class="comment">// &#x27;*bbb*c&#x27;</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/03/27/The-currying/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1104,7 +1134,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">180</span>
+          <span class="site-state-item-count">181</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1117,7 +1147,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-count">47</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
