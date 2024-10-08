@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">181</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">182</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,80 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/04/22/Haskell-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/22/Haskell-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0/" class="post-title-link" itemprop="url">Haskell 命令行参数</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-04-22 18:24:39" itemprop="dateCreated datePublished" datetime="2019-04-22T18:24:39+08:00">2019-04-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Haskell/" itemprop="url" rel="index"><span itemprop="name">Haskell</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> System.Environment</span><br><span class="line"><span class="keyword">import</span> System.Directory</span><br><span class="line"><span class="keyword">import</span> System.IO</span><br><span class="line"><span class="keyword">import</span> Data.List</span><br><span class="line"></span><br><span class="line"><span class="title">main</span> = <span class="keyword">do</span></span><br><span class="line">  (command:args) &lt;- getArgs                     <span class="comment">-- get the command</span></span><br><span class="line">  <span class="keyword">let</span> (<span class="type">Just</span> action) = lookup command dispatch   <span class="comment">-- find the command</span></span><br><span class="line">  action args                                   <span class="comment">-- do something</span></span><br><span class="line"></span><br><span class="line"><span class="title">add</span> :: [<span class="type">String</span>] -&gt; <span class="type">IO</span> ()</span><br><span class="line"><span class="title">add</span> [fileName, todoItem] = appendFile fileName (todoItem ++ <span class="string">&quot;\n&quot;</span>) <span class="comment">-- add the todoItem</span></span><br><span class="line"></span><br><span class="line"><span class="title">view</span> :: [<span class="type">String</span>] -&gt; <span class="type">IO</span> ()</span><br><span class="line"><span class="title">view</span> [fileName]     =  <span class="keyword">do</span>                                              <span class="comment">-- match the filename</span></span><br><span class="line">  contents          &lt;- readFile fileName                               <span class="comment">-- read the file</span></span><br><span class="line">  <span class="keyword">let</span> todoTasks     =  lines contents                                  <span class="comment">-- get the contents</span></span><br><span class="line">      numberedTasks =  zipWith (\n line -&gt; show n ++ <span class="string">&quot;: &quot;</span> ++ line) [<span class="number">0</span>..] todoTasks</span><br><span class="line">  putStrLn $ unlines numberedTasks                                     <span class="comment">-- show the items</span></span><br><span class="line"></span><br><span class="line"><span class="title">remove</span> :: [<span class="type">String</span>] -&gt; <span class="type">IO</span> ()</span><br><span class="line"><span class="title">remove</span> [fileName, numberString] = <span class="keyword">do</span>                              <span class="comment">-- get the filename and the line number</span></span><br><span class="line">  handle &lt;- openFile fileName <span class="type">ReadMode</span></span><br><span class="line">  (tempName, tempHandle) &lt;- openTempFile <span class="string">&quot;.&quot;</span> <span class="string">&quot;temp&quot;</span>               <span class="comment">-- create a temp file</span></span><br><span class="line">  contents &lt;- hGetContents handle                                 <span class="comment">-- get contents from the handle</span></span><br><span class="line">  <span class="keyword">let</span> number = read numberString                                  <span class="comment">-- read the String to Number</span></span><br><span class="line">      todoTasks = lines contents</span><br><span class="line">      newTodoTasks = delete (todoTasks !! number) todoTasks       <span class="comment">-- remove the line of the number</span></span><br><span class="line">  hPutStr tempHandle $ unlines newTodoTasks                       <span class="comment">-- putStr into the tempfile</span></span><br><span class="line">  hClose handle                                                   <span class="comment">-- close handles</span></span><br><span class="line">  hClose tempHandle</span><br><span class="line">  removeFile fileName</span><br><span class="line">  renameFile tempName fileName</span><br><span class="line"></span><br><span class="line"><span class="title">dispatch</span> :: [(<span class="type">String</span>, [<span class="type">String</span>] -&gt; <span class="type">IO</span> ())]</span><br><span class="line"><span class="title">dispatch</span> = [</span><br><span class="line">    (<span class="string">&quot;add&quot;</span>, add),</span><br><span class="line">    (<span class="string">&quot;view&quot;</span>, view),</span><br><span class="line">    (<span class="string">&quot;remove&quot;</span>, remove)</span><br><span class="line">  ]</span><br><span class="line"></span><br><span class="line"><span class="comment">-- runhaskell arags-test.hs view newData.txt</span></span><br><span class="line"><span class="comment">-- runhaskell args-test.hs add newData.txt &quot;Say Hello&quot;</span></span><br><span class="line"><span class="comment">-- runhaskell args-test.hs remove newData.txt 4</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -970,99 +1044,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/03/28/The-Composition/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/03/28/The-Composition/" class="post-title-link" itemprop="url">The composition</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-03-28 19:19:51" itemprop="dateCreated datePublished" datetime="2019-03-28T19:19:51+08:00">2019-03-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-07-15 08:57:57" itemprop="dateModified" datetime="2024-07-15T08:57:57+08:00">2024-07-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Functional-Programming/" itemprop="url" rel="index"><span itemprop="name">Functional Programming</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Function-Composition"><a href="#Function-Composition" class="headerlink" title="Function Composition"></a>Function Composition</h3><p><em><code>In computer science, function composition is an act or mechanism to combine simple functions to build more complicated ones. Like the usual composition of functions in mathematics, the result of each function is passed as the argument of the next, and the result of the last one is the result of the whole.  -- Wikipedia</code></em></p>
-<p>Example:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title function_">compose</span> = (<span class="params">f, g</span>) =&gt; <span class="function">(<span class="params">x</span>) =&gt;</span> <span class="title function_">f</span>(<span class="title function_">g</span>(x))</span><br><span class="line"><span class="keyword">var</span> <span class="title function_">head</span> = (<span class="params">x</span>) =&gt; x[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">var</span> reverse = <span class="title function_">reduce</span>(<span class="function">(<span class="params">a, x</span>) =&gt;</span> [x].<span class="title function_">concat</span>(a), [])</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> last = <span class="title function_">compose</span>(head, reverse)</span><br><span class="line"><span class="title function_">last</span>([<span class="string">&#x27;first&#x27;</span>, <span class="string">&#x27;second&#x27;</span>, <span class="string">&#x27;last&#x27;</span>]) <span class="comment">// &#x27;last&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>In the definition of compose, g will be executed before f, thus creating a right-to-left data stream. This is much more readable than nesting a bunch of function calls.</p>
-<h3 id="Associativity"><a href="#Associativity" class="headerlink" title="Associativity"></a>Associativity</h3><p><em><code>Like many other functional programming concepts, associativity is derived from math.It is an expression in which the order of evaluation does not affect the end result provided the sequence of the operands does not get changed. -- JOSEPH REX</code></em></p>
-<p>Example:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span> + (<span class="number">3</span> + <span class="number">4</span>) === <span class="number">2</span> + <span class="number">3</span> + <span class="number">4</span> <span class="comment">// true</span></span><br><span class="line"><span class="number">2</span> * (<span class="number">3</span> * <span class="number">4</span>) === <span class="number">2</span> * <span class="number">3</span> * <span class="number">4</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-
-<p>Because of the grouping of calls to compose is not important, so the result is the same. This also gives us the ability to write a variadic compose.<br>Like this:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> last = <span class="title function_">compose</span>(head, reverse)</span><br><span class="line"><span class="title function_">last</span>([<span class="string">&#x27;first&#x27;</span>, <span class="string">&#x27;second&#x27;</span>, <span class="string">&#x27;last&#x27;</span>]) <span class="comment">// &#x27;last&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> upperLast = <span class="title function_">compose</span>(head, reverse, toUppercase)</span><br><span class="line"><span class="title function_">upperLast</span>([<span class="string">&#x27;first&#x27;</span>, <span class="string">&#x27;second&#x27;</span>, <span class="string">&#x27;last&#x27;</span>]) <span class="comment">// &#x27;LAST&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> mediaUrl = _.<span class="title function_">compose</span>(_.<span class="title function_">prop</span>(<span class="string">&#x27;m&#x27;</span>), _.<span class="title function_">prop</span>(<span class="string">&#x27;media&#x27;</span>))</span><br><span class="line"><span class="comment">// var images = _.compose(_.map(img), _.map(mediaUrl), _.prop(&#x27;items&#x27;));</span></span><br><span class="line"><span class="comment">// use the associativity</span></span><br><span class="line"><span class="keyword">var</span> images = _.<span class="title function_">compose</span>(_.<span class="title function_">map</span>(_.<span class="title function_">compose</span>(img, mediaUrl)), _.<span class="title function_">prop</span>(<span class="string">&#x27;items&#x27;</span>))</span><br></pre></td></tr></table></figure>
-
-<p>There is no standard answer on how to composition, just make it more reusable.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/03/28/The-Composition/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1134,7 +1115,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">181</span>
+          <span class="site-state-item-count">182</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

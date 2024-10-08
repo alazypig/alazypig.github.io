@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">181</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">182</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,93 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2020/07/28/%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E5%8A%A8%E6%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/28/%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E5%8A%A8%E6%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="post-title-link" itemprop="url">词法作用域与动态作用域</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-07-28 21:54:56" itemprop="dateCreated datePublished" datetime="2020-07-28T21:54:56+08:00">2020-07-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ECMAScript/" itemprop="url" rel="index"><span itemprop="name">ECMAScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="JavaScript-采用的是词法作用域（lexical-scoping）"><a href="#JavaScript-采用的是词法作用域（lexical-scoping）" class="headerlink" title="JavaScript 采用的是词法作用域（lexical scoping）"></a>JavaScript 采用的是词法作用域（lexical scoping）</h3><p>JavaScript 函数的作用域在函数定义的时候就确定了，所以实际使用的值与函数定义位置有关系。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> value = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(value)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">bar</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> value = <span class="number">2</span></span><br><span class="line">  <span class="title function_">foo</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">bar</span>() <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p>上面这个例子中，<code>foo</code>函数中的<code>value</code>向上寻找为在全局定义的<code>1</code>，所以会打印出<code>1</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">value=1</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">foo</span></span>()&#123;</span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$value</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">bar</span></span>() &#123;</span><br><span class="line">    <span class="built_in">local</span> value=2</span><br><span class="line">    foo</span><br><span class="line">&#125;</span><br><span class="line">bar <span class="comment">#2</span></span><br></pre></td></tr></table></figure>
+
+<p>而在<code>bash</code>中，由于是动态作用域，所以会打印出<code>2</code>。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/07/28/%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E5%8A%A8%E6%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -960,79 +1047,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2020/03/13/%E7%BE%8E%E8%82%A1%E5%86%8D%E6%AC%A1%E7%86%94%E6%96%AD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/13/%E7%BE%8E%E8%82%A1%E5%86%8D%E6%AC%A1%E7%86%94%E6%96%AD/" class="post-title-link" itemprop="url">美股再次熔断</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-03-13 09:22:44" itemprop="dateCreated datePublished" datetime="2020-03-13T09:22:44+08:00">2020-03-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="开盘受挫"><a href="#开盘受挫" class="headerlink" title="开盘受挫"></a>开盘受挫</h3><ul>
-<li>开盘后，标普 500 指数跌幅扩大至 7%，触发本周第二次熔断，美股暂停交易 15 分钟。而加拿大多伦多证交所暂停股票交易，股指跌 9.17%，触发一级市场熔断。</li>
-<li>恢复交易后，三大指数进一步下跌，道指一度下挫 2100 点。波音下跌 15.4%，仅仅一个月时间，市值腰斩。巴里克黄金 10.2%，特斯拉跌 9.4%。美股邮轮股大跌，挪威邮轮跌超 30%，皇家加勒比邮轮跌超 25%。</li>
-<li>今天，美股期货连续出现熔断，早间，纳斯达克指数期货就跌至 7600 点触发熔断，跌幅超 5%。下午标普 500 指数期货跌超 5%，也触发交易限制。</li>
-<li>今日，标普 500 期货、道指期货、纳指期货均跌超 5%，再度触发熔断。据不完全统计，除了美股期指外，日内还有泰国股市、菲律宾股市、韩国股市、巴基斯坦股市、印尼股市、巴西股市，加拿大股市 8 个国家股市发生熔断。巴西股市触发二级熔断</li>
-</ul>
-<h3 id="欧洲央行维持三大关键利率不变"><a href="#欧洲央行维持三大关键利率不变" class="headerlink" title="欧洲央行维持三大关键利率不变"></a>欧洲央行维持三大关键利率不变</h3><p>欧洲央行公布 3 月会议的利率决议，其中，欧洲央行是否会追随美联储和英国央行的步伐进行降息成为最大看点，今日，欧洲央行宣布，维持三大关键利率不变，其中，维持基准利率在 0.000%不变，将存款利率维持在-0.500%不变。此前市场预期降息 10 个基点。</p>
-<h3 id="比特币跌破-5000-24h-涨幅-40"><a href="#比特币跌破-5000-24h-涨幅-40" class="headerlink" title="比特币跌破 5000,24h 涨幅-40%"></a>比特币跌破 5000,24h 涨幅-40%</h3><p>北京时间 13&#x2F;03&#x2F;2020 7:30am，BTC 跌破 5000 美元。短线来看 BTC 的避险属性几乎为零。</p>
-<h3 id="比特币跌破-4000-24h-涨幅-47"><a href="#比特币跌破-4000-24h-涨幅-47" class="headerlink" title="比特币跌破 4000,24h 涨幅-47%"></a>比特币跌破 4000,24h 涨幅-47%</h3><p>北京时间 13&#x2F;03&#x2F;2020 10:15am</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1104,7 +1118,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">181</span>
+          <span class="site-state-item-count">182</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
