@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">183</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">184</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,88 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2020/06/18/WebGL%E7%BB%98%E5%88%B6%E5%A4%9A%E4%B8%AA%E7%82%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/18/WebGL%E7%BB%98%E5%88%B6%E5%A4%9A%E4%B8%AA%E7%82%B9/" class="post-title-link" itemprop="url">绘制多个点</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-06-18 17:43:01" itemprop="dateCreated datePublished" datetime="2020-06-18T17:43:01+08:00">2020-06-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/WebGL/" itemprop="url" rel="index"><span itemprop="name">WebGL</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="绘制步骤"><a href="#绘制步骤" class="headerlink" title="绘制步骤"></a>绘制步骤</h3><ol>
+<li>创建顶点数组。</li>
+<li>创建一个 Buffer。</li>
+<li>将 WebGL 的 ARRAY_BUFFER 指向所创建的 Buffer。</li>
+<li>将顶点数组赋值到 Buffer 中。</li>
+<li>将 Buffer 分配给 Vertex Shader 中的 Attribute。</li>
+<li>让 Vertex Shader 访问 Buffer。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> vShaderSource = <span class="string">`</span></span><br><span class="line"><span class="string">    attribute vec4 a_Position;</span></span><br><span class="line"><span class="string">    void main() &#123;</span></span><br><span class="line"><span class="string">        gl_Position = a_Position;</span></span><br><span class="line"><span class="string">        gl_PointSize = 5.0;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fShaderSource = <span class="string">`</span></span><br><span class="line"><span class="string">    void main() &#123;</span></span><br><span class="line"><span class="string">        gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> gl = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#canvas&#x27;</span>).<span class="title function_">getContext</span>(<span class="string">&#x27;webgl&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!<span class="title function_">initShaders</span>(gl, vShaderSource, fShaderSource)) &#123;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> n = <span class="title function_">initVertexBuffers</span>(gl)</span><br><span class="line">  <span class="keyword">if</span> (n &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;failed to set positions&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  gl.<span class="title function_">clearColor</span>(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>)</span><br><span class="line">  gl.<span class="title function_">clear</span>(gl.<span class="property">COLOR_BUFFER_BIT</span>)</span><br><span class="line"></span><br><span class="line">  gl.<span class="title function_">drawArrays</span>(gl.<span class="property">POINTS</span>, <span class="number">0</span>, n) <span class="comment">// (type, first, count = n)</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">initVertexBuffers</span>(<span class="params">gl</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> vertices = <span class="keyword">new</span> <span class="title class_">Float32Array</span>([</span><br><span class="line">    <span class="comment">// Create points array.</span></span><br><span class="line">    <span class="number">0.0</span>, <span class="number">0.5</span>, -<span class="number">0.5</span>, -<span class="number">0.5</span>, <span class="number">0.5</span>, -<span class="number">0.5</span>,</span><br><span class="line">  ])</span><br><span class="line">  <span class="keyword">let</span> n = vertices.<span class="property">length</span> / <span class="number">2</span> <span class="comment">// Compute the n.</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> vertexBuffer = gl.<span class="title function_">createBuffer</span>() <span class="comment">// Create buffer.</span></span><br><span class="line">  <span class="keyword">if</span> (!vertexBuffer) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;failed to create buffer&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  gl.<span class="title function_">bindBuffer</span>(gl.<span class="property">ARRAY_BUFFER</span>, vertexBuffer) <span class="comment">// Bind buffer.</span></span><br><span class="line">  gl.<span class="title function_">bufferData</span>(gl.<span class="property">ARRAY_BUFFER</span>, vertices, gl.<span class="property">STATIC_DRAW</span>) <span class="comment">// Draw data into buffer.</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> a_Position = gl.<span class="title function_">getAttribLocation</span>(gl.<span class="property">program</span>, <span class="string">&#x27;a_Position&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// size = 2 because of the [x, y] components</span></span><br><span class="line">  gl.<span class="title function_">vertexAttribPointer</span>(a_Position, <span class="number">2</span>, gl.<span class="property">FLOAT</span>, <span class="literal">false</span>, <span class="number">0</span>, <span class="number">0</span>) <span class="comment">// Set data into &#x27;a_Position&#x27;.</span></span><br><span class="line">  gl.<span class="title function_">enableVertexAttribArray</span>(a_Position) <span class="comment">// Link attribute and Buffer.</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> n</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -971,94 +1053,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2020/02/25/TypeScript-%E5%88%9D%E6%8E%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/25/TypeScript-%E5%88%9D%E6%8E%A2/" class="post-title-link" itemprop="url">TypeScript 初探</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-25 19:19:57" itemprop="dateCreated datePublished" datetime="2020-02-25T19:19:57+08:00">2020-02-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h3><ul>
-<li>boolean:<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">done</span>: <span class="built_in">boolean</span> = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure></li>
-<li>number:<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">count</span>: <span class="built_in">number</span> = <span class="number">20</span>;</span><br></pre></td></tr></table></figure></li>
-<li>string:<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">&#x27;Edward Wang&#x27;</span>;</span><br></pre></td></tr></table></figure></li>
-<li>array:<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">list1</span>: <span class="built_in">number</span>[] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> <span class="attr">list2</span>: <span class="title class_">Array</span>&lt;<span class="built_in">number</span>&gt; = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br></pre></td></tr></table></figure></li>
-<li>tuple:<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">x</span>: [<span class="built_in">string</span>, <span class="built_in">number</span>] = [<span class="string">&#x27;test&#x27;</span>, <span class="number">2</span>];</span><br></pre></td></tr></table></figure></li>
-<li>enum:<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">enum</span> <span class="variable constant_">NUMBER</span> &#123;</span><br><span class="line">  <span class="variable constant_">ONE</span>,</span><br><span class="line">  <span class="variable constant_">TWO</span>,</span><br><span class="line">  <span class="variable constant_">THREE</span>  </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = <span class="variable constant_">NUMBER</span>.<span class="property">TWO</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">title</span>: <span class="built_in">string</span> = <span class="variable constant_">NUMBER</span>[<span class="number">3</span>];</span><br></pre></td></tr></table></figure></li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/02/25/TypeScript-%E5%88%9D%E6%8E%A2/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1130,7 +1124,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">183</span>
+          <span class="site-state-item-count">184</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

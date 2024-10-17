@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">183</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">184</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,82 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2024/10/17/React-Native-Low-Version-0-74-0-Upgrade-targetSdkVersion-to-34/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/10/17/React-Native-Low-Version-0-74-0-Upgrade-targetSdkVersion-to-34/" class="post-title-link" itemprop="url">React Native Low Version(<0.74.0) Upgrade targetSdkVersion to 34</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-10-17 16:07:20 / Modified: 16:16:44" itemprop="dateCreated datePublished" datetime="2024-10-17T16:07:20+08:00">2024-10-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React-Native/" itemprop="url" rel="index"><span itemprop="name">React Native</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1-Make-Sure-the-compileSdkVersion-is-correct"><a href="#1-Make-Sure-the-compileSdkVersion-is-correct" class="headerlink" title="1. Make Sure the compileSdkVersion is correct."></a>1. Make Sure the <code>compileSdkVersion</code> is correct.</h2><p>Cause if you don’t have the correct version of <code>compileSdkVersion</code>, the <code>Context.RECEIVER_EXPORTED</code> will not found.</p>
+<figure class="highlight gradle"><figcaption><span>build.gradle</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">buildscript</span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  ext &#123;</span><br><span class="line">     buildToolsVersion = <span class="string">&quot;***&quot;</span></span><br><span class="line">     minSdkVersion = ***</span><br><span class="line">     compileSdkVersion = <span class="number">33</span></span><br><span class="line">     targetSdkVersion = <span class="number">34</span></span><br><span class="line">     ndkVersion = <span class="string">&quot;***&quot;</span></span><br><span class="line">     googlePlayServicesAuthVersion = <span class="string">&quot;***&quot;</span></span><br><span class="line">   &#125;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-Rewrite-the-registerReceiver-in-MainApplication-java"><a href="#2-Rewrite-the-registerReceiver-in-MainApplication-java" class="headerlink" title="2. Rewrite the registerReceiver in MainApplication.java"></a>2. Rewrite the <code>registerReceiver</code> in <code>MainApplication.java</code></h2><p>Make sure the <code>registerReceiver</code> is override before the <code>onCreate</code> function.</p>
+<figure class="highlight java"><figcaption><span>MainApplication.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...</span></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> Intent <span class="title function_">registerReceiver</span><span class="params">(<span class="meta">@Nullable</span> BroadcastReceiver receiver, IntentFilter filter)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= <span class="number">34</span> &amp;&amp; getApplicationInfo().targetSdkVersion &gt;= <span class="number">34</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">super</span>.registerReceiver(receiver, filter, Context.RECEIVER_EXPORTED);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">super</span>.registerReceiver(receiver, filter);</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// some code here</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Clean-Project-and-Rebuild-the-apk-package"><a href="#3-Clean-Project-and-Rebuild-the-apk-package" class="headerlink" title="3. Clean Project and Rebuild the apk package"></a>3. Clean Project and Rebuild the apk package</h2><h4 id=""><a href="#" class="headerlink" title=""></a></h4><blockquote>
+<p>Reference here: <a target="_blank" rel="noopener" href="https://medium.com/@anaz_19473/react-native-app-crashes-on-upgrading-to-targetsdkversion-34-android-14-f8f575da6b45">React Native App Crashes — On upgrading to targetSdkVersion 34(Android 14)</a></p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -949,89 +1025,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2024/05/16/google-%E5%91%8A%E8%AD%A6%E8%B0%83%E8%AF%95%E7%AC%A6%E5%8F%B7%E6%96%87%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/05/16/google-%E5%91%8A%E8%AD%A6%E8%B0%83%E8%AF%95%E7%AC%A6%E5%8F%B7%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">google 告警调试符号文件</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2024-05-16 18:10:29" itemprop="dateCreated datePublished" datetime="2024-05-16T18:10:29+08:00">2024-05-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-08-30 11:03:59" itemprop="dateModified" datetime="2024-08-30T11:03:59+08:00">2024-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/React-Native/" itemprop="url" rel="index"><span itemprop="name">React Native</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="aab-包上传到-google-play-时，会出现以下警告："><a href="#aab-包上传到-google-play-时，会出现以下警告：" class="headerlink" title="aab 包上传到 google play 时，会出现以下警告："></a>aab 包上传到 google play 时，会出现以下警告：</h3><p><strong>此 App Bundle 包含原生代码，您尚未上传调试符号文件。我们建议您上传调试符号文件，这样会便于针对崩溃和 ANR 问题进行分析和调试。</strong></p>
-<p>解决方法：首先需要安装项目对应的 ndk：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ndkVersion = &quot;20.1.5948944&quot;</span><br></pre></td></tr></table></figure>
-
-<p>SDK Tools 记得要开启 Show Package Details，然后下载对应版本的 NDK。<br>Android Studio -&gt; SDK Manager -&gt; SDK Tools -&gt; NDK (Side by side) -&gt; 20.1.5948944</p>
-<p>然后在项目的 build.gradle 文件中配置：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    //...</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            //...</span><br><span class="line">            minifyEnabled true</span><br><span class="line">            proguardFiles getDefaultProguardFile(&#x27;proguard-android.txt&#x27;), &#x27;proguard-rules.pro&#x27;</span><br><span class="line">            // 新增配置</span><br><span class="line">            ndk &#123;</span><br><span class="line">                debugSymbolLevel &#x27;FULL&#x27;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>debugSymbolLevel 配置为 FULL，表示生成的符号文件包含所有调试信息。</p>
-<p>最后，重新打包 aab 包，上传到 google play，即可解决此问题。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1103,7 +1096,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">183</span>
+          <span class="site-state-item-count">184</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
