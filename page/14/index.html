@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">184</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">185</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,74 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/03/14/%E5%9B%BE%E7%9A%84%E9%82%BB%E6%8E%A5%E8%A1%A8%E8%A1%A8%E7%A4%BA%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/14/%E5%9B%BE%E7%9A%84%E9%82%BB%E6%8E%A5%E8%A1%A8%E8%A1%A8%E7%A4%BA%E6%B3%95/" class="post-title-link" itemprop="url">图的邻接表表示法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-03-14 15:42:12" itemprop="dateCreated datePublished" datetime="2019-03-14T15:42:12+08:00">2019-03-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h3><p>存储方式：表头存放节点，相邻节点存放于之后的链表中。<br>** 使用 Map 模拟 **</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Graph</span> &#123;</span><br><span class="line"><span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">point</span> = [];</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">map</span> = <span class="keyword">new</span> <span class="title class_">Map</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">addPoint</span>(<span class="params">point</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">point</span>.<span class="title function_">push</span>(point);</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">map</span>.<span class="title function_">set</span>(point, []);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 无向</span></span><br><span class="line">    <span class="title function_">addEdge</span>(<span class="params">pointA, pointB</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">map</span>.<span class="title function_">get</span>(pointA).<span class="title function_">push</span>(pointB);</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">map</span>.<span class="title function_">get</span>(pointB).<span class="title function_">push</span>(pointA);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">print</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> <span class="variable language_">this</span>.<span class="property">point</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(item + <span class="string">&#x27; -&gt; &#x27;</span> + <span class="variable language_">this</span>.<span class="property">map</span>.<span class="title function_">get</span>(item).<span class="title function_">join</span>(<span class="string">&#x27;,&#x27;</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> graph = <span class="keyword">new</span> <span class="title class_">Graph</span>()</span><br><span class="line"><span class="keyword">var</span> topArr = [<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;E&#x27;</span>, <span class="string">&#x27;F&#x27;</span>, <span class="string">&#x27;G&#x27;</span>, <span class="string">&#x27;H&#x27;</span>, <span class="string">&#x27;I&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> topArr) &#123;</span><br><span class="line">graph.<span class="title function_">addPoint</span>(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">graph.<span class="title function_">addEdge</span>(<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>);</span><br><span class="line">graph.<span class="title function_">addEdge</span>(<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;D&#x27;</span>);</span><br><span class="line">graph.<span class="title function_">addEdge</span>(<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;E&#x27;</span>);</span><br><span class="line">graph.<span class="title function_">addEdge</span>(<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;H&#x27;</span>);</span><br><span class="line">graph.<span class="title function_">addEdge</span>(<span class="string">&#x27;F&#x27;</span>, <span class="string">&#x27;G&#x27;</span>);</span><br><span class="line">graph.<span class="title function_">addEdge</span>(<span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;B&#x27;</span>);</span><br><span class="line">graph.<span class="title function_">addEdge</span>(<span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;C&#x27;</span>);</span><br><span class="line"></span><br><span class="line">graph.<span class="title function_">print</span>();</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -870,78 +938,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/02/28/%E7%AE%80%E5%8D%95%E7%9A%84Queue%E5%AE%9E%E7%8E%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/02/28/%E7%AE%80%E5%8D%95%E7%9A%84Queue%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">简单的Queue实现</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-02-28 11:45:31" itemprop="dateCreated datePublished" datetime="2019-02-28T11:45:31+08:00">2019-02-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="简单的-Queue-实现"><a href="#简单的-Queue-实现" class="headerlink" title="简单的 Queue 实现"></a>简单的 Queue 实现</h3><h4 id="数组实现"><a href="#数组实现" class="headerlink" title="数组实现"></a>数组实现</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Queue</span> &#123;</span><br><span class="line"><span class="title function_">constructor</span>(<span class="params">size = <span class="number">10</span></span>) &#123;</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">size</span> = size; <span class="comment">// 队列最大长度</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">top</span> = <span class="number">0</span>; <span class="comment">// 首位置</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">bottom</span> = -<span class="number">1</span>; <span class="comment">// 尾位置</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">elems</span> = <span class="number">0</span>; <span class="comment">// 成员个数</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">arr</span> = [] <span class="comment">// 队列</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">add</span>(<span class="params">elem</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">elems</span> == <span class="variable language_">this</span>.<span class="property">size</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Queue is full&#x27;</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">bottom</span> == <span class="variable language_">this</span>.<span class="property">size</span> - <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="comment">// 循环队列</span></span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">bottom</span> = -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">arr</span>[++<span class="variable language_">this</span>.<span class="property">bottom</span>] = elem;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">elems</span>++;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">out</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">elems</span> == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Queue is empty&#x27;</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">let</span> elem = <span class="variable language_">this</span>.<span class="property">arr</span>[<span class="variable language_">this</span>.<span class="property">top</span>]</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">arr</span>[<span class="variable language_">this</span>.<span class="property">top</span>] = <span class="literal">null</span>;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">top</span>++;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">top</span> == <span class="variable language_">this</span>.<span class="property">size</span>) &#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">top</span> = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">elems</span>--;</span><br><span class="line">        <span class="keyword">return</span> elem;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> queue = <span class="keyword">new</span> <span class="title class_">Queue</span>();</span><br><span class="line">queue.<span class="title function_">add</span>(<span class="number">3</span>);</span><br><span class="line">queue.<span class="title function_">add</span>(<span class="number">2</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(queue.<span class="title function_">out</span>())</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(queue.<span class="title function_">out</span>())</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(queue.<span class="title function_">out</span>())</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/02/28/%E7%AE%80%E5%8D%95%E7%9A%84Queue%E5%AE%9E%E7%8E%B0/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1013,7 +1009,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">184</span>
+          <span class="site-state-item-count">185</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

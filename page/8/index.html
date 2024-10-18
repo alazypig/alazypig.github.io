@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">184</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">185</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,82 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2020/06/18/WebGL%E5%9B%BE%E5%83%8F%E4%BD%8D%E7%A7%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/18/WebGL%E5%9B%BE%E5%83%8F%E4%BD%8D%E7%A7%BB/" class="post-title-link" itemprop="url">图像位移</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-06-18 21:29:35" itemprop="dateCreated datePublished" datetime="2020-06-18T21:29:35+08:00">2020-06-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/WebGL/" itemprop="url" rel="index"><span itemprop="name">WebGL</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="位移原理"><a href="#位移原理" class="headerlink" title="位移原理"></a>位移原理</h3><p>与在普通的坐标系中一样，只需在需要位移的坐标位置加入相应的矢量即可。<br><code>(x1, y1, z1, w1) + (x2, y2, z2, w2) -&gt; (x1 + x2, y1 + y2, z1 + z2, w1 + w2)</code><br>平移矩阵：</p>
+<p>$$<br>\begin{bmatrix}<br>    x’ \<br>    y’ \<br>    z’ \<br>    1<br>\end{bmatrix} &#x3D;<br>\begin{bmatrix}<br>    1 &amp; 0 &amp; 0 &amp; Tx \<br>    0 &amp; 1 &amp; 0 &amp; Ty \<br>    0 &amp; 0 &amp; 1 &amp; Tz \<br>    0 &amp; 0 &amp; 0 &amp; 1 \<br>\end{bmatrix} ×<br>\begin{bmatrix}<br>    x \<br>    y \<br>    z \<br>    1 \<br>\end{bmatrix}<br>$$</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// position = P + ▲P</span></span><br><span class="line"><span class="keyword">const</span> vShaderSource = <span class="string">`</span></span><br><span class="line"><span class="string">    attribute vec4 a_Position;</span></span><br><span class="line"><span class="string">    uniform vec4 u_Translation;</span></span><br><span class="line"><span class="string">    void main() &#123;</span></span><br><span class="line"><span class="string">        gl_Position = a_Position + u_Translation;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fShaderSource = <span class="string">`</span></span><br><span class="line"><span class="string">    void main() &#123;</span></span><br><span class="line"><span class="string">        gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Displacement</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Tx</span> = <span class="number">0.4</span>,</span><br><span class="line">  <span class="title class_">Ty</span> = -<span class="number">0.2</span>,</span><br><span class="line">  <span class="title class_">Tz</span> = <span class="number">0.3</span></span><br><span class="line"><span class="title class_">Tw</span> = <span class="number">0.0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> gl = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#canvas&#x27;</span>).<span class="title function_">getContext</span>(<span class="string">&#x27;webgl&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!<span class="title function_">initShaders</span>(gl, vShaderSource, fShaderSource)) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> n = <span class="title function_">initVertexBuffers</span>(gl)</span><br><span class="line">  <span class="keyword">if</span> (n &lt; <span class="number">0</span>) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> u_Translation = gl.<span class="title function_">getUniformLocation</span>(gl.<span class="property">program</span>, <span class="string">&#x27;u_Translation&#x27;</span>)</span><br><span class="line">  gl.<span class="title function_">uniform4f</span>(u_Translation, <span class="title class_">Tx</span>, <span class="title class_">Ty</span>, <span class="title class_">Tz</span>, <span class="title class_">Tw</span>)</span><br><span class="line"></span><br><span class="line">  gl.<span class="title function_">clearColor</span>(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>)</span><br><span class="line">  gl.<span class="title function_">clear</span>(gl.<span class="property">COLOR_BUFFER_BIT</span>)</span><br><span class="line"></span><br><span class="line">  gl.<span class="title function_">drawArrays</span>(gl.<span class="property">TRIANGLES</span>, <span class="number">0</span>, n)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">initVertexBuffers</span>(<span class="params">gl</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> vertices = <span class="keyword">new</span> <span class="title class_">Float32Array</span>([<span class="number">0.0</span>, <span class="number">0.5</span>, -<span class="number">0.5</span>, -<span class="number">0.5</span>, <span class="number">0.5</span>, -<span class="number">0.5</span>])</span><br><span class="line">  <span class="keyword">let</span> n = vertices.<span class="property">length</span> / <span class="number">2</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> vertexBuffer = gl.<span class="title function_">createBuffer</span>()</span><br><span class="line">  <span class="keyword">if</span> (!vertexBuffer) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;failed to create buffer&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  gl.<span class="title function_">bindBuffer</span>(gl.<span class="property">ARRAY_BUFFER</span>, vertexBuffer)</span><br><span class="line">  gl.<span class="title function_">bufferData</span>(gl.<span class="property">ARRAY_BUFFER</span>, vertices, gl.<span class="property">STATIC_DRAW</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> a_Position = gl.<span class="title function_">getAttribLocation</span>(gl.<span class="property">program</span>, <span class="string">&#x27;a_Position&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  gl.<span class="title function_">vertexAttribPointer</span>(a_Position, <span class="number">2</span>, gl.<span class="property">FLOAT</span>, <span class="literal">false</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">  gl.<span class="title function_">enableVertexAttribArray</span>(a_Position)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> n</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -966,93 +1042,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2020/02/26/TypeScript-Interface/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/26/TypeScript-Interface/" class="post-title-link" itemprop="url">TypeScript Interface</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-26 17:43:27" itemprop="dateCreated datePublished" datetime="2020-02-26T17:43:27+08:00">2020-02-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Interface"><a href="#Interface" class="headerlink" title="Interface"></a>Interface</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> labelValue &#123;</span><br><span class="line"><span class="attr">label</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">printLabel</span>(<span class="params">obj: labelValue</span>): <span class="built_in">void</span> &#123;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">label</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">size</span>: <span class="number">10</span>, <span class="attr">label</span>: <span class="string">&#x27;some text&#x27;</span>&#125;;</span><br><span class="line"><span class="title function_">printLabel</span>(obj);</span><br></pre></td></tr></table></figure>
-
-<h3 id="Optional-Properties"><a href="#Optional-Properties" class="headerlink" title="Optional Properties"></a>Optional Properties</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">SquareConfig</span> &#123;</span><br><span class="line">color?: <span class="built_in">string</span>;</span><br><span class="line">width?: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">createSquare</span>(<span class="params">config: SquareConfig</span>): &#123; <span class="attr">color</span>: <span class="built_in">string</span>, <span class="attr">area</span>: <span class="built_in">number</span> &#125; &#123;</span><br><span class="line"><span class="keyword">let</span> defaultSquare = &#123;<span class="attr">color</span>: <span class="string">&#x27;White&#x27;</span>, <span class="attr">area</span>: <span class="number">200</span>&#125;;</span><br><span class="line"><span class="keyword">if</span> (config.<span class="property">color</span>) defaultSquare.<span class="property">color</span> = config.<span class="property">color</span>;</span><br><span class="line"><span class="keyword">if</span> (config.<span class="property">width</span>) defaultSquare.<span class="property">area</span> = config.<span class="property">width</span> \*\* <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> defaultSquare;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">createSquare</span>(&#123;<span class="attr">color</span>: <span class="string">&#x27;Black&#x27;</span>, <span class="attr">width</span>: <span class="number">30</span>&#125;));</span><br></pre></td></tr></table></figure>
-
-<h3 id="Readonly-Properties"><a href="#Readonly-Properties" class="headerlink" title="Readonly Properties"></a>Readonly Properties</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Point</span> &#123;</span><br><span class="line"><span class="keyword">readonly</span> <span class="attr">x</span>: <span class="built_in">number</span>;</span><br><span class="line"><span class="keyword">readonly</span> <span class="attr">y</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="attr">readOnlyArray</span>: <span class="title class_">ReadonlyArray</span>&lt;<span class="built_in">number</span>&gt; = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> <span class="attr">a</span>: <span class="built_in">number</span>[] = readOnlyArray <span class="keyword">as</span> <span class="built_in">number</span>[]; <span class="comment">// readonly array assignment to ordinary array</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Excess-Property-Checks"><a href="#Excess-Property-Checks" class="headerlink" title="Excess Property Checks"></a>Excess Property Checks</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">SquareConfig</span> &#123;</span><br><span class="line">color?: <span class="built_in">string</span>;</span><br><span class="line">width?: <span class="built_in">number</span>;</span><br><span class="line">[<span class="attr">propName</span>: <span class="built_in">string</span>]: <span class="built_in">any</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> newSquare = <span class="title function_">createSquare</span>(&#123;<span class="attr">width</span>: <span class="number">100</span>, <span class="attr">opacity</span>: <span class="number">0.5</span>&#125; <span class="keyword">as</span> <span class="title class_">SquareConfig</span>);</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/02/26/TypeScript-Interface/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1124,7 +1113,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">184</span>
+          <span class="site-state-item-count">185</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1258,6 +1247,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
