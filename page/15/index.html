@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">47</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">48</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">185</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">186</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,73 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/02/28/%E7%AE%80%E5%8D%95%E7%9A%84LinkList%E5%AE%9E%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/02/28/%E7%AE%80%E5%8D%95%E7%9A%84LinkList%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">简单的LinkList实现</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-02-28 12:14:29" itemprop="dateCreated datePublished" datetime="2019-02-28T12:14:29+08:00">2019-02-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="简单的-LinkList-实现"><a href="#简单的-LinkList-实现" class="headerlink" title="简单的 LinkList 实现"></a>简单的 LinkList 实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Node</span> &#123;</span><br><span class="line"><span class="title function_">constructor</span>(<span class="params">data = -<span class="number">1</span>, prev = <span class="literal">null</span>, next = <span class="literal">null</span></span>) &#123;</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">data</span> = data;</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">prev</span> = prev; <span class="comment">// 向前指针</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">next</span> = next; <span class="comment">// 向后指针</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LinkList</span> &#123;</span><br><span class="line"><span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">head</span> = <span class="variable language_">this</span>.<span class="property">tail</span> = <span class="literal">null</span>; <span class="comment">// 首、尾指针</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">size</span> = <span class="number">0</span>; <span class="comment">// 元素个数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">addHead</span>(<span class="params">elem</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> elemNode = <span class="keyword">new</span> <span class="title class_">Node</span>(elem);</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">size</span> == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">head</span> = <span class="variable language_">this</span>.<span class="property">tail</span> = elemNode;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">size</span>++;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">head</span>.<span class="property">prev</span> = elemNode;</span><br><span class="line">            elemNode.<span class="property">next</span> = <span class="variable language_">this</span>.<span class="property">head</span>;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">head</span> = elemNode;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">size</span>++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">deleteHead</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">size</span> != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">let</span> elem = <span class="variable language_">this</span>.<span class="property">head</span>.<span class="property">data</span>;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">head</span>.<span class="property">prev</span> = <span class="literal">null</span>;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">head</span> = <span class="variable language_">this</span>.<span class="property">head</span>.<span class="property">next</span>;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">size</span>--;</span><br><span class="line">            <span class="keyword">return</span> elem;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;list is empty&#x27;</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">addTail</span>(<span class="params">elem</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> elemNode = <span class="keyword">new</span> <span class="title class_">Node</span>(elem);</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">size</span> == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">head</span> = <span class="variable language_">this</span>.<span class="property">tail</span> = elemNode;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">size</span>++;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            elemNode.<span class="property">prev</span> = <span class="variable language_">this</span>.<span class="property">tail</span>;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">tail</span>.<span class="property">next</span> = elemNode;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">tail</span> = elemNode;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">size</span>++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">deleteTail</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">size</span> != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">let</span> elem = <span class="variable language_">this</span>.<span class="property">tail</span>.<span class="property">data</span>;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">tail</span>.<span class="property">next</span> = <span class="literal">null</span>;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">tail</span> = <span class="variable language_">this</span>.<span class="property">tail</span>.<span class="property">prev</span>;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">size</span>--;</span><br><span class="line">            <span class="keyword">return</span> elem;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;list is empty&#x27;</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">display</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> current = <span class="variable language_">this</span>.<span class="property">head</span>,</span><br><span class="line">            count = <span class="variable language_">this</span>.<span class="property">size</span>,</span><br><span class="line">            str = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">        <span class="keyword">while</span> (count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            str += current.<span class="property">data</span> + <span class="string">&#x27; &#x27;</span></span><br><span class="line">            current = current.<span class="property">next</span>;</span><br><span class="line">            count--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(str);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> linklist = <span class="keyword">new</span> <span class="title class_">LinkList</span>();</span><br><span class="line">linklist.<span class="title function_">addHead</span>(<span class="number">1</span>);</span><br><span class="line">linklist.<span class="title function_">addHead</span>(<span class="number">2</span>);</span><br><span class="line">linklist.<span class="title function_">addHead</span>(<span class="number">3</span>);</span><br><span class="line">linklist.<span class="title function_">deleteHead</span>();</span><br><span class="line">linklist.<span class="title function_">addTail</span>(<span class="number">4</span>);</span><br><span class="line">linklist.<span class="title function_">display</span>();</span><br></pre></td></tr></table></figure>
+
+<h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p><code>2 1 4</code></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -923,96 +990,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2018/12/24/%E5%B9%BF%E5%B7%9E%E4%B9%8B%E8%A1%8C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/12/24/%E5%B9%BF%E5%B7%9E%E4%B9%8B%E8%A1%8C/" class="post-title-link" itemprop="url">广州之行</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-12-24 15:50:54" itemprop="dateCreated datePublished" datetime="2018-12-24T15:50:54+08:00">2018-12-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Travel/" itemprop="url" rel="index"><span itemprop="name">Travel</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h1><p>想着下学期开始可能没有太多时间了，而且大学间还<strong>没有旅过游</strong>，所以就挑了个时间去了广州。<br>由于时间不是很足，所以去的地方不是很多，主要还是那几个比较火的地点：</p>
-<ul>
-<li>上下九</li>
-<li>北京路</li>
-<li>江南西</li>
-<li>海珠区</li>
-</ul>
-<p>而且……拍的照也不是很多。</p>
-<h1 id="上火车"><a href="#上火车" class="headerlink" title="上火车"></a>上火车</h1><p>本以为挑的时间段算比较好的，但是失算了。火车上<strong>挺多人</strong>的，但是与春运相比又显得人<strong>挺少的</strong>。<br>可能大部分都是去考研的吧，很多背着包的大学生。<br><img src="/images/IMG_20181221_181327_HHT.jpg" width="495"><br>对面的老大爷和右边的是一家，听口音像是潮州那边的。半道老大爷还拿出了一瓶葡萄酒，喝了起来。<br>中途老大爷睡着了，长得和家有儿女里夏雨的爷爷相似。<br>临走时估摸着大爷听见了我们也是去广州的，并没有与普通人说帅哥，而是说了句“靓仔”</p>
-<p>其实坐火车也是很有趣的一件事，比坐医院里观察人要欢乐的多。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/12/24/%E5%B9%BF%E5%B7%9E%E4%B9%8B%E8%A1%8C/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1084,7 +1061,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">185</span>
+          <span class="site-state-item-count">186</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1097,7 +1074,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-count">48</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

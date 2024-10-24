@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">47</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">48</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">185</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">186</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,83 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/04/14/%E7%AD%89%E5%BC%8F%E5%85%AC%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/14/%E7%AD%89%E5%BC%8F%E5%85%AC%E7%90%86/" class="post-title-link" itemprop="url">等式公理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-04-14 14:30:14" itemprop="dateCreated datePublished" datetime="2019-04-14T14:30:14+08:00">2019-04-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="公式-P-Q-R-P-Q-R"><a href="#公式-P-Q-R-P-Q-R" class="headerlink" title="公式: $$P{Q}R\ ({P}Q{R})$$"></a>公式: $$P{Q}R\ ({P}Q{R})$$</h3><p>P 和 R 都是一阶公式, 如果前提条件 P 在执行 Q 前成立, 则执行后得到满足条件 R 的状态<br>部分正确性断言: 如果 P 在 Q 执行前为真, 那么, 如果 Q 的执行终止,则终止在使 R 为真的某个状态<br>终止性断言:如果 P 在 Q 执行前为真, 那么 Q 将终止在使 R 为真的某个状态<br><strong>赋值公理: $$\vdash P_0 {x:&#x3D;f} P$$</strong></p>
+<h3 id="推理规则的表示"><a href="#推理规则的表示" class="headerlink" title="推理规则的表示"></a>推理规则的表示</h3><p>$$\frac{premise -&gt; f_0, f_1, …, f_n}{conclusion -&gt; f_0}$$</p>
+<h3 id="推理规则"><a href="#推理规则" class="headerlink" title="推理规则"></a>推理规则</h3><ul>
+<li>Rules of Consequence:<br>$$\frac{P{Q}R,\ R\rightarrow S}{P{Q}S}\ \ \ \ \ \frac{P{Q}R,\ S\rightarrow P}{S{Q}R}$$</li>
+<li>Rule of Composition:<br>$$\frac{P{Q_1}R_1,\ R_1{Q_2}R}{P{Q_1, Q_2}R}$$</li>
+<li>Rules of Iteration:<br>$$\frac{P\ &amp;\ B{S}P}{P\ {while\ B\ do\ S}\ \neg B \ &amp;\  P}$$</li>
+</ul>
+<h3 id="等式公理"><a href="#等式公理" class="headerlink" title="等式公理"></a>等式公理</h3><ul>
+<li>代换: $[N&#x2F;x]M$ 表示表示 M 中的自由变元 x 用 N 代换的结果, <strong>N 中的自由变元代换后不能成为约束变元</strong></li>
+<li>约束变元改名: $\lambda x:\sigma .M &#x3D; \lambda y:\sigma.[y&#x2F;x]M$ 例如:$\lambda x:\sigma.x + y &#x3D; \lambda z:\sigma .z+y$</li>
+<li>等价公理: 计算函数实际就是在函数中使用实在变元替换形式变元, $(\lambda x:\sigma.M)N &#x3D; [N&#x2F;x]M$</li>
+<li>同余性规则: 相等的函数作用于相等的变元产生相等的结果, $\frac{M_1&#x3D;M_2,\ N_1&#x3D;N_2}{M_1N_1&#x3D;M_2N_2}$</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -929,79 +1006,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/03/14/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/03/14/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="post-title-link" itemprop="url">动态规划</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-03-14 16:57:58" itemprop="dateCreated datePublished" datetime="2019-03-14T16:57:58+08:00">2019-03-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><p>通过把问题分解成子问题，再根据子问题的解得出原问题的解。<br>例如：<code>1+1+1 = 3</code>，<code>1+1+1+2 = 5</code>。因为<code>(1+1+1)+2 = 3 + 2 = 5</code>。<br>这时我们可以把每次计算过的值给存起来，这样下次计算时就不用重新计算。</p>
-<h3 id="用最少的东西拿需求的重量"><a href="#用最少的东西拿需求的重量" class="headerlink" title="用最少的东西拿需求的重量"></a>用最少的东西拿需求的重量</h3><p>假设有个包，现在有<code>1, 3, 3, 4</code>四样东西，如何在规定的重量内拿到最少的物品。<br>假设需要拿<code>6</code>重量的东西，如果用贪心就会拿到<code>[4, 1, 1]</code>，但是显然我们需要的是<code>[3, 3]</code>，这时就需要使用到上面的思想。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/03/14/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1073,7 +1077,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">185</span>
+          <span class="site-state-item-count">186</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1086,7 +1090,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-count">48</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -1207,6 +1211,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
