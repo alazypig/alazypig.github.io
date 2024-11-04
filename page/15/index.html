@@ -120,17 +120,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">48</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">50</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">24</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">25</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">186</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">187</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,79 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/02/28/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/02/28/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">排序算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-02-28 19:07:08" itemprop="dateCreated datePublished" datetime="2019-02-28T19:07:08+08:00">2019-02-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="简单插入排序"><a href="#简单插入排序" class="headerlink" title="简单插入排序"></a>简单插入排序</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">insertSort</span>(<span class="params">arr</span>) &#123;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>, len = arr.<span class="property">length</span>; i &lt; len; i++) &#123;</span><br><span class="line"><span class="keyword">if</span> (arr[i] &lt; arr[i - <span class="number">1</span>]) &#123;</span><br><span class="line"><span class="keyword">let</span> current = i - <span class="number">1</span>; <span class="comment">// the position need to move</span></span><br><span class="line"><span class="keyword">let</span> temp = arr[i]; <span class="comment">// the value need to insert</span></span><br><span class="line">arr[i] = arr[current];</span><br><span class="line"><span class="keyword">while</span> (temp &lt; arr[current]) &#123;</span><br><span class="line">arr[current + <span class="number">1</span>] = arr[current]; <span class="comment">// move backward</span></span><br><span class="line">current--;</span><br><span class="line">&#125;</span><br><span class="line">arr[current + <span class="number">1</span>] = temp;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">6</span>, <span class="number">7</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">4</span>];</span><br><span class="line"><span class="title function_">insertSort</span>(arr);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr);</span><br></pre></td></tr></table></figure>
+<p>结果：<br><code>Array(7) [1, 2, 3, 4, 5, 6, 7]</code></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/02/28/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -902,94 +975,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/02/25/webpack%E9%85%8D%E7%BD%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/02/25/webpack%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">webpack配置</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-02-25 19:03:33" itemprop="dateCreated datePublished" datetime="2019-02-25T19:03:33+08:00">2019-02-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="项目文件目录"><a href="#项目文件目录" class="headerlink" title="项目文件目录"></a>项目文件目录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-Demo</span><br><span class="line">|--build</span><br><span class="line">|--dist</span><br><span class="line">|--css</span><br><span class="line">|--js</span><br><span class="line">|--view</span><br><span class="line">|--node_modules</span><br><span class="line">|--src</span><br><span class="line">|--</span><br><span class="line">|--package.json</span><br><span class="line">|--webpack.config.js</span><br><span class="line">|--webpack.production.config.js</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>src：代码开发目录</li>
-<li>build：开发环境 webpack 输出目录</li>
-<li>dist：生产环境 webpack 输出目录</li>
-<li>package.json：项目配置</li>
-<li>webpack.config.js：开发环境配置</li>
-<li>webpack.production.config.js：生产环境配置</li>
-</ul>
-<h3 id="webpack-配置文件"><a href="#webpack-配置文件" class="headerlink" title="webpack 配置文件"></a>webpack 配置文件</h3><p>需命名为 webpack.config.js</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>) <span class="comment">// 模块</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line"><span class="attr">mode</span>: <span class="string">&#x27;development&#x27;</span>,</span><br><span class="line"><span class="attr">entry</span>: path.<span class="title function_">join</span>(**dirname, <span class="string">&#x27;./src/main.js&#x27;</span>), <span class="comment">// 入口文件</span></span><br><span class="line"><span class="attr">output</span>: &#123;</span><br><span class="line"><span class="attr">path</span>: path.<span class="title function_">join</span>(**dirname, <span class="string">&#x27;./dist&#x27;</span>), <span class="comment">// 输出文件</span></span><br><span class="line"><span class="attr">filename</span>: <span class="string">&#x27;bundle.js&#x27;</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">plugins</span>: [ <span class="comment">// 插件</span></span><br><span class="line">],</span><br><span class="line"><span class="attr">module</span>: &#123;</span><br><span class="line"><span class="attr">rules</span>: [ <span class="comment">// 路由规则</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</span><br><span class="line">                <span class="attr">use</span>: [<span class="string">&#x27;style-loader&#x27;</span>, <span class="string">&#x27;css-loader&#x27;</span>]</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">test</span>: <span class="regexp">/\.(png|jpg|gif|bmp|jpeg)$/</span>,</span><br><span class="line"><span class="attr">use</span>: <span class="string">&#x27;url-loader?limit=1111&amp;name=[hash:8]-[name].[ext]&#x27;</span></span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line"><span class="attr">test</span>: <span class="regexp">/\.(ttf|eot|svg|woff|woff2)$/</span>,</span><br><span class="line">                <span class="attr">use</span>: <span class="string">&#x27;url-loader&#x27;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</span><br><span class="line"><span class="attr">use</span>: <span class="string">&#x27;babel-loader&#x27;</span>,</span><br><span class="line"><span class="attr">exclude</span>: <span class="regexp">/node_modules/</span></span><br><span class="line">&#125;,</span><br><span class="line">]</span><br><span class="line">&#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title="webpack-dev-server"></a>webpack-dev-server</h3><ul>
-<li>通过 npm 安装：npm i webpack-dev-server</li>
-<li>运行命令：webpack-dev-server –devtool eval –port 9876 –progress –colors – compress –hot –inline –content-base .&#x2F;build<br>可以在 package.json 中的 script 加一个启动项。</li>
-<li>–devtool eval：在报错时精确到文件的行号</li>
-<li>–progress：显示编译的输出内容进度</li>
-<li>–compress：启用 gzip 压缩</li>
-<li>–hot：热更新，无需刷新浏览器</li>
-<li>–colors：显示编译的输出内容颜色</li>
-<li>–inline：自动刷新模式。默认为 iframe。</li>
-<li>–content-base：设置输出目录。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1061,20 +1046,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">186</span>
+          <span class="site-state-item-count">187</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-count">50</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

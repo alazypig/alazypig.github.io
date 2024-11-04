@@ -120,17 +120,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">48</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">50</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">24</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">25</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">186</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">187</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,74 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/05/15/6-006-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/15/6-006-3/" class="post-title-link" itemprop="url">6.006 - 3</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-05-15 16:51:17" itemprop="dateCreated datePublished" datetime="2019-05-15T16:51:17+08:00">2019-05-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="about-the-heap"><a href="#about-the-heap" class="headerlink" title="about the heap"></a>about the heap</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Heap</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">arr</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">data</span> = arr.<span class="title function_">reduce</span>(<span class="function">(<span class="params">arr, elem</span>) =&gt;</span> &#123;</span><br><span class="line">      arr.<span class="title function_">push</span>(elem)</span><br><span class="line">      <span class="keyword">return</span> arr</span><br><span class="line">    &#125;, [])</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">size</span> = <span class="variable language_">this</span>.<span class="property">data</span>.<span class="property">length</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">isEmpty</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">size</span> === <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">build_max_heap</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">size</span> &lt;= <span class="number">1</span>) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="variable language_">this</span>.<span class="property">size</span> / <span class="number">2</span>); i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">      <span class="comment">// start from the n / 2 because of the elem after n / 2 are all leaves</span></span><br><span class="line">      <span class="variable language_">this</span>.<span class="title function_">max_heapify</span>(i)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">sort</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> result = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (!<span class="variable language_">this</span>.<span class="title function_">isEmpty</span>()) &#123;</span><br><span class="line">      result.<span class="title function_">push</span>(<span class="variable language_">this</span>.<span class="property">data</span>.<span class="title function_">shift</span>()) <span class="comment">// pop the max</span></span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">size</span>--</span><br><span class="line">      <span class="variable language_">this</span>.<span class="title function_">build_max_heap</span>() <span class="comment">// rebuild the heap</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">data</span> = result</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">size</span> = result.<span class="property">length</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">add</span>(<span class="params">value</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">data</span>.<span class="title function_">push</span>(value)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">size</span>++</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">build_max_heap</span>()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">max_heapify</span>(<span class="params">current</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> left = <span class="number">2</span> * current, <span class="comment">// get the left child</span></span><br><span class="line">      right = <span class="number">2</span> * current + <span class="number">1</span>, <span class="comment">// get the right child</span></span><br><span class="line">      largest = current <span class="comment">// get the max node</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (left &lt; <span class="variable language_">this</span>.<span class="property">size</span> &amp;&amp; <span class="variable language_">this</span>.<span class="property">data</span>[left] &gt; <span class="variable language_">this</span>.<span class="property">data</span>[largest]) largest = left <span class="comment">// left child is max</span></span><br><span class="line">    <span class="keyword">if</span> (right &lt; <span class="variable language_">this</span>.<span class="property">size</span> &amp;&amp; <span class="variable language_">this</span>.<span class="property">data</span>[right] &gt; <span class="variable language_">this</span>.<span class="property">data</span>[largest])</span><br><span class="line">      largest = right <span class="comment">// right child is max</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (largest !== current) &#123;</span><br><span class="line">      <span class="comment">// if the max node is not the current node</span></span><br><span class="line">      ;[<span class="variable language_">this</span>.<span class="property">data</span>[largest], <span class="variable language_">this</span>.<span class="property">data</span>[current]] = [</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">data</span>[current],</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">data</span>[largest],</span><br><span class="line">      ] <span class="comment">// swap the value</span></span><br><span class="line">      <span class="variable language_">this</span>.<span class="title function_">max_heapify</span>(largest) <span class="comment">// recursive to check the modify child heap if is max heapify</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">print</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> str = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">data</span>.<span class="title function_">map</span>(<span class="function">(<span class="params">i</span>) =&gt;</span> (str += i + <span class="string">&#x27; &#x27;</span>))</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(str)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> heap = <span class="keyword">new</span> <span class="title class_">Heap</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">11</span>, <span class="number">14</span>])</span><br><span class="line">heap.<span class="title function_">build_max_heap</span>()</span><br><span class="line">heap.<span class="title function_">print</span>()</span><br><span class="line"></span><br><span class="line">heap.<span class="title function_">sort</span>()</span><br><span class="line">heap.<span class="title function_">print</span>()</span><br><span class="line"></span><br><span class="line">heap.<span class="title function_">add</span>(<span class="number">30</span>)</span><br><span class="line">heap.<span class="title function_">add</span>(<span class="number">12</span>)</span><br><span class="line">heap.<span class="title function_">print</span>()</span><br><span class="line"></span><br><span class="line">heap.<span class="title function_">sort</span>()</span><br><span class="line">heap.<span class="title function_">print</span>()</span><br></pre></td></tr></table></figure>
+
+<p>result:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">14 11 5 9 4 1 6 8 3 2</span><br><span class="line">14 11 9 8 6 5 4 3 2 1</span><br><span class="line">30 14 12 8 6 11 4 3 2 1 5 9</span><br><span class="line">30 14 12 11 9 8 6 5 4 3 2 1</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -937,104 +1005,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/04/14/%E5%BD%92%E7%BA%B3%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/04/14/%E5%BD%92%E7%BA%B3%E6%B3%95/" class="post-title-link" itemprop="url">归纳法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-04-14 19:45:57" itemprop="dateCreated datePublished" datetime="2019-04-14T19:45:57+08:00">2019-04-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="自然数上的一般归纳原理"><a href="#自然数上的一般归纳原理" class="headerlink" title="自然数上的一般归纳原理"></a>自然数上的一般归纳原理</h3><p>假设$P$是自然数上的一个性质，则如果</p>
-<ol>
-<li>$P(0)$成立 – base case</li>
-<li>对所有的自然数$k$，$P(k)$蕴涵$P(k+1)$ – induction step</li>
-</ol>
-<p>则$P(n)$对所有自然数$n$成立</p>
-<p>$$<br>\ \ \ \ \ \ \ \ \ \ [P(k)]\<br>\frac{P(0)\ P(k+1)}{P(n)}<br>$$</p>
-<p>$[P(k)]$为归纳假设，$k$不能出现在$P(k + 1)$的任何假设中</p>
-<p><strong>定理：每个自然是要么是偶数，要么是奇数。</strong><br>用归纳法来证明：</p>
-<ol>
-<li>0 是偶数 -&gt; 0 是偶数或奇数</li>
-<li>假设 k 是偶数或奇数，证明 k + 1 是奇数或偶数：<ol>
-<li>k 是偶数，则 k + 1 是奇数</li>
-<li>k 是奇数，则 k + 1 是偶数</li>
-</ol>
-</li>
-<li>得证</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/04/14/%E5%BD%92%E7%BA%B3%E6%B3%95/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1106,20 +1076,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">186</span>
+          <span class="site-state-item-count">187</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-count">50</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -1240,59 +1210,6 @@
   
 
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 
