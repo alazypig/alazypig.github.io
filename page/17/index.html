@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">51</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">52</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">188</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">189</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,91 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2018/08/31/Promise/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/08/31/Promise/" class="post-title-link" itemprop="url">Promise</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-08-31 16:00:39" itemprop="dateCreated datePublished" datetime="2018-08-31T16:00:39+08:00">2018-08-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ECMAScript/" itemprop="url" rel="index"><span itemprop="name">ECMAScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Promise-的特点"><a href="#Promise-的特点" class="headerlink" title="Promise 的特点"></a>Promise 的特点</h3><ol>
+<li>对象的状态不受外界影响。Promise 对象代表一个异步操作，有三种状态：Pending（进行中）、Fulfilled（已成功）、Rejected（已失败）。只有异步操作的结果可以决定当前是哪一种状态，任何其他操作都无法改变这个状态。</li>
+<li>一旦状态改变就不会再变，任何时候得到的都是这个结果。Promise 对象的状态改变只有两个可能：从 Pending 变为 Fulfilled，从 Pending 变为 Rejected。只要这两种情况发生，这时就成为 resolve。就算改变已经发生，再对 Promise 对象添加回调函数，也会立即得到这个结果。与 Event 完全不同，Event 一旦错过再监听是得不到结果的。</li>
+</ol>
+<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="keyword">function</span> (<span class="params">resolve, reject</span>) &#123;</span><br><span class="line">    <span class="comment">//some code</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="comment">/*异步操作成功*/</span>) &#123;</span><br><span class="line">        <span class="title function_">resolve</span>(value);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="title function_">reject</span>(error);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/08/31/Promise/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -982,99 +1067,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2018/08/14/HTML5%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%E5%8F%8D%E9%A6%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/08/14/HTML5%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%E5%8F%8D%E9%A6%88/" class="post-title-link" itemprop="url">HTML5表单验证反馈</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-08-14 21:53:03" itemprop="dateCreated datePublished" datetime="2018-08-14T21:53:03+08:00">2018-08-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML5/" itemprop="url" rel="index"><span itemprop="name">HTML5</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="validity-对象"><a href="#validity-对象" class="headerlink" title="validity 对象"></a>validity 对象</h3><p>通过 validity 对象，通过下面的 valid 可以查看验证是否通过，如果八种验证都通过返回 true，有一种失败则返回 false</p>
-<ul>
-<li>oText.addEventListener(‘invalid’, fn, false);</li>
-<li>ev.preventDefault()</li>
-<li>valueMissing: 输入值为空时</li>
-<li>typeMismatch: 控件值与预期类型不匹配</li>
-<li>patterMismatch: 输入值不满足 pattern 正则</li>
-<li>tooLong: 超过 maxLength 最大限制</li>
-<li>rangeUnderflow: 验证的 range 最小值</li>
-<li>rangeOverflow: 验证的 range 最大值</li>
-<li>setMismatch: 验证 range 的当前值是否符合 min、max、step 的规则</li>
-<li>customError: 不符合自定义验证–setCustomValidity()设置自定义验证</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/08/14/HTML5%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%E5%8F%8D%E9%A6%88/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1146,7 +1138,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">188</span>
+          <span class="site-state-item-count">189</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1159,7 +1151,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
