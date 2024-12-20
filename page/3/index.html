@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">56</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">59</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">192</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">194</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,175 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2024/05/16/google-%E5%91%8A%E8%AD%A6%E8%B0%83%E8%AF%95%E7%AC%A6%E5%8F%B7%E6%96%87%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/05/16/google-%E5%91%8A%E8%AD%A6%E8%B0%83%E8%AF%95%E7%AC%A6%E5%8F%B7%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">google 告警调试符号文件</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-05-16 18:10:29" itemprop="dateCreated datePublished" datetime="2024-05-16T18:10:29+08:00">2024-05-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-08-30 11:03:59" itemprop="dateModified" datetime="2024-08-30T11:03:59+08:00">2024-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React-Native/" itemprop="url" rel="index"><span itemprop="name">React Native</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="aab-包上传到-google-play-时，会出现以下警告："><a href="#aab-包上传到-google-play-时，会出现以下警告：" class="headerlink" title="aab 包上传到 google play 时，会出现以下警告："></a>aab 包上传到 google play 时，会出现以下警告：</h3><p><strong>此 App Bundle 包含原生代码，您尚未上传调试符号文件。我们建议您上传调试符号文件，这样会便于针对崩溃和 ANR 问题进行分析和调试。</strong></p>
+<p>解决方法：首先需要安装项目对应的 ndk：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ndkVersion = &quot;20.1.5948944&quot;</span><br></pre></td></tr></table></figure>
+
+<p>SDK Tools 记得要开启 Show Package Details，然后下载对应版本的 NDK。<br>Android Studio -&gt; SDK Manager -&gt; SDK Tools -&gt; NDK (Side by side) -&gt; 20.1.5948944</p>
+<p>然后在项目的 build.gradle 文件中配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    //...</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            //...</span><br><span class="line">            minifyEnabled true</span><br><span class="line">            proguardFiles getDefaultProguardFile(&#x27;proguard-android.txt&#x27;), &#x27;proguard-rules.pro&#x27;</span><br><span class="line">            // 新增配置</span><br><span class="line">            ndk &#123;</span><br><span class="line">                debugSymbolLevel &#x27;FULL&#x27;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>debugSymbolLevel 配置为 FULL，表示生成的符号文件包含所有调试信息。</p>
+<p>最后，重新打包 aab 包，上传到 google play，即可解决此问题。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2024/05/11/MIUI-android%E7%9C%9F%E6%9C%BA%E6%97%A0%E7%BA%BF%E8%B0%83%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/05/11/MIUI-android%E7%9C%9F%E6%9C%BA%E6%97%A0%E7%BA%BF%E8%B0%83%E8%AF%95/" class="post-title-link" itemprop="url">MIUI android真机无线调试</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-05-11 09:47:48" itemprop="dateCreated datePublished" datetime="2024-05-11T09:47:48+08:00">2024-05-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-08-30 11:04:01" itemprop="dateModified" datetime="2024-08-30T11:04:01+08:00">2024-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="为什么需要无线调试"><a href="#为什么需要无线调试" class="headerlink" title="为什么需要无线调试"></a>为什么需要无线调试</h3><p><strong>方便</strong><br>无线调试可以让你在手机上进行调试，而不用连接电脑，可以节省时间。</p>
+<p>这几天尝试使用无限调试，但是总是会有 bug，adb 死机，手机重启，导致调试失败。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 adb 6未数字码方式 连接手机</span></span><br><span class="line">adb pair 192.168.1.100</span><br></pre></td></tr></table></figure>
+
+<p><strong>在 Mac 下，我的手机只能成功连接一次，后续就再也连不上了</strong></p>
+<p>无奈，只能使用 Android Studios 调试。</p>
+<ol>
+<li>使用 Android Studios 插件：ADB WI-FI</li>
+<li>USB 连接手机</li>
+<li>打开 ADB WI-FI 面板</li>
+<li>自动连接</li>
+</ol>
+<p>这种方式目前比较稳定，可以成功连接手机，并且可以进行调试，并且每次启动都可以重新成功连接。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -827,159 +996,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2022/01/18/%E6%B1%A4%E5%8A%A0%E7%81%AB%E5%B1%B1%E7%88%86%E5%8F%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/01/18/%E6%B1%A4%E5%8A%A0%E7%81%AB%E5%B1%B1%E7%88%86%E5%8F%91/" class="post-title-link" itemprop="url">汤加火山爆发</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-01-18 10:28:56" itemprop="dateCreated datePublished" datetime="2022-01-18T10:28:56+08:00">2022-01-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="又一次见证历史了。"><a href="#又一次见证历史了。" class="headerlink" title="又一次见证历史了。"></a>又一次见证历史了。</h3><p>预计级别会达到<code>VEI6</code>，不知道后续会不会继续喷发。<br>没想到，疫情还未过去，出现了一个比疫情更严峻的现实问题——<code>无夏之年</code>。</p>
-<h2 id="更新于-2022-年-7-月-26-日-17-22-50"><a href="#更新于-2022-年-7-月-26-日-17-22-50" class="headerlink" title="更新于 2022 年 7 月 26 日 17:22:50"></a><strong>更新于 2022 年 7 月 26 日 17:22:50</strong></h2><p>我错了，最近的温度已经到达了 40℃。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2022/01/08/2021%E6%80%BB%E7%BB%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/01/08/2021%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">2021总结</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-01-08 11:13:06" itemprop="dateCreated datePublished" datetime="2022-01-08T11:13:06+08:00">2022-01-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">年终总结</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="一年一度的总结时间"><a href="#一年一度的总结时间" class="headerlink" title="一年一度的总结时间"></a>一年一度的总结时间</h3><p>2021，辛丑年。<br>这一年，似乎发生了许多事；事情太多，以至于能记住的太少了。</p>
-<ul>
-<li>教育减负，新东方股价蒸发 90%</li>
-<li>房产暴雷，恒大欠债 1.6 万亿</li>
-<li>疫情，孕妇流产、心梗无法救治、猝死、……</li>
-</ul>
-<p>是好事吗？是坏事吗？<br>长远来看，民智开化了许多，不再一味地听从党和政府，有了自己的思考。<br>但是，如果一个政府没有了民心支持，那么他还能维持不倒吗？<br>每次变革都是流血，只希望不要起太大的冲突。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/01/08/2021%E6%80%BB%E7%BB%93/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1051,7 +1067,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">192</span>
+          <span class="site-state-item-count">194</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1064,7 +1080,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-count">59</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

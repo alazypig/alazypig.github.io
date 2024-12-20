@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">56</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">59</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">192</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">194</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,160 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2024/12/20/Flutter-web-only-two-fingers-to-scroll-on-iOS-18-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/12/20/Flutter-web-only-two-fingers-to-scroll-on-iOS-18-2/" class="post-title-link" itemprop="url">Flutter web only two fingers to scroll on iOS 18.2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-12-20 14:36:57 / Modified: 14:50:45" itemprop="dateCreated datePublished" datetime="2024-12-20T14:36:57+08:00">2024-12-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flutter/" itemprop="url" rel="index"><span itemprop="name">Flutter</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Flutter-web-在-iOS-18-2-版本上只能用两指滑动滚动"><a href="#Flutter-web-在-iOS-18-2-版本上只能用两指滑动滚动" class="headerlink" title="Flutter web 在 iOS 18.2 版本上只能用两指滑动滚动"></a>Flutter web 在 iOS 18.2 版本上只能用两指滑动滚动</h1><p>issue 地址: <a target="_blank" rel="noopener" href="https://github.com/flutter/flutter/issues/158299">[iOS 18.2][Web] Scrolling is broken in browsers (Safari, Chrome)</a></p>
+<p>flutter 版本为 3.25.x, 低于 iOS 18.2 的设备上, 可以单指滚动</p>
+<h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><p>Safari 在 iOS 18.2 添加了 <code>getCoalescedEvents()</code>支持, 这个方法用于合并多个 touch 事件,有助于提高性能.<br>但是 api 是不完整的(与其他浏览器内核实现不符, 缺少了 pointerId 和 target 等返回值), 在 flutter 3.27.1 修改了 binding 部分的内容, 用于兼容: <a target="_blank" rel="noopener" href="https://github.com/flutter/engine/pull/56719/files">[web] Work around wrong pointerId in coalesced events in iOS Safari 18.2</a></p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>把 flutter 升级到 3.27.1 版本, 或者使用 <code>flutter channel dev</code> 切换到 dev 分支, 然后 <code>flutter upgrade</code> 升级到最新 beta 版本.<br>也可以将 pr 合并到本地 flutter engine, 直接构建 flutter web 项目.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2024/12/16/Flutter-anti-aliasing-bug/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/12/16/Flutter-anti-aliasing-bug/" class="post-title-link" itemprop="url">Flutter anti-aliasing bug</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-12-16 16:43:41 / Modified: 16:55:28" itemprop="dateCreated datePublished" datetime="2024-12-16T16:43:41+08:00">2024-12-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flutter/" itemprop="url" rel="index"><span itemprop="name">Flutter</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Flutter-anti-aliasing-抗锯齿-bug"><a href="#Flutter-anti-aliasing-抗锯齿-bug" class="headerlink" title="Flutter anti-aliasing(抗锯齿) bug"></a>Flutter anti-aliasing(抗锯齿) bug</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>项目里有一段弧形曲线, 我选择用 Row + Expanded + Container 堆叠的方式实现,但是出现了一些很奇怪的<code>hairline border</code>现象.</p>
+<p><img src="/images/anti-aliasing-example.png" alt="Flutter anti-aliasing bug"></p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>每个 Wrap 之间没有进行像素对齐, 重复渲染的地方导致了混色(颜色加深), 形成了<code>hairline border</code> – <a target="_blank" rel="noopener" href="https://github.com/flutter/flutter/issues/14288">issue</a>.</p>
+<p>所以相同颜色,尽量避免分块去渲染,会导致抗锯齿效果不佳.</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ol>
+<li>根据更具体的像素比,去渲染对应的大小. 但是这种方法只适用于 width 和 height 都是明确的情况下, 我们通过像素比去控制实际渲染的大小尽量贴近于整数.</li>
+<li>直接使用 custom paint 进行整体绘制. 这种方法可以避免 Wrap 之间像素对齐, 也能保证整体的抗锯齿效果.</li>
+</ol>
+<p>我使用的是第二种方法, 效果如图:<br><img src="/images/anti-aliasing-done.png" alt="Flutter anti-aliasing solution"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/12/16/Flutter-anti-aliasing-bug/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -855,150 +1009,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2024/10/17/React-Native-Low-Version-0-74-0-Upgrade-targetSdkVersion-to-34/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/10/17/React-Native-Low-Version-0-74-0-Upgrade-targetSdkVersion-to-34/" class="post-title-link" itemprop="url">React Native Low Version(<0.74.0) Upgrade targetSdkVersion to 34</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2024-10-17 16:07:20 / Modified: 16:16:44" itemprop="dateCreated datePublished" datetime="2024-10-17T16:07:20+08:00">2024-10-17</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/React-Native/" itemprop="url" rel="index"><span itemprop="name">React Native</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="1-Make-Sure-the-compileSdkVersion-is-correct"><a href="#1-Make-Sure-the-compileSdkVersion-is-correct" class="headerlink" title="1. Make Sure the compileSdkVersion is correct."></a>1. Make Sure the <code>compileSdkVersion</code> is correct.</h2><p>Cause if you don’t have the correct version of <code>compileSdkVersion</code>, the <code>Context.RECEIVER_EXPORTED</code> will not found.</p>
-<figure class="highlight gradle"><figcaption><span>build.gradle</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">buildscript</span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  ext &#123;</span><br><span class="line">     buildToolsVersion = <span class="string">&quot;***&quot;</span></span><br><span class="line">     minSdkVersion = ***</span><br><span class="line">     compileSdkVersion = <span class="number">33</span></span><br><span class="line">     targetSdkVersion = <span class="number">34</span></span><br><span class="line">     ndkVersion = <span class="string">&quot;***&quot;</span></span><br><span class="line">     googlePlayServicesAuthVersion = <span class="string">&quot;***&quot;</span></span><br><span class="line">   &#125;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-Rewrite-the-registerReceiver-in-MainApplication-java"><a href="#2-Rewrite-the-registerReceiver-in-MainApplication-java" class="headerlink" title="2. Rewrite the registerReceiver in MainApplication.java"></a>2. Rewrite the <code>registerReceiver</code> in <code>MainApplication.java</code></h2><p>Make sure the <code>registerReceiver</code> is override before the <code>onCreate</code> function.</p>
-<figure class="highlight java"><figcaption><span>MainApplication.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...</span></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> Intent <span class="title function_">registerReceiver</span><span class="params">(<span class="meta">@Nullable</span> BroadcastReceiver receiver, IntentFilter filter)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= <span class="number">34</span> &amp;&amp; getApplicationInfo().targetSdkVersion &gt;= <span class="number">34</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">super</span>.registerReceiver(receiver, filter, Context.RECEIVER_EXPORTED);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">super</span>.registerReceiver(receiver, filter);</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// some code here</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="3-Clean-Project-and-Rebuild-the-apk-package"><a href="#3-Clean-Project-and-Rebuild-the-apk-package" class="headerlink" title="3. Clean Project and Rebuild the apk package"></a>3. Clean Project and Rebuild the apk package</h2><h4 id=""><a href="#" class="headerlink" title=""></a></h4><blockquote>
-<p>Reference here: <a target="_blank" rel="noopener" href="https://medium.com/@anaz_19473/react-native-app-crashes-on-upgrading-to-targetsdkversion-34-android-14-f8f575da6b45">React Native App Crashes — On upgrading to targetSdkVersion 34(Android 14)</a></p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2024/10/15/ScrollView-Custom-Scroll-Indicator/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/10/15/ScrollView-Custom-Scroll-Indicator/" class="post-title-link" itemprop="url">ScrollView Custom Scroll Indicator</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2024-10-15 10:15:34 / Modified: 10:21:19" itemprop="dateCreated datePublished" datetime="2024-10-15T10:15:34+08:00">2024-10-15</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/React-Native/" itemprop="url" rel="index"><span itemprop="name">React Native</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Custom-Scroll-Indicator-for-ScrollView"><a href="#Custom-Scroll-Indicator-for-ScrollView" class="headerlink" title="Custom Scroll Indicator for ScrollView"></a>Custom Scroll Indicator for ScrollView</h1><figure class="highlight tsx"><figcaption><span>Demo.tsx</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useMemo, useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">ScrollView</span>, <span class="title class_">View</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Demo</span>: <span class="title class_">React</span>.<span class="property">FC</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [contentSize, setContentSize] = <span class="title function_">useState</span>(<span class="number">0</span>)</span><br><span class="line">  <span class="keyword">const</span> [scrollViewSize, setScrollViewSize] = <span class="title function_">useState</span>(<span class="number">0</span>)</span><br><span class="line">  <span class="keyword">const</span> [scrollPosition, setScrollPosition] = <span class="title function_">useState</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> indicatorWidth = <span class="title function_">useMemo</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (contentSize &gt; <span class="number">0</span> &amp;&amp; scrollViewSize &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> (scrollViewSize / contentSize) * scrollViewSize</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">  &#125;, [contentSize, scrollViewSize])</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> indicatorPosition = <span class="title function_">useMemo</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (contentSize &gt; <span class="number">0</span> &amp;&amp; scrollPosition &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> (scrollPosition / contentSize) * scrollViewSize</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">  &#125;, [contentSize, scrollPosition, scrollViewSize])</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">ScrollView</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        // <span class="attr">disable</span> <span class="attr">default</span> <span class="attr">scroll</span> <span class="attr">indicator</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">showsHorizontalScrollIndicator</span>=<span class="string">&#123;false&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">onLayout</span>=<span class="string">&#123;(event)</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-xml">          setScrollViewSize(event.nativeEvent?.layout?.width ?? 0)</span></span><br><span class="line"><span class="language-xml">        &#125;&#125;</span></span><br><span class="line"><span class="language-xml">        onContentSizeChange=&#123;(w) =&gt; &#123;</span></span><br><span class="line"><span class="language-xml">          setContentSize(w)</span></span><br><span class="line"><span class="language-xml">        &#125;&#125;</span></span><br><span class="line"><span class="language-xml">        horizontal // set horizontal scroll</span></span><br><span class="line"><span class="language-xml">        scrollEventThrottle=&#123;16&#125; // throttle scroll event to improve performance</span></span><br><span class="line"><span class="language-xml">        onScroll=&#123;(event) =&gt; &#123;</span></span><br><span class="line"><span class="language-xml">          // change scroll position here</span></span><br><span class="line"><span class="language-xml">          const &#123; contentOffset &#125; = event.nativeEvent</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">          const &#123; x = 0 &#125; = contentOffset</span></span><br><span class="line"><span class="language-xml">          const max = contentSize - scrollViewSize</span></span><br><span class="line"><span class="language-xml">          const min = 0</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">          if (x &gt; max) &#123;</span></span><br><span class="line"><span class="language-xml">            setScrollPosition(max)</span></span><br><span class="line"><span class="language-xml">          &#125; else if (x &lt; min) &#123;</span></span><br><span class="line"><span class="language-xml">            setScrollPosition(min)</span></span><br><span class="line"><span class="language-xml">          &#125; else &#123;</span></span><br><span class="line"><span class="language-xml">            setScrollPosition(x)</span></span><br><span class="line"><span class="language-xml">          &#125;</span></span><br><span class="line"><span class="language-xml">        &#125;&#125;&gt;</span></span><br><span class="line"><span class="language-xml">        &#123;/* Content here */&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">ScrollView</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">      &#123;/* custom scroll indicator */&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">View</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">style</span>=<span class="string">&#123;&#123;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">bottom:</span> <span class="attr">0</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">height:</span> <span class="attr">4</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">width:</span> <span class="attr">indicatorWidth</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">position:</span> &#x27;<span class="attr">absolute</span>&#x27;,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">left:</span> <span class="attr">indicatorPosition</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">borderRadius:</span> <span class="attr">4</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">backgroundColor:</span> &#x27;#<span class="attr">EEEEEE</span>&#x27;,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        &#125;&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Demo</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1070,7 +1080,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">192</span>
+          <span class="site-state-item-count">194</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1083,7 +1093,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-count">59</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

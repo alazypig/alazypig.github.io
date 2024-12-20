@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">56</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">59</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">192</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">194</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,166 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/05/06/document-cookie/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/06/document-cookie/" class="post-title-link" itemprop="url">document.cookie</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-05-06 15:43:51" itemprop="dateCreated datePublished" datetime="2019-05-06T15:43:51+08:00">2019-05-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * set the cookie</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">String</span>&#125; <span class="variable">name</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">String</span>&#125; <span class="variable">value</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">Number</span>&#125; <span class="variable">day</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> <span class="title function_">setCookie</span> = (<span class="params">name, value, day</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">  date.<span class="title function_">setDate</span>(date.<span class="title function_">getDate</span>() + day)</span><br><span class="line">  <span class="variable language_">document</span>.<span class="property">cookie</span> = name + <span class="string">&#x27;=&#x27;</span> + value + <span class="string">&#x27;;expires=&#x27;</span> + date</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * get the cookie by name</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">String</span>&#125; <span class="variable">name</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> <span class="title function_">getCookie</span> = (<span class="params">name</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> str = <span class="variable language_">document</span>.<span class="property">cookie</span>.<span class="title function_">split</span>(<span class="string">&#x27;; &#x27;</span>).<span class="title function_">filter</span>(<span class="function">(<span class="params">i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> result = i.<span class="title function_">split</span>(<span class="string">&#x27;=&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> result[<span class="number">0</span>] == name</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> str.<span class="property">length</span> ? str[<span class="number">0</span>].<span class="title function_">split</span>(<span class="string">&#x27;=&#x27;</span>)[<span class="number">1</span>] : <span class="string">&#x27;&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * check user</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> <span class="title function_">checkCookie</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> username = <span class="variable language_">document</span>.<span class="property">cookie</span> ? <span class="title function_">getCookie</span>(<span class="string">&#x27;username&#x27;</span>) : <span class="string">&#x27;&#x27;</span></span><br><span class="line">  <span class="keyword">if</span> (username != <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&#x27;Welcome &#x27;</span> + username)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    username = <span class="title function_">prompt</span>(<span class="string">&#x27;please input your username&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> (username &amp;&amp; username != <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">      <span class="title function_">setCookie</span>(<span class="string">&#x27;username&#x27;</span>, username, <span class="number">7</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">checkCookie</span>()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getCookie</span>(<span class="string">&#x27;username&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/04/23/Linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/23/Linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">Linux基本命令</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-04-23 14:24:47" itemprop="dateCreated datePublished" datetime="2019-04-23T14:24:47+08:00">2019-04-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Linux-常用命令"><a href="#Linux-常用命令" class="headerlink" title="Linux 常用命令"></a>Linux 常用命令</h3><ul>
+<li>man: an interface to the on-line reference manuals</li>
+<li>su [options] [username]: change user ID or become superuser</li>
+<li>useradd [options] LOGIN: create a new user or update default new user information</li>
+<li>userdel [options] LOGIN: delete a user account and related files</li>
+<li>passwd [options] [LOGIN]: change user password</li>
+<li>ps [options]: report a snapshot of the current process.</li>
+<li>kill [options] <pid> […]: send a signal to a process</li>
+<li>fdisk [options] device: manipulate disk partition table</li>
+<li>mount: mount a filesystem</li>
+<li>chown [OPTION] … [OWNER]:[GROUP]] FILE …: change file owner and group</li>
+<li>chgrp [OPTION] … GROUP FILE …: change group ownership</li>
+<li>chmod [OPTION] … MODE[,MODE] … FILE …: change file mode bits</li>
+<li>grep [OPTION] PATTERN [FILE…]: print lines matching a pattern</li>
+<li>find [-H] [-L] [-P] [-D debugopts] [-Olevel] [starting-point…] [expression]: search for files in a directory hierarchy</li>
+<li>ln: make links between files</li>
+<li>gzip, gunzip, zcat: compress or expand files</li>
+<li>tar: an archiving utility</li>
+<li>diff [OPTION] … FILES: compare files line by line</li>
+<li>patch -pnum &lt; patchfile: apply a diff file to an original</li>
+<li>ifconfig: configure a network interface</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -887,163 +1047,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/04/10/%E9%A6%96%E5%BC%A0%E9%BB%91%E6%B4%9E%E7%85%A7%E7%89%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/04/10/%E9%A6%96%E5%BC%A0%E9%BB%91%E6%B4%9E%E7%85%A7%E7%89%87/" class="post-title-link" itemprop="url">首张黑洞照片</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-04-10 11:53:59" itemprop="dateCreated datePublished" datetime="2019-04-10T11:53:59+08:00">2019-04-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="见证历史"><a href="#见证历史" class="headerlink" title="见证历史"></a>见证历史</h3><p><img src="/images/%E9%A6%96%E5%BC%A0%E9%BB%91%E6%B4%9E%E7%85%A7%E7%89%871.png" alt="黑洞图片"><br><strong>爱因斯坦是正确的!</strong><br><img src="/images/%E9%A6%96%E5%BC%A0%E9%BB%91%E6%B4%9E%E7%85%A7%E7%89%872.jpg" alt="爱因斯坦"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/03/29/Maybe/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/03/29/Maybe/" class="post-title-link" itemprop="url">Maybe</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-03-29 09:58:52" itemprop="dateCreated datePublished" datetime="2019-03-29T09:58:52+08:00">2019-03-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ECMAScript/" itemprop="url" rel="index"><span itemprop="name">ECMAScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h3><p>Let’s create a normal container first.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Container</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">x</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_value</span> = x</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// use the of to create the container</span></span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">of</span>(<span class="params">x</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Container</span>(x)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Container</span>.<span class="title function_">of</span>(<span class="number">2</span>) <span class="comment">// Container &#123; _value: 2 &#125;</span></span><br><span class="line"><span class="title class_">Container</span>.<span class="title function_">of</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;jack&#x27;</span> &#125;) <span class="comment">// Container &#123; _value: &#123; name: &#x27;jack&#x27; &#125; &#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>But we should not directly manipulate the data in the container. We need a function to do this.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Container.prototype.map :: (a -&gt; b) -&gt; Container a -&gt; Container b</span></span><br><span class="line"><span class="title class_">Container</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">map</span> = <span class="keyword">function</span> (<span class="params">f</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">Container</span>.<span class="title function_">of</span>(<span class="title function_">f</span>(<span class="variable language_">this</span>.<span class="property">_value</span>))</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> six = <span class="title class_">Container</span>.<span class="title function_">of</span>(<span class="number">2</span>).<span class="title function_">map</span>(<span class="function">(<span class="params">x</span>) =&gt;</span> x * <span class="number">3</span>) <span class="comment">// Container &#123; _value: 6 &#125;</span></span><br><span class="line">six.<span class="title function_">map</span>(<span class="function">(<span class="params">x</span>) =&gt;</span> x.<span class="title function_">toString</span>()).<span class="title function_">map</span>(<span class="function">(<span class="params">x</span>) =&gt;</span> <span class="string">&#x27;number: &#x27;</span> + x + <span class="string">&#x27;!&#x27;</span>) <span class="comment">// Container &#123; _value: &#x27;number: 6!&#x27; &#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>After passing the values in the Container to the map function, we can let them manipulate it; after the operation is completed, in order to prevent accidents, put them back into the Container they belong to. The result is that we can call the map <strong>continuously</strong>, running any function we want to run.<br>And the <strong>Functor</strong> is a container type that implements the map function and adheres to certain rules.</p>
-<h3 id="Maybe"><a href="#Maybe" class="headerlink" title="Maybe"></a>Maybe</h3><p>In Haskell, the Maybe type is defined as follow:</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">data</span> <span class="type">Maybe</span> a = <span class="type">Just</span> a | <span class="type">Nothing</span></span></span><br></pre></td></tr></table></figure>
-
-<p>Maybe will check if its value is empty before calling the passed function. So let’s create a simple one.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Maybe</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">x</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_value</span> = x</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">of</span>(<span class="params">x</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Maybe</span>(x)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">isNothing</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_value</span> === <span class="literal">null</span> || <span class="variable language_">this</span>.<span class="property">_value</span> === <span class="literal">undefined</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// map :: (a -&gt; b) -&gt; Maybe a -&gt; Maybe b</span></span><br><span class="line">  <span class="title function_">map</span>(<span class="params">f</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="title function_">isNothing</span>() ? <span class="title class_">Maybe</span>.<span class="title function_">of</span>(<span class="literal">null</span>) : <span class="title class_">Maybe</span>.<span class="title function_">of</span>(<span class="title function_">f</span>(<span class="variable language_">this</span>.<span class="property">_value</span>))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Maybe</span>.<span class="title function_">of</span>(<span class="string">&#x27;hello world&#x27;</span>).<span class="title function_">map</span>(<span class="title function_">match</span>(<span class="regexp">/o/gi</span>)) <span class="comment">// Maybe &#123; _value: [ &#x27;o&#x27;, &#x27;o&#x27; ] &#125;</span></span><br><span class="line"><span class="title class_">Maybe</span>.<span class="title function_">of</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;jack&#x27;</span> &#125;)</span><br><span class="line">  .<span class="title function_">map</span>($.<span class="title function_">prop</span>(<span class="string">&#x27;age&#x27;</span>))</span><br><span class="line">  .<span class="title function_">map</span>(<span class="function">(<span class="params">x</span>) =&gt;</span> x + <span class="number">10</span>) <span class="comment">// Maybe &#123; _value: null &#125;</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/03/29/Maybe/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1115,7 +1118,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">192</span>
+          <span class="site-state-item-count">194</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1128,7 +1131,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-count">59</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

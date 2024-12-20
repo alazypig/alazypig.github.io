@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">56</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">59</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">192</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">194</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,186 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2021/07/19/react-reconciler-diff/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/19/react-reconciler-diff/" class="post-title-link" itemprop="url">React Reconciler Diff Example</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-07-19 13:41:34" itemprop="dateCreated datePublished" datetime="2021-07-19T13:41:34+08:00">2021-07-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>before: abcd</li>
+<li>after: acdb</li>
+</ul>
+<h3 id="第一轮遍历开始"><a href="#第一轮遍历开始" class="headerlink" title="&#x3D;&#x3D;&#x3D;第一轮遍历开始&#x3D;&#x3D;&#x3D;"></a>&#x3D;&#x3D;&#x3D;第一轮遍历开始&#x3D;&#x3D;&#x3D;</h3><p>a（之后）vs a（之前）<br>key 不变，可复用<br>此时 a 对应的 oldFiber（之前的 a）在之前的数组（abcd）中索引为 0<br>所以 <code>lastPlacedIndex = 0;</code></p>
+<p>继续第一轮遍历…</p>
+<p>c（之后）vs b（之前）<br>key 改变，不能复用，跳出第一轮遍历<br>此时 <code>lastPlacedIndex === 0;</code><br>&#x3D;&#x3D;&#x3D;第一轮遍历结束&#x3D;&#x3D;&#x3D;</p>
+<p>&#x3D;&#x3D;&#x3D;第二轮遍历开始&#x3D;&#x3D;&#x3D;<br><code>newChildren === cdb</code>，没用完，不需要执行删除旧节点<br><code>oldFiber === bcd</code>，没用完，不需要执行插入新节点</p>
+<p>将剩余 oldFiber（bcd）保存为 map</p>
+<p>&#x2F;&#x2F; 当前 oldFiber：bcd<br>&#x2F;&#x2F; 当前 newChildren：cdb</p>
+<p>继续遍历剩余 newChildren</p>
+<p><code>key === c</code> 在 oldFiber 中存在<br><code>const oldIndex = c（之前）.index;</code><br>此时 <code>oldIndex === 2;</code> &#x2F;&#x2F; 之前节点为 abcd，所以 c.index &#x3D;&#x3D;&#x3D; 2<br>比较 oldIndex 与 lastPlacedIndex;</p>
+<p>如果 <code>oldIndex &gt;= lastPlacedIndex</code> 代表该可复用节点不需要移动<br>并将 <code>lastPlacedIndex = oldIndex;</code><br>如果 <code>oldIndex &lt; lastplacedIndex</code> 该可复用节点之前插入的位置索引小于这次更新需要插入的位置索引，代表该节点需要向右移动</p>
+<p>在例子中，<code>oldIndex 2 &gt; lastPlacedIndex 0</code>，<br>则 <code>lastPlacedIndex = 2;</code><br>c 节点位置不变</p>
+<p>继续遍历剩余 newChildren</p>
+<p>&#x2F;&#x2F; 当前 oldFiber：bd<br>&#x2F;&#x2F; 当前 newChildren：db</p>
+<p><code>key === d</code> 在 oldFiber 中存在<br><code>const oldIndex = d（之前）.index;</code><br><code>oldIndex 3 &gt; lastPlacedIndex 2</code> &#x2F;&#x2F; 之前节点为 abcd，所以 d.index &#x3D;&#x3D;&#x3D; 3<br>则 <code>lastPlacedIndex = 3;</code><br>d 节点位置不变</p>
+<p>继续遍历剩余 newChildren</p>
+<p>&#x2F;&#x2F; 当前 oldFiber：b<br>&#x2F;&#x2F; 当前 newChildren：b</p>
+<p><code>key === b</code> 在 oldFiber 中存在<br><code>const oldIndex = b（之前）.index;</code><br><code>oldIndex 1 &lt; lastPlacedIndex 3</code> &#x2F;&#x2F; 之前节点为 abcd，所以 b.index &#x3D;&#x3D;&#x3D; 1<br>则 b 节点需要向右移动<br>&#x3D;&#x3D;&#x3D;第二轮遍历结束&#x3D;&#x3D;&#x3D;</p>
+<p>最终 acd 3 个节点都没有移动，b 节点被标记为移动</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2021/07/13/JSDoc-remark/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/13/JSDoc-remark/" class="post-title-link" itemprop="url">JSDoc remark</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-07-13 15:18:13" itemprop="dateCreated datePublished" datetime="2021-07-13T15:18:13+08:00">2021-07-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Class-in-ES2015"><a href="#Class-in-ES2015" class="headerlink" title="Class in ES2015"></a>Class in ES2015</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Class representing a point.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Point</span> &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Create a point.</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">x</span> - The x value.</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">y</span> - The y value.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">x, y</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Get the x value.</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span> &#123;<span class="type">number</span>&#125; The x value.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="title function_">getX</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Convert a string containing two comma-separated number into a point.</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> &#123;<span class="type">string</span>&#125; <span class="variable">str</span> - The string containing two comma-separated number.</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span> &#123;<span class="type">Point</span>&#125; A point object.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">fromStringStr</span>(<span class="params">str</span>) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="extends"><a href="#extends" class="headerlink" title="extends"></a>extends</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Class representing a point.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@extends</span> <span class="variable">Point</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dot</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Point</span> &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Create a dot.</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">x</span> - The x value.</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">y</span> - The y value.</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">width</span> - The width of the dot.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">x, y, width</span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(x, y)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Get the width of the dot.</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span> &#123;<span class="type">number</span>&#125; The dot&#x27;s width.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="title function_">getWidth</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="abstract"><a href="#abstract" class="headerlink" title="@abstract"></a>@abstract</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Foo.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@constructor</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Foo</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Check if is solid.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@abstract</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">boolean</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="title class_">Foo</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">isSolid</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;Must be implemented by suclass.&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Bar.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@constructor</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@arguments</span> <span class="variable">Foo</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Bar</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Check if is solid.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">boolean</span>&#125; Always return false.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="title class_">Bar</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">isSolid</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="assets"><a href="#assets" class="headerlink" title="@assets"></a>@assets</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@constructor</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@assets</span> <span class="variable">private</span></span></span><br><span class="line"><span class="comment">   * <span class="doctag">@type</span> &#123;<span class="type">number</span>&#125;</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">let</span> foo = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@assets</span> <span class="variable">protected</span></span></span><br><span class="line"><span class="comment">   * <span class="doctag">@type</span> &#123;<span class="type">string</span>&#125;</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">bar</span> = <span class="string">&#x27;1&#x27;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@assets</span> <span class="variable">package</span></span></span><br><span class="line"><span class="comment">   * <span class="doctag">@type</span> &#123;<span class="type">string</span>&#125;</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">barz</span> = <span class="string">&#x27;2&#x27;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@assets</span> <span class="variable">public</span></span></span><br><span class="line"><span class="comment">   * <span class="doctag">@type</span> &#123;<span class="type">string</span>&#125;</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">barm</span> = <span class="string">&#x27;3&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="author"><a href="#author" class="headerlink" title="@author"></a>@author</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Edward &lt;wang.huiyang<span class="doctag">@outlook</span>.com&gt;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">MyClass</span>(<span class="params"></span>) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="callback"><a href="#callback" class="headerlink" title="@callback"></a>@callback</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@class</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Foo</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Send a request.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">requestCallback</span>&#125; <span class="variable">cb</span> - The callback than handles the response.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="title class_">Foo</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">send</span> = <span class="keyword">function</span> (<span class="params">cb</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Callback</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@callback</span> <span class="variable">requestCallback</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">responseCode</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">string</span>&#125; <span class="variable">responseMessage</span></span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="event"><a href="#event" class="headerlink" title="@event"></a>@event</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@constructor</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Foo</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Do some test.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@fires</span> Foo#test</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="title class_">Foo</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">test</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Foo test.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@event</span> Foo#test</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@type</span> &#123;<span class="type">object</span>&#125;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@property</span> &#123;<span class="type">boolean</span>&#125; <span class="variable">isPass</span> - Check if is pass.</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -855,153 +1035,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2021/01/13/useMemo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/13/useMemo/" class="post-title-link" itemprop="url">useMemo</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-01-13 14:10:15" itemprop="dateCreated datePublished" datetime="2021-01-13T14:10:15+08:00">2021-01-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="useMemo"><a href="#useMemo" class="headerlink" title="useMemo"></a>useMemo</h3><p>useMemo 是拿来保持一个对象引用不变的。useMemo 和 useCallback 都是 React 提供来做性能优化的。比起 classes， Hooks 给了开发者更高的灵活度和自由，但是对开发者要求也更高了，因为 Hooks 使用不恰当很容易导致性能问题。</p>
-<p>假设有个 component，在 dataConfig 变化的时候重新去 fetchData：</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">Child</span></span><br><span class="line">  fetchData=&#123;<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// fetch data</span></span><br><span class="line">  &#125;&#125;</span><br><span class="line">  dataConfig=&#123;&#123; <span class="attr">id</span>: <span class="title function_">getId</span>(queryId) &#125;&#125;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
-
-<p>如果是个 Class Component，会这么写：</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Child</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span>&lt;<span class="title class_">Props</span>&gt; &#123;</span><br><span class="line">  <span class="title function_">componentWillReceiveProps</span>(<span class="params">nextProps: Props</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nextProps.<span class="property">dataConfig</span> !== <span class="variable language_">this</span>.<span class="property">props</span>.<span class="property">dataConfig</span>) &#123;</span><br><span class="line">      nextProps.<span class="title function_">fetchData</span>(nextProps.<span class="property">dataConfig</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用 Hooks 后长这样：</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">Child</span> = (<span class="params">&#123; fetchData, dataConfig &#125;: Props</span>) =&gt; &#123;</span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">fetchData</span>(dataConfig)</span><br><span class="line">  &#125;, [fetchData, dataConfig])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用 Class Component 时我们需要手动管理依赖，但是使用 Hooks 时会带来副作用：React 使用的是<code>Object.is()</code>，如果<code>fetchData</code>的 reference 变了，也会触发 <code>useEffect</code>。<br>虽然逻辑上 React 的处理是合理的，但是还是需要手动去解决它导致的性能问题：官方提供了 useCallback 这个 hooks，用于解决函数引用问题。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/13/useMemo/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2021/01/12/Waves-svg/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/12/Waves-svg/" class="post-title-link" itemprop="url">Waves svg</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-01-12 16:37:44" itemprop="dateCreated datePublished" datetime="2021-01-12T16:37:44+08:00">2021-01-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="/svgs/waves.svg" alt="Waves"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1073,7 +1106,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">192</span>
+          <span class="site-state-item-count">194</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1086,7 +1119,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-count">59</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

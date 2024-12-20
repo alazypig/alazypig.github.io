@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">56</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">59</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">192</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">194</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,138 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/07/14/%E8%A3%85%E9%A5%B0%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/14/%E8%A3%85%E9%A5%B0%E5%99%A8/" class="post-title-link" itemprop="url">装饰器</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-07-14 22:47:42" itemprop="dateCreated datePublished" datetime="2019-07-14T22:47:42+08:00">2019-07-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 为dom元素添加事件</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type"></span>&#125; <span class="variable">dom</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">*</span>&#125; <span class="variable">type</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">*</span>&#125; <span class="variable">fn</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">addEvent</span>(<span class="params">dom, type, fn</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (dom.<span class="property">addEventListener</span>) &#123;</span><br><span class="line">    dom.<span class="title function_">addEventListener</span>(type, fn, <span class="literal">false</span>)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (dom.<span class="property">attachEvent</span>) &#123;</span><br><span class="line">    dom.<span class="title function_">attachEvent</span>(<span class="string">&#x27;on&#x27;</span> + type, fn)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    dom[<span class="string">&#x27;on&#x27;</span> + type] = fn</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 装饰已有对象</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">*</span>&#125; <span class="variable">id</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">*</span>&#125; <span class="variable">fn</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">decorator</span>(<span class="params">id, fn</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> obj = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(id)</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> id.<span class="property">onclick</span> === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> oldFn = id.<span class="property">onclick</span></span><br><span class="line">    id.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">      <span class="title function_">oldFn</span>()</span><br><span class="line">      <span class="title function_">fn</span>()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    obj.<span class="property">onclick</span> = fn</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="title class_">Observer</span> = (<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> _message = &#123;&#125;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">regist</span>: <span class="keyword">function</span> (<span class="params">type, fn</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> _message[type] === <span class="string">&#x27;undefined&#x27;</span>) &#123;</span><br><span class="line">        _message[type] = [fn]</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        _message[type].<span class="title function_">push</span>(fn)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">fire</span>: <span class="keyword">function</span> (<span class="params">type, args</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!_message[type]) &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">let</span> events = &#123;</span><br><span class="line">        type,</span><br><span class="line">        <span class="attr">args</span>: args || &#123;&#125;,</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, len = _message[type].<span class="property">length</span>; i &lt; len; i++) &#123;</span><br><span class="line">        _message[type][i].<span class="title function_">call</span>(<span class="variable language_">this</span>, events)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">remove</span>: <span class="keyword">function</span> (<span class="params">type, fn</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (_message[type] <span class="keyword">instanceof</span> <span class="title class_">Array</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = _message[type].<span class="property">length</span> - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">          _message[type][i] === fn &amp;&amp; _message[type].<span class="title function_">splice</span>(i, <span class="number">1</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="title class_">Observer</span>.<span class="title function_">regist</span>(<span class="string">&#x27;test&#x27;</span>, <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">  <span class="comment">// register</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">type</span>, e.<span class="property">args</span>.<span class="property">msg</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="title class_">Observer</span>.<span class="title function_">fire</span>(<span class="string">&#x27;test&#x27;</span>, &#123; <span class="attr">msg</span>: <span class="string">&#x27;this is some test message&#x27;</span> &#125;) <span class="comment">// send</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/07/12/%E6%83%B0%E6%80%A7%E5%8D%95%E4%BE%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/12/%E6%83%B0%E6%80%A7%E5%8D%95%E4%BE%8B/" class="post-title-link" itemprop="url">惰性单例</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-07-12 22:21:08" itemprop="dateCreated datePublished" datetime="2019-07-12T22:21:08+08:00">2019-07-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="惰性单例"><a href="#惰性单例" class="headerlink" title="惰性单例"></a>惰性单例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="title class_">LazySingle</span> = (<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> instance = <span class="literal">null</span></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">Single</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="title class_">Method</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;public method&#x27;</span>)</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="title class_">Prototype</span>: <span class="string">&#x27;some message&#x27;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!instance) instance = <span class="title class_">Single</span>()</span><br><span class="line">    <span class="keyword">return</span> instance</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="comment">// for test</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">LazySingle</span>().<span class="property">Prototype</span>)</span><br><span class="line"><span class="title class_">LazySingle</span>().<span class="title class_">Method</span>()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -845,143 +977,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/05/21/6-006-7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/05/21/6-006-7/" class="post-title-link" itemprop="url">6.006 - 7</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-05-21 16:58:51" itemprop="dateCreated datePublished" datetime="2019-05-21T16:58:51+08:00">2019-05-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Hash-Table-Hashing-with-Chaining"><a href="#Hash-Table-Hashing-with-Chaining" class="headerlink" title="Hash Table - Hashing with Chaining"></a>Hash Table - Hashing with Chaining</h3><p>Incredibly, the <code>Array.prototype.fill</code> will fill each item with the same Object.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">value</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">next</span> = <span class="literal">null</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">value</span> = value</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Hash_Table</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">size = <span class="number">16</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">size</span> = size</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">data</span> = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="variable language_">this</span>.<span class="property">size</span>)</span><br><span class="line">    <span class="comment">// this.data.fill(&#123; next: null &#125;);</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="variable language_">this</span>.<span class="property">size</span>; i++) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">data</span>[i] = &#123; <span class="attr">next</span>: <span class="literal">null</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">_hash</span>(<span class="params">string</span>) &#123;</span><br><span class="line">    <span class="comment">// DJB hash</span></span><br><span class="line">    <span class="keyword">let</span> hash = <span class="number">5381</span></span><br><span class="line">    string</span><br><span class="line">      .<span class="title function_">toString</span>()</span><br><span class="line">      .<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">      .<span class="title function_">map</span>(<span class="function">(<span class="params">i</span>) =&gt;</span> (hash = (hash &lt;&lt; <span class="number">5</span>) + hash + i.<span class="title function_">charCodeAt</span>(<span class="number">0</span>)))</span><br><span class="line">    <span class="keyword">return</span> hash</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">insert</span>(<span class="params">key, value</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> pointer = <span class="variable language_">this</span>.<span class="property">data</span>[<span class="variable language_">this</span>.<span class="title function_">_hash</span>(key) % <span class="variable language_">this</span>.<span class="property">size</span>]</span><br><span class="line">    <span class="keyword">if</span> (!pointer.<span class="property">next</span>) &#123;</span><br><span class="line">      pointer.<span class="property">next</span> = <span class="keyword">new</span> <span class="title class_">Node</span>(value)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">while</span> (pointer.<span class="property">next</span>) &#123;</span><br><span class="line">        pointer = pointer.<span class="property">next</span></span><br><span class="line">        <span class="keyword">if</span> (pointer.<span class="property">value</span> === value) <span class="keyword">return</span></span><br><span class="line">      &#125;</span><br><span class="line">      pointer.<span class="property">next</span> = <span class="keyword">new</span> <span class="title class_">Node</span>(value)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">get</span>(<span class="params">key</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> pointer = <span class="variable language_">this</span>.<span class="property">data</span>[<span class="variable language_">this</span>.<span class="title function_">_hash</span>(key) % <span class="variable language_">this</span>.<span class="property">size</span>],</span><br><span class="line">      result = []</span><br><span class="line">    <span class="keyword">if</span> (!pointer.<span class="property">next</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&quot;Doesn&#x27;t exist.&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">do</span> &#123;</span><br><span class="line">        pointer = pointer.<span class="property">next</span></span><br><span class="line">        result.<span class="title function_">push</span>(pointer.<span class="property">value</span>)</span><br><span class="line">      &#125; <span class="keyword">while</span> (pointer.<span class="property">next</span>)</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> result</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">delete</span>(<span class="params">key</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">data</span>[<span class="variable language_">this</span>.<span class="title function_">_hash</span>(key) % <span class="variable language_">this</span>.<span class="property">size</span>] = &#123; <span class="attr">next</span>: <span class="literal">null</span> &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> hash = <span class="keyword">new</span> <span class="title class_">Hash</span>_Table()</span><br><span class="line">hash.<span class="title function_">insert</span>(<span class="string">&#x27;test&#x27;</span>, <span class="number">3</span>)</span><br><span class="line">hash.<span class="title function_">insert</span>(<span class="string">&#x27;test&#x27;</span>, <span class="number">5</span>)</span><br><span class="line">hash.<span class="title function_">insert</span>(<span class="string">&#x27;test&#x27;</span>, <span class="number">5</span>)</span><br><span class="line">hash.<span class="title function_">insert</span>(<span class="string">&#x27;test&#x27;</span>, <span class="number">6</span>)</span><br><span class="line">hash.<span class="title function_">insert</span>(<span class="number">12</span>, <span class="number">44</span>)</span><br><span class="line">hash.<span class="title function_">insert</span>(<span class="number">11</span>, <span class="number">3</span>)</span><br><span class="line">hash.<span class="title function_">insert</span>(<span class="number">10</span>, <span class="number">3</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(hash.<span class="title function_">get</span>(<span class="string">&#x27;test&#x27;</span>))</span><br><span class="line">hash.<span class="title function_">delete</span>(<span class="number">12</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(hash.<span class="title function_">get</span>(<span class="number">12</span>))</span><br></pre></td></tr></table></figure>
-
-<p>result:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Array(3) [3, 5, 6]</span><br><span class="line">Error: Doesn&#x27;t exist.</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/05/21/6-006-6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/05/21/6-006-6/" class="post-title-link" itemprop="url">6.006 - 6</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-05-21 16:14:12" itemprop="dateCreated datePublished" datetime="2019-05-21T16:14:12+08:00">2019-05-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Simplify-Hash-Table"><a href="#Simplify-Hash-Table" class="headerlink" title="Simplify Hash Table"></a>Simplify Hash Table</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">value</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">next</span> = <span class="literal">null</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">value</span> = value</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Hash_Table</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">size</span> = <span class="number">1024</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">data</span> = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="variable language_">this</span>.<span class="property">size</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">_hash</span>(<span class="params">string</span>) &#123;</span><br><span class="line">    <span class="comment">// DJB hash</span></span><br><span class="line">    <span class="keyword">let</span> hash = <span class="number">5381</span></span><br><span class="line">    string</span><br><span class="line">      .<span class="title function_">toString</span>()</span><br><span class="line">      .<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">      .<span class="title function_">map</span>(<span class="function">(<span class="params">i</span>) =&gt;</span> (hash = (hash &lt;&lt; <span class="number">5</span>) + hash + i.<span class="title function_">charCodeAt</span>(<span class="number">0</span>)))</span><br><span class="line">    <span class="keyword">return</span> hash</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">insert</span>(<span class="params">key, value</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">data</span>[<span class="variable language_">this</span>.<span class="title function_">_hash</span>(key) % <span class="variable language_">this</span>.<span class="property">size</span>] = value</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">get</span>(<span class="params">key</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> value = <span class="variable language_">this</span>.<span class="property">data</span>[<span class="variable language_">this</span>.<span class="title function_">_hash</span>(key) % <span class="variable language_">this</span>.<span class="property">size</span>]</span><br><span class="line">    <span class="keyword">return</span> value === <span class="literal">undefined</span> ? <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&quot;Doesn&#x27;t exist.&quot;</span>) : value</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">delete</span>(<span class="params">key</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">data</span>[<span class="variable language_">this</span>.<span class="title function_">_hash</span>(key) % <span class="variable language_">this</span>.<span class="property">size</span>] = <span class="literal">undefined</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> hash = <span class="keyword">new</span> <span class="title class_">Hash</span>_Table()</span><br><span class="line">hash.<span class="title function_">insert</span>(<span class="string">&#x27;test&#x27;</span>, <span class="number">3</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(hash.<span class="title function_">get</span>(<span class="string">&#x27;test&#x27;</span>))</span><br><span class="line">hash.<span class="title function_">delete</span>(<span class="string">&#x27;test&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(hash.<span class="title function_">get</span>(<span class="string">&#x27;test&#x27;</span>))</span><br><span class="line">hash.<span class="title function_">insert</span>(<span class="number">12</span>, <span class="number">44</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(hash.<span class="title function_">get</span>(<span class="number">12</span>))</span><br></pre></td></tr></table></figure>
-
-<p>result:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">Error: Doesn&#x27;t exist.</span><br><span class="line">44</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1053,7 +1048,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">192</span>
+          <span class="site-state-item-count">194</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1066,7 +1061,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-count">59</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
