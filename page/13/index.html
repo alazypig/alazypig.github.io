@@ -28,7 +28,7 @@
 <meta property="og:description" content="Nothing to describe.">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Edward">
-<meta property="article:tag" content="Blog, play, Technology, BitCoin, IDCard, Frontend, React">
+<meta property="article:tag" content="Blog, play, Technology, BitCoin, Frontend, React">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://alazypig.github.io/page/13/">
@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">59</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">60</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">194</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">195</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,73 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/05/14/6-006-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/14/6-006-1/" class="post-title-link" itemprop="url">6.006 - 1</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-05-14 21:14:16" itemprop="dateCreated datePublished" datetime="2019-05-14T21:14:16+08:00">2019-05-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="find-the-peak"><a href="#find-the-peak" class="headerlink" title="find the peak."></a>find the peak.</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Find the peek 1D</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">Array&lt;number&gt;</span>&#125; arr arr</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; i the index to start</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; j the index to end</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns</span> &#123;<span class="type">number</span>&#125; the peak</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> <span class="title function_">findThePeak</span> = (<span class="params">arr, i, j</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> current = <span class="built_in">parseInt</span>((i + j) / <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (arr[current] &lt; arr[current + <span class="number">1</span>]) <span class="keyword">return</span> <span class="title function_">findThePeak</span>(arr, current, j)</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (arr[current] &lt; arr[current - <span class="number">1</span>]) <span class="keyword">return</span> <span class="title function_">findThePeak</span>(arr, i, current)</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">return</span> arr[current]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Find the peak 2D</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">Array&lt;Array&lt;number&gt;&gt;</span>&#125; arr the Number[][] array</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; start start row</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; end end row</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns</span> &#123;<span class="type">number</span>&#125; the peak of the array</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> <span class="title function_">findThePeak2</span> = (<span class="params">arr, start, end</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> current = <span class="built_in">parseInt</span>((start + end) / <span class="number">2</span>)</span><br><span class="line">  <span class="keyword">let</span> rowMax = <span class="title function_">findThePeak</span>(arr[current], <span class="number">0</span>, arr[current].<span class="property">length</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// get the index of column</span></span><br><span class="line">  <span class="comment">// let i = arr[current].indexOf(rowMax)</span></span><br><span class="line">  <span class="keyword">let</span> i = arr[current]</span><br><span class="line">    .<span class="title function_">map</span>(<span class="function">(<span class="params">i, index</span>) =&gt;</span> i === rowMax &amp;&amp; index)</span><br><span class="line">    .<span class="title function_">filter</span>(<span class="function">(<span class="params">i</span>) =&gt;</span> i !== <span class="literal">false</span>)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (current - <span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; arr[current][i] &lt; arr[current - <span class="number">1</span>][i]) &#123;</span><br><span class="line">    <span class="comment">// check the left part</span></span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">findThePeak2</span>(arr, start, current)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (current &lt; end - <span class="number">1</span> &amp;&amp; arr[current][i] &lt; arr[current + <span class="number">1</span>][i]) &#123;</span><br><span class="line">    <span class="comment">// check the right part</span></span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">findThePeak2</span>(arr, current, end)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> rowMax</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line"><span class="keyword">let</span> arr2 = [</span><br><span class="line">  [<span class="number">6</span>, <span class="number">3</span>, <span class="number">8</span>],</span><br><span class="line">  [<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>],</span><br><span class="line">  [<span class="number">4</span>, <span class="number">6</span>, <span class="number">1</span>],</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">findThePeak</span>(arr, <span class="number">0</span>, arr.<span class="property">length</span>))</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">findThePeak2</span>(arr2, <span class="number">0</span>, arr2.<span class="property">length</span>))</span><br></pre></td></tr></table></figure>
+
+<p>result:<br><code>6</code> <code>8</code></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -978,75 +1045,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/04/11/%E7%AE%80%E9%99%8BVDOM/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/04/11/%E7%AE%80%E9%99%8BVDOM/" class="post-title-link" itemprop="url">简陋VDOM</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-04-11 21:33:06" itemprop="dateCreated datePublished" datetime="2019-04-11T21:33:06+08:00">2019-04-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="一个简陋的-VDOM"><a href="#一个简陋的-VDOM" class="headerlink" title="一个简陋的 VDOM"></a>一个简陋的 VDOM</h3><p>希望以后会慢慢完善吧…</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> data = &#123;</span><br><span class="line">  <span class="attr">tag</span>: <span class="string">&#x27;div&#x27;</span>,</span><br><span class="line">  <span class="attr">children</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">tag</span>: <span class="string">&#x27;span&#x27;</span>,</span><br><span class="line">      <span class="attr">children</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">tag</span>: <span class="string">&#x27;#text&#x27;</span>,</span><br><span class="line">          <span class="attr">content</span>: <span class="string">&#x27;hello world&#x27;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">tag</span>: <span class="string">&#x27;p&#x27;</span>,</span><br><span class="line">      <span class="attr">children</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">tag</span>: <span class="string">&#x27;#text&#x27;</span>,</span><br><span class="line">          <span class="attr">content</span>: <span class="string">&#x27;This is a paragraph!&#x27;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">tag</span>: <span class="string">&#x27;h1&#x27;</span>,</span><br><span class="line">          <span class="attr">children</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="attr">tag</span>: <span class="string">&#x27;#text&#x27;</span>,</span><br><span class="line">              <span class="attr">content</span>: <span class="string">&#x27;This is a H1 tag&#x27;</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">          ],</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">tag</span>: <span class="string">&#x27;h6&#x27;</span>,</span><br><span class="line">          <span class="attr">children</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="attr">tag</span>: <span class="string">&#x27;#text&#x27;</span>,</span><br><span class="line">              <span class="attr">content</span>: <span class="string">&quot;and I&#x27;m h6&quot;</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">          ],</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">VDOM</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">data</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">tag</span> = data.<span class="property">tag</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">children</span> = data.<span class="property">children</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">content</span> = data.<span class="property">content</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">render</span>(<span class="params">data</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> _this = <span class="keyword">new</span> <span class="title function_">VDOM</span>(data)</span><br><span class="line">    <span class="keyword">if</span> (_this.<span class="property">tag</span> === <span class="string">&#x27;#text&#x27;</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="variable language_">document</span>.<span class="title function_">createTextNode</span>(_this.<span class="property">content</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> node = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(_this.<span class="property">tag</span>)</span><br><span class="line">    _this.<span class="property">children</span>.<span class="title function_">map</span>(<span class="function">(<span class="params">child</span>) =&gt;</span> node.<span class="title function_">appendChild</span>(<span class="variable constant_">VDOM</span>.<span class="title function_">render</span>(child)))</span><br><span class="line">    <span class="keyword">return</span> node</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="title function_">diff</span> = (<span class="params">root, oldV, newV, current = <span class="number">0</span></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (!oldV) root.<span class="title function_">appendChild</span>(newV)</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (!newV) root.<span class="title function_">removeChild</span>(root.<span class="property">childNodes</span>[current])</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (newV.<span class="property">tag</span> !== oldV.<span class="property">tag</span> || newV.<span class="property">content</span> !== oldV.<span class="property">content</span>)</span><br><span class="line">    root.<span class="title function_">replaceChild</span>(<span class="keyword">new</span> <span class="title function_">VDOM</span>(newV).<span class="title function_">render</span>(), root.<span class="property">childNodes</span>[current])</span><br><span class="line">  <span class="comment">// 递归判断</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; newV.<span class="property">children</span>.<span class="property">length</span> || i &lt; oldV.<span class="property">children</span>.<span class="property">length</span>; i++)</span><br><span class="line">      <span class="title function_">diff</span>(root.<span class="property">childNodes</span>[i], oldV.<span class="property">children</span>[i], newV.<span class="property">children</span>[i], i)</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#root&#x27;</span>).<span class="title function_">appendChild</span>(<span class="variable constant_">VDOM</span>.<span class="title function_">render</span>(data))</span><br></pre></td></tr></table></figure>
-
-<p>结构为:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>hello world<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">      This is a paragraph!</span><br><span class="line">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>This is a H1 tag<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h6</span>&gt;</span>and I&#x27;m h6<span class="tag">&lt;/<span class="name">h6</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1118,7 +1116,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">194</span>
+          <span class="site-state-item-count">195</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1131,7 +1129,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -1166,7 +1164,7 @@
 <div class="copyright">
   
   &copy; 2016 – 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-bug"></i>
   </span>

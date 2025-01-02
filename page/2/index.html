@@ -28,7 +28,7 @@
 <meta property="og:description" content="Nothing to describe.">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Edward">
-<meta property="article:tag" content="Blog, play, Technology, BitCoin, IDCard, Frontend, React">
+<meta property="article:tag" content="Blog, play, Technology, BitCoin, Frontend, React">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://alazypig.github.io/page/2/">
@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">59</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">60</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">194</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">195</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,83 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2024/10/18/Fix-ERR-OSSL-EVP-UNSUPPORTED-In-React-Native/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/10/18/Fix-ERR-OSSL-EVP-UNSUPPORTED-In-React-Native/" class="post-title-link" itemprop="url">Fix ERR_OSSL_EVP_UNSUPPORTED In React Native</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-10-18 14:29:57 / Modified: 14:36:06" itemprop="dateCreated datePublished" datetime="2024-10-18T14:29:57+08:00">2024-10-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React-Native/" itemprop="url" rel="index"><span itemprop="name">React Native</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Why-is-this-error-occurring"><a href="#Why-is-this-error-occurring" class="headerlink" title="Why is this error occurring?"></a>Why is this error occurring?</h1><p>The ERR_OSSL_EVP_UNSUPPORTED error in a React JS application typically arises due to an underlying issue with the version of Node.js and OpenSSL being used. This error is commonly encountered when certain cryptographic algorithms or keys are not supported by the OpenSSL version bundled with the Node.js installation.</p>
+<h1 id="How-can-I-fix-this-error"><a href="#How-can-I-fix-this-error" class="headerlink" title="How can I fix this error?"></a>How can I fix this error?</h1><p>Node.js 17 has a new option called –openssl-legacy-provider. This option lets you go back to using the old way of doing things until you can update your code to work with the new rules.</p>
+<h2 id="package-json-file"><a href="#package-json-file" class="headerlink" title="package.json file"></a>package.json file</h2><figure class="highlight json"><figcaption><span>package.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node --openssl-legacy-provider index.js&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="set-environment-variable"><a href="#set-environment-variable" class="headerlink" title="set environment variable"></a>set environment variable</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> NODE_OPTIONS=--openssl-legacy-provider</span><br></pre></td></tr></table></figure>
+
+<h2 id="change-it-in-the-gradle-file"><a href="#change-it-in-the-gradle-file" class="headerlink" title="change it in the gradle file"></a>change it in the gradle file</h2><figure class="highlight gradle"><figcaption><span>build.gradle</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">project</span>.ext.react = [</span><br><span class="line">    nodeExecutableAndArgs: [<span class="string">&quot;node&quot;</span>, <span class="string">&quot;--openssl-legacy-provider&quot;</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h2 id="change-it-in-the-Xcode-build-settings"><a href="#change-it-in-the-Xcode-build-settings" class="headerlink" title="change it in the Xcode build settings"></a>change it in the Xcode build settings</h2><figure class="highlight plaintext"><figcaption><span>project.pbxproj</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">buildSettings = &#123;</span><br><span class="line">  NODE_OPTIONS = &quot;--openssl-legacy-provider&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="After-changes-try-running-the-application-again-Or-you-also-need-to-reinstall-the-dependencies"><a href="#After-changes-try-running-the-application-again-Or-you-also-need-to-reinstall-the-dependencies" class="headerlink" title="After changes, try running the application again. Or you also need to reinstall the dependencies."></a>After changes, try running the application again. Or you also need to reinstall the dependencies.</h1>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -934,97 +1011,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2024/07/15/React-Native-Text%E7%BB%84%E4%BB%B6%E4%B8%8Dwrap/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/07/15/React-Native-Text%E7%BB%84%E4%BB%B6%E4%B8%8Dwrap/" class="post-title-link" itemprop="url">React Native Text组件不wrap</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2024-07-15 08:50:44" itemprop="dateCreated datePublished" datetime="2024-07-15T08:50:44+08:00">2024-07-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-08-30 11:04:12" itemprop="dateModified" datetime="2024-08-30T11:04:12+08:00">2024-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/React-Native/" itemprop="url" rel="index"><span itemprop="name">React Native</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>如果 wrapp 的 flex-direction 为 row 的时候，Text 内部不自动 wrap。还是测试拿给我看，才发现某些机型会存在这种问题。</p>
-<p>开始以为是 Text 内部会根据<code>flexbox</code>而有不同的展现，但是翻阅官方文档：</p>
-<blockquote>
-<p>The <Text> element is unique relative to layout: everything inside is no longer using the Flexbox layout but using text layout. This means that elements inside of a <Text> are no longer rectangles, but wrap when they see the end of the line.</p>
-</blockquote>
-<p>Text 组件内部默认是 <code>wrap</code> 的，除非这一整个是一个超长的单词，否则就会在 white space 的时候自动 break 了。<br>如果给 wrapp 设置 wrap，那么整个 text 直接就 wrap 到下一行，icon 单独一行了。（这部分官方是有案例的，根据 Text 外部的 Container，wrap 也是不一样的）</p>
-<p>好嘛，到底是什么东西导致的？为什么 flex-direction: row 就给我炸了？</p>
-<p>原因: element 的宽度计算方式导致的</p>
-<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>官方的解释：每个 element 的 size 大致可以分为两种方式：</p>
-<ul>
-<li>content-driven</li>
-<li>parent-driven</li>
-</ul>
-<ol>
-<li>flex-direction: column 的时候，宽度首先由 content-driven，然后再由 parent-driven，高度直接由 content-driven，完美，一点问题没有。</li>
-<li>flex-direction: row 的时候：高度由 comtent-driven，宽度呢？那当然是 content-driven 啊！ … 不好意思，Text 无法计算自己的 width，why？因为 Text 是 autosize 的！（也有意外情况，如果你把 Text 给 absolute 起来，那么就可以计算了）。所以此时的 Text 的 width，是由 parent-driven，也就是整个 wrapper 的宽度了。</li>
-</ol>
-<p>解决方法也很简单，Text 上挂一个 flexShrink: 1，让它自己玩去吧。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1096,7 +1082,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">194</span>
+          <span class="site-state-item-count">195</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1109,7 +1095,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -1144,7 +1130,7 @@
 <div class="copyright">
   
   &copy; 2016 – 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-bug"></i>
   </span>

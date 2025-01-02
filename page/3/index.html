@@ -28,7 +28,7 @@
 <meta property="og:description" content="Nothing to describe.">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Edward">
-<meta property="article:tag" content="Blog, play, Technology, BitCoin, IDCard, Frontend, React">
+<meta property="article:tag" content="Blog, play, Technology, BitCoin, Frontend, React">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://alazypig.github.io/page/3/">
@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">59</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">60</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">194</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">195</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,97 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2024/07/15/React-Native-Text%E7%BB%84%E4%BB%B6%E4%B8%8Dwrap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/07/15/React-Native-Text%E7%BB%84%E4%BB%B6%E4%B8%8Dwrap/" class="post-title-link" itemprop="url">React Native Text组件不wrap</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-07-15 08:50:44" itemprop="dateCreated datePublished" datetime="2024-07-15T08:50:44+08:00">2024-07-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-08-30 11:04:12" itemprop="dateModified" datetime="2024-08-30T11:04:12+08:00">2024-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React-Native/" itemprop="url" rel="index"><span itemprop="name">React Native</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>如果 wrapp 的 flex-direction 为 row 的时候，Text 内部不自动 wrap。还是测试拿给我看，才发现某些机型会存在这种问题。</p>
+<p>开始以为是 Text 内部会根据<code>flexbox</code>而有不同的展现，但是翻阅官方文档：</p>
+<blockquote>
+<p>The <Text> element is unique relative to layout: everything inside is no longer using the Flexbox layout but using text layout. This means that elements inside of a <Text> are no longer rectangles, but wrap when they see the end of the line.</p>
+</blockquote>
+<p>Text 组件内部默认是 <code>wrap</code> 的，除非这一整个是一个超长的单词，否则就会在 white space 的时候自动 break 了。<br>如果给 wrapp 设置 wrap，那么整个 text 直接就 wrap 到下一行，icon 单独一行了。（这部分官方是有案例的，根据 Text 外部的 Container，wrap 也是不一样的）</p>
+<p>好嘛，到底是什么东西导致的？为什么 flex-direction: row 就给我炸了？</p>
+<p>原因: element 的宽度计算方式导致的</p>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>官方的解释：每个 element 的 size 大致可以分为两种方式：</p>
+<ul>
+<li>content-driven</li>
+<li>parent-driven</li>
+</ul>
+<ol>
+<li>flex-direction: column 的时候，宽度首先由 content-driven，然后再由 parent-driven，高度直接由 content-driven，完美，一点问题没有。</li>
+<li>flex-direction: row 的时候：高度由 comtent-driven，宽度呢？那当然是 content-driven 啊！ … 不好意思，Text 无法计算自己的 width，why？因为 Text 是 autosize 的！（也有意外情况，如果你把 Text 给 absolute 起来，那么就可以计算了）。所以此时的 Text 的 width，是由 parent-driven，也就是整个 wrapper 的宽度了。</li>
+</ol>
+<p>解决方法也很简单，Text 上挂一个 flexShrink: 1，让它自己玩去吧。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -931,71 +1022,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2022/02/10/%E4%B8%AD%E5%9B%BD%E8%AE%A1%E5%88%92%E7%94%9F%E8%82%B2%E5%8D%8F%E4%BC%9A2022%E5%B9%B4%E5%B7%A5%E4%BD%9C%E8%A6%81%E7%82%B9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/10/%E4%B8%AD%E5%9B%BD%E8%AE%A1%E5%88%92%E7%94%9F%E8%82%B2%E5%8D%8F%E4%BC%9A2022%E5%B9%B4%E5%B7%A5%E4%BD%9C%E8%A6%81%E7%82%B9/" class="post-title-link" itemprop="url">中国计划生育协会2022年工作要点</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-02-10 10:08:12" itemprop="dateCreated datePublished" datetime="2022-02-10T10:08:12+08:00">2022-02-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="2022-首个魔幻文件"><a href="#2022-首个魔幻文件" class="headerlink" title="2022 首个魔幻文件"></a>2022 首个魔幻文件</h3><p>日前，中国计划生育协会官网公布的《中国计划生育协会 2022 年工作要点》（以下简称《工作要点》）提到，2022 年，要实施生殖健康促进行动，重点解决青少年、育龄人群及其他特定人群生殖健康的突出问题，开展未婚人群人工流产干预专项行动，减少青少年意外怀孕和人工流产，提高群众生殖健康水平。<br>在新型婚育文化的建设上，上述《工作要点》称，要以“尊重生育的社会价值，提倡适龄婚育、优生优育，鼓励夫妻共担育儿责任，破除高价彩礼等陈规陋习”为重点，加强对青年婚恋观、家庭观引导，重塑多子女家庭养育文化，淡化教育焦虑，弘扬“孝”、“和”家庭价值观，推动构建积极正向的新型婚育文化。开展新型婚育文化建设项目试点，大力推广新宣传标语口号，倡导将新型婚育文化内容纳入村规民约，修订与中央《决定》精神不一致、不适应的内容。发挥“5.29 会员活动日”宣传品牌、文化社等作用，打造新环境宣传载体，注重运用网络和新媒体等青年群体喜爱的方式，在潜移默化中培育新型婚育观念。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1067,7 +1093,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">194</span>
+          <span class="site-state-item-count">195</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1080,7 +1106,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -1115,7 +1141,7 @@
 <div class="copyright">
   
   &copy; 2016 – 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-bug"></i>
   </span>
