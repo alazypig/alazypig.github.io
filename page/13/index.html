@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">60</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">61</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">195</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">196</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,73 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/05/15/6-006-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/15/6-006-2/" class="post-title-link" itemprop="url">6.006 - 2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-05-15 11:04:24" itemprop="dateCreated datePublished" datetime="2019-05-15T11:04:24+08:00">2019-05-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * sort array</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">Array&lt;number&gt;</span>&#125; <span class="variable">arr</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns</span> &#123;<span class="type">Array&lt;number&gt;</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> <span class="title function_">sort</span> = (<span class="params">arr</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>, len = arr.<span class="property">length</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> j = i</span><br><span class="line">    <span class="keyword">while</span> (arr[j] &lt; arr[j - <span class="number">1</span>]) &#123;</span><br><span class="line">      ;[arr[j], arr[j - <span class="number">1</span>]] = [arr[j - <span class="number">1</span>], arr[j]]</span><br><span class="line">      <span class="keyword">if</span> (j == <span class="number">1</span>) <span class="keyword">break</span></span><br><span class="line">      j--</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">5</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">sort</span>(arr))</span><br></pre></td></tr></table></figure>
+
+<p>result:<br><code>1 2 3 4 5 6</code></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -968,83 +1035,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/04/14/%E7%AD%89%E5%BC%8F%E5%85%AC%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/04/14/%E7%AD%89%E5%BC%8F%E5%85%AC%E7%90%86/" class="post-title-link" itemprop="url">等式公理</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-04-14 14:30:14" itemprop="dateCreated datePublished" datetime="2019-04-14T14:30:14+08:00">2019-04-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="公式-P-Q-R-P-Q-R"><a href="#公式-P-Q-R-P-Q-R" class="headerlink" title="公式: $$P{Q}R\ ({P}Q{R})$$"></a>公式: $$P{Q}R\ ({P}Q{R})$$</h3><p>P 和 R 都是一阶公式, 如果前提条件 P 在执行 Q 前成立, 则执行后得到满足条件 R 的状态<br>部分正确性断言: 如果 P 在 Q 执行前为真, 那么, 如果 Q 的执行终止,则终止在使 R 为真的某个状态<br>终止性断言:如果 P 在 Q 执行前为真, 那么 Q 将终止在使 R 为真的某个状态<br><strong>赋值公理: $$\vdash P_0 {x:&#x3D;f} P$$</strong></p>
-<h3 id="推理规则的表示"><a href="#推理规则的表示" class="headerlink" title="推理规则的表示"></a>推理规则的表示</h3><p>$$\frac{premise -&gt; f_0, f_1, …, f_n}{conclusion -&gt; f_0}$$</p>
-<h3 id="推理规则"><a href="#推理规则" class="headerlink" title="推理规则"></a>推理规则</h3><ul>
-<li>Rules of Consequence:<br>$$\frac{P{Q}R,\ R\rightarrow S}{P{Q}S}\ \ \ \ \ \frac{P{Q}R,\ S\rightarrow P}{S{Q}R}$$</li>
-<li>Rule of Composition:<br>$$\frac{P{Q_1}R_1,\ R_1{Q_2}R}{P{Q_1, Q_2}R}$$</li>
-<li>Rules of Iteration:<br>$$\frac{P\ &amp;\ B{S}P}{P\ {while\ B\ do\ S}\ \neg B \ &amp;\  P}$$</li>
-</ul>
-<h3 id="等式公理"><a href="#等式公理" class="headerlink" title="等式公理"></a>等式公理</h3><ul>
-<li>代换: $[N&#x2F;x]M$ 表示表示 M 中的自由变元 x 用 N 代换的结果, <strong>N 中的自由变元代换后不能成为约束变元</strong></li>
-<li>约束变元改名: $\lambda x:\sigma .M &#x3D; \lambda y:\sigma.[y&#x2F;x]M$ 例如:$\lambda x:\sigma.x + y &#x3D; \lambda z:\sigma .z+y$</li>
-<li>等价公理: 计算函数实际就是在函数中使用实在变元替换形式变元, $(\lambda x:\sigma.M)N &#x3D; [N&#x2F;x]M$</li>
-<li>同余性规则: 相等的函数作用于相等的变元产生相等的结果, $\frac{M_1&#x3D;M_2,\ N_1&#x3D;N_2}{M_1N_1&#x3D;M_2N_2}$</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1116,7 +1106,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">195</span>
+          <span class="site-state-item-count">196</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1129,7 +1119,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-count">61</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

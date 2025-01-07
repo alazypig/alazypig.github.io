@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"alazypig.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Boosting Flutter Performance with Frame-Based Rendering using keframeFlutter is known for its smooth UI performance, but complex animations or frequent rebuilds can sometimes lead to jank. Frame-based">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Boosting Flutter Performance with Frame-Based Rendering using">
+<meta property="og:url" content="http://alazypig.github.io/2025/01/07/Boosting-Flutter-Performance-with-Frame-Based-Rendering-using/index.html">
+<meta property="og:site_name" content="Live Note">
+<meta property="og:description" content="Boosting Flutter Performance with Frame-Based Rendering using keframeFlutter is known for its smooth UI performance, but complex animations or frequent rebuilds can sometimes lead to jank. Frame-based">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-01-07T09:06:00.000Z">
+<meta property="article:modified_time" content="2025-01-07T09:13:42.188Z">
+<meta property="article:author" content="Edward">
+<meta property="article:tag" content="Performance">
+<meta property="article:tag" content="Flutter">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://alazypig.github.io/2025/01/07/Boosting-Flutter-Performance-with-Frame-Based-Rendering-using/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Boosting Flutter Performance with Frame-Based Rendering using | Live Note</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Live Note</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Remain optimistic</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">61</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">26</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">196</span></a>
+
+  </li>
+        <li class="menu-item menu-item-photo">
+
+    <a href="/photo/" rel="section"><i class="fa fa-camera fa-fw"></i>photo</a>
+
+  </li>
+        <li class="menu-item menu-item-algorithm">
+
+    <a href="/algorithm/" rel="section"><i class="fa fa-code fa-fw"></i>algorithm</a>
+
+  </li>
+        <li class="menu-item menu-item-battery">
+
+    <a href="/battery/" rel="section"><i class="fa fa-battery-full fa-fw"></i>battery</a>
+
+  </li>
+        <li class="menu-item menu-item-frontend">
+
+    <a href="/frontend/" rel="section"><i class="fa fa-laptop fa-fw"></i>frontend</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-sticky-note fa-fw"></i>notes</a>
+
+  </li>
+        <li class="menu-item menu-item-stm32">
+
+    <a href="/stm32/" rel="section"><i class="fa fa-microchip fa-fw"></i>stm32</a>
+
+  </li>
+        <li class="menu-item menu-item-ziwei">
+
+    <a href="/ziwei/" rel="section"><i class="fa fa-yin-yang fa-fw"></i>ziwei</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+      
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2025/01/07/Boosting-Flutter-Performance-with-Frame-Based-Rendering-using/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Boosting Flutter Performance with Frame-Based Rendering using
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2025-01-07 17:06:00 / Modified: 17:13:42" itemprop="dateCreated datePublished" datetime="2025-01-07T17:06:00+08:00">2025-01-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flutter/" itemprop="url" rel="index"><span itemprop="name">Flutter</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Boosting-Flutter-Performance-with-Frame-Based-Rendering-using-keframe"><a href="#Boosting-Flutter-Performance-with-Frame-Based-Rendering-using-keframe" class="headerlink" title="Boosting Flutter Performance with Frame-Based Rendering using keframe"></a>Boosting Flutter Performance with Frame-Based Rendering using <code>keframe</code></h1><p>Flutter is known for its smooth UI performance, but complex animations or frequent rebuilds can sometimes lead to jank. Frame-based rendering, also known as keyframe animation, offers a powerful technique to optimize these scenarios. This article explores how to leverage frame-based rendering in Flutter using the <code>keframe</code> package, focusing on <code>FrameAnimation</code>, <code>FrameSeparateWidget</code>, and <code>SizeCacheWidget</code>.</p>
+<h2 id="What-is-Frame-Based-Rendering"><a href="#What-is-Frame-Based-Rendering" class="headerlink" title="What is Frame-Based Rendering?"></a>What is Frame-Based Rendering?</h2><p>Traditional rendering in Flutter often involves rebuilding widgets every time their properties change. While efficient in many cases, this can become a bottleneck when dealing with intricate animations or rapidly changing data.</p>
+<p>Frame-based rendering pre-calculates animation frames and stores them. During animation, the system displays these pre-rendered frames sequentially, minimizing constant rebuilds. This results in smoother animations and improved performance, especially on less powerful devices.</p>
+<span id="more"></span>
+
+<h2 id="Introducing-keframe"><a href="#Introducing-keframe" class="headerlink" title="Introducing keframe"></a>Introducing <code>keframe</code></h2><p>The <code>keframe</code> package simplifies frame-based rendering in Flutter. It provides widgets and utilities to define keyframes and animate between them efficiently.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">  keframe: ^<span class="number">2.0</span><span class="number">.6</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Core Components: <code>FrameAnimation</code>, <code>FrameSeparateWidget</code>, and <code>SizeCacheWidget</code></strong><br><code>keframe</code> provides three main components that work together:</p>
+<ul>
+<li><code>FrameAnimation</code>: The core widget that manages the animation timeline and displays the pre-rendered frames.</li>
+<li><code>FrameSeparateWidget</code>: This widget is crucial for separating the frame building process from the animation rendering. It ensures that frames are built only once and cached.</li>
+<li><code>SizeCacheWidget</code>: This widget caches the size of the child widget. This is important because layout calculations can be expensive, and caching the size prevents unnecessary re-layouts during animation.</li>
+</ul>
+<h2 id="Basic-Usage-with-All-Components"><a href="#Basic-Usage-with-All-Components" class="headerlink" title="Basic Usage with All Components"></a>Basic Usage with All Components</h2><p>Here’s an example demonstrating how to use all three components to animate a widget’s opacity and size:</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/material.dart&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:keframe/keframe.dart&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ComplexAnimation</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> ComplexAnimation(&#123;<span class="keyword">super</span>.key&#125;);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  State&lt;ComplexAnimation&gt; createState() =&gt; _ComplexAnimationState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_ComplexAnimationState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">ComplexAnimation</span>&gt; </span>&#123;</span><br><span class="line">  <span class="built_in">double</span> size = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">      appBar: AppBar(title: <span class="keyword">const</span> Text(<span class="string">&#x27;Complex Animation&#x27;</span>)),</span><br><span class="line">      body: Center(</span><br><span class="line">        child: GestureDetector(</span><br><span class="line">          onTap: () &#123;</span><br><span class="line">            setState(() &#123;</span><br><span class="line">              size = size == <span class="number">100</span> ? <span class="number">200</span> : <span class="number">100</span>;</span><br><span class="line">            &#125;);</span><br><span class="line">          &#125;,</span><br><span class="line">          child: FrameAnimation(</span><br><span class="line">            frameLen: <span class="number">2</span>,</span><br><span class="line">            duration: <span class="keyword">const</span> <span class="built_in">Duration</span>(milliseconds: <span class="number">500</span>),</span><br><span class="line">            curve: Curves.easeInOut,</span><br><span class="line">            frameBuilder: (context, frameIndex) &#123;</span><br><span class="line">              <span class="keyword">return</span> FrameSeparateWidget(</span><br><span class="line">                index: frameIndex,</span><br><span class="line">                builder: (context) &#123;</span><br><span class="line">                  <span class="keyword">return</span> SizeCacheWidget(</span><br><span class="line">                    child: Opacity(</span><br><span class="line">                      opacity: frameIndex == <span class="number">0</span> ? <span class="number">0.5</span> : <span class="number">1.0</span>,</span><br><span class="line">                      child: Container(</span><br><span class="line">                        width: size,</span><br><span class="line">                        height: size,</span><br><span class="line">                        color: Colors.blue,</span><br><span class="line">                      ),</span><br><span class="line">                    ),</span><br><span class="line">                  );</span><br><span class="line">                &#125;,</span><br><span class="line">              );</span><br><span class="line">            &#125;,</span><br><span class="line">          ),</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Key improvements in this example:</p>
+<ul>
+<li><code>FrameSeparateWidget</code> is used: This ensures the frame is built only once for each frame index.</li>
+<li><code>SizeCacheWidget</code> is used: This caches the size of the container, preventing unnecessary re-layouts.</li>
+<li>Combined opacity and size animation: Demonstrates animating multiple properties.</li>
+</ul>
+<h2 id="Explanation"><a href="#Explanation" class="headerlink" title="Explanation"></a>Explanation</h2><ol>
+<li>The <code>FrameAnimation</code> widget manages the animation timeline and calls the <code>frameBuilder</code> for each frame.</li>
+<li>The <code>FrameSeparateWidget</code> receives the <code>frameIndex</code> and uses it as a key to cache the built widget. This is the core of the frame-based rendering optimization.</li>
+<li>The <code>SizeCacheWidget</code> wraps the animated widget and caches its size, preventing unnecessary re-layouts.</li>
+</ol>
+<h2 id="Benefits-of-Using-keframe"><a href="#Benefits-of-Using-keframe" class="headerlink" title="Benefits of Using keframe"></a>Benefits of Using <code>keframe</code></h2><ul>
+<li>Improved Performance: By pre-rendering and caching frames and sizes, <code>keframe</code> significantly reduces the computational load during animation, leading to smoother performance, especially on lower-end devices and complex animations.</li>
+<li>Simplified Complex Animations: <code>keframe</code> provides a clean and concise way to define complex animations with multiple stages and properties.</li>
+<li>Reduced Jank: Frame-based rendering helps minimize jank, resulting in a more polished user experience.</li>
+</ul>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p><code>keframe</code>, with its <code>FrameAnimation</code>, <code>FrameSeparateWidget</code>, and <code>SizeCacheWidget</code> components, provides a powerful and efficient way to optimize Flutter applications, especially when dealing with complex animations. By using frame-based rendering, you can significantly improve performance and create smoother user experiences.</p>
+<h2 id="Further-Exploration"><a href="#Further-Exploration" class="headerlink" title="Further Exploration"></a>Further Exploration</h2><p><a target="_blank" rel="noopener" href="https://pub.dev/packages/keframe">keframe package on pub.dev</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Performance/" rel="tag"># Performance</a>
+              <a href="/tags/Flutter/" rel="tag"># Flutter</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/01/02/Flutter-3-27-1-unwanted-padding-bug/" rel="prev" title="Flutter 3.27.1 unwanted padding bug">
+      <i class="fa fa-chevron-left"></i> Flutter 3.27.1 unwanted padding bug
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Boosting-Flutter-Performance-with-Frame-Based-Rendering-using-keframe"><span class="nav-number">1.</span> <span class="nav-text">Boosting Flutter Performance with Frame-Based Rendering using keframe</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-Frame-Based-Rendering"><span class="nav-number">1.1.</span> <span class="nav-text">What is Frame-Based Rendering?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introducing-keframe"><span class="nav-number">1.2.</span> <span class="nav-text">Introducing keframe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Usage-with-All-Components"><span class="nav-number">1.3.</span> <span class="nav-text">Basic Usage with All Components</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Explanation"><span class="nav-number">1.4.</span> <span class="nav-text">Explanation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Benefits-of-Using-keframe"><span class="nav-number">1.5.</span> <span class="nav-text">Benefits of Using keframe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">1.6.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Further-Exploration"><span class="nav-number">1.7.</span> <span class="nav-text">Further Exploration</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Edward"
+      src="https://avatars.githubusercontent.com/u/22055633?v=4">
+  <p class="site-author-name" itemprop="name">Edward</p>
+  <div class="site-description" itemprop="description">Nothing to describe.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">196</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">61</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/alazypig" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;alazypig" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-bug"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Edward Wang</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
+<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
