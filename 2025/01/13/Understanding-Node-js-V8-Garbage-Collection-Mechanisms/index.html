@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"alazypig.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Node.js is built on Google’s V8 engine, and V8’s garbage collection mechanism is one of its core performance features. In this article, we’ll explore the three primary garbage collection algorithms us">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Understanding Node.js V8 Garbage Collection Mechanisms">
+<meta property="og:url" content="http://alazypig.github.io/2025/01/13/Understanding-Node-js-V8-Garbage-Collection-Mechanisms/index.html">
+<meta property="og:site_name" content="Live Note">
+<meta property="og:description" content="Node.js is built on Google’s V8 engine, and V8’s garbage collection mechanism is one of its core performance features. In this article, we’ll explore the three primary garbage collection algorithms us">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-01-13T08:32:57.000Z">
+<meta property="article:modified_time" content="2025-01-13T08:52:38.559Z">
+<meta property="article:author" content="Edward">
+<meta property="article:tag" content="Node.js">
+<meta property="article:tag" content="V8">
+<meta property="article:tag" content="Garbage Collection">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://alazypig.github.io/2025/01/13/Understanding-Node-js-V8-Garbage-Collection-Mechanisms/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Understanding Node.js V8 Garbage Collection Mechanisms | Live Note</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Live Note</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Remain optimistic</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">64</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">27</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">198</span></a>
+
+  </li>
+        <li class="menu-item menu-item-photo">
+
+    <a href="/photo/" rel="section"><i class="fa fa-camera fa-fw"></i>photo</a>
+
+  </li>
+        <li class="menu-item menu-item-algorithm">
+
+    <a href="/algorithm/" rel="section"><i class="fa fa-code fa-fw"></i>algorithm</a>
+
+  </li>
+        <li class="menu-item menu-item-battery">
+
+    <a href="/battery/" rel="section"><i class="fa fa-battery-full fa-fw"></i>battery</a>
+
+  </li>
+        <li class="menu-item menu-item-frontend">
+
+    <a href="/frontend/" rel="section"><i class="fa fa-laptop fa-fw"></i>frontend</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-sticky-note fa-fw"></i>notes</a>
+
+  </li>
+        <li class="menu-item menu-item-stm32">
+
+    <a href="/stm32/" rel="section"><i class="fa fa-microchip fa-fw"></i>stm32</a>
+
+  </li>
+        <li class="menu-item menu-item-ziwei">
+
+    <a href="/ziwei/" rel="section"><i class="fa fa-yin-yang fa-fw"></i>ziwei</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+      
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2025/01/13/Understanding-Node-js-V8-Garbage-Collection-Mechanisms/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Understanding Node.js V8 Garbage Collection Mechanisms
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2025-01-13 16:32:57 / Modified: 16:52:38" itemprop="dateCreated datePublished" datetime="2025-01-13T16:32:57+08:00">2025-01-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node-js/" itemprop="url" rel="index"><span itemprop="name">Node.js</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Node.js is built on Google’s V8 engine, and V8’s garbage collection mechanism is one of its core performance features. In this article, we’ll explore the three primary garbage collection algorithms used in V8: <code>Mark-Sweep</code>, <code>Mark-Compact</code>, and <code>Scavenge</code>, along with their working principles and application scenarios.</p>
+<h1 id="V8’s-Memory-Partition-Model"><a href="#V8’s-Memory-Partition-Model" class="headerlink" title="V8’s Memory Partition Model"></a>V8’s Memory Partition Model</h1><p>Before diving into garbage collection algorithms, we need to understand V8’s memory partition model. V8 divides memory into two main regions:</p>
+<h2 id="Young-Generation"><a href="#Young-Generation" class="headerlink" title="Young Generation"></a>Young Generation</h2><ul>
+<li>Contains objects with short lifespans.</li>
+<li>Typically small in size (e.g., a few MB).</li>
+<li>Uses the Scavenge algorithm for garbage collection.</li>
+</ul>
+<h2 id="Old-Generation"><a href="#Old-Generation" class="headerlink" title="Old Generation"></a>Old Generation</h2><ul>
+<li>Contains objects with longer lifespans.</li>
+<li>Typically larger in size (e.g., hundreds of MB).</li>
+<li>Uses the Mark-Sweep and Mark-Compact algorithms for garbage collection.</li>
+</ul>
+<span id="more"></span>
+
+<h1 id="Scavenge-Algorithm"><a href="#Scavenge-Algorithm" class="headerlink" title="Scavenge Algorithm"></a>Scavenge Algorithm</h1><p>The <code>Scavenge algorithm</code> is a highly efficient garbage collection method used for young generation memory. Its core idea is copy-and-swap.</p>
+<p><strong>How It Works</strong></p>
+<ol>
+<li><strong>Partitioning</strong>: The young generation is divided into two spaces: From-space and To-space.</li>
+<li><strong>Copying</strong>:<ul>
+<li>Active objects are copied from the From-space to the To-space.</li>
+<li>Garbage objects (unreferenced objects) are discarded.</li>
+</ul>
+</li>
+<li><strong>Swapping</strong>: After copying, the From-space and To-space swap roles.</li>
+</ol>
+<p><strong>Advantages</strong></p>
+<ul>
+<li>Efficient: Focuses only on active objects, skipping garbage objects.</li>
+<li>Fast allocation: Reduces fragmentation through partitioning.</li>
+</ul>
+<p><strong>Disadvantages</strong></p>
+<ul>
+<li>Wasted space: Half of the memory is reserved for the To-space.</li>
+<li>Unsuitable for large objects: Copying large objects increases overhead.</li>
+</ul>
+<h1 id="Mark-Sweep-Algorithm"><a href="#Mark-Sweep-Algorithm" class="headerlink" title="Mark-Sweep Algorithm"></a>Mark-Sweep Algorithm</h1><p>The <code>Mark-Sweep algorithm</code> is used for garbage collection in the old generation memory. Its core idea is mark-and-sweep.</p>
+<p><strong>How It Works</strong></p>
+<ol>
+<li><strong>Marking</strong>: Starting from root objects, all reachable objects are marked.</li>
+<li><strong>Sweeping</strong>: Unmarked objects are reclaimed.</li>
+</ol>
+<p><strong>Advantages</strong></p>
+<ul>
+<li>No extra space required: Unlike <code>Scavenge</code>, it doesn’t allocate additional memory.</li>
+<li>Efficient: Suitable for long-lived objects.</li>
+</ul>
+<p><strong>Disadvantages</strong></p>
+<ul>
+<li>Memory fragmentation: Cleared memory may become fragmented into small blocks.</li>
+</ul>
+<h1 id="Mark-Compact-Algorithm"><a href="#Mark-Compact-Algorithm" class="headerlink" title="Mark-Compact Algorithm"></a>Mark-Compact Algorithm</h1><p>To optimize the memory fragmentation issue of the <code>Mark-Sweep</code> algorithm, V8 uses the <code>Mark-Compact</code> algorithm, which focuses on <strong>mark-and-compact</strong>.</p>
+<p><strong>How It Works</strong></p>
+<ol>
+<li><strong>Marking</strong>: Same as the <code>Mark-Sweep</code> algorithm, marking all reachable objects.</li>
+<li><strong>Compacting</strong>: Moves all live objects to one end of the memory, freeing up contiguous space.</li>
+</ol>
+<p><strong>Advantages</strong></p>
+<ul>
+<li>Eliminates fragmentation: Achieves memory compactness by moving objects.</li>
+</ul>
+<p><strong>Disadvantages</strong></p>
+<ul>
+<li>Higher overhead: Moving objects requires additional computation.</li>
+</ul>
+<h1 id="Comparison-of-the-Three-Algorithms"><a href="#Comparison-of-the-Three-Algorithms" class="headerlink" title="Comparison of the Three Algorithms"></a>Comparison of the Three Algorithms</h1><table>
+<thead>
+<tr>
+<th align="center">Algorithm</th>
+<th align="center">Scope</th>
+<th align="center">Advantages</th>
+<th align="center">Disadvantages</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Scavenge</td>
+<td align="center">Young generation</td>
+<td align="center">Efficient, fast allocation</td>
+<td align="center">Wasted space, unsuitable for large objects</td>
+</tr>
+<tr>
+<td align="center">Mark-Sweep</td>
+<td align="center">Old generation</td>
+<td align="center">No extra space required, efficient</td>
+<td align="center">Memory fragmentation</td>
+</tr>
+<tr>
+<td align="center">Mark-Compact</td>
+<td align="center">Old generation</td>
+<td align="center">Eliminates memory fragmentation</td>
+<td align="center">Higher overhead</td>
+</tr>
+</tbody></table>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>V8’s garbage collection mechanism combines <code>Scavenge</code>, <code>Mark-Sweep</code>, and <code>Mark-Compact</code> algorithms to effectively balance performance and memory utilization. Understanding these algorithms can help developers optimize Node.js applications and avoid performance issues caused by garbage collection.</p>
+<p>I hope this article helps you gain a deeper understanding of V8’s garbage collection mechanism. If you have any questions or additional insights, feel free to leave a comment!</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Node-js/" rel="tag"># Node.js</a>
+              <a href="/tags/V8/" rel="tag"># V8</a>
+              <a href="/tags/Garbage-Collection/" rel="tag"># Garbage Collection</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/01/07/Boosting-Flutter-Performance-with-Frame-Based-Rendering-using/" rel="prev" title="Boosting Flutter Performance with Frame-Based Rendering using">
+      <i class="fa fa-chevron-left"></i> Boosting Flutter Performance with Frame-Based Rendering using
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/01/17/2024%E6%80%BB%E7%BB%93/" rel="next" title="2024总结">
+      2024总结 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#V8%E2%80%99s-Memory-Partition-Model"><span class="nav-number">1.</span> <span class="nav-text">V8’s Memory Partition Model</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Young-Generation"><span class="nav-number">1.1.</span> <span class="nav-text">Young Generation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Old-Generation"><span class="nav-number">1.2.</span> <span class="nav-text">Old Generation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Scavenge-Algorithm"><span class="nav-number">2.</span> <span class="nav-text">Scavenge Algorithm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mark-Sweep-Algorithm"><span class="nav-number">3.</span> <span class="nav-text">Mark-Sweep Algorithm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mark-Compact-Algorithm"><span class="nav-number">4.</span> <span class="nav-text">Mark-Compact Algorithm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Comparison-of-the-Three-Algorithms"><span class="nav-number">5.</span> <span class="nav-text">Comparison of the Three Algorithms</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Conclusion"><span class="nav-number">6.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Edward"
+      src="https://avatars.githubusercontent.com/u/22055633?v=4">
+  <p class="site-author-name" itemprop="name">Edward</p>
+  <div class="site-description" itemprop="description">Nothing to describe.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">198</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/alazypig" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;alazypig" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-bug"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Edward Wang</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
+<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
