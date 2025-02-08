@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">64</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">65</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">198</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">199</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,89 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2020/03/05/TypeScript-Enums/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/05/TypeScript-Enums/" class="post-title-link" itemprop="url">TypeScript Enums</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-03-05 14:03:49" itemprop="dateCreated datePublished" datetime="2020-03-05T14:03:49+08:00">2020-03-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Numeric-enums"><a href="#Numeric-enums" class="headerlink" title="Numeric enums"></a>Numeric enums</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">Direction</span> &#123;</span><br><span class="line"><span class="variable constant_">UP</span>,</span><br><span class="line"><span class="variable constant_">DOWN</span>,</span><br><span class="line"><span class="variable constant_">LEFT</span>,</span><br><span class="line"><span class="variable constant_">RIGHT</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">move</span>(<span class="params">length: <span class="built_in">number</span>, direction: Direction</span>): <span class="built_in">void</span> &#123;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`move: <span class="subst">$&#123;direction&#125;</span> <span class="subst">$&#123;length&#125;</span>meters.`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">move</span>(<span class="number">10</span>, <span class="title class_">Direction</span>.<span class="property">UP</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="String-enums"><a href="#String-enums" class="headerlink" title="String enums"></a>String enums</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">Direction</span> &#123;</span><br><span class="line"><span class="variable constant_">UP</span>=<span class="string">&#x27;UP&#x27;</span>,</span><br><span class="line"><span class="variable constant_">DOWN</span>=<span class="string">&#x27;DOWN&#x27;</span>,</span><br><span class="line"><span class="variable constant_">LEFT</span>=<span class="string">&#x27;LEFT&#x27;</span>,</span><br><span class="line"><span class="variable constant_">RIGHT</span>=<span class="string">&#x27;RIGHT&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/05/TypeScript-Enums/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -957,80 +1040,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/12/18/%E5%A4%8D%E6%97%A6%E5%A4%A7%E5%AD%A6%E4%BF%AE%E6%94%B9%E7%AB%A0%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/18/%E5%A4%8D%E6%97%A6%E5%A4%A7%E5%AD%A6%E4%BF%AE%E6%94%B9%E7%AB%A0%E7%A8%8B/" class="post-title-link" itemprop="url">复旦大学修改章程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-12-18 15:42:24" itemprop="dateCreated datePublished" datetime="2019-12-18T15:42:24+08:00">2019-12-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="教育部关于同意复旦大学章程部分条款修改的批复-教政法函〔2019〕18-号"><a href="#教育部关于同意复旦大学章程部分条款修改的批复-教政法函〔2019〕18-号" class="headerlink" title="教育部关于同意复旦大学章程部分条款修改的批复 教政法函〔2019〕18 号"></a>教育部关于同意复旦大学章程部分条款修改的批复 教政法函〔2019〕18 号</h1><p>重点修改如下：</p>
-<h2 id="序言第一段"><a href="#序言第一段" class="headerlink" title="序言第一段"></a>序言第一段</h2><p>“国人自主创办”改为“中国人自主创办”。</p>
-<h2 id="序言第二段"><a href="#序言第二段" class="headerlink" title="序言第二段"></a>序言第二段</h2><p>删去“学校的办学理念是其校歌所传颂的……思想自由……强调以学术精神滋养师生，坚守价值，治学严谨，为学有恒。学校始终秉持团结、服务与牺牲的精神，强调学校、师生的社会责任和国家使命。”增加“敦行爱国奉献……海纳百川、追求卓越。学校倡导‘文明、健康、团结、奋发’的校风和‘刻苦、严谨、求实、创新’的学风，强调坚持理想、探究真理、正谊明道、守护文明。”</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/12/18/%E5%A4%8D%E6%97%A6%E5%A4%A7%E5%AD%A6%E4%BF%AE%E6%94%B9%E7%AB%A0%E7%A8%8B/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1102,7 +1111,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">198</span>
+          <span class="site-state-item-count">199</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1115,7 +1124,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-count">65</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
