@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">199</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">200</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,83 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2022/07/27/Mac-%E6%97%A0%E6%B3%95%E9%80%9A%E8%BF%87-path-%E6%89%93%E5%BC%80-code-%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/07/27/Mac-%E6%97%A0%E6%B3%95%E9%80%9A%E8%BF%87-path-%E6%89%93%E5%BC%80-code-%E8%AE%B0/" class="post-title-link" itemprop="url">Mac 无法通过 path 打开 code 记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-07-27 21:29:10" itemprop="dateCreated datePublished" datetime="2022-07-27T21:29:10+08:00">2022-07-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/macOS/" itemprop="url" rel="index"><span itemprop="name">macOS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>许久未使用<code>mac</code>，然后发现在<code>terminal</code>里使用<code>code &lt;name&gt;</code>的时候，报错了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/bin/code: line 6: /usr/bin/python: No such file or directory</span><br><span class="line">/usr/local/bin/code: line 10: ./MacOS/Electron: No such file or directory</span><br></pre></td></tr></table></figure>
+
+<p>后面才发现，系统里只有<code>python3</code>，没有<code>python</code>，遂在<code>/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code</code>中将<code>python</code>修改为<code>python3</code>得以解决。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -902,89 +979,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2021/11/12/Windows-VL-%E6%BF%80%E6%B4%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/12/Windows-VL-%E6%BF%80%E6%B4%BB/" class="post-title-link" itemprop="url">Windows VL 激活</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-11-12 17:19:39" itemprop="dateCreated datePublished" datetime="2021-11-12T17:19:39+08:00">2021-11-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="激活-Windows"><a href="#激活-Windows" class="headerlink" title="激活 Windows"></a>激活 Windows</h3><ol>
-<li>查看 OS 版本：<ul>
-<li><code>run.exe</code>: <code>slmgr.vbs -dlv</code>，查看产品密钥通道。</li>
-<li>OEM：出厂版本</li>
-<li>Retail：零售版本</li>
-<li>VL(Vol)：批量激活版本</li>
-</ul>
-</li>
-<li>只有 VL 版本可以激活。</li>
-<li>使用 cmd：<code>slmgr /skms kms.03k.org</code>，把<code>skms</code>地址设置为 <code>kms.03k.org</code></li>
-<li><code>slmgr /ato</code>，手动激活</li>
-</ol>
-<h3 id="激活-Office"><a href="#激活-Office" class="headerlink" title="激活 Office"></a>激活 Office</h3><p><strong>Office 必须是 VL 版本</strong></p>
-<ol>
-<li>进入 <code>Office</code> 安装地址，找到 <code>OSPP.VBS</code></li>
-<li><code>cmd</code>：<code>cscript ospp.vbs /sethst:kms.03k.org</code>，指定<code>kms</code>服务地址</li>
-<li><code>cscript ospp.vbs /act</code>，手动激活</li>
-</ol>
-<p>工具网站：<code>office tool plus</code></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1056,7 +1050,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">199</span>
+          <span class="site-state-item-count">200</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

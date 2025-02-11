@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">199</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">200</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,81 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2020/10/07/%E4%BD%BF%E7%94%A8generator%E8%99%95%E7%90%86%E7%84%A1%E9%99%90%E6%95%B8%E6%93%9A%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/07/%E4%BD%BF%E7%94%A8generator%E8%99%95%E7%90%86%E7%84%A1%E9%99%90%E6%95%B8%E6%93%9A%E6%B5%81/" class="post-title-link" itemprop="url">使用generator處理無限數據流</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-10-07 13:24:42" itemprop="dateCreated datePublished" datetime="2020-10-07T13:24:42+08:00">2020-10-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ECMAScript/" itemprop="url" rel="index"><span itemprop="name">ECMAScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>假設現在有一個數據非常多的數組,但是我們只需要它的前幾個數據,并且進行一定的操作,這時候可以使用 generator 來進行 take 的操作.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>]</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">from</span> = (<span class="params">arr</span>) =&gt; arr[<span class="title class_">Symbol</span>.<span class="property">iterator</span>]()</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">filter</span> = (<span class="params">f</span>) =&gt;</span><br><span class="line">  <span class="keyword">function</span>* (iter) &#123;</span><br><span class="line">    <span class="keyword">let</span> v = iter.<span class="title function_">next</span>()</span><br><span class="line">    <span class="keyword">while</span> (!v.<span class="property">done</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="title function_">f</span>(v.<span class="property">value</span>)) <span class="keyword">yield</span> v.<span class="property">value</span></span><br><span class="line">      v = iter.<span class="title function_">next</span>()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">multipy</span> = (<span class="params">n</span>) =&gt;</span><br><span class="line">  <span class="keyword">function</span>* (iter) &#123;</span><br><span class="line">    <span class="keyword">let</span> v = iter.<span class="title function_">next</span>()</span><br><span class="line">    <span class="keyword">while</span> (!v.<span class="property">done</span>) &#123;</span><br><span class="line">      <span class="keyword">yield</span> v.<span class="property">value</span> * n</span><br><span class="line">      v = iter.<span class="title function_">next</span>()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">take</span> = (<span class="params">n</span>) =&gt;</span><br><span class="line">  <span class="keyword">function</span>* (iter) &#123;</span><br><span class="line">    <span class="keyword">let</span> i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">let</span> v = iter.<span class="title function_">next</span>()</span><br><span class="line">    <span class="keyword">while</span> (!v.<span class="property">done</span> &amp;&amp; i &lt; n) &#123;</span><br><span class="line">      <span class="keyword">yield</span> v.<span class="property">value</span></span><br><span class="line">      i++</span><br><span class="line">      v = iter.<span class="title function_">next</span>()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">pipe</span> = (<span class="params">...arr</span>) =&gt; arr.<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, func</span>) =&gt;</span> <span class="title function_">func</span>(acc))</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>([</span><br><span class="line">  ...<span class="title function_">pipe</span>(</span><br><span class="line">    <span class="title function_">from</span>(arr),</span><br><span class="line">    <span class="title function_">filter</span>(<span class="function">(<span class="params">v</span>) =&gt;</span> v % <span class="number">2</span> === <span class="number">0</span>),</span><br><span class="line">    <span class="title function_">multipy</span>(<span class="number">3</span>),</span><br><span class="line">    <span class="title function_">take</span>(<span class="number">30</span>),</span><br><span class="line">    <span class="title function_">filter</span>(<span class="function">(<span class="params">v</span>) =&gt;</span> v &gt; <span class="number">15</span>),</span><br><span class="line">  ),</span><br><span class="line">]) <span class="comment">// [18, 24, 30, 36]</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -989,84 +1064,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2020/07/24/ECMAScript%E6%96%B0%E5%A2%9EString%E6%96%B9%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/24/ECMAScript%E6%96%B0%E5%A2%9EString%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">ECMAScript新增String方法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-07-24 00:19:17" itemprop="dateCreated datePublished" datetime="2020-07-24T00:19:17+08:00">2020-07-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ECMAScript/" itemprop="url" rel="index"><span itemprop="name">ECMAScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="ES2017-新增"><a href="#ES2017-新增" class="headerlink" title="ES2017 新增"></a>ES2017 新增</h3><h5 id="padStart-padEnd"><a href="#padStart-padEnd" class="headerlink" title="padStart(), padEnd()"></a>padStart(), padEnd()</h5><p>字符串补全功能，接受两个参数，如果第二个参数为空，则默认使用空格补全。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// fill with the template</span></span><br><span class="line"><span class="string">&#x27;12&#x27;</span>.<span class="title function_">padStart</span>(<span class="number">3</span>, <span class="string">&#x27;000&#x27;</span>) <span class="comment">// &#x27;012&#x27;</span></span><br><span class="line"><span class="string">&#x27;12&#x27;</span>.<span class="title function_">padEnd</span>(<span class="number">3</span>, <span class="string">&#x27;000&#x27;</span>) <span class="comment">// &#x27;120&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// fill with space</span></span><br><span class="line"><span class="string">&#x27;12&#x27;</span>.<span class="title function_">padStart</span>(<span class="number">4</span>) <span class="comment">// &#x27;  12&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="ES2019-新增"><a href="#ES2019-新增" class="headerlink" title="ES2019 新增"></a>ES2019 新增</h3><h5 id="trimStart-trimEnd"><a href="#trimStart-trimEnd" class="headerlink" title="trimStart(), trimEnd()"></a>trimStart(), trimEnd()</h5><p>与<code>String.trim()</code>的行为一致，不会修改原字符串。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;    string    &#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// str.trimLeft()</span></span><br><span class="line">str.<span class="title function_">trimStart</span>() <span class="comment">// &#x27;string    &#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// str.trimRight()</span></span><br><span class="line">str.<span class="title function_">trimEnd</span>() <span class="comment">// &#x27;    string&#x27;</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1138,7 +1135,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">199</span>
+          <span class="site-state-item-count">200</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

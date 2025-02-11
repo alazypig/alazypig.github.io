@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">199</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">200</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,102 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2021/06/19/Binary-Index-Array/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/19/Binary-Index-Array/" class="post-title-link" itemprop="url">Binary Indexed Array</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-06-19 13:35:25" itemprop="dateCreated datePublished" datetime="2021-06-19T13:35:25+08:00">2021-06-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>A <strong>Fenwick tree</strong> or <strong>binary indexed tree</strong> is a data structure that can efficiently update elements and calculate prefix sums in a table of numbers.</p>
+<ol>
+<li>update(index, delta): 将<code>delta</code>加到<code>index</code>位置上。</li>
+<li>prefixSum(index): 求 <code>sum[1, index]</code>的值。</li>
+<li>rangeSum(from, to): 求 <code>sum[from, to]</code> 的值。</li>
+</ol>
+<p>时间复杂度：</p>
+<ol>
+<li>update(index, delta): 更新需要循环更新每一个<code>parent</code>的值，从<code>index</code>开始到最后一个<code>parent</code>。复杂度为<code>O(n)</code>。</li>
+<li>prefixSum(index): 直接返回<code>sum[index + 1]</code>即可，复杂度为<code>O(1)</code>。</li>
+<li>rangeSum(from, to): 直接返回<code>sum[to + 1] - sum[from]</code>即可，复杂度为<code>O(1)</code>。</li>
+</ol>
+<h3 id="Build"><a href="#Build" class="headerlink" title="Build"></a>Build</h3><p>现在有个<code>nums</code>初始数组，通过这个数组构造一个<code>BITArray</code>。<br>构造<code>Binary Indexed Array</code>。</p>
+<ol>
+<li>实现<code>insert(index, delta)</code>:</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">insert</span>(<span class="params">index, delta</span>) &#123;</span><br><span class="line">  <span class="keyword">while</span> (index &lt; <span class="variable language_">this</span>.<span class="property">BITArray</span>.<span class="property">length</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">BITArray</span>[index] += delta</span><br><span class="line">    index += index &amp; -index <span class="comment">// BIT中，parent的index计算方法为：parent = child + (child &amp; -child)</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>构造 BITArray:</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">MyArray</span>(<span class="params">nums</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">BITArray</span> = <span class="keyword">new</span> <span class="title class_">Array</span>(nums.<span class="property">length</span> + <span class="number">1</span>).<span class="title function_">fill</span>(<span class="number">0</span>)</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, len = nums.<span class="property">length</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">insert</span>(i + <span class="number">1</span>, nums[i]) <span class="comment">// 在每个index处循环插入，delta就是初始值。</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>实现<code>sum(index)</code>:</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">sum</span>(<span class="params">index</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> sum = <span class="number">0</span></span><br><span class="line">  <span class="keyword">while</span> (index &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    sum += <span class="variable language_">this</span>.<span class="property">BITArray</span>[index]</span><br><span class="line">    index -= index &amp; -index <span class="comment">// BIT中，child的计算方法为：child = parent - (parent &amp; -parent)</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>实现<code>perfixSum(from, to)</code></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">perfixSum</span>(<span class="params"><span class="keyword">from</span>, to</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="title function_">sum</span>(to + <span class="number">1</span>) - <span class="variable language_">this</span>.<span class="title function_">sum</span>(<span class="keyword">from</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -926,71 +1022,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2021/01/08/TikTok-svg/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/08/TikTok-svg/" class="post-title-link" itemprop="url">TikTok svg</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-01-08 12:48:23" itemprop="dateCreated datePublished" datetime="2021-01-08T12:48:23+08:00">2021-01-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="/svgs/tik-tok.svg" alt="TikTok"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1062,7 +1093,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">199</span>
+          <span class="site-state-item-count">200</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

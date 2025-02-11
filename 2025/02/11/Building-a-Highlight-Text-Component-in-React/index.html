@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"alazypig.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="In modern web development, enhancing user experience by highlighting specific text within a larger body of content is a common requirement. Whether it’s for search results, annotations, or emphasizing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building a Highlight Text Component in React">
+<meta property="og:url" content="http://alazypig.github.io/2025/02/11/Building-a-Highlight-Text-Component-in-React/index.html">
+<meta property="og:site_name" content="Live Note">
+<meta property="og:description" content="In modern web development, enhancing user experience by highlighting specific text within a larger body of content is a common requirement. Whether it’s for search results, annotations, or emphasizing">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://code-example-1255795341.cos.ap-singapore.myqcloud.com/rn-high-light-eg-1.png">
+<meta property="article:published_time" content="2025-02-11T08:12:44.000Z">
+<meta property="article:modified_time" content="2025-02-11T08:17:40.036Z">
+<meta property="article:author" content="Edward">
+<meta property="article:tag" content="React">
+<meta property="article:tag" content="TailwindCSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://code-example-1255795341.cos.ap-singapore.myqcloud.com/rn-high-light-eg-1.png">
+
+<link rel="canonical" href="http://alazypig.github.io/2025/02/11/Building-a-Highlight-Text-Component-in-React/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Building a Highlight Text Component in React | Live Note</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Live Note</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Remain optimistic</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">65</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">27</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">200</span></a>
+
+  </li>
+        <li class="menu-item menu-item-photo">
+
+    <a href="/photo/" rel="section"><i class="fa fa-camera fa-fw"></i>photo</a>
+
+  </li>
+        <li class="menu-item menu-item-algorithm">
+
+    <a href="/algorithm/" rel="section"><i class="fa fa-code fa-fw"></i>algorithm</a>
+
+  </li>
+        <li class="menu-item menu-item-battery">
+
+    <a href="/battery/" rel="section"><i class="fa fa-battery-full fa-fw"></i>battery</a>
+
+  </li>
+        <li class="menu-item menu-item-frontend">
+
+    <a href="/frontend/" rel="section"><i class="fa fa-laptop fa-fw"></i>frontend</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-sticky-note fa-fw"></i>notes</a>
+
+  </li>
+        <li class="menu-item menu-item-stm32">
+
+    <a href="/stm32/" rel="section"><i class="fa fa-microchip fa-fw"></i>stm32</a>
+
+  </li>
+        <li class="menu-item menu-item-ziwei">
+
+    <a href="/ziwei/" rel="section"><i class="fa fa-yin-yang fa-fw"></i>ziwei</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+      
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2025/02/11/Building-a-Highlight-Text-Component-in-React/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Building a Highlight Text Component in React
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2025-02-11 16:12:44 / Modified: 16:17:40" itemprop="dateCreated datePublished" datetime="2025-02-11T16:12:44+08:00">2025-02-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>In modern web development, enhancing user experience by highlighting specific text within a larger body of content is a common requirement. Whether it’s for search results, annotations, or emphasizing key information, a <strong>Highlight Text</strong> component can be incredibly useful. In this article, we’ll walk through the process of building a simple yet effective Highlight Text component using React.</p>
+<p>Here is the Example captured:</p>
+<p><img src="https://code-example-1255795341.cos.ap-singapore.myqcloud.com/rn-high-light-eg-1.png" alt="Highlight Text Component Example"></p>
+<span id="more"></span>
+
+<h2 id="Source-Code"><a href="#Source-Code" class="headerlink" title="Source Code"></a>Source Code</h2><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Edward &lt;wang.huiyang<span class="doctag">@outlook</span>.com&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@created</span> 2025-02-11</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Children</span> &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Highlight</span> &#123;</span><br><span class="line">  <span class="attr">value</span>: <span class="built_in">string</span></span><br><span class="line">  style?: <span class="built_in">string</span></span><br><span class="line">  onPress?: <span class="function">(<span class="params">text: <span class="built_in">string</span></span>) =&gt;</span> <span class="built_in">void</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">HighlightTextProps</span> &#123;</span><br><span class="line">  <span class="attr">highlights</span>: <span class="title class_">Highlight</span>[]</span><br><span class="line">  textStyle?: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">children</span>: <span class="title class_">React</span>.<span class="property">ReactNode</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> splitText = (&#123;</span><br><span class="line">  text,</span><br><span class="line">  highlights,</span><br><span class="line">&#125;: &#123;</span><br><span class="line">  <span class="attr">text</span>: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">highlights</span>: <span class="built_in">string</span>[]</span><br><span class="line">&#125;): <span class="built_in">string</span>[] =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="attr">highlightRegex</span>: <span class="built_in">string</span>[] = highlights.<span class="title function_">map</span>(</span><br><span class="line">    <span class="function">(<span class="params">i</span>) =&gt;</span> <span class="string">`(<span class="subst">$&#123;i.replace(/<span class="string">&quot;/g, &quot;</span><span class="string">&quot;).trim()&#125;)`</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  )</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string"></span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  const finalRegex = new RegExp(highlightRegex.join(&quot;</span>|<span class="string">&quot;), &quot;</span>gm<span class="string">&quot;)</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string"></span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  const parts =</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">    text &amp;&amp; highlightRegex.length &gt; 0</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">      ? text.split(finalRegex).filter((i) =&gt; i !== undefined &amp;&amp; i !== &quot;</span><span class="string">&quot;)</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">      : text</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">      ? [text]</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">      : []</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string"></span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  return parts</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">&#125;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string"></span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">const HighlightText: React.FC&lt;HighlightTextProps&gt; = (&#123;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  children,</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  textStyle,</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  highlights,</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">&#125;) =&gt; &#123;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  let text = &quot;</span><span class="string">&quot;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  Children.map(children, (child) =&gt; &#123;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">    if (typeof child === &quot;</span><span class="built_in">string</span><span class="string">&quot;) &#123;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">      text += child</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">    &#125;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  &#125;)</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string"></span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  const chunks = splitText(&#123;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">    text,</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">    highlights: highlights.map((i) =&gt; i.value),</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  &#125;)</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string"></span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  return (</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">    &lt;div className=&#123;textStyle&#125;&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">      &#123;chunks.map((chunk, index) =&gt; &#123;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">        let keyword: JSX.Element | null = null</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">        if (highlights) &#123;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">          highlights.forEach((item) =&gt; &#123;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">            const regexSource = highlights.map(</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">              (i) =&gt; `($&#123;i.value.replace(/&quot;</span>/g, <span class="string">&quot;&quot;</span>).trim()&#125;</span>)`</span></span><br><span class="line">            )</span><br><span class="line">            <span class="keyword">const</span> itemRegex = <span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">`^<span class="subst">$&#123;regexSource.join(<span class="string">&quot;|&quot;</span>)&#125;</span>$`</span>, <span class="string">&quot;gm&quot;</span>)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (itemRegex &amp;&amp; itemRegex.<span class="title function_">test</span>(chunk)) &#123;</span><br><span class="line">              keyword = (</span><br><span class="line">                <span class="language-xml"><span class="tag">&lt;<span class="name">span</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                  <span class="attr">key</span>=<span class="string">&#123;index&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                  <span class="attr">className</span>=<span class="string">&#123;item.style&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                  <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> item.onPress &amp;&amp; item.onPress(chunk)&#125;</span></span><br><span class="line"><span class="language-xml">                &gt;</span></span><br><span class="line"><span class="language-xml">                  &#123;chunk&#125;</span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line">              )</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (keyword) &#123;</span><br><span class="line">          <span class="keyword">return</span> keyword</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">key</span>=<span class="string">&#123;index&#125;</span>&gt;</span>&#123;chunk&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line">      &#125;)&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">HighlightText</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">HighlightText</span></span><br><span class="line">  textStyle=<span class="string">&quot;u-font-14-colored mt-[12px] mx-[12px]&quot;</span></span><br><span class="line">  highlights=&#123;[</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">value</span>: state?.<span class="property">email</span>,</span><br><span class="line">      <span class="attr">style</span>: <span class="string">&quot;text-primary&quot;</span>,</span><br><span class="line">      <span class="attr">onPress</span>: <span class="function">(<span class="params">text</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Clicked: <span class="subst">$&#123;text&#125;</span>`</span>)</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  ]&#125;</span><br><span class="line">&gt;</span><br><span class="line">  <span class="title class_">Enter</span> the <span class="number">6</span>-digit verification code sent to &#123;state?.<span class="property">email</span>&#125;. <span class="title class_">This</span> code will</span><br><span class="line">  expire <span class="keyword">in</span> <span class="number">10</span> minutes.</span><br><span class="line">&lt;/<span class="title class_">HighlightText</span>&gt;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/React/" rel="tag"># React</a>
+              <a href="/tags/TailwindCSS/" rel="tag"># TailwindCSS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/02/08/Building-an-Advanced-Slider-Component/" rel="prev" title="Building an Advanced Slider Component">
+      <i class="fa fa-chevron-left"></i> Building an Advanced Slider Component
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Source-Code"><span class="nav-number">1.</span> <span class="nav-text">Source Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Usage"><span class="nav-number">2.</span> <span class="nav-text">Usage</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Edward"
+      src="https://avatars.githubusercontent.com/u/22055633?v=4">
+  <p class="site-author-name" itemprop="name">Edward</p>
+  <div class="site-description" itemprop="description">Nothing to describe.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">200</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">65</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/alazypig" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;alazypig" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-bug"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Edward Wang</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
+<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
