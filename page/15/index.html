@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">65</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">67</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">201</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">202</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,99 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/03/28/The-Composition/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/28/The-Composition/" class="post-title-link" itemprop="url">The composition</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-03-28 19:19:51" itemprop="dateCreated datePublished" datetime="2019-03-28T19:19:51+08:00">2019-03-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-07-15 08:57:57" itemprop="dateModified" datetime="2024-07-15T08:57:57+08:00">2024-07-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Functional-Programming/" itemprop="url" rel="index"><span itemprop="name">Functional Programming</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Function-Composition"><a href="#Function-Composition" class="headerlink" title="Function Composition"></a>Function Composition</h3><p><em><code>In computer science, function composition is an act or mechanism to combine simple functions to build more complicated ones. Like the usual composition of functions in mathematics, the result of each function is passed as the argument of the next, and the result of the last one is the result of the whole.  -- Wikipedia</code></em></p>
+<p>Example:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title function_">compose</span> = (<span class="params">f, g</span>) =&gt; <span class="function">(<span class="params">x</span>) =&gt;</span> <span class="title function_">f</span>(<span class="title function_">g</span>(x))</span><br><span class="line"><span class="keyword">var</span> <span class="title function_">head</span> = (<span class="params">x</span>) =&gt; x[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">var</span> reverse = <span class="title function_">reduce</span>(<span class="function">(<span class="params">a, x</span>) =&gt;</span> [x].<span class="title function_">concat</span>(a), [])</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> last = <span class="title function_">compose</span>(head, reverse)</span><br><span class="line"><span class="title function_">last</span>([<span class="string">&#x27;first&#x27;</span>, <span class="string">&#x27;second&#x27;</span>, <span class="string">&#x27;last&#x27;</span>]) <span class="comment">// &#x27;last&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>In the definition of compose, g will be executed before f, thus creating a right-to-left data stream. This is much more readable than nesting a bunch of function calls.</p>
+<h3 id="Associativity"><a href="#Associativity" class="headerlink" title="Associativity"></a>Associativity</h3><p><em><code>Like many other functional programming concepts, associativity is derived from math.It is an expression in which the order of evaluation does not affect the end result provided the sequence of the operands does not get changed. -- JOSEPH REX</code></em></p>
+<p>Example:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span> + (<span class="number">3</span> + <span class="number">4</span>) === <span class="number">2</span> + <span class="number">3</span> + <span class="number">4</span> <span class="comment">// true</span></span><br><span class="line"><span class="number">2</span> * (<span class="number">3</span> * <span class="number">4</span>) === <span class="number">2</span> * <span class="number">3</span> * <span class="number">4</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>Because of the grouping of calls to compose is not important, so the result is the same. This also gives us the ability to write a variadic compose.<br>Like this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> last = <span class="title function_">compose</span>(head, reverse)</span><br><span class="line"><span class="title function_">last</span>([<span class="string">&#x27;first&#x27;</span>, <span class="string">&#x27;second&#x27;</span>, <span class="string">&#x27;last&#x27;</span>]) <span class="comment">// &#x27;last&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> upperLast = <span class="title function_">compose</span>(head, reverse, toUppercase)</span><br><span class="line"><span class="title function_">upperLast</span>([<span class="string">&#x27;first&#x27;</span>, <span class="string">&#x27;second&#x27;</span>, <span class="string">&#x27;last&#x27;</span>]) <span class="comment">// &#x27;LAST&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> mediaUrl = _.<span class="title function_">compose</span>(_.<span class="title function_">prop</span>(<span class="string">&#x27;m&#x27;</span>), _.<span class="title function_">prop</span>(<span class="string">&#x27;media&#x27;</span>))</span><br><span class="line"><span class="comment">// var images = _.compose(_.map(img), _.map(mediaUrl), _.prop(&#x27;items&#x27;));</span></span><br><span class="line"><span class="comment">// use the associativity</span></span><br><span class="line"><span class="keyword">var</span> images = _.<span class="title function_">compose</span>(_.<span class="title function_">map</span>(_.<span class="title function_">compose</span>(img, mediaUrl)), _.<span class="title function_">prop</span>(<span class="string">&#x27;items&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>There is no standard answer on how to composition, just make it more reusable.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/03/28/The-Composition/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -902,79 +995,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2019/03/13/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/03/13/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" class="post-title-link" itemprop="url">广度优先搜索</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-03-13 14:52:44" itemprop="dateCreated datePublished" datetime="2019-03-13T14:52:44+08:00">2019-03-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h3><p>在 N * M 的网格中，从 start 走到 end 。<br>广度解法：需要一个队列，从 start 节点开始，当一个节点抛出时，将它周围的节点入队，直至抛出的节点是 end 节点。<br>模拟网格：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> map = [ <span class="comment">// map[x][y]</span></span><br><span class="line">[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">[<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">2</span>],</span><br><span class="line">];</span><br><span class="line"><span class="title function_">find</span>(map);</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/03/13/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1046,7 +1066,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">201</span>
+          <span class="site-state-item-count">202</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1059,7 +1079,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">65</span>
+        <span class="site-state-item-count">67</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

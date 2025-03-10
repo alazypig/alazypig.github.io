@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">65</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">67</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">201</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">202</span></a>
 
   </li>
         <li class="menu-item menu-item-photo">
@@ -222,6 +222,94 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2025/03/10/Delete-Service-Worker-on-Safari/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/03/10/Delete-Service-Worker-on-Safari/" class="post-title-link" itemprop="url">Delete Service Worker on Safari</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2025-03-10 14:29:04 / Modified: 14:33:32" itemprop="dateCreated datePublished" datetime="2025-03-10T14:29:04+08:00">2025-03-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Delete-Service-Worker-on-Safari"><a href="#Delete-Service-Worker-on-Safari" class="headerlink" title="Delete Service Worker on Safari"></a>Delete Service Worker on Safari</h1><p>To delete a service worker on Safari, you can follow these steps:</p>
+<ol>
+<li>Open Safari Developer Console (Press Command + Option + C)</li>
+<li>Copy and paste the following JavaScript code into the console:</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">navigator.<span class="property">serviceWorker</span>.<span class="title function_">getRegistrations</span>().<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params">registrations</span>) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> registration <span class="keyword">of</span> registrations) &#123;</span><br><span class="line">    registration.<span class="title function_">unregister</span>().<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Service Worker Unregistered:&quot;</span>, registration.<span class="property">scope</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>This code will:</p>
+<ol>
+<li>Get all registered service workers using <code>navigator.serviceWorker.getRegistrations()</code></li>
+<li>Loop through each registration</li>
+<li>Unregister each service worker using the <code>unregister()</code> method</li>
+<li>Log a confirmation message with the scope of the unregistered service worker</li>
+</ol>
+<p>You can verify that the service worker has been successfully removed by:</p>
+<ol>
+<li>Opening Safari Developer Tools</li>
+<li>Going to the Application tab</li>
+<li>Checking the Service Workers section - it should now be empty</li>
+</ol>
+<p><strong>Note: After unregistering the service worker, you might need to close all tabs and restart Safari for the changes to take full effect.</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -963,89 +1051,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2024/12/02/Flutter-AppBar-%E7%9A%84-scrolledUnderElevation-%E5%B1%9E%E6%80%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/12/02/Flutter-AppBar-%E7%9A%84-scrolledUnderElevation-%E5%B1%9E%E6%80%A7/" class="post-title-link" itemprop="url">Flutter AppBar 的 scrolledUnderElevation 属性</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2024-12-02 11:30:57 / Modified: 11:37:17" itemprop="dateCreated datePublished" datetime="2024-12-02T11:30:57+08:00">2024-12-02</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Flutter/" itemprop="url" rel="index"><span itemprop="name">Flutter</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在 Flutter 中，AppBar 是一个重要的组件，通常用于显示应用程序的标题、导航按钮、操作菜单等。随着用户界面设计的发展，滚动效果在移动应用中变得越来越常见。scrolledUnderElevation 属性正是为了解决当页面滚动时，AppBar 的阴影效果的控制需求。</p>
-<p>比如你使用了某个滚动组件,然后发现了为什么滚动的时候我的 AppBar 变色了呢?<br>这就是原因: <code>scrolledUnderElevation</code> 属性。</p>
-<h1 id="什么是-scrolledUnderElevation"><a href="#什么是-scrolledUnderElevation" class="headerlink" title="什么是 scrolledUnderElevation?"></a>什么是 <code>scrolledUnderElevation</code>?</h1><p>scrolledUnderElevation 是 Flutter 3.0 引入的 AppBar 属性之一。它用于设置当 AppBar 位于滚动内容顶部且内容向下滚动时的 阴影高度。简单来说，当页面向下滚动且 AppBar 覆盖部分内容时，该属性决定了 AppBar 的阴影深度。</p>
-<h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><p>在用户滚动列表或长内容时，我们通常希望 AppBar 在不同的滚动状态下显示不同的视觉效果。例如：</p>
-<ul>
-<li>初始状态（未滚动）： AppBar 通常是透明的或没有阴影。</li>
-<li>滚动状态： 当用户滚动页面并向下查看内容时，AppBar 应该带有一定的阴影，以显示它在内容之上的层次感。</li>
-</ul>
-<p>这种设计可以改善用户体验，使界面更清晰且具有层次感。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/12/02/Flutter-AppBar-%E7%9A%84-scrolledUnderElevation-%E5%B1%9E%E6%80%A7/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1117,7 +1122,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">201</span>
+          <span class="site-state-item-count">202</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1130,7 +1135,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">65</span>
+        <span class="site-state-item-count">67</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
