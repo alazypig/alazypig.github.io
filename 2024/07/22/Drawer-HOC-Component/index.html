@@ -2,25 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 7.2.0">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#333"><meta name="generator" content="Hexo 7.3.0">
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg" color="#333">
+  <meta name="google-site-verification" content="3HwfZQXiRuHrLuN7SQdqGm_rDNxp9f5q53UmPeMkxZo">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"alazypig.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-  <meta name="description" content="A drawer animation HOC componentRequirements:  react-native-reanimated: animation react-native-root-siblings: root sibling Functional component: require hooks">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"alazypig.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="A drawer animation HOC componentRequirements:  react-native-reanimated: animation react-native-root-siblings: root sibling Functional component: require hooks">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Drawer HOC Component">
 <meta property="og:url" content="http://alazypig.github.io/2024/07/22/Drawer-HOC-Component/index.html">
@@ -29,29 +29,22 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://photograph-1255795341.cos.ap-singapore.myqcloud.com/%E5%BD%95%E5%B1%8F2024-07-22%2015.57.55.gif">
 <meta property="article:published_time" content="2024-07-22T07:52:33.000Z">
-<meta property="article:modified_time" content="2024-10-15T02:16:42.828Z">
+<meta property="article:modified_time" content="2025-03-10T10:12:20.862Z">
 <meta property="article:author" content="Edward">
 <meta property="article:tag" content="React">
 <meta property="article:tag" content="HOC">
-<meta property="article:tag" content="Drawer">
 <meta property="article:tag" content="React Native">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://photograph-1255795341.cos.ap-singapore.myqcloud.com/%E5%BD%95%E5%B1%8F2024-07-22%2015.57.55.gif">
 
+
 <link rel="canonical" href="http://alazypig.github.io/2024/07/22/Drawer-HOC-Component/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'en'
-  };
-</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://alazypig.github.io/2024/07/22/Drawer-HOC-Component/","path":"2024/07/22/Drawer-HOC-Component/","title":"Drawer HOC Component"}</script>
 
-  <title>Drawer HOC Component | Live Note</title>
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Drawer HOC Component | Live Note</title>
   
 
 
@@ -59,57 +52,39 @@
 
 
 
+
+
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Live Note</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
+      <p class="site-title">Live Note</p>
+      <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">Remain optimistic</p>
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
         <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
@@ -117,69 +92,8 @@
 
 
 
-
 <nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">67</span></a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">27</span></a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">202</span></a>
-
-  </li>
-        <li class="menu-item menu-item-photo">
-
-    <a href="/photo/" rel="section"><i class="fa fa-camera fa-fw"></i>photo</a>
-
-  </li>
-        <li class="menu-item menu-item-algorithm">
-
-    <a href="/algorithm/" rel="section"><i class="fa fa-code fa-fw"></i>algorithm</a>
-
-  </li>
-        <li class="menu-item menu-item-battery">
-
-    <a href="/battery/" rel="section"><i class="fa fa-battery-full fa-fw"></i>battery</a>
-
-  </li>
-        <li class="menu-item menu-item-frontend">
-
-    <a href="/frontend/" rel="section"><i class="fa fa-laptop fa-fw"></i>frontend</a>
-
-  </li>
-        <li class="menu-item menu-item-notes">
-
-    <a href="/notes/" rel="section"><i class="fa fa-sticky-note fa-fw"></i>notes</a>
-
-  </li>
-        <li class="menu-item menu-item-stm32">
-
-    <a href="/stm32/" rel="section"><i class="fa fa-microchip fa-fw"></i>stm32</a>
-
-  </li>
-        <li class="menu-item menu-item-ziwei">
-
-    <a href="/ziwei/" rel="section"><i class="fa fa-yin-yang fa-fw"></i>ziwei</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
-
-  </li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">57</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">18</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">191</span></a></li><li class="menu-item menu-item-photo"><a href="/photo/" rel="section"><i class="fa fa-camera fa-fw"></i>photo</a></li><li class="menu-item menu-item-algorithm"><a href="/algorithm/" rel="section"><i class="fa fa-code fa-fw"></i>algorithm</a></li><li class="menu-item menu-item-battery"><a href="/battery/" rel="section"><i class="fa fa-battery-full fa-fw"></i>battery</a></li><li class="menu-item menu-item-frontend"><a href="/frontend/" rel="section"><i class="fa fa-laptop fa-fw"></i>frontend</a></li><li class="menu-item menu-item-notes"><a href="/notes/" rel="section"><i class="fa fa-sticky-note fa-fw"></i>notes</a></li><li class="menu-item menu-item-stm32"><a href="/stm32/" rel="section"><i class="fa fa-microchip fa-fw"></i>stm32</a></li><li class="menu-item menu-item-ziwei"><a href="/ziwei/" rel="section"><i class="fa fa-yin-yang fa-fw"></i>ziwei</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -191,197 +105,34 @@
 
   <div class="search-pop-overlay">
     <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container"></div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div class="algolia-results">
-  <div id="algolia-stats"></div>
-  <div id="algolia-hits"></div>
-  <div id="algolia-pagination" class="algolia-pagination"></div>
-</div>
-
-      
-    </div>
-  </div>
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-  <div class="reading-progress-bar"></div>
-  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2024/07/22/Drawer-HOC-Component/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
-      <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Live Note">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          Drawer HOC Component
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2024-07-22 15:52:33" itemprop="dateCreated datePublished" datetime="2024-07-22T15:52:33+08:00">2024-07-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-10-15 10:16:42" itemprop="dateModified" datetime="2024-10-15T10:16:42+08:00">2024-10-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/React-Native/" itemprop="url" rel="index"><span itemprop="name">React Native</span></a>
-                </span>
-            </span>
-
-          
-            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
-
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
         </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <h1 id="A-drawer-animation-HOC-component"><a href="#A-drawer-animation-HOC-component" class="headerlink" title="A drawer animation HOC component"></a>A drawer animation HOC component</h1><p>Requirements:</p>
-<ul>
-<li><code>react-native-reanimated</code>: animation</li>
-<li><code>react-native-root-siblings</code>: root sibling</li>
-<li>Functional component: require hooks</li>
-</ul>
-<p><img src="https://photograph-1255795341.cos.ap-singapore.myqcloud.com/%E5%BD%95%E5%B1%8F2024-07-22%2015.57.55.gif" alt="Drawer HOC"></p>
-<span id="more"></span>
-
-<figure class="highlight typescript"><figcaption><span>DrawerHOC.tsx</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> <span class="variable">Edward</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/06/12</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> Drawer HOC</span></span><br><span class="line"><span class="comment"> * usage: /src/test/drawerTest/DrawerWithExpandable.tsx</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">AntQColors</span>, <span class="title class_">AntQSizes</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@/componetsEx/DarkColorUtility&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; hp &#125; <span class="keyword">from</span> <span class="string">&#x27;@/utils/index&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useEffect &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">ViewStyle</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Animated</span>, &#123;</span><br><span class="line">  interpolate,</span><br><span class="line">  interpolateColor,</span><br><span class="line">  runOnJS,</span><br><span class="line">  useAnimatedStyle,</span><br><span class="line">  useSharedValue,</span><br><span class="line">  withTiming,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">&#x27;react-native-reanimated&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">DrawerHOC</span> = (<span class="params"></span></span><br><span class="line"><span class="params">  WrappedComponent: React.ElementType&lt;&#123; onClose: (cb: () =&gt; <span class="built_in">void</span>) =&gt; <span class="built_in">void</span> &#125;&gt;,</span></span><br><span class="line"><span class="params">  config: &#123;</span></span><br><span class="line"><span class="params">    duration?: <span class="built_in">number</span></span></span><br><span class="line"><span class="params">    styles?: &#123;</span></span><br><span class="line"><span class="params">      mask?: ViewStyle</span></span><br><span class="line"><span class="params">      drawer?: ViewStyle</span></span><br><span class="line"><span class="params">    &#125;</span></span><br><span class="line"><span class="params">  &#125;,</span></span><br><span class="line"><span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">Drawer</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="variable constant_">DURATION</span> = config.<span class="property">duration</span> || <span class="number">300</span></span><br><span class="line">    <span class="keyword">const</span> &#123; mask = &#123;&#125;, drawer = &#123;&#125; &#125; = config.<span class="property">styles</span> || &#123;&#125;</span><br><span class="line">    <span class="keyword">const</span> <span class="variable constant_">PAGE_HEIGHT</span> = <span class="title function_">hp</span>(<span class="number">100</span>)</span><br><span class="line">    <span class="keyword">const</span> backgroundOpacity = <span class="title function_">useSharedValue</span>(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">const</span> drawerShow = <span class="title function_">useSharedValue</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> drawerBackground = <span class="title function_">useAnimatedStyle</span>(<span class="function">() =&gt;</span> (&#123;</span><br><span class="line">      <span class="attr">backgroundColor</span>: <span class="title function_">interpolateColor</span>(</span><br><span class="line">        backgroundOpacity.<span class="property">value</span>,</span><br><span class="line">        [<span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">        [<span class="string">&#x27;rgba(0,0,0,0)&#x27;</span>, <span class="string">&#x27;rgba(0,0,0,0.4)&#x27;</span>],</span><br><span class="line">      ),</span><br><span class="line">    &#125;))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> drawerContent = <span class="title function_">useAnimatedStyle</span>(<span class="function">() =&gt;</span> (&#123;</span><br><span class="line">      <span class="attr">transform</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">translateY</span>: <span class="title function_">interpolate</span>(drawerShow.<span class="property">value</span>, [<span class="number">0</span>, <span class="number">1</span>], [<span class="variable constant_">PAGE_HEIGHT</span>, <span class="number">0</span>]),</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">close</span> = (<span class="params">cb?: () =&gt; <span class="built_in">void</span></span>) =&gt; &#123;</span><br><span class="line">      drawerShow.<span class="property">value</span> = <span class="title function_">withTiming</span>(<span class="number">0</span>, &#123; <span class="attr">duration</span>: <span class="variable constant_">DURATION</span> &#125;)</span><br><span class="line">      backgroundOpacity.<span class="property">value</span> = <span class="title function_">withTiming</span>(<span class="number">0</span>, &#123; <span class="attr">duration</span>: <span class="variable constant_">DURATION</span> &#125;, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (cb) &#123;</span><br><span class="line">          <span class="title function_">runOnJS</span>(cb)()</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">open</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">      drawerShow.<span class="property">value</span> = <span class="title function_">withTiming</span>(<span class="number">1</span>, &#123; <span class="attr">duration</span>: <span class="variable constant_">DURATION</span> &#125;)</span><br><span class="line">      backgroundOpacity.<span class="property">value</span> = <span class="title function_">withTiming</span>(<span class="number">1</span>, &#123; <span class="attr">duration</span>: <span class="variable constant_">DURATION</span> &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">open</span>()</span><br><span class="line">    &#125;, [])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">Animated.View</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">style</span>=<span class="string">&#123;[</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          &#123;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">position:</span> &#x27;<span class="attr">absolute</span>&#x27;,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">top:</span> <span class="attr">0</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">left:</span> <span class="attr">0</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">right:</span> <span class="attr">0</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">bottom:</span> <span class="attr">0</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">flex:</span> <span class="attr">1</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">justifyContent:</span> &#x27;<span class="attr">flex-end</span>&#x27;,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          &#125;,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">drawerBackground</span> <span class="attr">as</span> <span class="attr">any</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">mask</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        ]&#125;&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Animated.View</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">style</span>=<span class="string">&#123;[</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            &#123;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">              <span class="attr">padding:</span> <span class="attr">AntQSizes.PAGE_PADDING_DEFAULT</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">              <span class="attr">backgroundColor:</span> <span class="attr">AntQColors.MAIN_WHITE</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">              <span class="attr">alignItems:</span> &#x27;<span class="attr">center</span>&#x27;,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            &#125;,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">drawer</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">drawerContent</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          ]&#125;&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">WrappedComponent</span> <span class="attr">onClose</span>=<span class="string">&#123;close&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">Animated.View</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Animated.View</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">Drawer</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">DrawerHOC</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight typescript"><figcaption><span>Usage.tsx</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// final component</span></span><br><span class="line"><span class="title class_">CountryPickerDrawer</span> = <span class="title class_">DrawerHOC</span>(</span><br><span class="line">  <span class="function">(<span class="params">&#123; onClose &#125;</span>) =&gt;</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">CountryPicker</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">closeDrawer</span>=<span class="string">&#123;()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-xml">        onClose(() =&gt; &#123;</span></span><br><span class="line"><span class="language-xml">          if (this.root) &#123;</span></span><br><span class="line"><span class="language-xml">            this.root.destroy()</span></span><br><span class="line"><span class="language-xml">            this.root = null</span></span><br><span class="line"><span class="language-xml">          &#125;</span></span><br><span class="line"><span class="language-xml">        &#125;)</span></span><br><span class="line"><span class="language-xml">      &#125;&#125;</span></span><br><span class="line"><span class="language-xml">      onCheck=&#123;async (item) =&gt; &#123;</span></span><br><span class="line"><span class="language-xml">        const countryCode = item.flag.substring(5).toUpperCase()</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">        this.doStartLoading()</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">        const &#123; code &#125; = await (NetManager.httpService2(</span></span><br><span class="line"><span class="language-xml">          ReqAction.SetContact,</span></span><br><span class="line"><span class="language-xml">          JSON.stringify(&#123; country: countryCode &#125;),</span></span><br><span class="line"><span class="language-xml">        ) as Promise&lt;&#123; code: ErrorCode &#125;&gt;)</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">        this.doStopLoading()</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">        if (code === ErrorCode.OK) &#123;</span></span><br><span class="line"><span class="language-xml">          const userInfo = AppModel.instance.AuthState.userInfo</span></span><br><span class="line"><span class="language-xml">          userInfo.country = countryCode</span></span><br><span class="line"><span class="language-xml">          this.setState(&#123; countryCode &#125;)</span></span><br><span class="line"><span class="language-xml">          AppModel.instance.AuthState.setUserInfo(userInfo)</span></span><br><span class="line"><span class="language-xml">          this.doShowMsg(LANAGER_STR(&#x27;common_save_succ&#x27;))</span></span><br><span class="line"><span class="language-xml">        &#125;</span></span><br><span class="line"><span class="language-xml">      &#125;&#125;</span></span><br><span class="line"><span class="language-xml">    /&gt;</span></span><br><span class="line">  ),</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">duration</span>: <span class="number">300</span>,</span><br><span class="line">    <span class="attr">styles</span>: &#123;</span><br><span class="line">      <span class="attr">drawer</span>: &#123;</span><br><span class="line">        <span class="attr">backgroundColor</span>: <span class="title class_">AntQColors</span>.<span class="property">MAIN_WHITE</span>,</span><br><span class="line">        <span class="attr">borderTopLeftRadius</span>: <span class="number">8</span>,</span><br><span class="line">        <span class="attr">borderTopRightRadius</span>: <span class="number">8</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// open drawer</span></span><br><span class="line"><span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">root</span> === <span class="literal">null</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">root</span> = <span class="keyword">new</span> <span class="title class_">RootSiblingsManager</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">this.CountryPickerDrawer</span> /&gt;</span></span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-    </div>
-
-    
-    
-    
-
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/React/" rel="tag"># React</a>
-              <a href="/tags/HOC/" rel="tag"># HOC</a>
-              <a href="/tags/Drawer/" rel="tag"># Drawer</a>
-              <a href="/tags/React-Native/" rel="tag"># React Native</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2024/07/15/%E4%B8%96%E4%BA%8B%E6%97%A0%E5%B8%B8-%E5%B0%8F%E8%88%85%E5%AD%90CCU%E7%9A%84%E7%BB%8F%E5%8E%86/" rel="prev" title="世事无常-小舅子CCU的经历">
-      <i class="fa fa-chevron-left"></i> 世事无常-小舅子CCU的经历
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2024/08/07/%E5%8C%BA%E5%9D%97%E9%93%BE%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/" rel="next" title="区块链是什么？">
-      区块链是什么？ <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
         </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
+      </div>
+    </div>
   </div>
 
+</header>
+        
+  
   <aside class="sidebar">
-    <div class="sidebar-inner">
 
-      <ul class="sidebar-nav motion-element">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
         </li>
@@ -390,83 +141,189 @@
         </li>
       </ul>
 
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#A-drawer-animation-HOC-component"><span class="nav-number">1.</span> <span class="nav-text">A drawer animation HOC component</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#A-drawer-animation-HOC-component"><span class="nav-number">1.</span> <span class="nav-text">A drawer animation HOC component</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
 
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Edward"
       src="https://avatars.githubusercontent.com/u/22055633?v=4">
   <p class="site-author-name" itemprop="name">Edward</p>
   <div class="site-description" itemprop="description">Nothing to describe.</div>
 </div>
-<div class="site-state-wrap motion-element">
+<div class="site-state-wrap animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">202</span>
+        <a href="/archives/">
+          <span class="site-state-item-count">191</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">27</span>
+          <a href="/categories/">
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">67</span>
+          <a href="/tags/">
+        <span class="site-state-item-count">57</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
-  <div class="links-of-author motion-element">
+  <div class="links-of-author animated">
       <span class="links-of-author-item">
-        <a href="https://github.com/alazypig" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;alazypig" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+        <a href="https://github.com/alazypig" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;alazypig" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
       </span>
   </div>
-  <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
   </div>
 
-
-
+        </div>
       </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
 
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
+
+    <div class="main-inner post posts-expand">
 
 
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
   
-  &copy; 2016 – 
-  <span itemprop="copyrightYear">2025</span>
-  <span class="with-love">
-    <i class="fa fa-bug"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Edward Wang</span>
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2024/07/22/Drawer-HOC-Component/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
+      <meta itemprop="name" content="Edward">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Live Note">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Drawer HOC Component | Live Note">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Drawer HOC Component
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-07-22 15:52:33" itemprop="dateCreated datePublished" datetime="2024-07-22T15:52:33+08:00">2024-07-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/React-Native/" itemprop="url" rel="index"><span itemprop="name">React Native</span></a>
+        </span>
+    </span>
+
+  
 </div>
 
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="A-drawer-animation-HOC-component"><a href="#A-drawer-animation-HOC-component" class="headerlink" title="A drawer animation HOC component"></a>A drawer animation HOC component</h1><p>Requirements:</p>
+<ul>
+<li><code>react-native-reanimated</code>: animation</li>
+<li><code>react-native-root-siblings</code>: root sibling</li>
+<li>Functional component: require hooks</li>
+</ul>
+<p><img src="https://photograph-1255795341.cos.ap-singapore.myqcloud.com/%E5%BD%95%E5%B1%8F2024-07-22%2015.57.55.gif" alt="Drawer HOC"></p>
+<span id="more"></span>
+
+<figure class="highlight tsx"><figcaption><span>DrawerHOC.tsx</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> <span class="variable">Edward</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/06/12</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> Drawer HOC</span></span><br><span class="line"><span class="comment"> * usage: /src/test/drawerTest/DrawerWithExpandable.tsx</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">AntQColors</span>, <span class="title class_">AntQSizes</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@/componetsEx/DarkColorUtility&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; hp &#125; <span class="keyword">from</span> <span class="string">&quot;@/utils/index&quot;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useEffect &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">ViewStyle</span> &#125; <span class="keyword">from</span> <span class="string">&quot;react-native&quot;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Animated</span>, &#123;</span><br><span class="line">  interpolate,</span><br><span class="line">  interpolateColor,</span><br><span class="line">  runOnJS,</span><br><span class="line">  useAnimatedStyle,</span><br><span class="line">  useSharedValue,</span><br><span class="line">  withTiming,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">&quot;react-native-reanimated&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">DrawerHOC</span> = (<span class="params"></span></span><br><span class="line"><span class="params">  WrappedComponent: React.ElementType&lt;&#123; onClose: (cb: () =&gt; <span class="built_in">void</span>) =&gt; <span class="built_in">void</span> &#125;&gt;,</span></span><br><span class="line"><span class="params">  config: &#123;</span></span><br><span class="line"><span class="params">    duration?: <span class="built_in">number</span></span></span><br><span class="line"><span class="params">    styles?: &#123;</span></span><br><span class="line"><span class="params">      mask?: ViewStyle</span></span><br><span class="line"><span class="params">      drawer?: ViewStyle</span></span><br><span class="line"><span class="params">    &#125;</span></span><br><span class="line"><span class="params">  &#125;</span></span><br><span class="line"><span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">Drawer</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="variable constant_">DURATION</span> = config.<span class="property">duration</span> || <span class="number">300</span></span><br><span class="line">    <span class="keyword">const</span> &#123; mask = &#123;&#125;, drawer = &#123;&#125; &#125; = config.<span class="property">styles</span> || &#123;&#125;</span><br><span class="line">    <span class="keyword">const</span> <span class="variable constant_">PAGE_HEIGHT</span> = <span class="title function_">hp</span>(<span class="number">100</span>)</span><br><span class="line">    <span class="keyword">const</span> backgroundOpacity = <span class="title function_">useSharedValue</span>(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">const</span> drawerShow = <span class="title function_">useSharedValue</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> drawerBackground = <span class="title function_">useAnimatedStyle</span>(<span class="function">() =&gt;</span> (&#123;</span><br><span class="line">      <span class="attr">backgroundColor</span>: <span class="title function_">interpolateColor</span>(</span><br><span class="line">        backgroundOpacity.<span class="property">value</span>,</span><br><span class="line">        [<span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">        [<span class="string">&quot;rgba(0,0,0,0)&quot;</span>, <span class="string">&quot;rgba(0,0,0,0.4)&quot;</span>]</span><br><span class="line">      ),</span><br><span class="line">    &#125;))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> drawerContent = <span class="title function_">useAnimatedStyle</span>(<span class="function">() =&gt;</span> (&#123;</span><br><span class="line">      <span class="attr">transform</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">translateY</span>: <span class="title function_">interpolate</span>(drawerShow.<span class="property">value</span>, [<span class="number">0</span>, <span class="number">1</span>], [<span class="variable constant_">PAGE_HEIGHT</span>, <span class="number">0</span>]),</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">close</span> = (<span class="params">cb?: () =&gt; <span class="built_in">void</span></span>) =&gt; &#123;</span><br><span class="line">      drawerShow.<span class="property">value</span> = <span class="title function_">withTiming</span>(<span class="number">0</span>, &#123; <span class="attr">duration</span>: <span class="variable constant_">DURATION</span> &#125;)</span><br><span class="line">      backgroundOpacity.<span class="property">value</span> = <span class="title function_">withTiming</span>(<span class="number">0</span>, &#123; <span class="attr">duration</span>: <span class="variable constant_">DURATION</span> &#125;, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (cb) &#123;</span><br><span class="line">          <span class="title function_">runOnJS</span>(cb)()</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">open</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">      drawerShow.<span class="property">value</span> = <span class="title function_">withTiming</span>(<span class="number">1</span>, &#123; <span class="attr">duration</span>: <span class="variable constant_">DURATION</span> &#125;)</span><br><span class="line">      backgroundOpacity.<span class="property">value</span> = <span class="title function_">withTiming</span>(<span class="number">1</span>, &#123; <span class="attr">duration</span>: <span class="variable constant_">DURATION</span> &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">open</span>()</span><br><span class="line">    &#125;, [])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">Animated.View</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">style</span>=<span class="string">&#123;[</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          &#123;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">position:</span> &quot;<span class="attr">absolute</span>&quot;,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">top:</span> <span class="attr">0</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">left:</span> <span class="attr">0</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">right:</span> <span class="attr">0</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">bottom:</span> <span class="attr">0</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">flex:</span> <span class="attr">1</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">justifyContent:</span> &quot;<span class="attr">flex-end</span>&quot;,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          &#125;,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">drawerBackground</span> <span class="attr">as</span> <span class="attr">any</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">mask</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        ]&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      &gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Animated.View</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">style</span>=<span class="string">&#123;[</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            &#123;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">              <span class="attr">padding:</span> <span class="attr">AntQSizes.PAGE_PADDING_DEFAULT</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">              <span class="attr">backgroundColor:</span> <span class="attr">AntQColors.MAIN_WHITE</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">              <span class="attr">alignItems:</span> &quot;<span class="attr">center</span>&quot;,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            &#125;,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">drawer</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">drawerContent</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          ]&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        &gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">WrappedComponent</span> <span class="attr">onClose</span>=<span class="string">&#123;close&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">Animated.View</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Animated.View</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">Drawer</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">DrawerHOC</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight tsx"><figcaption><span>Usage.tsx</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// final component</span></span><br><span class="line"><span class="title class_">CountryPickerDrawer</span> = <span class="title class_">DrawerHOC</span>(</span><br><span class="line">  <span class="function">(<span class="params">&#123; onClose &#125;</span>) =&gt;</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">CountryPicker</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">closeDrawer</span>=<span class="string">&#123;()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-xml">        onClose(() =&gt; &#123;</span></span><br><span class="line"><span class="language-xml">          if (this.root) &#123;</span></span><br><span class="line"><span class="language-xml">            this.root.destroy()</span></span><br><span class="line"><span class="language-xml">            this.root = null</span></span><br><span class="line"><span class="language-xml">          &#125;</span></span><br><span class="line"><span class="language-xml">        &#125;)</span></span><br><span class="line"><span class="language-xml">      &#125;&#125;</span></span><br><span class="line"><span class="language-xml">      onCheck=&#123;async (item) =&gt; &#123;</span></span><br><span class="line"><span class="language-xml">        const countryCode = item.flag.substring(5).toUpperCase()</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">        this.doStartLoading()</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">        const &#123; code &#125; = await (NetManager.httpService2(</span></span><br><span class="line"><span class="language-xml">          ReqAction.SetContact,</span></span><br><span class="line"><span class="language-xml">          JSON.stringify(&#123; country: countryCode &#125;)</span></span><br><span class="line"><span class="language-xml">        ) as Promise&lt;&#123; code: ErrorCode &#125;&gt;)</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">        this.doStopLoading()</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">        if (code === ErrorCode.OK) &#123;</span></span><br><span class="line"><span class="language-xml">          const userInfo = AppModel.instance.AuthState.userInfo</span></span><br><span class="line"><span class="language-xml">          userInfo.country = countryCode</span></span><br><span class="line"><span class="language-xml">          this.setState(&#123; countryCode &#125;)</span></span><br><span class="line"><span class="language-xml">          AppModel.instance.AuthState.setUserInfo(userInfo)</span></span><br><span class="line"><span class="language-xml">          this.doShowMsg(LANAGER_STR(&quot;common_save_succ&quot;))</span></span><br><span class="line"><span class="language-xml">        &#125;</span></span><br><span class="line"><span class="language-xml">      &#125;&#125;</span></span><br><span class="line"><span class="language-xml">    /&gt;</span></span><br><span class="line">  ),</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">duration</span>: <span class="number">300</span>,</span><br><span class="line">    <span class="attr">styles</span>: &#123;</span><br><span class="line">      <span class="attr">drawer</span>: &#123;</span><br><span class="line">        <span class="attr">backgroundColor</span>: <span class="title class_">AntQColors</span>.<span class="property">MAIN_WHITE</span>,</span><br><span class="line">        <span class="attr">borderTopLeftRadius</span>: <span class="number">8</span>,</span><br><span class="line">        <span class="attr">borderTopRightRadius</span>: <span class="number">8</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// open drawer</span></span><br><span class="line"><span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">root</span> === <span class="literal">null</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">root</span> = <span class="keyword">new</span> <span class="title class_">RootSiblingsManager</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">this.CountryPickerDrawer</span> /&gt;</span></span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/React/" rel="tag"><i class="fa fa-tag"></i> React</a>
+              <a href="/tags/HOC/" rel="tag"><i class="fa fa-tag"></i> HOC</a>
+              <a href="/tags/React-Native/" rel="tag"><i class="fa fa-tag"></i> React Native</a>
+          </div>
+
         
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/07/15/%E4%B8%96%E4%BA%8B%E6%97%A0%E5%B8%B8-%E5%B0%8F%E8%88%85%E5%AD%90CCU%E7%9A%84%E7%BB%8F%E5%8E%86/" rel="prev" title="世事无常-小舅子CCU的经历">
+                  <i class="fa fa-angle-left"></i> 世事无常-小舅子CCU的经历
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/08/07/%E5%8C%BA%E5%9D%97%E9%93%BE%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/" rel="next" title="区块链是什么？">
+                  区块链是什么？ <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-bug"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Edward Wang</span>
+  </div>
 <div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
       <span class="post-meta-item-icon">
         <i class="fa fa-user"></i>
       </span>
@@ -474,64 +331,34 @@
         <span id="busuanzi_value_site_uv"></span>
       </span>
     </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="Total Views">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
 </div>
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
 
+    </div>
+  </footer>
+
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-<script src="/js/bookmark.js"></script>
-
-
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
 
   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
 
-
-
-
-  
-<script src="//cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
-<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
-<script src="/js/algolia-search.js"></script>
-
-
-
-
-
-
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 
@@ -540,10 +367,17 @@
 
 
   
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
 
   
 
-  
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
 
 </body>
 </html>

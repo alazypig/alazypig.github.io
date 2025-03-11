@@ -2,52 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 7.2.0">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#333"><meta name="generator" content="Hexo 7.3.0">
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg" color="#333">
+  <meta name="google-site-verification" content="3HwfZQXiRuHrLuN7SQdqGm_rDNxp9f5q53UmPeMkxZo">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"alazypig.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-  <meta name="description" content="ES6 引入了一种新的原始数据类型 Symbol，表示独一无二的值。Symbol 值通过 Symbol 函数生成，也就是说，对象的属性名现在可以有两种类型：一种是字符串，另一种就是 Symbol 类型。只要属性名属于 Symbol 类型，就是独一无二的，可以保证不会与其他属性名冲突。 12let s &#x3D; Symbol();typeof s; &#x2F;&#x2F;symbol Symbol 函数可以接受一个字符串作">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"alazypig.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="ES6 引入了一种新的原始数据类型 Symbol，表示独一无二的值。Symbol 值通过 Symbol 函数生成，也就是说，对象的属性名现在可以有两种类型：一种是字符串，另一种就是 Symbol 类型。只要属性名属于 Symbol 类型，就是独一无二的，可以保证不会与其他属性名冲突。 12let s &#x3D; Symbol()typeof s &#x2F;&#x2F;symbol  Symbol 函数可以接受一个字符串作为">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Symbol">
 <meta property="og:url" content="http://alazypig.github.io/2018/08/17/Symbol/index.html">
 <meta property="og:site_name" content="Live Note">
-<meta property="og:description" content="ES6 引入了一种新的原始数据类型 Symbol，表示独一无二的值。Symbol 值通过 Symbol 函数生成，也就是说，对象的属性名现在可以有两种类型：一种是字符串，另一种就是 Symbol 类型。只要属性名属于 Symbol 类型，就是独一无二的，可以保证不会与其他属性名冲突。 12let s &#x3D; Symbol();typeof s; &#x2F;&#x2F;symbol Symbol 函数可以接受一个字符串作">
+<meta property="og:description" content="ES6 引入了一种新的原始数据类型 Symbol，表示独一无二的值。Symbol 值通过 Symbol 函数生成，也就是说，对象的属性名现在可以有两种类型：一种是字符串，另一种就是 Symbol 类型。只要属性名属于 Symbol 类型，就是独一无二的，可以保证不会与其他属性名冲突。 12let s &#x3D; Symbol()typeof s &#x2F;&#x2F;symbol  Symbol 函数可以接受一个字符串作为">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2018-08-17T07:05:18.000Z">
-<meta property="article:modified_time" content="2024-05-21T06:58:23.693Z">
+<meta property="article:modified_time" content="2025-03-11T02:10:52.751Z">
 <meta property="article:author" content="Edward">
-<meta property="article:tag" content="整理">
-<meta property="article:tag" content="学习">
+<meta property="article:tag" content="ECMAScript">
 <meta name="twitter:card" content="summary">
+
 
 <link rel="canonical" href="http://alazypig.github.io/2018/08/17/Symbol/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'en'
-  };
-</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://alazypig.github.io/2018/08/17/Symbol/","path":"2018/08/17/Symbol/","title":"Symbol"}</script>
 
-  <title>Symbol | Live Note</title>
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Symbol | Live Note</title>
   
 
 
@@ -55,57 +48,39 @@
 
 
 
+
+
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Live Note</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
+      <p class="site-title">Live Note</p>
+      <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">Remain optimistic</p>
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
         <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
@@ -113,69 +88,8 @@
 
 
 
-
 <nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">67</span></a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">27</span></a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">202</span></a>
-
-  </li>
-        <li class="menu-item menu-item-photo">
-
-    <a href="/photo/" rel="section"><i class="fa fa-camera fa-fw"></i>photo</a>
-
-  </li>
-        <li class="menu-item menu-item-algorithm">
-
-    <a href="/algorithm/" rel="section"><i class="fa fa-code fa-fw"></i>algorithm</a>
-
-  </li>
-        <li class="menu-item menu-item-battery">
-
-    <a href="/battery/" rel="section"><i class="fa fa-battery-full fa-fw"></i>battery</a>
-
-  </li>
-        <li class="menu-item menu-item-frontend">
-
-    <a href="/frontend/" rel="section"><i class="fa fa-laptop fa-fw"></i>frontend</a>
-
-  </li>
-        <li class="menu-item menu-item-notes">
-
-    <a href="/notes/" rel="section"><i class="fa fa-sticky-note fa-fw"></i>notes</a>
-
-  </li>
-        <li class="menu-item menu-item-stm32">
-
-    <a href="/stm32/" rel="section"><i class="fa fa-microchip fa-fw"></i>stm32</a>
-
-  </li>
-        <li class="menu-item menu-item-ziwei">
-
-    <a href="/ziwei/" rel="section"><i class="fa fa-yin-yang fa-fw"></i>ziwei</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
-
-  </li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">57</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">18</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">191</span></a></li><li class="menu-item menu-item-photo"><a href="/photo/" rel="section"><i class="fa fa-camera fa-fw"></i>photo</a></li><li class="menu-item menu-item-algorithm"><a href="/algorithm/" rel="section"><i class="fa fa-code fa-fw"></i>algorithm</a></li><li class="menu-item menu-item-battery"><a href="/battery/" rel="section"><i class="fa fa-battery-full fa-fw"></i>battery</a></li><li class="menu-item menu-item-frontend"><a href="/frontend/" rel="section"><i class="fa fa-laptop fa-fw"></i>frontend</a></li><li class="menu-item menu-item-notes"><a href="/notes/" rel="section"><i class="fa fa-sticky-note fa-fw"></i>notes</a></li><li class="menu-item menu-item-stm32"><a href="/stm32/" rel="section"><i class="fa fa-microchip fa-fw"></i>stm32</a></li><li class="menu-item menu-item-ziwei"><a href="/ziwei/" rel="section"><i class="fa fa-yin-yang fa-fw"></i>ziwei</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -187,99 +101,153 @@
 
   <div class="search-pop-overlay">
     <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container"></div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div class="algolia-results">
-  <div id="algolia-stats"></div>
-  <div id="algolia-hits"></div>
-  <div id="algolia-pagination" class="algolia-pagination"></div>
-</div>
-
-      
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
     </div>
   </div>
 
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E4%B8%BA%E5%B1%9E%E6%80%A7%E5%90%8D%E7%9A%84-Symbol"><span class="nav-number">1.</span> <span class="nav-text">作为属性名的 Symbol</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E5%90%8D%E7%9A%84%E9%81%8D%E5%8E%86"><span class="nav-number">2.</span> <span class="nav-text">属性名的遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Symbol-for-%E3%80%81Symbol-keyFor"><span class="nav-number">3.</span> <span class="nav-text">Symbol.for()、Symbol.keyFor()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E7%BD%AE%E7%9A%84-Symbol-%E5%80%BC"><span class="nav-number">4.</span> <span class="nav-text">内置的 Symbol 值</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Edward"
+      src="https://avatars.githubusercontent.com/u/22055633?v=4">
+  <p class="site-author-name" itemprop="name">Edward</p>
+  <div class="site-description" itemprop="description">Nothing to describe.</div>
 </div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">191</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">57</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/alazypig" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;alazypig" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
   </div>
-  <div class="reading-progress-bar"></div>
-  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
 
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
 
     
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2018/08/17/Symbol/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
       <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Live Note">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Symbol | Live Note">
+      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           Symbol
         </h1>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-08-17 15:05:18" itemprop="dateCreated datePublished" datetime="2018-08-17T15:05:18+08:00">2018-08-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ECMAScript/" itemprop="url" rel="index"><span itemprop="name">ECMAScript</span></a>
-                </span>
-            </span>
+      <time title="Created: 2018-08-17 15:05:18" itemprop="dateCreated datePublished" datetime="2018-08-17T15:05:18+08:00">2018-08-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ECMAScript/" itemprop="url" rel="index"><span itemprop="name">ECMAScript</span></a>
+        </span>
+    </span>
 
-          
-            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
+  
+</div>
 
         </div>
       </header>
@@ -287,64 +255,69 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body" itemprop="articleBody"><p>ES6 引入了一种新的原始数据类型 Symbol，表示独一无二的值。<br>Symbol 值通过 Symbol 函数生成，也就是说，对象的属性名现在可以有两种类型：一种是字符串，另一种就是 Symbol 类型。只要属性名属于 Symbol 类型，就是独一无二的，可以保证不会与其他属性名冲突。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="title class_">Symbol</span>()</span><br><span class="line"><span class="keyword">typeof</span> s <span class="comment">//symbol</span></span><br></pre></td></tr></table></figure>
 
-      
-        <p>ES6 引入了一种新的原始数据类型 Symbol，表示独一无二的值。<br>Symbol 值通过 Symbol 函数生成，也就是说，对象的属性名现在可以有两种类型：一种是字符串，另一种就是 Symbol 类型。只要属性名属于 Symbol 类型，就是独一无二的，可以保证不会与其他属性名冲突。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="title class_">Symbol</span>();</span><br><span class="line"><span class="keyword">typeof</span> s; <span class="comment">//symbol</span></span><br></pre></td></tr></table></figure>
 <p>Symbol 函数可以接受一个字符串作为参数，表示对 Symbol 实例的描述，主要是为了在 console 显示。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="title class_">Symbol</span>(<span class="string">&#x27;str&#x27;</span>);</span><br><span class="line">s.<span class="title function_">toString</span>(); <span class="comment">//&#x27;Symbol(str)&#x27;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="title class_">Symbol</span>(<span class="string">&quot;str&quot;</span>)</span><br><span class="line">s.<span class="title function_">toString</span>() <span class="comment">//&#x27;Symbol(str)&#x27;</span></span><br></pre></td></tr></table></figure>
+
 <p><strong>如果 Symbol 的参数是一个对象，就会调用该对象的 toString 方法，再生成 Symbol 值</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line"><span class="title function_">toString</span>(<span class="params"></span>) &#123;</span><br><span class="line"><span class="keyword">return</span> <span class="string">&#x27;test&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> s = <span class="title class_">Symbol</span>(obj);</span><br><span class="line">s.<span class="title function_">toString</span>(); <span class="comment">//&#x27;Symbol(test)&#x27;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="title function_">toString</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;test&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> s = <span class="title class_">Symbol</span>(obj)</span><br><span class="line">s.<span class="title function_">toString</span>() <span class="comment">//&#x27;Symbol(test)&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <span id="more"></span>
 
 <p><strong>Symbol 函数只表示对当前 Symbol 值的描述，因此相同的 Symbol 函数的返回值是不相等的</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s1 = <span class="title class_">Symbol</span>();</span><br><span class="line"><span class="keyword">let</span> s2 = <span class="title class_">Symbol</span>();</span><br><span class="line">s1 === s2; <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s1 = <span class="title class_">Symbol</span>()</span><br><span class="line"><span class="keyword">let</span> s2 = <span class="title class_">Symbol</span>()</span><br><span class="line">s1 === s2 <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="作为属性名的-Symbol"><a href="#作为属性名的-Symbol" class="headerlink" title="作为属性名的 Symbol"></a>作为属性名的 Symbol</h3><p>Symbol 值可以作为标识符用于对象的属性名，保证不会出现同名的属性，还能防止某一个键被不小心覆盖。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> symbol = <span class="title class_">Symbol</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//写法一</span></span><br><span class="line"><span class="keyword">let</span> a = &#123;&#125;;</span><br><span class="line">a[symbol] = <span class="string">&#x27;test&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//写法二</span></span><br><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">[symbol]: <span class="string">&#x27;test&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//写法三</span></span><br><span class="line"><span class="keyword">let</span> a = &#123;&#125;;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(a, symbol, &#123; value : <span class="string">&#x27;test&#x27;</span> &#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> symbol = <span class="title class_">Symbol</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">//写法一</span></span><br><span class="line"><span class="keyword">let</span> a = &#123;&#125;</span><br><span class="line">a[symbol] = <span class="string">&quot;test&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//写法二</span></span><br><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">  [symbol]: <span class="string">&quot;test&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//写法三</span></span><br><span class="line"><span class="keyword">let</span> a = &#123;&#125;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(a, symbol, &#123; <span class="attr">value</span>: <span class="string">&quot;test&quot;</span> &#125;)</span><br></pre></td></tr></table></figure>
+
 <p>实例：消除代码中的字符串</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getArea</span>(<span class="params">shape, options</span>) &#123;</span><br><span class="line"><span class="keyword">let</span> area = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">switch</span> (shape) &#123;</span><br><span class="line"><span class="keyword">case</span> <span class="string">&#x27;Triangle&#x27;</span>:</span><br><span class="line">area = <span class="number">0.5</span> _ options.<span class="property">width</span> _ options.<span class="property">height</span>;</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> area;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//转变后</span></span><br><span class="line"><span class="keyword">const</span> shaptType = &#123;</span><br><span class="line"><span class="attr">triangle</span>: <span class="title class_">Symbol</span>();</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getArea</span>(<span class="params">shape, options</span>) &#123;</span><br><span class="line"><span class="keyword">let</span> area = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">switch</span> (shape) &#123;</span><br><span class="line"><span class="keyword">case</span> shaptType.<span class="property">triangle</span>:</span><br><span class="line">area = <span class="number">0.5</span> _ options.<span class="property">width</span> _ options.<span class="property">height</span>;</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> area;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getArea</span>(<span class="params">shape, options</span>) &#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//转变后</span></span><br><span class="line"><span class="keyword">const</span> shaptType = &#123;</span><br><span class="line"><span class="attr">triangle</span>: <span class="title class_">Symbol</span>();</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getArea</span>(<span class="params">shape, options</span>) &#123;</span><br><span class="line"><span class="keyword">let</span> area = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">switch</span> (shape) &#123;</span><br><span class="line"><span class="keyword">case</span> shaptType.<span class="property">triangle</span>:</span><br><span class="line">area = <span class="number">0.5</span> _ options.<span class="property">width</span> _ options.<span class="property">height</span>;</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> area;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="属性名的遍历"><a href="#属性名的遍历" class="headerlink" title="属性名的遍历"></a>属性名的遍历</h3><p>Symbol 属性不会出现在 for…in、for…of 循环中，也不会被 Object.keys()、Object.getOwnPropertyName()返回。有一个 Object.getOwnPropertySymbols 方法可以获取指定对象的所有 Symbol 属性。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> a = <span class="title class_">Symbol</span>(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> b = <span class="title class_">Symbol</span>(<span class="string">&#x27;world&#x27;</span>);</span><br><span class="line">obj[a] = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">obj[b] = <span class="string">&#x27;b&#x27;</span>;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">getOwnPropertySymbols</span>(obj); <span class="comment">//[Symbol(hello), Symbol(world)]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;&#125;</span><br><span class="line"><span class="keyword">let</span> a = <span class="title class_">Symbol</span>(<span class="string">&quot;hello&quot;</span>)</span><br><span class="line"><span class="keyword">let</span> b = <span class="title class_">Symbol</span>(<span class="string">&quot;world&quot;</span>)</span><br><span class="line">obj[a] = <span class="string">&quot;a&quot;</span></span><br><span class="line">obj[b] = <span class="string">&quot;b&quot;</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">getOwnPropertySymbols</span>(obj) <span class="comment">//[Symbol(hello), Symbol(world)]</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="Symbol-for-、Symbol-keyFor"><a href="#Symbol-for-、Symbol-keyFor" class="headerlink" title="Symbol.for()、Symbol.keyFor()"></a>Symbol.for()、Symbol.keyFor()</h3><p>Symbol.for 接受一个字符串作为参数，然后搜索有没有以该参数作为名称的 Symbol 值，如果有，就返回这个 Symbol 值，否则就新建一个以该字符串为名称的 Symbol 值。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = <span class="title class_">Symbol</span>.<span class="title function_">for</span>(<span class="string">&#x27;test&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="title class_">Symbol</span>.<span class="title function_">for</span>(<span class="string">&#x27;test&#x27;</span>);</span><br><span class="line">str1 === str2; <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = <span class="title class_">Symbol</span>.<span class="title function_">for</span>(<span class="string">&quot;test&quot;</span>)</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="title class_">Symbol</span>.<span class="title function_">for</span>(<span class="string">&quot;test&quot;</span>)</span><br><span class="line">str1 === str2 <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
 <p>Symbol.keyFor 方法返回一个已登记的 Symbol 类型值的 key：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s1 = <span class="title class_">Symbol</span>.<span class="title function_">for</span>(<span class="string">&#x27;foo&#x27;</span>);</span><br><span class="line"><span class="title class_">Symbol</span>.<span class="title function_">keyFor</span>(s1); <span class="comment">//&#x27;foo&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> s2 = <span class="title class_">Symbol</span>(<span class="string">&#x27;foo&#x27;</span>);</span><br><span class="line"><span class="title class_">Symbol</span>.<span class="title function_">keyFor</span>(s2); <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s1 = <span class="title class_">Symbol</span>.<span class="title function_">for</span>(<span class="string">&quot;foo&quot;</span>)</span><br><span class="line"><span class="title class_">Symbol</span>.<span class="title function_">keyFor</span>(s1) <span class="comment">//&#x27;foo&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> s2 = <span class="title class_">Symbol</span>(<span class="string">&quot;foo&quot;</span>)</span><br><span class="line"><span class="title class_">Symbol</span>.<span class="title function_">keyFor</span>(s2) <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
+
 <p><strong>Symbol.for 为 Symbol 登记的名字是全局环境的，可以在不同的 iframe 或 serviceWorker 中取到同一个值</strong></p>
 <h3 id="内置的-Symbol-值"><a href="#内置的-Symbol-值" class="headerlink" title="内置的 Symbol 值"></a>内置的 Symbol 值</h3><ul>
 <li><p>Symbol.hasInstance<br>foo instanceof Foo 实际在内部调用的是 Foo[Symbol.hasInstance](foo)：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line">  [<span class="title class_">Symbol</span>.<span class="property">hasInstance</span>](foo) &#123;</span><br><span class="line">  <span class="keyword">return</span> foo <span class="keyword">instanceof</span> <span class="title class_">Array</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] <span class="keyword">instanceof</span> <span class="keyword">new</span> <span class="title class_">MyClass</span>(); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Even</span> &#123;</span><br><span class="line"><span class="keyword">static</span> [<span class="title class_">Symbol</span>.<span class="property">hasInstance</span>](obj) &#123;</span><br><span class="line"><span class="keyword">return</span> <span class="title class_">Number</span>(obj) % <span class="number">2</span> === <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="number">1</span> <span class="keyword">instanceof</span> <span class="title class_">Even</span>; <span class="comment">//false</span></span><br><span class="line"><span class="number">2</span> <span class="keyword">instanceof</span> <span class="title class_">Even</span>; <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line">  [<span class="title class_">Symbol</span>.<span class="property">hasInstance</span>](foo) &#123;</span><br><span class="line">    <span class="keyword">return</span> foo <span class="keyword">instanceof</span> <span class="title class_">Array</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">;[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] <span class="keyword">instanceof</span> <span class="keyword">new</span> <span class="title class_">MyClass</span>() <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Even</span> &#123;</span><br><span class="line">  <span class="keyword">static</span> [<span class="title class_">Symbol</span>.<span class="property">hasInstance</span>](obj) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Number</span>(obj) % <span class="number">2</span> === <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="number">1</span> <span class="keyword">instanceof</span> <span class="title class_">Even</span> <span class="comment">//false</span></span><br><span class="line"><span class="number">2</span> <span class="keyword">instanceof</span> <span class="title class_">Even</span> <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Symbol.isConcatSpreadable<br>等于一个布尔值，表示该对象使用 Array.prototype.concat()时是否可以展开：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">let</span> arr1 = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>];</span><br><span class="line">  [<span class="number">1</span>, <span class="number">2</span>].<span class="title function_">concat</span>(arr1, <span class="string">&#x27;c&#x27;</span>); <span class="comment">//[1, 2, &#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]</span></span><br><span class="line">  arr1[<span class="title class_">Symbol</span>.<span class="property">isConcatSpreadable</span>]; <span class="comment">//undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr2 = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>];</span><br><span class="line">arr2[<span class="title class_">Symbol</span>.<span class="property">isConcatSpreadable</span>] = <span class="literal">false</span>;</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>].<span class="title function_">concat</span>(arr2, <span class="string">&#x27;c&#x27;</span>); <span class="comment">//[1, 2, [&#x27;a&#x27;, &#x27;b&#x27;], &#x27;c&#x27;]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>]</span><br><span class="line">;[<span class="number">1</span>, <span class="number">2</span>].<span class="title function_">concat</span>(arr1, <span class="string">&quot;c&quot;</span>) <span class="comment">//[1, 2, &#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]</span></span><br><span class="line">arr1[<span class="title class_">Symbol</span>.<span class="property">isConcatSpreadable</span>] <span class="comment">//undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr2 = [<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>]</span><br><span class="line">arr2[<span class="title class_">Symbol</span>.<span class="property">isConcatSpreadable</span>] = <span class="literal">false</span></span><br><span class="line">;[<span class="number">1</span>, <span class="number">2</span>].<span class="title function_">concat</span>(arr2, <span class="string">&quot;c&quot;</span>) <span class="comment">//[1, 2, [&#x27;a&#x27;, &#x27;b&#x27;], &#x27;c&#x27;]</span></span><br></pre></td></tr></table></figure></li>
+</ul>
 <p>类似数组的对象也可以展开，默认值为 false，必须手动打开：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123; length : <span class="number">2</span>, <span class="number">0</span> : <span class="string">&#x27;c&#x27;</span>, <span class="number">1</span> : <span class="string">&#x27;d&#x27;</span> &#125;;</span><br><span class="line">[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>].<span class="title function_">concat</span>(obj); <span class="comment">//[&#x27;a&#x27;, &#x27;b&#x27;, obj]</span></span><br><span class="line">obj[<span class="title class_">Symbol</span>.<span class="property">isConcatSpreadable</span>] = <span class="literal">true</span>;</span><br><span class="line">[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>].<span class="title function_">concat</span>(obj); <span class="comment">//[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">length</span>: <span class="number">2</span>, <span class="number">0</span>: <span class="string">&quot;c&quot;</span>, <span class="number">1</span>: <span class="string">&quot;d&quot;</span> &#125;</span><br><span class="line">;[<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>].<span class="title function_">concat</span>(obj) <span class="comment">//[&#x27;a&#x27;, &#x27;b&#x27;, obj]</span></span><br><span class="line">obj[<span class="title class_">Symbol</span>.<span class="property">isConcatSpreadable</span>] = <span class="literal">true</span></span><br><span class="line">;[<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>].<span class="title function_">concat</span>(obj) <span class="comment">//[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]</span></span><br></pre></td></tr></table></figure>
+
 <p>对一个类而言，Symbol.isConcatSprealable 属性必须写成实例属性：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">myClass</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Array</span> &#123;</span><br><span class="line"><span class="title function_">constructor</span>(<span class="params">args</span>) &#123;</span><br><span class="line"><span class="variable language_">super</span>(args);</span><br><span class="line"><span class="variable language_">this</span>[<span class="title class_">Symbol</span>.<span class="property">isConcatSpreadable</span>] = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">myClass</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Array</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">args</span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(args)</span><br><span class="line">    <span class="variable language_">this</span>[<span class="title class_">Symbol</span>.<span class="property">isConcatSpreadable</span>] = <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
 <li><p>Symbol.species<br>对象的 Symbol.species 属性指向当前对象的构造函数，创造实例时会默认调用这个方法。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">class</span> <span class="title class_">myClass</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Array</span> &#123;</span><br><span class="line">  <span class="keyword">static</span> get [<span class="title class_">Symbol</span>.<span class="property">species</span>]() &#123; <span class="keyword">return</span> <span class="title class_">Array</span>; &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="keyword">new</span> <span class="title function_">myClass</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">  <span class="keyword">let</span> mapped = a.<span class="title function_">map</span>(<span class="function"><span class="params">x</span> =&gt;</span> x \* x);</span><br><span class="line">  a <span class="keyword">instanceof</span> <span class="title class_">Array</span>; <span class="comment">//true</span></span><br><span class="line">  mapped <span class="keyword">instanceof</span> <span class="title class_">Array</span>; <span class="comment">//true</span></span><br><span class="line">  a <span class="keyword">instanceof</span> myClass; <span class="comment">//true</span></span><br><span class="line">  mapped <span class="keyword">instanceof</span> myClass; <span class="comment">//false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//默认值等同于下面的写法</span></span><br><span class="line"><span class="keyword">static</span> get [<span class="title class_">Symbol</span>.<span class="property">species</span>]() &#123; <span class="keyword">return</span> <span class="variable language_">this</span>; &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">myClass</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Array</span> &#123;</span><br><span class="line">  <span class="keyword">static</span> get [<span class="title class_">Symbol</span>.<span class="property">species</span>]() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Array</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> <span class="title function_">myClass</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="keyword">let</span> mapped = a.<span class="title function_">map</span>(<span class="function">(<span class="params">x</span>) =&gt;</span> x * x)</span><br><span class="line">a <span class="keyword">instanceof</span> <span class="title class_">Array</span> <span class="comment">//true</span></span><br><span class="line">mapped <span class="keyword">instanceof</span> <span class="title class_">Array</span> <span class="comment">//true</span></span><br><span class="line">a <span class="keyword">instanceof</span> myClass <span class="comment">//true</span></span><br><span class="line">mapped <span class="keyword">instanceof</span> myClass <span class="comment">//false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//默认值等同于下面的写法</span></span><br><span class="line"><span class="comment">// static get [Symbol.species]() &#123; return this; &#125;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Symbol.match<br>对象的 Symbol.match 属性指向一个函数，当执行 str.match(myObject)时，如果该属性存在，会调用它的返回值：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  <span class="title class_">String</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="title function_">match</span>(regexp);</span><br><span class="line">  <span class="comment">//等同于</span></span><br><span class="line">  regexp[<span class="title class_">Symbol</span>.<span class="property">match</span>](<span class="variable language_">this</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">myMatcher</span> &#123;</span><br><span class="line">[<span class="title class_">Symbol</span>.<span class="property">match</span>](string) &#123;</span><br><span class="line"><span class="keyword">return</span> <span class="string">&#x27;hello world&#x27;</span>.<span class="title function_">indexOf</span>(string);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">e.<span class="title function_">match</span>(<span class="keyword">new</span> <span class="title function_">myMatcher</span>()); <span class="comment">//1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">String</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="title function_">match</span>(regexp)</span><br><span class="line"><span class="comment">//等同于</span></span><br><span class="line">regexp[<span class="title class_">Symbol</span>.<span class="property">match</span>](<span class="variable language_">this</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">myMatcher</span> &#123;</span><br><span class="line">  [<span class="title class_">Symbol</span>.<span class="property">match</span>](string) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;hello world&quot;</span>.<span class="title function_">indexOf</span>(string)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">e.<span class="title function_">match</span>(<span class="keyword">new</span> <span class="title function_">myMatcher</span>()) <span class="comment">//1</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Symbol.replace<br>对象的 Symbol.replace 属性指向一个方法，当对象被 String.prototype.replace 方法调用时会返回该方法的返回值：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">String</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="title function_">replace</span>(searchValue, replaceValue);</span><br><span class="line"><span class="comment">//等同于</span></span><br><span class="line">searchValue[<span class="title class_">Symbol</span>.<span class="property">replace</span>](<span class="variable language_">this</span>, replaceValue);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">String</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="title function_">replace</span>(searchValue, replaceValue)</span><br><span class="line"><span class="comment">//等同于</span></span><br><span class="line">searchValue[<span class="title class_">Symbol</span>.<span class="property">replace</span>](<span class="variable language_">this</span>, replaceValue)</span><br></pre></td></tr></table></figure>
 <p><strong>Symbol.replace 方法会收到两个参数，一个是 replace 方法正在作用的对象，第二个是替换后的值：</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> x = &#123;&#125;;</span><br><span class="line">x[<span class="title class_">Symbol</span>.<span class="property">replace</span>] = <span class="function">(<span class="params">...s</span>) =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(s);</span><br><span class="line"><span class="string">&#x27;hello&#x27;</span>.<span class="title function_">replace</span>(x, <span class="string">&#x27;world&#x27;</span>); <span class="comment">//[&#x27;hello&#x27;, &#x27;world&#x27;]</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> x = &#123;&#125;</span><br><span class="line">x[<span class="title class_">Symbol</span>.<span class="property">replace</span>] = <span class="function">(<span class="params">...s</span>) =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(s)</span><br><span class="line"><span class="string">&quot;hello&quot;</span>.<span class="title function_">replace</span>(x, <span class="string">&quot;world&quot;</span>) <span class="comment">//[&#x27;hello&#x27;, &#x27;world&#x27;]</span></span><br></pre></td></tr></table></figure></li>
 <li><p>Symbol.search<br>对象的 Symbol.search 属性指向一个方法，当对象被 String.prototype.search 方法调用时会返回该方法的返回值：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  <span class="title class_">String</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="title function_">search</span>(regexp);</span><br><span class="line">  <span class="comment">//等同于</span></span><br><span class="line">  regexp[<span class="title class_">Symbol</span>.<span class="property">search</span>](<span class="variable language_">this</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">mySearch</span> &#123;</span><br><span class="line"><span class="title function_">constructor</span>(<span class="params">value</span>) &#123;</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">value</span> = value;</span><br><span class="line">&#125;</span><br><span class="line">[<span class="title class_">Symbol</span>.<span class="property">search</span>](string) &#123;</span><br><span class="line"><span class="keyword">return</span> string.<span class="title function_">indexOf</span>(<span class="variable language_">this</span>.<span class="property">value</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">&#x27;foobar&#x27;</span>.<span class="title function_">search</span>(<span class="keyword">new</span> <span class="title function_">mySearch</span>(<span class="string">&#x27;foo&#x27;</span>)); <span class="comment">//3</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">String</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="title function_">search</span>(regexp)</span><br><span class="line"><span class="comment">//等同于</span></span><br><span class="line">regexp[<span class="title class_">Symbol</span>.<span class="property">search</span>](<span class="variable language_">this</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">mySearch</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">value</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">value</span> = value</span><br><span class="line">  &#125;</span><br><span class="line">  [<span class="title class_">Symbol</span>.<span class="property">search</span>](string) &#123;</span><br><span class="line">    <span class="keyword">return</span> string.<span class="title function_">indexOf</span>(<span class="variable language_">this</span>.<span class="property">value</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">&quot;foobar&quot;</span>.<span class="title function_">search</span>(<span class="keyword">new</span> <span class="title function_">mySearch</span>(<span class="string">&quot;foo&quot;</span>)) <span class="comment">//3</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Symbol.split<br>对象的 Symbol.split 属性指向一个方法，当对象被 String.prototype.split 方法调用时会返回该方法的返回值：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">String</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="title function_">split</span>(separator, limit);</span><br><span class="line"><span class="comment">//等同于</span></span><br><span class="line">separator[<span class="title class_">Symbol</span>.<span class="property">split</span>](<span class="variable language_">this</span>, limit);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">String</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="title function_">split</span>(separator, limit)</span><br><span class="line"><span class="comment">//等同于</span></span><br><span class="line">separator[<span class="title class_">Symbol</span>.<span class="property">split</span>](<span class="variable language_">this</span>, limit)</span><br></pre></td></tr></table></figure>
 <p>重定义 split 方法的行为：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">mySplit</span> &#123;</span><br><span class="line"><span class="title function_">constructor</span>(<span class="params">value</span>) &#123;</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">value</span> = value;</span><br><span class="line">&#125;</span><br><span class="line">[<span class="title class_">Symbol</span>.<span class="property">split</span>](string) &#123;</span><br><span class="line"><span class="keyword">let</span> index = string.<span class="title function_">indexOf</span>(<span class="variable language_">this</span>.<span class="property">value</span>);</span><br><span class="line"><span class="keyword">if</span> (index === -<span class="number">1</span>) <span class="keyword">return</span> string;</span><br><span class="line"><span class="keyword">return</span> [</span><br><span class="line">string.<span class="title function_">substr</span>(<span class="number">0</span>, index),</span><br><span class="line">string.<span class="title function_">substr</span>(index + <span class="variable language_">this</span>.<span class="property">value</span>.<span class="property">length</span>);</span><br><span class="line">];</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">&#x27;foobar&#x27;</span>.<span class="title function_">split</span>(<span class="keyword">new</span> <span class="title function_">mySplit</span>(<span class="string">&#x27;foo&#x27;</span>)); <span class="comment">//[&#x27;&#x27;, &#x27;bar&#x27;]</span></span><br><span class="line"><span class="string">&#x27;foobar&#x27;</span>.<span class="title function_">split</span>(<span class="keyword">new</span> <span class="title function_">mySplit</span>(<span class="string">&#x27;bar&#x27;</span>)); <span class="comment">//[&#x27;foo&#x27;, &#x27;&#x27;]</span></span><br><span class="line"><span class="string">&#x27;foobar&#x27;</span>.<span class="title function_">split</span>(<span class="keyword">new</span> <span class="title function_">mySplit</span>(<span class="string">&#x27;1&#x27;</span>)); <span class="comment">//&#x27;foobar&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">mySplit</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">value</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">value</span> = value;</span><br><span class="line">  &#125;</span><br><span class="line">  [<span class="title class_">Symbol</span>.<span class="property">split</span>](string) &#123;</span><br><span class="line">    <span class="keyword">let</span> index = string.<span class="title function_">indexOf</span>(<span class="variable language_">this</span>.<span class="property">value</span>);</span><br><span class="line">    <span class="keyword">if</span> (index === -<span class="number">1</span>) <span class="keyword">return</span> string;</span><br><span class="line">    <span class="keyword">return</span> [</span><br><span class="line">      string.<span class="title function_">substr</span>(<span class="number">0</span>, index),</span><br><span class="line">      string.<span class="title function_">substr</span>(index + <span class="variable language_">this</span>.<span class="property">value</span>.<span class="property">length</span>);</span><br><span class="line">    ];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">&#x27;foobar&#x27;</span>.<span class="title function_">split</span>(<span class="keyword">new</span> <span class="title function_">mySplit</span>(<span class="string">&#x27;foo&#x27;</span>)); <span class="comment">//[&#x27;&#x27;, &#x27;bar&#x27;]</span></span><br><span class="line"><span class="string">&#x27;foobar&#x27;</span>.<span class="title function_">split</span>(<span class="keyword">new</span> <span class="title function_">mySplit</span>(<span class="string">&#x27;bar&#x27;</span>)); <span class="comment">//[&#x27;foo&#x27;, &#x27;&#x27;]</span></span><br><span class="line"><span class="string">&#x27;foobar&#x27;</span>.<span class="title function_">split</span>(<span class="keyword">new</span> <span class="title function_">mySplit</span>(<span class="string">&#x27;1&#x27;</span>)); <span class="comment">//&#x27;foobar&#x27;</span></span><br></pre></td></tr></table></figure></li>
 <li><p>Symbol.iterator<br>对象的 Symbol.iterator 属性指向该对象的默认遍历器方法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">let</span> myIterable = &#123;&#125;;</span><br><span class="line">  myIterable[<span class="title class_">Symbol</span>.<span class="property">iterator</span>] = <span class="keyword">function</span>\* () &#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  [...myIterable]; <span class="comment">//[1, 2, 3]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Collection</span> &#123; \*[<span class="title class_">Symbol</span>.<span class="property">iterator</span>]() &#123;</span><br><span class="line"><span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (<span class="variable language_">this</span>[i] !== <span class="literal">undefined</span>) &#123;</span><br><span class="line"><span class="keyword">yield</span> <span class="variable language_">this</span>[i];</span><br><span class="line">i++;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> myCollection = <span class="keyword">new</span> <span class="title class_">Collection</span>();</span><br><span class="line">myCollection[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">myCollection[<span class="number">1</span>] = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> myCollection) &#123;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(value); <span class="comment">//1, 2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myIterable = &#123;&#125;</span><br><span class="line">myIterable[<span class="title class_">Symbol</span>.<span class="property">iterator</span>] = <span class="keyword">function</span>* () &#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span></span><br><span class="line">  <span class="keyword">yield</span> <span class="number">2</span></span><br><span class="line">  <span class="keyword">yield</span> <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line">;[...myIterable] <span class="comment">//[1, 2, 3]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Collection</span> &#123;</span><br><span class="line">  *[<span class="title class_">Symbol</span>.<span class="property">iterator</span>]() &#123;</span><br><span class="line">    <span class="keyword">let</span> i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> (<span class="variable language_">this</span>[i] !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">      <span class="keyword">yield</span> <span class="variable language_">this</span>[i]</span><br><span class="line">      i++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> myCollection = <span class="keyword">new</span> <span class="title class_">Collection</span>()</span><br><span class="line">myCollection[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">myCollection[<span class="number">1</span>] = <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> myCollection) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(value) <span class="comment">//1, 2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Symbol.toPrimitive</p>
 </li>
@@ -360,158 +333,50 @@
     
     
 
-      <footer class="post-footer">
+    <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%95%B4%E7%90%86/" rel="tag"># 整理</a>
-              <a href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag"># 学习</a>
+              <a href="/tags/ECMAScript/" rel="tag"><i class="fa fa-tag"></i> ECMAScript</a>
           </div>
 
         
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2018/08/15/%E6%8B%96%E6%94%BE%E4%BA%8B%E4%BB%B6/" rel="prev" title="拖放事件">
-      <i class="fa fa-chevron-left"></i> 拖放事件
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2018/08/18/Set/" rel="next" title="Set">
-      Set <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/08/15/%E6%8B%96%E6%94%BE%E4%BA%8B%E4%BB%B6/" rel="prev" title="拖放事件">
+                  <i class="fa fa-angle-left"></i> 拖放事件
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/08/18/Set/" rel="next" title="Set">
+                  Set <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
   </article>
-  
-  
-  
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E4%B8%BA%E5%B1%9E%E6%80%A7%E5%90%8D%E7%9A%84-Symbol"><span class="nav-number">1.</span> <span class="nav-text">作为属性名的 Symbol</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E5%90%8D%E7%9A%84%E9%81%8D%E5%8E%86"><span class="nav-number">2.</span> <span class="nav-text">属性名的遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Symbol-for-%E3%80%81Symbol-keyFor"><span class="nav-number">3.</span> <span class="nav-text">Symbol.for()、Symbol.keyFor()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E7%BD%AE%E7%9A%84-Symbol-%E5%80%BC"><span class="nav-number">4.</span> <span class="nav-text">内置的 Symbol 值</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Edward"
-      src="https://avatars.githubusercontent.com/u/22055633?v=4">
-  <p class="site-author-name" itemprop="name">Edward</p>
-  <div class="site-description" itemprop="description">Nothing to describe.</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">202</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">27</span>
-        <span class="site-state-item-name">categories</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">67</span>
-        <span class="site-state-item-name">tags</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/alazypig" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;alazypig" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
-      </span>
-  </div>
-  <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
-  </div>
-
-
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 2016 – 
-  <span itemprop="copyrightYear">2025</span>
-  <span class="with-love">
-    <i class="fa fa-bug"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Edward Wang</span>
 </div>
 
-        
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-bug"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Edward Wang</span>
+  </div>
 <div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
       <span class="post-meta-item-icon">
         <i class="fa fa-user"></i>
       </span>
@@ -519,64 +384,34 @@
         <span id="busuanzi_value_site_uv"></span>
       </span>
     </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="Total Views">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
 </div>
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
 
+    </div>
+  </footer>
+
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-<script src="/js/bookmark.js"></script>
-
-
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
 
   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
 
-
-
-
-  
-<script src="//cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
-<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
-<script src="/js/algolia-search.js"></script>
-
-
-
-
-
-
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 
@@ -585,10 +420,17 @@
 
 
   
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
 
   
 
-  
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
 
 </body>
 </html>

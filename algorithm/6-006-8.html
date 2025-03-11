@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#333"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#333">
+  <meta name="google-site-verification" content="3HwfZQXiRuHrLuN7SQdqGm_rDNxp9f5q53UmPeMkxZo">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"alazypig.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Hash Table - Table Doubling12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091">
+<meta property="og:type" content="website">
+<meta property="og:title" content="6.006 - 8">
+<meta property="og:url" content="http://alazypig.github.io/algorithm/6-006-8.html">
+<meta property="og:site_name" content="Live Note">
+<meta property="og:description" content="Hash Table - Table Doubling12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-05-22T11:23:09.000Z">
+<meta property="article:modified_time" content="2025-03-10T09:03:03.651Z">
+<meta property="article:author" content="Edward">
+<meta property="article:tag" content="Algorithm">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://alazypig.github.io/algorithm/6-006-8">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"en","comments":true,"permalink":"http://alazypig.github.io/algorithm/6-006-8.html","path":"algorithm/6-006-8.html","title":"6.006 - 8"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>6.006 - 8 | Live Note
+</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Live Note</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Remain optimistic</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">57</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">18</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">191</span></a></li><li class="menu-item menu-item-photo"><a href="/photo/" rel="section"><i class="fa fa-camera fa-fw"></i>photo</a></li><li class="menu-item menu-item-algorithm"><a href="/algorithm/" rel="section"><i class="fa fa-code fa-fw"></i>algorithm</a></li><li class="menu-item menu-item-battery"><a href="/battery/" rel="section"><i class="fa fa-battery-full fa-fw"></i>battery</a></li><li class="menu-item menu-item-frontend"><a href="/frontend/" rel="section"><i class="fa fa-laptop fa-fw"></i>frontend</a></li><li class="menu-item menu-item-notes"><a href="/notes/" rel="section"><i class="fa fa-sticky-note fa-fw"></i>notes</a></li><li class="menu-item menu-item-stm32"><a href="/stm32/" rel="section"><i class="fa fa-microchip fa-fw"></i>stm32</a></li><li class="menu-item menu-item-ziwei"><a href="/ziwei/" rel="section"><i class="fa fa-yin-yang fa-fw"></i>ziwei</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-Table-Table-Doubling"><span class="nav-number">1.</span> <span class="nav-text">Hash Table - Table Doubling</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Edward"
+      src="https://avatars.githubusercontent.com/u/22055633?v=4">
+  <p class="site-author-name" itemprop="name">Edward</p>
+  <div class="site-description" itemprop="description">Nothing to describe.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">191</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">57</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/alazypig" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;alazypig" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner page posts-expand">
+
+
+    
+    
+    
+    <div class="post-block" lang="en"><header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">6.006 - 8
+</h1>
+
+<div class="post-meta-container">
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <h3 id="Hash-Table-Table-Doubling"><a href="#Hash-Table-Table-Doubling" class="headerlink" title="Hash Table - Table Doubling"></a>Hash Table - Table Doubling</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Hash_Table</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">size = <span class="number">8</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">data</span> = []</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_count</span> = <span class="number">0</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_size</span> = size</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">_hash</span>(<span class="params">str, num</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> hash = <span class="number">0</span></span><br><span class="line">    str.<span class="title function_">split</span>(<span class="string">&quot;&quot;</span>).<span class="title function_">map</span>(<span class="function">(<span class="params">i</span>) =&gt;</span> &#123;</span><br><span class="line">      hash = (hash &lt;&lt; <span class="number">5</span>) + i.<span class="title function_">charCodeAt</span>(<span class="number">0</span>)</span><br><span class="line">      hash = (hash &amp; hash) % num</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> hash</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">insert</span>(<span class="params">key, value</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> index = <span class="variable language_">this</span>.<span class="title function_">_hash</span>(key, <span class="variable language_">this</span>.<span class="property">_size</span>),</span><br><span class="line">      modify = <span class="literal">false</span>,</span><br><span class="line">      blank = <span class="variable language_">this</span>.<span class="property">data</span>[index]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!blank) <span class="variable language_">this</span>.<span class="property">data</span>[index] = blank = []</span><br><span class="line"></span><br><span class="line">    blank.<span class="title function_">map</span>(<span class="function">(<span class="params">i</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (i[<span class="number">0</span>] === key) &#123;</span><br><span class="line">        i[<span class="number">1</span>] === value</span><br><span class="line">        modify = <span class="literal">true</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!modify) &#123;</span><br><span class="line">      blank.<span class="title function_">push</span>([key, value])</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">_count</span>++</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">_count</span> &gt; <span class="variable language_">this</span>.<span class="property">size</span> * <span class="number">0.75</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">resize</span>(<span class="variable language_">this</span>.<span class="property">size</span> * <span class="number">2</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">_resize</span>(<span class="params">newSize</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> oldData = <span class="variable language_">this</span>.<span class="property">data</span></span><br><span class="line"></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_size</span> = newSize</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_count</span> = <span class="number">0</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">data</span> = []</span><br><span class="line"></span><br><span class="line">    oldData.<span class="title function_">map</span>(<span class="function">(<span class="params">i</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (!i) <span class="keyword">return</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; i.<span class="property">length</span>; j++) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">insert</span>(i[j][<span class="number">0</span>], i[j][<span class="number">1</span>])</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">remove</span>(<span class="params">key</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> index = <span class="variable language_">this</span>.<span class="title function_">_hash</span>(key, <span class="variable language_">this</span>.<span class="property">_size</span>)</span><br><span class="line">    <span class="keyword">let</span> current = <span class="variable language_">this</span>.<span class="property">data</span>[index]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!current) <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">    current.<span class="title function_">map</span>(<span class="function">(<span class="params">i, index</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (i[<span class="number">0</span>] === key) &#123;</span><br><span class="line">        current.<span class="title function_">splice</span>(index, <span class="number">1</span>)</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">_count</span>--</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">_count</span> &lt; <span class="variable language_">this</span>.<span class="property">_size</span> * <span class="number">0.25</span>) &#123;</span><br><span class="line">          <span class="variable language_">this</span>.<span class="title function_">_resize</span>(<span class="variable language_">this</span>.<span class="property">_size</span> / <span class="number">2</span>)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> i[<span class="number">1</span>]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">traverse</span>(<span class="params">key</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> index = <span class="variable language_">this</span>.<span class="title function_">_hash</span>(key, <span class="variable language_">this</span>.<span class="property">_size</span>),</span><br><span class="line">      current = <span class="variable language_">this</span>.<span class="property">data</span>[index]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!current) <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> result = current.<span class="title function_">filter</span>(<span class="function">(<span class="params">i</span>) =&gt;</span> i[<span class="number">0</span>] == key)[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">return</span> result === <span class="literal">undefined</span> ? <span class="literal">null</span> : result[<span class="number">1</span>]</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">traverseALl</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">data</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> addressBook = <span class="keyword">new</span> <span class="title class_">Hash</span>_Table()</span><br><span class="line"></span><br><span class="line">addressBook.<span class="title function_">insert</span>(<span class="string">&quot;Wendy&quot;</span>, <span class="string">&quot;220-02-33&quot;</span>)</span><br><span class="line">addressBook.<span class="title function_">insert</span>(<span class="string">&quot;GilesYvette&quot;</span>, <span class="string">&quot;746-71-84&quot;</span>)</span><br><span class="line">addressBook.<span class="title function_">insert</span>(<span class="string">&quot;Pollitt&quot;</span>, <span class="string">&quot;374-34-48&quot;</span>)</span><br><span class="line">addressBook.<span class="title function_">insert</span>(<span class="string">&quot;AbeLinda&quot;</span>, <span class="string">&quot;040-17-82&quot;</span>)</span><br><span class="line">addressBook.<span class="title function_">insert</span>(<span class="string">&quot;StracheyPayne&quot;</span>, <span class="string">&quot;129-35-33&quot;</span>)</span><br><span class="line">addressBook.<span class="title function_">insert</span>(<span class="string">&quot;JonahIrene&quot;</span>, <span class="string">&quot;709-98-46&quot;</span>)</span><br><span class="line">addressBook.<span class="title function_">insert</span>(<span class="string">&quot;DorisAngela&quot;</span>, <span class="string">&quot;205-74-43&quot;</span>)</span><br><span class="line">addressBook.<span class="title function_">insert</span>(<span class="string">&quot;ThoreauTess&quot;</span>, <span class="string">&quot;946-62-95&quot;</span>)</span><br><span class="line">addressBook.<span class="title function_">insert</span>(<span class="string">&quot;HaggaiFanny&quot;</span>, <span class="string">&quot;147-68-09&quot;</span>)</span><br><span class="line">addressBook.<span class="title function_">insert</span>(<span class="string">&quot;KentCuritis&quot;</span>, <span class="string">&quot;095-94-11&quot;</span>)</span><br><span class="line">addressBook.<span class="title function_">insert</span>(<span class="string">&quot;CecilliaFrederica&quot;</span>, <span class="string">&quot;273-72-73&quot;</span>)</span><br><span class="line">addressBook.<span class="title function_">insert</span>(<span class="string">&quot;HazlittFranklin&quot;</span>, <span class="string">&quot;107-49-37&quot;</span>)</span><br><span class="line">addressBook.<span class="title function_">remove</span>(<span class="string">&quot;AbeLinda&quot;</span>)</span><br><span class="line">addressBook.<span class="title function_">remove</span>(<span class="string">&quot;Pollitt&quot;</span>)</span><br><span class="line">addressBook.<span class="title function_">traverseALl</span>()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(addressBook.<span class="title function_">traverse</span>(<span class="string">&quot;CecilliaFrederica&quot;</span>))</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(addressBook.<span class="title function_">traverse</span>(<span class="string">&quot;Pollitt&quot;</span>))</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(addressBook.<span class="title function_">traverse</span>(<span class="string">&quot;HaggaiFanny&quot;</span>))</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(addressBook.<span class="title function_">traverse</span>(<span class="string">&quot;ThoreauTess&quot;</span>))</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(addressBook.<span class="title function_">traverse</span>(<span class="string">&quot;DorisAngela&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>result:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Array(7) […, Array(4), …, Array(2), Array(0), Array(3), Array(1)]</span><br><span class="line">273-72-73</span><br><span class="line">null</span><br><span class="line">147-68-09</span><br><span class="line">946-62-95</span><br><span class="line">205-74-43</span><br></pre></td></tr></table></figure>
+
+      </div>
+      
+      
+      
+    </div>
+
+    
+    
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-bug"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Edward Wang</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

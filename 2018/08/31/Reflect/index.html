@@ -2,25 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 7.2.0">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#333"><meta name="generator" content="Hexo 7.3.0">
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg" color="#333">
+  <meta name="google-site-verification" content="3HwfZQXiRuHrLuN7SQdqGm_rDNxp9f5q53UmPeMkxZo">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"alazypig.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-  <meta name="description" content="从 Reflect 对象上可以获得语言内部的方法 修改某些 Object 方法的返回结果，让其变得更合理。比如 Object.defineProperty 在无法定义属性时会抛出一个错误，而 Reflect.defineProperty 则会返回 false 让 Object 操作都变成函数行为。 只要是 Proxy 对象的方法，就能在 Reflect 对象上找到相应的方法，无论 Proxy 怎">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"alazypig.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="从 Reflect 对象上可以获得语言内部的方法 修改某些 Object 方法的返回结果，让其变得更合理。比如 Object.defineProperty 在无法定义属性时会抛出一个错误，而 Reflect.defineProperty 则会返回 false 让 Object 操作都变成函数行为。 只要是 Proxy 对象的方法，就能在 Reflect 对象上找到相应的方法，无论 Proxy 怎">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Reflect">
 <meta property="og:url" content="http://alazypig.github.io/2018/08/31/Reflect/index.html">
@@ -28,26 +28,19 @@
 <meta property="og:description" content="从 Reflect 对象上可以获得语言内部的方法 修改某些 Object 方法的返回结果，让其变得更合理。比如 Object.defineProperty 在无法定义属性时会抛出一个错误，而 Reflect.defineProperty 则会返回 false 让 Object 操作都变成函数行为。 只要是 Proxy 对象的方法，就能在 Reflect 对象上找到相应的方法，无论 Proxy 怎">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2018-08-31T06:56:58.000Z">
-<meta property="article:modified_time" content="2024-05-21T06:58:23.692Z">
+<meta property="article:modified_time" content="2025-03-10T10:32:25.630Z">
 <meta property="article:author" content="Edward">
-<meta property="article:tag" content="整理">
-<meta property="article:tag" content="学习">
+<meta property="article:tag" content="ECMAScript">
 <meta name="twitter:card" content="summary">
+
 
 <link rel="canonical" href="http://alazypig.github.io/2018/08/31/Reflect/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'en'
-  };
-</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://alazypig.github.io/2018/08/31/Reflect/","path":"2018/08/31/Reflect/","title":"Reflect"}</script>
 
-  <title>Reflect | Live Note</title>
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Reflect | Live Note</title>
   
 
 
@@ -55,57 +48,39 @@
 
 
 
+
+
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Live Note</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
+      <p class="site-title">Live Note</p>
+      <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">Remain optimistic</p>
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
         <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
@@ -113,69 +88,8 @@
 
 
 
-
 <nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">67</span></a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">27</span></a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">202</span></a>
-
-  </li>
-        <li class="menu-item menu-item-photo">
-
-    <a href="/photo/" rel="section"><i class="fa fa-camera fa-fw"></i>photo</a>
-
-  </li>
-        <li class="menu-item menu-item-algorithm">
-
-    <a href="/algorithm/" rel="section"><i class="fa fa-code fa-fw"></i>algorithm</a>
-
-  </li>
-        <li class="menu-item menu-item-battery">
-
-    <a href="/battery/" rel="section"><i class="fa fa-battery-full fa-fw"></i>battery</a>
-
-  </li>
-        <li class="menu-item menu-item-frontend">
-
-    <a href="/frontend/" rel="section"><i class="fa fa-laptop fa-fw"></i>frontend</a>
-
-  </li>
-        <li class="menu-item menu-item-notes">
-
-    <a href="/notes/" rel="section"><i class="fa fa-sticky-note fa-fw"></i>notes</a>
-
-  </li>
-        <li class="menu-item menu-item-stm32">
-
-    <a href="/stm32/" rel="section"><i class="fa fa-microchip fa-fw"></i>stm32</a>
-
-  </li>
-        <li class="menu-item menu-item-ziwei">
-
-    <a href="/ziwei/" rel="section"><i class="fa fa-yin-yang fa-fw"></i>ziwei</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
-
-  </li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">57</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">18</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">191</span></a></li><li class="menu-item menu-item-photo"><a href="/photo/" rel="section"><i class="fa fa-camera fa-fw"></i>photo</a></li><li class="menu-item menu-item-algorithm"><a href="/algorithm/" rel="section"><i class="fa fa-code fa-fw"></i>algorithm</a></li><li class="menu-item menu-item-battery"><a href="/battery/" rel="section"><i class="fa fa-battery-full fa-fw"></i>battery</a></li><li class="menu-item menu-item-frontend"><a href="/frontend/" rel="section"><i class="fa fa-laptop fa-fw"></i>frontend</a></li><li class="menu-item menu-item-notes"><a href="/notes/" rel="section"><i class="fa fa-sticky-note fa-fw"></i>notes</a></li><li class="menu-item menu-item-stm32"><a href="/stm32/" rel="section"><i class="fa fa-microchip fa-fw"></i>stm32</a></li><li class="menu-item menu-item-ziwei"><a href="/ziwei/" rel="section"><i class="fa fa-yin-yang fa-fw"></i>ziwei</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -187,99 +101,153 @@
 
   <div class="search-pop-overlay">
     <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container"></div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div class="algolia-results">
-  <div id="algolia-stats"></div>
-  <div id="algolia-hits"></div>
-  <div id="algolia-pagination" class="algolia-pagination"></div>
-</div>
-
-      
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
     </div>
   </div>
 
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">静态方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8-Proxy-%E5%AE%9E%E7%8E%B0%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">用 Proxy 实现观察者模式</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Edward"
+      src="https://avatars.githubusercontent.com/u/22055633?v=4">
+  <p class="site-author-name" itemprop="name">Edward</p>
+  <div class="site-description" itemprop="description">Nothing to describe.</div>
 </div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">191</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">57</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/alazypig" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;alazypig" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
   </div>
-  <div class="reading-progress-bar"></div>
-  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
 
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
 
     
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="http://alazypig.github.io/2018/08/31/Reflect/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars.githubusercontent.com/u/22055633?v=4">
       <meta itemprop="name" content="Edward">
-      <meta itemprop="description" content="Nothing to describe.">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Live Note">
+      <meta itemprop="description" content="Nothing to describe.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Reflect | Live Note">
+      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           Reflect
         </h1>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-08-31 14:56:58" itemprop="dateCreated datePublished" datetime="2018-08-31T14:56:58+08:00">2018-08-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:58:23" itemprop="dateModified" datetime="2024-05-21T14:58:23+08:00">2024-05-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ECMAScript/" itemprop="url" rel="index"><span itemprop="name">ECMAScript</span></a>
-                </span>
-            </span>
+      <time title="Created: 2018-08-31 14:56:58" itemprop="dateCreated datePublished" datetime="2018-08-31T14:56:58+08:00">2018-08-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ECMAScript/" itemprop="url" rel="index"><span itemprop="name">ECMAScript</span></a>
+        </span>
+    </span>
 
-          
-            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
+  
+</div>
 
         </div>
       </header>
@@ -287,27 +255,26 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <ol>
+    <div class="post-body" itemprop="articleBody"><ol>
 <li>从 Reflect 对象上可以获得语言内部的方法</li>
 <li>修改某些 Object 方法的返回结果，让其变得更合理。比如 Object.defineProperty 在无法定义属性时会抛出一个错误，而 Reflect.defineProperty 则会返回 false</li>
 <li>让 Object 操作都变成函数行为。</li>
 <li>只要是 Proxy 对象的方法，就能在 Reflect 对象上找到相应的方法，无论 Proxy 怎么修改默认行为，总可以在 Reflect 上获取默认行为</li>
 </ol>
 <h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><ul>
-<li>Reflect.apply(target, thisArg, args)<br>等同于 Function.prototype.apply.call(func, thisArg, args)，用于绑定 this 对象后执行给定函数。</li>
-<li>Reflect.construct(target, args)<br>等同于 new target(…args)，提供了一种不使用 new 来调用构造函数的方法：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">function</span> <span class="title function_">Greeting</span>(<span class="params">name</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//new 的写法</span></span><br><span class="line"><span class="keyword">const</span> instance = <span class="keyword">new</span> <span class="title class_">Greeting</span>(<span class="string">&#x27;张三&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Reflect.construct 写法</span></span><br><span class="line"><span class="keyword">const</span> instance = <span class="title class_">Reflect</span>.<span class="title function_">construct</span>(<span class="title class_">Greeting</span>, [<span class="string">&#x27;张三&#x27;</span>]);</span><br></pre></td></tr></table></figure></li>
+<li><p>Reflect.apply(target, thisArg, args)<br>等同于 Function.prototype.apply.call(func, thisArg, args)，用于绑定 this 对象后执行给定函数。</p>
+</li>
+<li><p>Reflect.construct(target, args)<br>等同于 new target(…args)，提供了一种不使用 new 来调用构造函数的方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Greeting</span>(<span class="params">name</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">name</span> = name</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//new 的写法</span></span><br><span class="line"><span class="keyword">const</span> instance = <span class="keyword">new</span> <span class="title class_">Greeting</span>(<span class="string">&quot;张三&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//Reflect.construct 写法</span></span><br><span class="line"><span class="keyword">const</span> instance = <span class="title class_">Reflect</span>.<span class="title function_">construct</span>(<span class="title class_">Greeting</span>, [<span class="string">&quot;张三&quot;</span>])</span><br></pre></td></tr></table></figure></li>
 </ul>
 <span id="more"></span>
 
 <ul>
-<li>Reflect.get(target, name, receiver)<br>查找并返回 target 的 name 属性，如果没有返回 undefined。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">foo : <span class="number">1</span>,</span><br><span class="line">bar : <span class="number">2</span>,</span><br><span class="line"><span class="keyword">get</span> <span class="title function_">baz</span>() &#123;</span><br><span class="line"><span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">foo</span> + <span class="variable language_">this</span>.<span class="property">bar</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Reflect</span>.<span class="title function_">get</span>(obj, <span class="string">&#x27;foo&#x27;</span>); <span class="comment">//1</span></span><br><span class="line"><span class="title class_">Reflect</span>.<span class="title function_">get</span>(obj, <span class="string">&#x27;baz&#x27;</span>); <span class="comment">//3</span></span><br></pre></td></tr></table></figure>
-如果 name 属性部署了 getter，则 getter 的 this 绑定 receiver：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">foo : <span class="number">1</span>,</span><br><span class="line">bar : <span class="number">2</span>,</span><br><span class="line"><span class="keyword">get</span> <span class="title function_">gaz</span>() &#123;</span><br><span class="line"><span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">foo</span> + <span class="variable language_">this</span>.<span class="property">bar</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> myobj = &#123;</span><br><span class="line">foo : <span class="number">2</span>,</span><br><span class="line">bar : <span class="number">4</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Reflect</span>.<span class="title function_">get</span>(obj, <span class="string">&#x27;gaz&#x27;</span>, myobj); <span class="comment">//myobj.foo + myobj.bar 6</span></span><br></pre></td></tr></table></figure>
-<strong>如果第一个参数不是 object，会报错</strong><br>Reflect.set 会触发 Proxy.defineProperty 拦截：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p = &#123;</span><br><span class="line">a : <span class="string">&#x27;a&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> handler = &#123;</span><br><span class="line"><span class="title function_">set</span>(<span class="params">target, key, value, receiver</span>) &#123;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;set&#x27;</span>);</span><br><span class="line"><span class="title class_">Reflect</span>.<span class="title function_">set</span>(target, key, value, receiver);</span><br><span class="line">&#125;,</span><br><span class="line"><span class="title function_">defineProperty</span>(<span class="params">target, key, attribute</span>) &#123;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;defineProperty&#x27;</span>);</span><br><span class="line"><span class="title class_">Reflect</span>.<span class="title function_">defineProperty</span>(target, key, attribute);</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> obj = <span class="keyword">new</span> <span class="title class_">Proxy</span>(p, handler);</span><br><span class="line">obj.<span class="property">a</span> = <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line"><span class="comment">//set</span></span><br><span class="line"><span class="comment">//defineProperty</span></span><br></pre></td></tr></table></figure></li>
-<li>Reflect.set(target, name, value, receiver)<br>设置 target 的 name 属性等于 value。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">foo : <span class="number">1</span>,</span><br><span class="line"><span class="keyword">set</span> <span class="title function_">bar</span>(<span class="params">value</span>) &#123;</span><br><span class="line"><span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">foo</span> = value;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line">obj.<span class="property">foo</span>; <span class="comment">//1</span></span><br><span class="line"><span class="title class_">Reflect</span>.<span class="title function_">set</span>(obj, <span class="string">&#x27;foo&#x27;</span>, <span class="number">2</span>);</span><br><span class="line">obj.<span class="property">foo</span>; <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
-如果 name 属性设置了 setter，则 setter 的 this 绑定 receiver：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">foo : <span class="number">1</span>,</span><br><span class="line"><span class="keyword">set</span> <span class="title function_">bar</span>(<span class="params">value</span>) &#123;</span><br><span class="line"><span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">foo</span> = value;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> myobj = &#123;</span><br><span class="line">foo : <span class="number">0</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="title class_">Reflect</span>.<span class="title function_">set</span>(obj, <span class="string">&#x27;bar&#x27;</span>, <span class="number">4</span>, myobj);</span><br><span class="line">myobj.<span class="property">foo</span>; <span class="comment">//4</span></span><br></pre></td></tr></table></figure>
+<li>Reflect.get(target, name, receiver)<br>查找并返回 target 的 name 属性，如果没有返回 undefined。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">foo</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">bar</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="keyword">get</span> <span class="title function_">baz</span>() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">foo</span> + <span class="variable language_">this</span>.<span class="property">bar</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Reflect</span>.<span class="title function_">get</span>(obj, <span class="string">&quot;foo&quot;</span>) <span class="comment">//1</span></span><br><span class="line"><span class="title class_">Reflect</span>.<span class="title function_">get</span>(obj, <span class="string">&quot;baz&quot;</span>) <span class="comment">//3</span></span><br></pre></td></tr></table></figure>
+如果 name 属性部署了 getter，则 getter 的 this 绑定 receiver：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">foo</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">bar</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="keyword">get</span> <span class="title function_">gaz</span>() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">foo</span> + <span class="variable language_">this</span>.<span class="property">bar</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> myobj = &#123;</span><br><span class="line">  <span class="attr">foo</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">bar</span>: <span class="number">4</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Reflect</span>.<span class="title function_">get</span>(obj, <span class="string">&quot;gaz&quot;</span>, myobj) <span class="comment">//myobj.foo + myobj.bar 6</span></span><br></pre></td></tr></table></figure>
+<strong>如果第一个参数不是 object，会报错</strong><br>Reflect.set 会触发 Proxy.defineProperty 拦截：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p = &#123;</span><br><span class="line">  <span class="attr">a</span>: <span class="string">&quot;a&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> handler = &#123;</span><br><span class="line">  <span class="title function_">set</span>(<span class="params">target, key, value, receiver</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;set&quot;</span>)</span><br><span class="line">    <span class="title class_">Reflect</span>.<span class="title function_">set</span>(target, key, value, receiver)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">defineProperty</span>(<span class="params">target, key, attribute</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;defineProperty&quot;</span>)</span><br><span class="line">    <span class="title class_">Reflect</span>.<span class="title function_">defineProperty</span>(target, key, attribute)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj = <span class="keyword">new</span> <span class="title class_">Proxy</span>(p, handler)</span><br><span class="line">obj.<span class="property">a</span> = <span class="string">&quot;A&quot;</span></span><br><span class="line"><span class="comment">//set</span></span><br><span class="line"><span class="comment">//defineProperty</span></span><br></pre></td></tr></table></figure></li>
+<li>Reflect.set(target, name, value, receiver)<br>设置 target 的 name 属性等于 value。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">foo</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="keyword">set</span> <span class="title function_">bar</span>(<span class="params">value</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="variable language_">this</span>.<span class="property">foo</span> = value)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line">obj.<span class="property">foo</span> <span class="comment">//1</span></span><br><span class="line"><span class="title class_">Reflect</span>.<span class="title function_">set</span>(obj, <span class="string">&quot;foo&quot;</span>, <span class="number">2</span>)</span><br><span class="line">obj.<span class="property">foo</span> <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+如果 name 属性设置了 setter，则 setter 的 this 绑定 receiver：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">foo</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="keyword">set</span> <span class="title function_">bar</span>(<span class="params">value</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="variable language_">this</span>.<span class="property">foo</span> = value)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> myobj = &#123;</span><br><span class="line">  <span class="attr">foo</span>: <span class="number">0</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Reflect</span>.<span class="title function_">set</span>(obj, <span class="string">&quot;bar&quot;</span>, <span class="number">4</span>, myobj)</span><br><span class="line">myobj.<span class="property">foo</span> <span class="comment">//4</span></span><br></pre></td></tr></table></figure>
 <strong>如果第一个参数不是 object，会报错</strong></li>
 <li>Reflect.defineProperty(target, name, descriptor)<br>用来定义对象的属性。</li>
 <li>Reflect.deleteProperty(target, name)<br>等同于 delete obj[name]，用于删除对象的属性，返回一个布尔值，删除成功返回 true，否则返回 false。</li>
@@ -320,7 +287,7 @@
 <li>Reflect.setPrototypeOf(target, prototype)<br>用于设置对象的<strong>prop</strong>属性，返回第一个参数对象。</li>
 </ul>
 <h3 id="用-Proxy-实现观察者模式"><a href="#用-Proxy-实现观察者模式" class="headerlink" title="用 Proxy 实现观察者模式"></a>用 Proxy 实现观察者模式</h3><p>Observe mode 指的是函数自动观察数据对象的模式，一旦对象有变化，函数就会自动执行。<br>思路：使用 observable 和 observe 这两个函数，observable 函数返回一个原始对象的 Proxy 代理，拦截赋值操作，触发充当观察者的各个函数。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> queueObservers = <span class="keyword">new</span> <span class="title class_">Set</span>();</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">observe</span> = fn =&gt; queueObservers.<span class="title function_">add</span>(fn);</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">observable</span> = obj =&gt; <span class="keyword">new</span> <span class="title class_">Proxy</span>(obj, &#123; set &#125;); <span class="comment">//拦截 set</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">set</span>(<span class="params">target, key, value, receiver</span>) &#123;</span><br><span class="line"><span class="keyword">const</span> result = <span class="title class_">Reflect</span>.<span class="title function_">set</span>(target, key, value, receiver); <span class="comment">//完成原始操作</span></span><br><span class="line">queueObservers.<span class="title function_">forEach</span>(<span class="function"><span class="params">observer</span> =&gt;</span> <span class="title function_">observer</span>());</span><br><span class="line"><span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> person = <span class="title function_">observable</span>(&#123;</span><br><span class="line">name : <span class="string">&#x27;张三&#x27;</span>,</span><br><span class="line">age : <span class="number">20</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">print</span>(<span class="params"></span>) &#123;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;person.name&#125;</span>， <span class="subst">$&#123;person.age&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">observe</span>(print);</span><br><span class="line">person.<span class="property">name</span> = <span class="string">&#x27;李四&#x27;</span>; <span class="comment">//李四，20</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> queueObservers = <span class="keyword">new</span> <span class="title class_">Set</span>()</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">observe</span> = (<span class="params">fn</span>) =&gt; queueObservers.<span class="title function_">add</span>(fn)</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">observable</span> = (<span class="params">obj</span>) =&gt; <span class="keyword">new</span> <span class="title class_">Proxy</span>(obj, &#123; set &#125;) <span class="comment">//拦截 set</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">set</span>(<span class="params">target, key, value, receiver</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> result = <span class="title class_">Reflect</span>.<span class="title function_">set</span>(target, key, value, receiver) <span class="comment">//完成原始操作</span></span><br><span class="line">  queueObservers.<span class="title function_">forEach</span>(<span class="function">(<span class="params">observer</span>) =&gt;</span> <span class="title function_">observer</span>())</span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> person = <span class="title function_">observable</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;张三&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">20</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">print</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;person.name&#125;</span>， <span class="subst">$&#123;person.age&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">observe</span>(print)</span><br><span class="line">person.<span class="property">name</span> = <span class="string">&quot;李四&quot;</span> <span class="comment">//李四，20</span></span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -328,158 +295,50 @@
     
     
 
-      <footer class="post-footer">
+    <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%95%B4%E7%90%86/" rel="tag"># 整理</a>
-              <a href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag"># 学习</a>
+              <a href="/tags/ECMAScript/" rel="tag"><i class="fa fa-tag"></i> ECMAScript</a>
           </div>
 
         
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2018/08/20/Proxy/" rel="prev" title="Proxy">
-      <i class="fa fa-chevron-left"></i> Proxy
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2018/08/31/Promise/" rel="next" title="Promise">
-      Promise <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/08/20/Proxy/" rel="prev" title="Proxy">
+                  <i class="fa fa-angle-left"></i> Proxy
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/08/31/Promise/" rel="next" title="Promise">
+                  Promise <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
   </article>
-  
-  
-  
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">静态方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8-Proxy-%E5%AE%9E%E7%8E%B0%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">用 Proxy 实现观察者模式</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Edward"
-      src="https://avatars.githubusercontent.com/u/22055633?v=4">
-  <p class="site-author-name" itemprop="name">Edward</p>
-  <div class="site-description" itemprop="description">Nothing to describe.</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">202</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">27</span>
-        <span class="site-state-item-name">categories</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">67</span>
-        <span class="site-state-item-name">tags</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/alazypig" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;alazypig" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
-      </span>
-  </div>
-  <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
-  </div>
-
-
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 2016 – 
-  <span itemprop="copyrightYear">2025</span>
-  <span class="with-love">
-    <i class="fa fa-bug"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Edward Wang</span>
 </div>
 
-        
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-bug"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Edward Wang</span>
+  </div>
 <div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
       <span class="post-meta-item-icon">
         <i class="fa fa-user"></i>
       </span>
@@ -487,64 +346,34 @@
         <span id="busuanzi_value_site_uv"></span>
       </span>
     </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="Total Views">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
 </div>
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
 
+    </div>
+  </footer>
+
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-<script src="/js/bookmark.js"></script>
-
-
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
 
   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
 
-
-
-
-  
-<script src="//cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
-<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
-<script src="/js/algolia-search.js"></script>
-
-
-
-
-
-
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 
@@ -553,10 +382,17 @@
 
 
   
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
 
   
 
-  
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
 
 </body>
 </html>
