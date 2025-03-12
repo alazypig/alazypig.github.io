@@ -28,7 +28,7 @@
 <meta property="og:description" content="什么是微前端微前端架构具备以下几个核心价值  技术栈无关：主框架不限制接入应用的技术栈，子应用具备完全自主权 独立开发、独立部署：子应用仓库独立，前后端可独立开发，部署完成后主框架自动完成同步更新 独立运行时：每个子应用之间状态隔离，运行时状态不共享  现有解决方案 路由分发（nginx） npm 子包：基座负责打包构建发布，打包时集成； iframe：应用之间完全独立；需要基座提供通信方案； 通">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-09-13T05:24:14.000Z">
-<meta property="article:modified_time" content="2025-03-10T09:47:11.869Z">
+<meta property="article:modified_time" content="2025-03-12T08:56:21.147Z">
 <meta property="article:author" content="Edward">
 <meta property="article:tag" content="Micro Frontend">
 <meta name="twitter:card" content="summary">
@@ -89,7 +89,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">57</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">18</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">191</span></a></li><li class="menu-item menu-item-photo"><a href="/photo/" rel="section"><i class="fa fa-camera fa-fw"></i>photo</a></li><li class="menu-item menu-item-algorithm"><a href="/algorithm/" rel="section"><i class="fa fa-code fa-fw"></i>algorithm</a></li><li class="menu-item menu-item-battery"><a href="/battery/" rel="section"><i class="fa fa-battery-full fa-fw"></i>battery</a></li><li class="menu-item menu-item-frontend"><a href="/frontend/" rel="section"><i class="fa fa-laptop fa-fw"></i>frontend</a></li><li class="menu-item menu-item-notes"><a href="/notes/" rel="section"><i class="fa fa-sticky-note fa-fw"></i>notes</a></li><li class="menu-item menu-item-stm32"><a href="/stm32/" rel="section"><i class="fa fa-microchip fa-fw"></i>stm32</a></li><li class="menu-item menu-item-ziwei"><a href="/ziwei/" rel="section"><i class="fa fa-yin-yang fa-fw"></i>ziwei</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">57</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">18</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">192</span></a></li><li class="menu-item menu-item-photo"><a href="/photo/" rel="section"><i class="fa fa-camera fa-fw"></i>photo</a></li><li class="menu-item menu-item-algorithm"><a href="/algorithm/" rel="section"><i class="fa fa-code fa-fw"></i>algorithm</a></li><li class="menu-item menu-item-battery"><a href="/battery/" rel="section"><i class="fa fa-battery-full fa-fw"></i>battery</a></li><li class="menu-item menu-item-frontend"><a href="/frontend/" rel="section"><i class="fa fa-laptop fa-fw"></i>frontend</a></li><li class="menu-item menu-item-notes"><a href="/notes/" rel="section"><i class="fa fa-sticky-note fa-fw"></i>notes</a></li><li class="menu-item menu-item-stm32"><a href="/stm32/" rel="section"><i class="fa fa-microchip fa-fw"></i>stm32</a></li><li class="menu-item menu-item-ziwei"><a href="/ziwei/" rel="section"><i class="fa fa-yin-yang fa-fw"></i>ziwei</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -155,7 +155,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">191</span>
+          <span class="site-state-item-count">192</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -332,15 +332,33 @@
 <td align="center">低</td>
 </tr>
 </tbody></table>
-<h1 id="通用中心路由基座式实现"><a href="#通用中心路由基座式实现" class="headerlink" title="通用中心路由基座式实现"></a>通用中心路由基座式实现</h1><h3 id="应用架构"><a href="#应用架构" class="headerlink" title="应用架构"></a>应用架构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line">App[App]</span><br><span class="line">App --&gt; App1[App1]</span><br><span class="line">App --&gt; App2[App2]</span><br><span class="line">App --&gt; App3[App3]</span><br><span class="line">App --&gt; App4[...]</span><br></pre></td></tr></table></figure>
+<h1 id="通用中心路由基座式实现"><a href="#通用中心路由基座式实现" class="headerlink" title="通用中心路由基座式实现"></a>通用中心路由基座式实现</h1><h3 id="应用架构"><a href="#应用架构" class="headerlink" title="应用架构"></a>应用架构</h3><pre><code class="highlight mermaid">graph TB
+App[App]
+App --&gt; App1[App1]
+App --&gt; App2[App2]
+App --&gt; App3[App3]
+App --&gt; App4[...]</code></pre>
 
-<h3 id="实现方案"><a href="#实现方案" class="headerlink" title="实现方案"></a>实现方案</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Start(Start)</span><br><span class="line">Start --&gt; Route(/subapp/xxx/index)</span><br><span class="line">Route --&gt; Match(根路由匹配到 /subapp)</span><br><span class="line">Match --&gt; DoubleMatch&#123;二级路由xxx匹配到子路由注册信息&#125;</span><br><span class="line">DoubleMatch --&gt; | 匹配失败 | MatchError(失败处理) --&gt; End(End)</span><br><span class="line">DoubleMatch --&gt; | 匹配成功 | IsLoaded&#123;检查是否已经加载&#125;</span><br><span class="line">IsLoaded --&gt; | 是 | Loaded(直接获取模块) --&gt; End</span><br><span class="line">IsLoaded --&gt; | 否 | LoadJs&#123;异步获取JS&#125;</span><br><span class="line">LoadJs --&gt; | 失败 | MatchJsError(失败处理) --&gt; End</span><br><span class="line">LoadJs --&gt; | 成功 | MatchSuccess(获取子工程模块) --&gt; LoadPage(显示子工程页面) --&gt; End</span><br></pre></td></tr></table></figure>
+<h3 id="实现方案"><a href="#实现方案" class="headerlink" title="实现方案"></a>实现方案</h3><pre><code class="highlight mermaid">graph LR
+Start(Start)
+Start --&gt; Route(/subapp/xxx/index)
+Route --&gt; Match(根路由匹配到 /subapp)
+Match --&gt; DoubleMatch&#123;二级路由xxx匹配到子路由注册信息&#125;
+DoubleMatch --&gt; | 匹配失败 | MatchError(失败处理) --&gt; End(End)
+DoubleMatch --&gt; | 匹配成功 | IsLoaded&#123;检查是否已经加载&#125;
+IsLoaded --&gt; | 是 | Loaded(直接获取模块) --&gt; End
+IsLoaded --&gt; | 否 | LoadJs&#123;异步获取JS&#125;
+LoadJs --&gt; | 失败 | MatchJsError(失败处理) --&gt; End
+LoadJs --&gt; | 成功 | MatchSuccess(获取子工程模块) --&gt; LoadPage(显示子工程页面) --&gt; End</code></pre>
 
-<h2 id="核心流程"><a href="#核心流程" class="headerlink" title="核心流程"></a>核心流程</h2><h3 id="1、注册子应用"><a href="#1、注册子应用" class="headerlink" title="1、注册子应用"></a>1、注册子应用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Start(Start) --&gt; GetList[拿到子应用列表] --&gt; Init[将子应用初始状态设置为 NOT_LOADED] --&gt; GlobalHook(设置全局生命周期) --&gt; End(End)</span><br></pre></td></tr></table></figure>
+<h2 id="核心流程"><a href="#核心流程" class="headerlink" title="核心流程"></a>核心流程</h2><h3 id="1、注册子应用"><a href="#1、注册子应用" class="headerlink" title="1、注册子应用"></a>1、注册子应用</h3><pre><code class="highlight mermaid">graph LR
+Start(Start) --&gt; GetList[拿到子应用列表] --&gt; Init[将子应用初始状态设置为 NOT_LOADED] --&gt; GlobalHook(设置全局生命周期) --&gt; End(End)</code></pre>
 
-<h3 id="2、运行"><a href="#2、运行" class="headerlink" title="2、运行"></a>2、运行</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Start(Start) --&gt; Hijack[Hijack Route] --&gt; Reroute[ReRoute] --&gt; LoadOther(对其他子应用进行资源预加载) --&gt; End(End)</span><br></pre></td></tr></table></figure>
+<h3 id="2、运行"><a href="#2、运行" class="headerlink" title="2、运行"></a>2、运行</h3><pre><code class="highlight mermaid">graph LR
+Start(Start) --&gt; Hijack[Hijack Route] --&gt; Reroute[ReRoute] --&gt; LoadOther(对其他子应用进行资源预加载) --&gt; End(End)</code></pre>
 
-<h3 id="3、页面路由切换"><a href="#3、页面路由切换" class="headerlink" title="3、页面路由切换"></a>3、页面路由切换</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Start(Start) --&gt; ReRoute --&gt; End(end)</span><br></pre></td></tr></table></figure>
+<h3 id="3、页面路由切换"><a href="#3、页面路由切换" class="headerlink" title="3、页面路由切换"></a>3、页面路由切换</h3><pre><code class="highlight mermaid">graph LR
+Start(Start) --&gt; ReRoute --&gt; End(end)</code></pre>
 
 <h2 id="核心代码逻辑"><a href="#核心代码逻辑" class="headerlink" title="核心代码逻辑"></a>核心代码逻辑</h2><h3 id="1、Hijack-Route"><a href="#1、Hijack-Route" class="headerlink" title="1、Hijack Route"></a>1、Hijack Route</h3><ol>
 <li>设置全局变量 <code>HistoryEvent</code></li>
@@ -354,18 +372,31 @@
 <li>actives：所有处于 <code>active</code> 状态的子应用列表</li>
 <li>unmounted：所有处于 <code>unmount</code> 状态的子应用列表</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Start(Start) --&gt; IfUrl&#123;url !== lastUrl&#125;</span><br><span class="line">IfUrl --&gt; | false | End(End)</span><br><span class="line">IfUrl --&gt; | true | AppList[拿到app的状态列表]</span><br><span class="line">AppList --&gt; | unmount | UnMount --&gt; Finish[Finish]</span><br><span class="line">AppList --&gt; | active | BeforeLoad --&gt; Assets --&gt; Mounted --&gt; Finish</span><br><span class="line">Finish --&gt; OpenListener[启动监听] --&gt; End</span><br></pre></td></tr></table></figure>
+<pre><code class="highlight mermaid">graph LR
+Start(Start) --&gt; IfUrl&#123;url !== lastUrl&#125;
+IfUrl --&gt; | false | End(End)
+IfUrl --&gt; | true | AppList[拿到app的状态列表]
+AppList --&gt; | unmount | UnMount --&gt; Finish[Finish]
+AppList --&gt; | active | BeforeLoad --&gt; Assets --&gt; Mounted --&gt; Finish
+Finish --&gt; OpenListener[启动监听] --&gt; End</code></pre>
 
-<h2 id="生命周期函数"><a href="#生命周期函数" class="headerlink" title="生命周期函数"></a>生命周期函数</h2><h3 id="1、beforeLoad"><a href="#1、beforeLoad" class="headerlink" title="1、beforeLoad"></a>1、beforeLoad</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Start --&gt; Loading[set app state to LOADING] --&gt; GlobalHook --&gt; LoadHTML --&gt; Loaded[set app state to LOADED] --&gt; End</span><br></pre></td></tr></table></figure>
+<h2 id="生命周期函数"><a href="#生命周期函数" class="headerlink" title="生命周期函数"></a>生命周期函数</h2><h3 id="1、beforeLoad"><a href="#1、beforeLoad" class="headerlink" title="1、beforeLoad"></a>1、beforeLoad</h3><pre><code class="highlight mermaid">graph LR
+Start --&gt; Loading[set app state to LOADING] --&gt; GlobalHook --&gt; LoadHTML --&gt; Loaded[set app state to LOADED] --&gt; End</code></pre>
 
 <p><strong>LoadHTML：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Start --&gt; Init[get container ant entry] --&gt; Dom[get dom node] --&gt; parseHTML --&gt; CSS[get external css] --&gt; JS[get external js] --&gt; RunCode --&gt; Return[return application]</span><br></pre></td></tr></table></figure>
+<pre><code class="highlight mermaid">graph LR
+Start --&gt; Init[get container ant entry] --&gt; Dom[get dom node] --&gt; parseHTML --&gt; CSS[get external css] --&gt; JS[get external js] --&gt; RunCode --&gt; Return[return application]</code></pre>
 
-<h3 id="2、Assets"><a href="#2、Assets" class="headerlink" title="2、Assets"></a>2、Assets</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Start --&gt; IsLoaded&#123;&quot;status === LOADED&quot;&#125;</span><br><span class="line">IsLoaded --&gt; | false | End</span><br><span class="line">IsLoaded --&gt; | true | Assets[set app state to ASSETS_LOADING] --&gt; RunApp[run app.assets] --&gt; NotMounted[set app state to NOT_MOUNTED] --&gt; End</span><br></pre></td></tr></table></figure>
+<h3 id="2、Assets"><a href="#2、Assets" class="headerlink" title="2、Assets"></a>2、Assets</h3><pre><code class="highlight mermaid">graph LR
+Start --&gt; IsLoaded&#123;&quot;status === LOADED&quot;&#125;
+IsLoaded --&gt; | false | End
+IsLoaded --&gt; | true | Assets[set app state to ASSETS_LOADING] --&gt; RunApp[run app.assets] --&gt; NotMounted[set app state to NOT_MOUNTED] --&gt; End</code></pre>
 
-<h3 id="3、Mounted"><a href="#3、Mounted" class="headerlink" title="3、Mounted"></a>3、Mounted</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Start --&gt; Mounting[set app state to MOUNTING] --&gt; RunApp[run app.mounted] --&gt; GloalHook --&gt; Mounted[set app state to MOUNTED] --&gt; End</span><br></pre></td></tr></table></figure>
+<h3 id="3、Mounted"><a href="#3、Mounted" class="headerlink" title="3、Mounted"></a>3、Mounted</h3><pre><code class="highlight mermaid">graph LR
+Start --&gt; Mounting[set app state to MOUNTING] --&gt; RunApp[run app.mounted] --&gt; GloalHook --&gt; Mounted[set app state to MOUNTED] --&gt; End</code></pre>
 
-<h3 id="4、UnMounted"><a href="#4、UnMounted" class="headerlink" title="4、UnMounted"></a>4、UnMounted</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">Start --&gt; UnMounting[set app state to UNMOUNTING] --&gt; RunApp[run app.unmount] --&gt; GlobalHook --&gt; NotMounted[set app state to NOT_MOUNTED] --&gt; End</span><br></pre></td></tr></table></figure>
+<h3 id="4、UnMounted"><a href="#4、UnMounted" class="headerlink" title="4、UnMounted"></a>4、UnMounted</h3><pre><code class="highlight mermaid">graph LR
+Start --&gt; UnMounting[set app state to UNMOUNTING] --&gt; RunApp[run app.unmount] --&gt; GlobalHook --&gt; NotMounted[set app state to NOT_MOUNTED] --&gt; End</code></pre>
 
     </div>
 
@@ -454,6 +485,8 @@
 <script src="/js/third-party/search/local-search.js"></script>
 
 
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.min.js","integrity":"sha256-G8ouPAnw4zzMbnAenHnVz6h9XpKbNdOkrqTh7AadyHs="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
 
 
 
